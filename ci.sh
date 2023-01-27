@@ -1,42 +1,31 @@
 #!/bin/bash
 
-install_toolchain() {
+install_deps() {
 	apt update
-	apt install -y \
-		build-essential \
-		curl \
-		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-	echo "export PATH=\"$HOME/.cargo/bin:$PATH\"" >>~/.bashrc
-	source $HOME/.cargo/env
-	# please run `source ~/.bashrc` in command line.
-}
+	apt install -y python3-pip
+	pip install -U pip
+	pip install pre-commit
 
-update_toolchain() {
+	# apt install -y shfmt
+
 	rustup toolchain install nightly
 	rustup default nightly
 	rustup component add rustfmt clippy
-	rustup update
-	cargo update --verbose
 }
 
 ci() {
-	if ! command -v cargo &>/dev/null; then
-		echo "command not found"
-		setup
-	fi
-
-	update_toolchain
+	install_deps
+	rustup update
+	cargo update
 
 	cargo package --list --allow-dirty
 
-	# lint
 	cargo clippy
 
-	# format
-	cargo fmt
-	./../ci.sh
+	cargo fmt --all
+	# shfmt -w **/*.sh
+	pre-commit run --all-files
 
-	# test
 	cargo test -q --release
 
 	cargo publish --dry-run --allow-dirty
