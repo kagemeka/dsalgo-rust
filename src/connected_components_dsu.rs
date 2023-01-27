@@ -1,19 +1,31 @@
-use crate::union_find::UnionFind;
+use crate::union_find_low_memory::UnionFind;
 
-pub fn connected_components_uf(
+pub fn connected_components(
     v_size: usize,
-    undirected_edges: &[(usize, usize)],
+    edges: &[(usize, usize)],
 ) -> Vec<usize> {
     let mut uf = UnionFind::new(v_size);
-    for &(u, v) in undirected_edges {
+
+    for &(u, v) in edges {
         uf.unite(u, v);
     }
-    uf.get_labels()
+
+    uf.labels()
 }
 
-// TODO
 #[cfg(test)]
+
 mod tests {
+
+    use super::*;
+
     #[test]
-    fn test() {}
+
+    fn test() {
+        let n = 3;
+
+        let edges = vec![(0, 1)];
+
+        assert_eq!(connected_components(n, &edges), [0, 0, 1]);
+    }
 }

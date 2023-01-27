@@ -1,18 +1,18 @@
 #[derive(Debug, PartialEq)]
+
 pub struct DisconnectedError {
     msg: &'static str,
 }
 
 impl DisconnectedError {
-    pub fn new() -> Self {
-        Self {
-            msg: "given graph is not connected.",
-        }
-    }
+    pub fn new() -> Self { Self { msg: "given graph is not connected." } }
 }
 
 impl std::fmt::Display for DisconnectedError {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    fn fmt(
+        &self,
+        f: &mut std::fmt::Formatter,
+    ) -> std::fmt::Result {
         write!(f, "{}", self.msg)
     }
 }

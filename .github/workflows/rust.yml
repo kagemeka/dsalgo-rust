@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: CI
-        run: ./scripts/ci.sh
+      - uses: actions/checkout@v3
+      - name: Update Toolchains
+        run: ./ci.sh
       - name: Build
         run: cargo build --verbose
       - name: Run tests

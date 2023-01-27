@@ -1,7 +1,10 @@
 use crate::{
     dijkstra_sparse_queue::DijkstraSparseQueue,
     general_dijkstra_sparse::general_dijkstra_sparse,
-    graph_edge_trait::{To, Weight},
+    graph::edge::{
+        To,
+        Weight,
+    },
 };
 
 pub fn dijkstra_sparse_parents<E, Q>(
@@ -16,7 +19,9 @@ where
         sparse_graph,
         &|dist, parent: &mut Vec<Option<usize>>, u, e: &E| {
             let v = *e.to();
+
             let dv = dist[u].unwrap() + e.weight();
+
             if dist[v].is_none() || dv < dist[v].unwrap() {
                 parent[v] = Some(u);
             }
@@ -29,7 +34,10 @@ where
 
 // TODO
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {}
 }

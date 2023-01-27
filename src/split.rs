@@ -1,3 +1,6 @@
 pub trait Split<Idx: ?Sized>: Sized {
-    fn split(self, index: Idx) -> (Self, Self);
+    fn split(
+        self,
+        index: Idx,
+    ) -> (Self, Self);
 }

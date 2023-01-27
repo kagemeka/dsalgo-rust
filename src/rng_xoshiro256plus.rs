@@ -9,7 +9,9 @@ impl Xoshiro256Plus {
 
     pub fn next(&mut self) -> u64 {
         let res = self.seeds[0] + self.seeds[3];
+
         self.seeds = xorshiro256_core(self.seeds);
+
         res
     }
 }
@@ -20,7 +22,10 @@ impl Default for Xoshiro256Plus {
 
 // TODO:
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {}
 }

@@ -1,20 +1,19 @@
 #![allow(dead_code)]
 
-use std::{cell::RefCell, rc::Rc};
+use std::{
+    cell::RefCell,
+    rc::Rc,
+};
 
 #[derive(Debug)]
+
 pub(crate) struct Node<T, U> {
     pub(crate) edges: Vec<Box<Edge<U, T>>>,
     pub(crate) data: T,
 }
 
 impl<T: Default, U> Default for Node<T, U> {
-    fn default() -> Self {
-        Self {
-            edges: Vec::new(),
-            data: T::default(),
-        }
-    }
+    fn default() -> Self { Self { edges: Vec::new(), data: T::default() } }
 }
 
 pub(crate) struct Edge<T, U> {
@@ -24,17 +23,18 @@ pub(crate) struct Edge<T, U> {
 }
 
 /// avoid cycle reference
+
 impl<T: std::fmt::Debug, U> std::fmt::Debug for Edge<T, U> {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "Edge {{ data: {:?} }}",
-            self.data
-        )
+    fn fmt(
+        &self,
+        f: &mut std::fmt::Formatter<'_>,
+    ) -> std::fmt::Result {
+        write!(f, "Edge {{ data: {:?} }}", self.data)
     }
 }
 
 #[derive(Debug)]
+
 pub struct DirectedGraph<T, U> {
     pub(crate) nodes: Vec<Rc<RefCell<Node<T, U>>>>,
 }
@@ -57,13 +57,17 @@ impl<T, U> DirectedGraph<T, U> {
     where
         T: Default,
     {
-        self.nodes.push(Rc::new(RefCell::new(
-            Node::default(),
-        )));
+        self.nodes.push(Rc::new(RefCell::new(Node::default())));
     }
 
-    pub fn add_edge(&mut self, from: usize, to: usize, data: U) {
+    pub fn add_edge(
+        &mut self,
+        from: usize,
+        to: usize,
+        data: U,
+    ) {
         assert!(from < self.size() && to < self.size());
+
         self.nodes[from].borrow_mut().edges.push(Box::new(Edge {
             from: self.nodes[from].clone(),
             to: self.nodes[to].clone(),
@@ -73,14 +77,20 @@ impl<T, U> DirectedGraph<T, U> {
 }
 
 #[cfg(test)]
+
 mod tests {
 
     #[test]
+
     fn test() {
         let mut graph = super::DirectedGraph::<(), usize>::new(2);
+
         println!("{:?}", graph);
+
         graph.add_edge(0, 1, 1);
+
         graph.add_edge(1, 0, 2);
+
         println!("{:?}", graph)
     }
 }

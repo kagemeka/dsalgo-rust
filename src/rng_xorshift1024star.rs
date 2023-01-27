@@ -8,12 +8,19 @@ impl Xorshift1024Star {
 
     pub fn next(&mut self) -> u64 {
         let x = self.seeds[self.index];
+
         self.index = (self.index + 1) & 15;
+
         let mut y = self.seeds[self.index];
+
         y ^= y << 31;
+
         y ^= y >> 11;
+
         y ^= x ^ (x >> 30);
+
         self.seeds[self.index] = y;
+
         y.wrapping_mul(1181783497276652981u64)
     }
 }
@@ -43,7 +50,10 @@ impl Default for Xorshift1024Star {
 
 // TODO:
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {}
 }

@@ -1,4 +1,5 @@
 #[derive(Debug, PartialEq)]
+
 pub struct NegativeCycleError {
     msg: &'static str,
 }
@@ -8,7 +9,10 @@ impl NegativeCycleError {
 }
 
 impl std::fmt::Display for NegativeCycleError {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    fn fmt(
+        &self,
+        f: &mut std::fmt::Formatter,
+    ) -> std::fmt::Result {
         write!(f, "{}", self.msg)
     }
 }

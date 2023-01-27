@@ -1,0 +1,6 @@
+services:
+  development:
+    image: rust:latest
+    tty: true
+    volumes:
+      - .:/root/dsalgo-rust/

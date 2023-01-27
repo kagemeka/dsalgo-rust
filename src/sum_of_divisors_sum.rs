@@ -5,10 +5,14 @@ pub fn sum_of_divisors_sum(n: u64) -> u64 {
 }
 
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {
         use super::*;
+
         assert_eq!(sum_of_divisors_sum(4), 15);
     }
 }

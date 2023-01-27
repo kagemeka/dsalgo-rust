@@ -1,28 +1,55 @@
-use crate::tree_edges_to_graph::tree_edges_to_graph;
-
 pub fn euler_tour_edges(
-    tree_edges: &[(usize, usize)],
+    g: &[Vec<usize>],
     root: usize,
 ) -> Vec<isize> {
-    let graph = tree_edges_to_graph(tree_edges);
-    let n = graph.len();
-    let mut parent = vec![None; n];
-    let mut tour = Vec::with_capacity(n << 1);
-    let mut stack = vec![root as isize];
-    for _ in 0..n << 1 {
-        let u = stack.pop().unwrap();
-        tour.push(u);
+    let n = g.len();
+
+    let mut tour = vec![0; n << 1];
+
+    let mut st = vec![root as isize];
+
+    let mut parent = vec![n; n];
+
+    for i in 0..n << 1 {
+        let u = st.pop().unwrap();
+
         if u < 0 {
+            tour[i] = u;
+
             continue;
         }
-        stack.push(!u);
+
+        tour[i] = u;
+
+        st.push(!u);
+
         let u = u as usize;
-        graph[u].iter().rev().for_each(|&v| {
-            if Some(v) != parent[u] {
-                parent[v] = Some(u);
-                stack.push(v as isize);
+
+        for &v in g[u].iter().rev() {
+            if v == parent[u] {
+                continue;
             }
-        });
+
+            parent[v] = u;
+
+            st.push(v as isize);
+        }
     }
+
     tour
+}
+
+#[cfg(test)]
+
+mod tests {
+
+    use super::*;
+
+    #[test]
+
+    fn test() {
+        let g = vec![vec![1, 2], vec![0, 3], vec![0], vec![1]];
+
+        assert_eq!(euler_tour_edges(&g, 0), [0, 1, 3, -4, -2, 2, -3, -1]);
+    }
 }
