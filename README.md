@@ -36,7 +36,7 @@ we recommend you to use VSCode and the extension `Dev Containers`.
 in that case, after the command below completed, you can select `Docker: Focus on Container Views` from command palette.
 
 ```sh
-docker compose up -d 
+docker compose up -d
 ```
 
 ### VSCode Extensions
