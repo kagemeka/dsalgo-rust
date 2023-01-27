@@ -14,23 +14,45 @@ Data Structures and Algorithms for Rust.
 [gh-pages-url]: https://kagemeka.github.io/dsalgo_rust
 [mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [mit-url]: https://github.com/kagemeka/dsalgo_rust/blob/main/LICENSE
-[docs-url]: https://docs.rs/dsalgo
 [actions-badge]: https://github.com/kagemeka/dsalgo_rust/actions/workflows/rust.yml/badge.svg
 [actions-url]: https://github.com/kagemeka/dsalgo_rust/actions/workflows/rust.yml
 [pre-commit-badge]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
 [pre-commit-url]: https://github.com/pre-commit/pre-commit
 
-## module naming rule
+## Development
 
-* basically,
-  + <theme>_<algorithm/data_structure>_<ext>.rs
-    - if theme is trivial, it can be omitted.
-    - for example, `floyd_warshall` is a algorithm only used for shortest path.
-    - extentional impl section should be separeted with absolute core API.
+### setup & CI
 
-## project rules
+```sh
+./ci.sh
+source ~/.bashrc
+```
 
-* do not introduce additional directory depth for this project.
-* instead, split files into small pieces, and connect them by `use` keyword.
-* run ./script/ci.sh before commit and push.
-* by defining abstract algebra and precice traits, preserve strict `DRY` principle and beautiful codes.
+### VSCode Extensions
+
+- rust-analyzer
+
+### see document
+
+- <https://doc.rust-lang.org/cargo/commands/cargo-doc.html>
+
+```sh
+cargo doc --open
+```
+
+### clean targets
+
+- <https://doc.rust-lang.org/cargo/commands/cargo-clean.html>
+- use when something is wrong.
+
+```sh
+cargo clean
+```
+
+### check easy compilation errors
+
+- <https://doc.rust-lang.org/cargo/commands/cargo-check.html>
+
+```sh
+cargo check
+```

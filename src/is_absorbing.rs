@@ -1,4 +1,8 @@
-pub fn is_left_absorbing<F, X>(f: &F, element: X, x: X) -> bool
+pub fn is_left_absorbing<F, X>(
+    f: &F,
+    element: X,
+    x: X,
+) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -6,7 +10,11 @@ where
     f(element.clone(), x) == element
 }
 
-pub fn is_right_absorbing<F, X>(f: &F, element: X, x: X) -> bool
+pub fn is_right_absorbing<F, X>(
+    f: &F,
+    element: X,
+    x: X,
+) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -14,7 +22,11 @@ where
     f(x, element.clone()) == element
 }
 
-pub fn is_absorbing<F, X>(f: &F, element: X, x: X) -> bool
+pub fn is_absorbing<F, X>(
+    f: &F,
+    element: X,
+    x: X,
+) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,

@@ -1,10 +1,14 @@
 use crate::{
     dijkstra_sparse_queue::DijkstraSparseQueue,
     general_dijkstra_sparse::general_dijkstra_sparse,
-    graph_edge_trait::{To, Weight},
+    graph::edge::{
+        To,
+        Weight,
+    },
 };
 
 /// if 0-cost edges are included, result does not always become a DAG.
+
 pub fn dijkstra_sparse_predecessors<E, Q>(
     sparse_graph: &[Vec<E>],
     src: usize,
@@ -17,7 +21,9 @@ where
         sparse_graph,
         &|dist, pre: &mut Vec<Vec<usize>>, u, e: &E| {
             let v = *e.to();
+
             let dv = dist[u].unwrap() + e.weight();
+
             if let Some(prev_dv) = dist[v] {
                 if dv < prev_dv {
                     pre[v] = vec![u];
@@ -36,7 +42,10 @@ where
 
 // TODO
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {}
 }

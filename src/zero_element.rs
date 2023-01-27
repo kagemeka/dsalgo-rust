@@ -1,8 +1,5 @@
-use crate::binary_operation::BinaryOperationId;
+pub trait Zero {
+    type T;
 
-pub trait ZeroElement<Add, Mul>
-where
-    Add: BinaryOperationId,
-    Mul: BinaryOperationId,
-{
+    fn zero() -> Self::T;
 }

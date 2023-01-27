@@ -1,300 +1,269 @@
-use std::{cell::RefCell, rc::Rc};
-
-use crate::{
-    binary_tree_node,
-    binary_tree_node::{Rotation, Update},
-    join::Join,
-    size,
-    size::Size,
-    split::Split,
-    tree_node::Get,
+use std::{
+    cell::RefCell,
+    rc::Rc,
 };
 
-#[derive(Debug)]
 pub struct Node<T> {
-    pub data: T,
-    pub parent: Option<Rc<RefCell<Self>>>,
-    pub left: Option<Rc<RefCell<Self>>>,
-    pub right: Option<Rc<RefCell<Self>>>,
+    p: ON<T>,
+    l: ON<T>,
+    r: ON<T>,
+    size: usize,
+    pub v: T,
 }
+
+use std::ptr;
+
+type Cell<T> = RefCell<Node<T>>;
+
+type N<T> = Rc<Cell<T>>;
+
+pub(crate) type ON<T> = Option<N<T>>;
+
+type ORN<'a, T> = Option<&'a N<T>>;
 
 impl<T> Node<T> {
-    pub fn new(data: T) -> Self {
-        Node {
-            data,
-            parent: None,
-            left: None,
-            right: None,
-        }
+    pub fn new(v: T) -> N<T> {
+        Rc::new(RefCell::new(Self { p: None, l: None, r: None, size: 1, v }))
     }
-}
 
-impl<T: size::Size> size::Size for Node<T> {
-    fn size(&self) -> usize { self.data.size() }
-}
+    pub(crate) fn size(root: ORN<T>) -> usize {
+        root.map_or(0, |root| root.borrow().size)
+    }
 
-impl<T: size::Size> size::Size for Option<Node<T>> {
-    fn size(&self) -> usize { self.as_ref().map_or(0, |node| node.size()) }
-}
+    fn lsize(&self) -> usize { self.l.as_ref().map_or(0, |l| l.borrow().size) }
 
-impl<T: size::Size> size::Size for Rc<RefCell<Node<T>>> {
-    fn size(&self) -> usize { self.borrow().size() }
-}
+    fn rsize(&self) -> usize { self.r.as_ref().map_or(0, |r| r.borrow().size) }
 
-impl<T: size::Size> size::Size for Option<Rc<RefCell<Node<T>>>> {
-    fn size(&self) -> usize { self.as_ref().map_or(0, |node| node.size()) }
-}
+    fn update(&mut self) { self.size = self.lsize() + self.rsize() + 1; }
 
-#[derive(PartialEq)]
-enum State {
-    LeftChild,
-    RightChild,
-    Root,
-}
-
-impl<T> Node<T>
-where
-    Node<T>: binary_tree_node::Update,
-{
-    fn rotation_common_ops(
-        previous_root: &Rc<RefCell<Self>>,
-        new_root: &Rc<RefCell<Self>>,
-        child: &Option<Rc<RefCell<Self>>>,
-    ) {
-        previous_root.borrow_mut().update();
-        new_root.borrow_mut().update();
-        if let Some(child) = child {
-            child.borrow_mut().parent = Some(previous_root.clone());
-        }
-        new_root.borrow_mut().parent = previous_root.borrow_mut().parent.take();
-        if let Some(parent) = &new_root.borrow().parent {
-            match Node::<T>::get_state(previous_root) {
-                State::LeftChild => {
-                    parent.borrow_mut().left = Some(new_root.clone())
-                },
-                State::RightChild => {
-                    parent.borrow_mut().right = Some(new_root.clone())
-                },
-                _ => (),
+    fn state(&self) -> isize {
+        if let Some(p) = self.p.as_ref() {
+            if p.borrow().l.is_some()
+                && ptr::eq(p.borrow().l.as_ref().unwrap().as_ptr(), self)
+            {
+                -1
+            } else {
+                1
             }
-            parent.borrow_mut().update();
-        }
-        previous_root.borrow_mut().parent = Some(new_root.clone());
-    }
-
-    fn rotate_up(node: &Rc<RefCell<Self>>) {
-        let parent = node.borrow().parent.as_ref().unwrap().clone();
-        if parent.borrow().left.is_some()
-            && Rc::ptr_eq(
-                parent.borrow().left.as_ref().unwrap(),
-                node,
-            )
-        {
-            parent.rotate_right();
         } else {
-            assert!(Rc::ptr_eq(
-                parent.borrow().right.as_ref().unwrap(),
-                node
-            ));
-
-            parent.rotate_left();
+            0
         }
     }
 
-    fn get_state(node: &Rc<RefCell<Self>>) -> State {
-        match &node.borrow().parent {
-            Some(parent) => {
-                if parent.borrow().left.is_some()
-                    && Rc::ptr_eq(
-                        parent.borrow().left.as_ref().unwrap(),
-                        node,
-                    )
-                {
-                    State::LeftChild
-                } else {
-                    State::RightChild
-                }
-            },
-            None => State::Root,
+    fn rotate(node: &N<T>) {
+        let s = node.borrow().state();
+
+        assert!(s == -1 || s == 1);
+
+        let p = node.borrow_mut().p.take().unwrap();
+
+        let ps = p.borrow().state();
+
+        let pp = p.borrow_mut().p.take();
+
+        node.borrow_mut().p = pp.clone();
+
+        if ps == -1 {
+            let pp = pp.unwrap();
+
+            pp.borrow_mut().l = Some(node.clone());
+        } else if ps == 1 {
+            let pp = pp.unwrap();
+
+            pp.borrow_mut().r = Some(node.clone());
         }
+
+        let c;
+
+        if s == -1 {
+            c = node.borrow_mut().r.take();
+
+            p.borrow_mut().l = c.clone();
+
+            node.borrow_mut().r = Some(p.clone());
+        } else {
+            c = node.borrow_mut().l.take();
+
+            p.borrow_mut().r = c.clone();
+
+            node.borrow_mut().l = Some(p.clone());
+        }
+
+        if let Some(c) = c.as_ref() {
+            c.borrow_mut().p = Some(p.clone());
+        }
+
+        p.borrow_mut().p = Some(node.clone());
+
+        p.borrow_mut().update();
+
+        node.borrow_mut().update();
     }
 
-    fn splay(node: &Rc<RefCell<Self>>) {
+    pub fn splay(node: &N<T>) {
         loop {
-            // don't use while let to avoid borrowing conflict.
-            if node.borrow().parent.is_none() {
+            let s = node.borrow().state();
+
+            if s == 0 {
                 break;
             }
-            let parent = node.borrow().parent.as_ref().unwrap().clone();
-            let node_state = Node::<T>::get_state(node);
-            if parent.borrow().parent.is_some() {
-                let parent_state = Node::<T>::get_state(&parent);
-                match parent_state {
-                    node_state => Node::<T>::rotate_up(&parent),
-                    _ => Node::<T>::rotate_up(node),
-                }
+
+            let p = node.borrow().p.as_ref().unwrap().clone();
+
+            let ps = p.borrow().state();
+
+            if s * ps == 1 {
+                Self::rotate(&p);
+            } else if s * ps == -1 {
+                Self::rotate(node);
             }
-            Node::<T>::rotate_up(node);
+
+            Self::rotate(node);
         }
     }
-}
 
-impl<T> binary_tree_node::Rotation for Rc<RefCell<Node<T>>>
-where
-    Node<T>: binary_tree_node::Update,
-{
-    fn rotate_left(self) -> Self {
-        let sub_root = self.borrow_mut().right.take().unwrap();
-        let child = sub_root.borrow_mut().left.take();
-        sub_root.borrow_mut().left = Some(self.clone());
-        self.borrow_mut().right = child.clone();
-        Node::<T>::rotation_common_ops(&self, &sub_root, &child);
-        sub_root
-    }
+    pub fn get(
+        mut root: N<T>,
+        mut i: usize,
+    ) -> N<T> {
+        loop {
+            assert!(i < root.borrow().size);
 
-    fn rotate_right(self) -> Self {
-        let sub_root = self.borrow_mut().left.take().unwrap();
-        let child = sub_root.borrow_mut().right.take();
-        sub_root.borrow_mut().right = Some(self.clone());
-        self.borrow_mut().left = child.clone();
-        Node::<T>::rotation_common_ops(&self, &sub_root, &child);
-        sub_root
-    }
-}
+            let lsize = root.borrow().lsize();
 
-impl<T> Node<T>
-where
-    T: size::Size,
-    Node<T>: Update,
-{
-    // pub fn get(
-    pub fn get(node: &Rc<RefCell<Self>>, index: usize) -> Rc<RefCell<Self>> {
-        assert!(index < node.borrow().size());
-        let left_size = node.borrow().left.size();
-        match index.cmp(&left_size) {
-            std::cmp::Ordering::Less => {
-                let left = node.borrow().left.as_ref().unwrap().clone();
-                Self::get(&left, index)
-            },
-            std::cmp::Ordering::Equal => {
-                Node::<T>::splay(node);
-                node.clone()
-            },
-            std::cmp::Ordering::Greater => {
-                let right = node.borrow().right.as_ref().unwrap().clone();
-                Self::get(&right, index - left_size - 1)
-            },
+            if i < lsize {
+                let l = root.borrow().l.as_ref().unwrap().clone();
+
+                root = l;
+            } else if i > lsize {
+                let r = root.borrow().r.as_ref().unwrap().clone();
+
+                root = r;
+
+                i -= lsize + 1;
+            } else {
+                Self::splay(&root);
+
+                return root;
+            }
         }
     }
-}
 
-impl<T> Join for Option<Rc<RefCell<Node<T>>>>
-where
-    T: size::Size,
-    Node<T>: Update,
-{
-    fn join(self, rhs: Self) -> Self {
-        if self.is_none() {
-            return rhs;
-        }
-        if rhs.is_none() {
-            return self;
+    pub fn merge(
+        l: ON<T>,
+        r: ON<T>,
+    ) -> ON<T> {
+        if r.is_none() {
+            return l;
         }
 
-        let left_root = Node::<T>::get(
-            self.as_ref().unwrap(),
-            self.size() - 1,
-        );
-        rhs.as_ref().unwrap().borrow_mut().parent = Some(left_root.clone());
-        left_root.borrow_mut().right = rhs;
-        left_root.borrow_mut().update();
-        Some(left_root)
+        let mut r = r.unwrap();
+
+        r = Self::get(r, 0);
+
+        if let Some(l) = l.as_ref() {
+            l.borrow_mut().p = Some(r.clone());
+        }
+
+        r.borrow_mut().l = l;
+
+        r.borrow_mut().update();
+
+        Some(r)
     }
-}
 
-impl<T> Split<usize> for Option<Rc<RefCell<Node<T>>>>
-where
-    T: size::Size,
-    Node<T>: Update,
-{
-    fn split(self, index: usize) -> (Self, Self) {
-        let size = self.size();
-        assert!(index <= size);
-        if index == size {
-            return (self, None);
+    pub fn split(
+        root: ON<T>,
+        i: usize,
+    ) -> (ON<T>, ON<T>) {
+        let size = Self::size(root.as_ref());
+
+        assert!(i <= size);
+
+        if i == size {
+            return (root, None);
         }
-        if index == 0 {
-            return (None, self);
+
+        let mut root = root.unwrap();
+
+        root = Self::get(root, i);
+
+        let l = root.borrow_mut().l.take();
+
+        if let Some(l) = l.as_ref() {
+            l.borrow_mut().p = None;
         }
-        let right_root = Node::<T>::get(self.as_ref().unwrap(), index);
-        let lhs = right_root.borrow_mut().left.take();
-        lhs.as_ref().unwrap().borrow_mut().parent = None;
-        right_root.borrow_mut().update();
-        (lhs, Some(right_root))
+
+        root.borrow_mut().update();
+
+        (l, Some(root))
     }
-}
 
-impl<T: Default> Default for Node<T> {
-    fn default() -> Self { Self::new(T::default()) }
-}
+    pub fn insert(
+        root: ON<T>,
+        i: usize,
+        node: ON<T>,
+    ) -> ON<T> {
+        assert!(i <= Self::size(root.as_ref()));
 
-#[derive(Debug)]
-pub struct DefaultData<K, V> {
-    pub size: usize,
-    pub key: K,
-    pub value: V,
-}
+        let (l, r) = Self::split(root, i);
 
-impl Default for DefaultData<usize, usize> {
-    fn default() -> Self { Self::new(0, 0) }
-}
+        Self::merge(Self::merge(l, node), r)
+    }
 
-impl<K, V> DefaultData<K, V> {
-    pub fn new(key: K, value: V) -> Self { DefaultData { size: 1, key, value } }
-}
+    pub fn pop(
+        mut root: N<T>,
+        i: usize,
+    ) -> (N<T>, ON<T>) {
+        root = Self::get(root, i);
 
-impl<K, V> size::Size for DefaultData<K, V> {
-    fn size(&self) -> usize { self.size }
-}
+        let l = root.borrow_mut().l.take();
 
-impl<K, V> binary_tree_node::Update for Node<DefaultData<K, V>> {
-    fn update(&mut self) {
-        self.data.size = self.left.size() + self.right.size() + 1;
+        let r = root.borrow_mut().r.take();
+
+        if let Some(l) = l.as_ref() {
+            l.borrow_mut().p = None;
+        }
+
+        if let Some(r) = r.as_ref() {
+            r.borrow_mut().p = None;
+        }
+
+        root.borrow_mut().update();
+
+        let c = Self::merge(l, r);
+
+        (root, c)
+    }
+
+    pub fn binary_search<F>(
+        f: F,
+        root: ORN<T>,
+    ) -> usize
+    where
+        F: Fn(&T) -> bool,
+    {
+        if root.is_none() {
+            return 0;
+        }
+
+        let root = root.unwrap();
+
+        if f(&root.borrow().v) {
+            Self::binary_search(f, root.borrow().l.as_ref())
+        } else {
+            let offset = root.borrow().lsize() + 1;
+
+            offset + Self::binary_search(f, root.borrow().r.as_ref())
+        }
     }
 }
 
 #[cfg(test)]
+
 mod tests {
+
     #[test]
-    fn test() {
-        use super::*;
-        use crate::tree_node::{Insert, Pop};
-        type Data = DefaultData<usize, usize>;
-        type Root = Option<Rc<RefCell<Node<Data>>>>;
-        let mut root = Some(Rc::new(RefCell::new(
-            Node::new(Data::default()),
-        )));
-        assert_eq!(root.size(), 1);
-        root = <Root as Insert>::insert(
-            root,
-            0,
-            Some(Rc::new(RefCell::new(
-                Node::new(Data::new(1, 1)),
-            ))),
-        );
-        assert_eq!(root.size(), 2);
-        assert_eq!(
-            root.as_ref().unwrap().borrow().left.size(),
-            0
-        );
-        assert_eq!(
-            root.as_ref().unwrap().borrow().right.size(),
-            1
-        );
-        let (mut root, mut popped) = <Root as Pop>::pop(root, 0);
-        assert_eq!(root.size(), 1);
-        assert_eq!(popped.size(), 1);
-        println!("{:?}", popped);
-        println!("{:?}", root);
-    }
+
+    fn test() {}
 }

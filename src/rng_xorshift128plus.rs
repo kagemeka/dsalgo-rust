@@ -7,10 +7,15 @@ impl Xorshift128Plus {
 
     pub fn next(&mut self) -> u64 {
         let [mut x, y] = self.seeds;
+
         x ^= x << 23;
+
         x ^= x >> 18;
+
         x ^= y ^ (y >> 5);
+
         self.seeds = [y, x];
+
         x + y
     }
 }
@@ -20,7 +25,10 @@ impl Default for Xorshift128Plus {
 }
 
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {}
 }

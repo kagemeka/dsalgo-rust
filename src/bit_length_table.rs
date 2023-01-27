@@ -1,8 +1,20 @@
 /// O(N)
-pub fn bit_length_table(size: usize) -> Vec<u8> {
-    let mut length = vec![0; size as usize];
+
+pub fn table(size: usize) -> Vec<u8> {
+    let mut l = vec![0; size];
+
     for i in 1..size {
-        length[i] = length[i >> 1] + 1;
+        l[i] = l[i >> 1] + 1;
     }
-    length
+
+    l
+}
+
+#[cfg(test)]
+
+mod tests {
+
+    #[test]
+
+    fn test() {}
 }

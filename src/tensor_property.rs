@@ -9,9 +9,11 @@ pub trait Size {
 impl<T: Shape> Size for T {
     fn size() -> usize {
         let mut size = 1;
+
         for &dim in Self::shape() {
             size *= dim;
         }
+
         size
     }
 }
@@ -31,16 +33,21 @@ pub trait Strides {
 impl<P: Shape> Strides for P {
     fn strides() -> Vec<usize> {
         let ndim = Self::dimension();
+
         let mut strides: Vec<usize> = P::shape().into();
+
         if ndim > 0 {
             strides[ndim - 1] = 1;
         }
+
         for i in (1..ndim).rev() {
             strides[i - 1] = strides[i] * P::shape()[i];
         }
+
         strides
     }
 }
 
 pub trait TensorProperty: Shape {}
+
 impl<P: Shape> TensorProperty for P {}

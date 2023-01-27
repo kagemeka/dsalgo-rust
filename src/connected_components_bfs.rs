@@ -1,38 +1,46 @@
-pub fn connected_components_bfs(
-    v_size: usize,
-    undirected_edges: &[(usize, usize)],
-) -> Vec<usize> {
-    let mut g = vec![vec![]; v_size];
-    for &(u, v) in undirected_edges.iter() {
-        g[u].push(v);
-        g[v].push(u);
-    }
-    let mut labels = vec![v_size; v_size];
-    let mut label = 0;
-    for i in 0..v_size {
-        if labels[i] != v_size {
+//! compute connected components on undirected graphs.
+
+pub fn connected_components(g: &[Vec<usize>]) -> Vec<usize> {
+    let n = g.len();
+
+    let mut ids = vec![n; n];
+
+    let mut id = 0;
+
+    let mut que = std::collections::VecDeque::new();
+
+    for i in 0..n {
+        if ids[i] != n {
             continue;
         }
-        labels[i] = label;
-        let mut que = std::collections::VecDeque::new();
+
+        ids[i] = id;
+
         que.push_back(i);
+
         while let Some(u) = que.pop_front() {
             for &v in &g[u] {
-                if labels[v] != v_size {
+                if ids[v] != n {
                     continue;
                 }
-                labels[v] = label;
+
+                ids[v] = id;
+
                 que.push_back(v);
             }
         }
-        label += 1;
+
+        id += 1;
     }
-    labels
+
+    ids
 }
 
-// TODO
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {}
 }

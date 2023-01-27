@@ -1,8 +1,12 @@
 #[cfg(test)]
+
 mod tests {
+
     #[test]
+
     fn test() {
         #[derive(Debug)]
+
         struct Data {
             value: usize,
         }
@@ -12,7 +16,9 @@ mod tests {
         }
 
         let mut data = Data { value: 0 };
+
         *data.mut_value() += 1;
+
         println!("{:?}", data);
     }
 }
