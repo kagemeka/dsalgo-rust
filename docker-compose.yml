@@ -1,6 +1,12 @@
 services:
   development:
-    image: rust:latest
+    # image: rust:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dsalgo:rust
+    restart: "no"
     tty: true
     volumes:
       - .:/root/dsalgo-rust/
+    working_dir: /root/dsalgo-rust/

@@ -48,8 +48,10 @@ if you use VSCode, it gonna be fine to install these extensions.
 
 ### Setup & CI
 
-in addition to base rust docker image, you should install some dependencies.
-don't worry, just do it.
+please run CI before any git commit.
+in addition to base rust docker image, you should install some dependencies to run CI script.
+but if you used docker compose, the setup have already done.
+for CI, don't worry, just do it.
 
 ```sh
 ./ci.sh
