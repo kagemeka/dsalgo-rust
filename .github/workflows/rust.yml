@@ -15,8 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Update Toolchains
-        run: ./ci.sh
+      - name: Update Toolchains & custom CI
+        run: |
+          ./install_deps.sh
+          ./ci.sh
       - name: Build
         run: cargo build --verbose
       - name: Run tests
