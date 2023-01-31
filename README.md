@@ -56,28 +56,3 @@ for CI, don't worry, just do it.
 ```sh
 ./ci.sh
 ```
-
-### See document
-
-- <https://doc.rust-lang.org/cargo/commands/cargo-doc.html>
-
-```sh
-cargo doc --open
-```
-
-### Clean targets
-
-- <https://doc.rust-lang.org/cargo/commands/cargo-clean.html>
-- use when something is wrong.
-
-```sh
-cargo clean
-```
-
-### Check easy compilation errors
-
-- <https://doc.rust-lang.org/cargo/commands/cargo-check.html>
-
-```sh
-cargo check
-```

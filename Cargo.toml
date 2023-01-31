@@ -15,5 +15,3 @@ rust-version = "1.68.0"
 version = "0.3.7"
 build = false
 [dependencies]
-lazy_static = "1.4.0"
-rand = "0.8.5"
