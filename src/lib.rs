@@ -1,17 +1,12 @@
 #![feature(once_cell)]
-#![feature(int_log)]
 #![feature(generic_const_exprs)]
 #![feature(inherent_associated_types)]
 #![feature(array_chunks)]
 #![feature(iterator_try_collect)]
 #![feature(slice_as_chunks)]
-#![feature(map_first_last)]
 #![feature(is_sorted)]
 
 // #![allow(dead_code)]
-pub mod a_star_search_algorithm;
-pub mod aa_tree;
-pub mod ab_tree;
 pub mod abs_diff;
 pub mod accumulate_iterator;
 pub mod accumulate_vec;
