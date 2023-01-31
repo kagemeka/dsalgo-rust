@@ -15,3 +15,7 @@ rust-version = "1.68.0"
 version = "0.3.7"
 build = false
 [dependencies]
+
+
+[workspace]
+members = ["cplib"]
