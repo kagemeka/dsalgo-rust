@@ -1,4 +1,6 @@
-pub fn bit_mask(less_than: usize) -> usize { (1 << less_than) - 1 }
+pub fn bit_mask(less_than: usize) -> usize {
+    (1 << less_than) - 1
+}
 
 #[cfg(test)]
 

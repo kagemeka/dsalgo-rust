@@ -1,4 +1,6 @@
-pub fn next_power_of_2(n: u64) -> u64 { n.next_power_of_two() }
+pub fn next_power_of_2(n: u64) -> u64 {
+    n.next_power_of_two()
+}
 
 #[cfg(test)]
 

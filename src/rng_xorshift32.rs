@@ -21,7 +21,9 @@ impl XorShift32 {
 }
 
 impl Default for XorShift32 {
-    fn default() -> Self { XorShift32(2463534242) }
+    fn default() -> Self {
+        XorShift32(2463534242)
+    }
 }
 
 // TODO:

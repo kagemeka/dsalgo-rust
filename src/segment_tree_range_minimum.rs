@@ -3,13 +3,17 @@ use crate::segment_tree_with_instance_monoid::*;
 pub struct RangeMinimum<T>(T);
 
 impl<T> RangeMinimum<T> {
-    pub fn new(inf: T) -> Self { Self(inf) }
+    pub fn new(inf: T) -> Self {
+        Self(inf)
+    }
 }
 
 impl<T: Ord + Clone> Monoid for RangeMinimum<T> {
     type T = T;
 
-    fn e(&self) -> Self::T { self.0.clone() }
+    fn e(&self) -> Self::T {
+        self.0.clone()
+    }
 
     fn op(
         &self,

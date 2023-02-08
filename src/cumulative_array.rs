@@ -24,7 +24,9 @@ where
         Self { s }
     }
 
-    pub fn size(&self) -> usize { self.s.len() - 1 }
+    pub fn size(&self) -> usize {
+        self.s.len() - 1
+    }
 
     pub fn reduce_lt(
         &self,

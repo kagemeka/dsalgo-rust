@@ -16,7 +16,9 @@ pub struct NdimDynamicTensor<T, const D: usize> {
 //     }
 // }
 impl<T, const D: usize> NdimDynamicTensor<T, D> {
-    pub const fn shape(&self) -> &[usize; D] { &self.shape }
+    pub const fn shape(&self) -> &[usize; D] {
+        &self.shape
+    }
 
     pub fn strides(&self) -> [usize; D] {
         let mut strides: [usize; D] = self.shape.into();
@@ -42,7 +44,9 @@ impl<T, const D: usize> NdimDynamicTensor<T, D> {
         size
     }
 
-    pub fn size(&self) -> usize { self.data.len() }
+    pub fn size(&self) -> usize {
+        self.data.len()
+    }
 }
 
 impl<T: Default, const D: usize> NdimDynamicTensor<T, D> {

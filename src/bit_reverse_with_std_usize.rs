@@ -1,4 +1,6 @@
-pub fn bit_reverse(n: usize) -> usize { n.reverse_bits() }
+pub fn bit_reverse(n: usize) -> usize {
+    n.reverse_bits()
+}
 
 #[cfg(test)]
 

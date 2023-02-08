@@ -5,7 +5,9 @@ pub struct DisconnectedError {
 }
 
 impl DisconnectedError {
-    pub fn new() -> Self { Self { msg: "given graph is not connected." } }
+    pub fn new() -> Self {
+        Self { msg: "given graph is not connected." }
+    }
 }
 
 impl std::fmt::Display for DisconnectedError {
@@ -18,5 +20,7 @@ impl std::fmt::Display for DisconnectedError {
 }
 
 impl std::error::Error for DisconnectedError {
-    fn description(&self) -> &str { &self.msg }
+    fn description(&self) -> &str {
+        &self.msg
+    }
 }

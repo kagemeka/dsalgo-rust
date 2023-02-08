@@ -7,7 +7,9 @@ pub struct Segtree<T> {
 }
 
 impl<T> Segtree<T> {
-    fn n(&self) -> usize { self.node.len() >> 1 }
+    fn n(&self) -> usize {
+        self.node.len() >> 1
+    }
 }
 
 impl<T> Index<usize> for Segtree<T> {

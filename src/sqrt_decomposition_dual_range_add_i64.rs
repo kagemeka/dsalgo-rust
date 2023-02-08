@@ -13,7 +13,9 @@ impl Monoid for RangeAdd {
         l + r
     }
 
-    fn e(&self) -> Self::T { 0 }
+    fn e(&self) -> Self::T {
+        0
+    }
 }
 
 #[cfg(test)]

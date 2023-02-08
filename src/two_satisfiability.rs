@@ -11,7 +11,9 @@ impl TwoSat {
         Self { g: vec![vec![]; size << 1], solution: None, updated: false }
     }
 
-    fn n(&self) -> usize { self.g.len() >> 1 }
+    fn n(&self) -> usize {
+        self.g.len() >> 1
+    }
 
     /// add a clause (i-th node is f) or (j-th node is g)
 

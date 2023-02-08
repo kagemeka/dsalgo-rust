@@ -3,7 +3,9 @@ use std::ops::*;
 pub struct Fenwick<T>(Vec<T>);
 
 impl<T> Fenwick<T> {
-    pub fn size(&self) -> usize { self.0.len() - 1 }
+    pub fn size(&self) -> usize {
+        self.0.len() - 1
+    }
 
     pub fn new(size: usize) -> Self
     where

@@ -17,7 +17,9 @@ pub struct SegmentTree<G: Monoid> {
 }
 
 impl<G: Monoid> SegmentTree<G> {
-    fn n(&self) -> usize { self.data.len() >> 1 }
+    fn n(&self) -> usize {
+        self.data.len() >> 1
+    }
 }
 
 use std::ops::*;
@@ -236,7 +238,9 @@ mod tests {
             x + y
         }
 
-        fn e(&self) -> i32 { 0 }
+        fn e(&self) -> i32 {
+            0
+        }
     }
 
     use super::*;

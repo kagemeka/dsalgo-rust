@@ -18,7 +18,9 @@ impl<T: Clone, P: Shape> Matrix<T, P> {
 }
 
 impl<T: Clone + Default, P: Shape> Default for Matrix<T, P> {
-    fn default() -> Self { Self::new(T::default()) }
+    fn default() -> Self {
+        Self::new(T::default())
+    }
 }
 
 impl<T, P> Index<usize> for Matrix<T, P> {

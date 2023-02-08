@@ -42,7 +42,9 @@ impl<R: Semiring, P: Shape> Default for Matrix<R, P>
 where
     R::T: Clone + Default,
 {
-    fn default() -> Self { Self::new(R::T::default()) }
+    fn default() -> Self {
+        Self::new(R::T::default())
+    }
 }
 
 impl<R: Semiring, P> Index<usize> for Matrix<R, P> {
@@ -209,7 +211,9 @@ mod tests {
         struct P;
 
         impl Size for P {
-            fn size() -> usize { 3 }
+            fn size() -> usize {
+                3
+            }
         }
 
         #[derive(Clone, Debug, Eq, PartialEq)]
@@ -233,9 +237,13 @@ mod tests {
                 l * r
             }
 
-            fn zero() -> Self::T { 0 }
+            fn zero() -> Self::T {
+                0
+            }
 
-            fn one() -> Self::T { 1 }
+            fn one() -> Self::T {
+                1
+            }
         }
 
         type Mat = Matrix<R, P>;

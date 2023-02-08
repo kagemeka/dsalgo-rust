@@ -3,7 +3,9 @@ pub struct PascalRule<T> {
 }
 
 impl<T> PascalRule<T> {
-    pub fn new() -> Self { Self { cache: std::collections::HashMap::new() } }
+    pub fn new() -> Self {
+        Self { cache: std::collections::HashMap::new() }
+    }
 
     /// interface is not u64 but u32
     /// to avoid key's overflow but memory overflow or infinite run time.

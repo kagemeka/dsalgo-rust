@@ -32,19 +32,27 @@ impl<T> Node<T> {
 }
 
 impl<T: size::Size> size::Size for Node<T> {
-    fn size(&self) -> usize { self.data.size() }
+    fn size(&self) -> usize {
+        self.data.size()
+    }
 }
 
 impl<T: size::Size> size::Size for Option<Node<T>> {
-    fn size(&self) -> usize { self.as_ref().map_or(0, |node| node.size()) }
+    fn size(&self) -> usize {
+        self.as_ref().map_or(0, |node| node.size())
+    }
 }
 
 impl<T: size::Size> size::Size for Rc<RefCell<Node<T>>> {
-    fn size(&self) -> usize { self.borrow().size() }
+    fn size(&self) -> usize {
+        self.borrow().size()
+    }
 }
 
 impl<T: size::Size> size::Size for Option<Rc<RefCell<Node<T>>>> {
-    fn size(&self) -> usize { self.as_ref().map_or(0, |node| node.size()) }
+    fn size(&self) -> usize {
+        self.as_ref().map_or(0, |node| node.size())
+    }
 }
 
 #[derive(PartialEq)]
@@ -275,7 +283,9 @@ where
 }
 
 impl<T: Default> Default for Node<T> {
-    fn default() -> Self { Self::new(T::default()) }
+    fn default() -> Self {
+        Self::new(T::default())
+    }
 }
 
 #[derive(Debug)]
@@ -287,7 +297,9 @@ pub struct DefaultData<K, V> {
 }
 
 impl Default for DefaultData<usize, usize> {
-    fn default() -> Self { Self::new(0, 0) }
+    fn default() -> Self {
+        Self::new(0, 0)
+    }
 }
 
 impl<K, V> DefaultData<K, V> {
@@ -300,7 +312,9 @@ impl<K, V> DefaultData<K, V> {
 }
 
 impl<K, V> size::Size for DefaultData<K, V> {
-    fn size(&self) -> usize { self.size }
+    fn size(&self) -> usize {
+        self.size
+    }
 }
 
 impl<K, V> binary_tree_node::Update for Node<DefaultData<K, V>> {

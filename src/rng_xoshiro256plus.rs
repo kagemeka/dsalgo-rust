@@ -5,7 +5,9 @@ pub struct Xoshiro256Plus {
 }
 
 impl Xoshiro256Plus {
-    pub fn new(seeds: [u64; 4]) -> Self { Self { seeds } }
+    pub fn new(seeds: [u64; 4]) -> Self {
+        Self { seeds }
+    }
 
     pub fn next(&mut self) -> u64 {
         let res = self.seeds[0] + self.seeds[3];
@@ -17,7 +19,9 @@ impl Xoshiro256Plus {
 }
 
 impl Default for Xoshiro256Plus {
-    fn default() -> Self { Self::new([1; 4]) }
+    fn default() -> Self {
+        Self::new([1; 4])
+    }
 }
 
 // TODO:

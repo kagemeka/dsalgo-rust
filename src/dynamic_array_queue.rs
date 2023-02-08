@@ -9,9 +9,13 @@ impl<T: Clone> Queue<T> {
         Self { nodes: vec![], buf_size, idx: 0 }
     }
 
-    pub fn size(&self) -> usize { self.nodes.len() - self.idx }
+    pub fn size(&self) -> usize {
+        self.nodes.len() - self.idx
+    }
 
-    pub fn is_full(&self) -> bool { self.size() == self.buf_size }
+    pub fn is_full(&self) -> bool {
+        self.size() == self.buf_size
+    }
 
     pub fn reform(&mut self) {
         self.nodes = self.nodes[self.idx..].to_vec();

@@ -41,7 +41,9 @@ where
         Self(node)
     }
 
-    pub fn size(&self) -> usize { self.0.len() - 1 }
+    pub fn size(&self) -> usize {
+        self.0.len() - 1
+    }
 
     /// a[i] += v
 
@@ -234,7 +236,9 @@ where
         Self(Fw::new(a))
     }
 
-    pub fn size(&self) -> usize { self.0.size() }
+    pub fn size(&self) -> usize {
+        self.0.size()
+    }
 
     /// a[i] += v (l <= i < n)
 

@@ -9,7 +9,9 @@ pub struct PotentialUF<G: AbelianGroup> {
 }
 
 impl<G: AbelianGroup> Size for PotentialUF<G> {
-    fn size(&self) -> usize { self.a.len() }
+    fn size(&self) -> usize {
+        self.a.len()
+    }
 }
 
 /// Potentialized (or Weighted) Union Find

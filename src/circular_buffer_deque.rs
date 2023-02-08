@@ -10,13 +10,21 @@ impl<T: Clone> Deque<T> {
         Self { data: vec![None; buf_size], left: 0, right: 0, size: 0 }
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    pub fn buf_size(&self) -> usize { self.data.len() }
+    pub fn buf_size(&self) -> usize {
+        self.data.len()
+    }
 
-    pub fn is_full(&self) -> bool { self.size() == self.buf_size() }
+    pub fn is_full(&self) -> bool {
+        self.size() == self.buf_size()
+    }
 
-    pub fn is_empty(&self) -> bool { self.size() == 0 }
+    pub fn is_empty(&self) -> bool {
+        self.size() == 0
+    }
 
     pub fn push_right(
         &mut self,

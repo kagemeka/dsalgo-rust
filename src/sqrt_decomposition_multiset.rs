@@ -7,7 +7,9 @@ impl Multiset {
         Self(SqrtDecomposition::new(less_than))
     }
 
-    pub fn size(&self) -> usize { self.0.fold(0, self.0.size()) as usize }
+    pub fn size(&self) -> usize {
+        self.0.fold(0, self.0.size()) as usize
+    }
 
     pub fn count(
         &self,

@@ -35,7 +35,9 @@ impl<T: std::fmt::Debug, U> std::fmt::Debug for Node<T, U> {
 }
 
 impl<T: Default, U> Default for Node<T, U> {
-    fn default() -> Self { Self { edges: Vec::new(), data: T::default() } }
+    fn default() -> Self {
+        Self { edges: Vec::new(), data: T::default() }
+    }
 }
 
 #[derive(Debug)]
@@ -111,7 +113,9 @@ pub struct MixedGraph<T, U> {
 }
 
 impl<T, U> MixedGraph<T, U> {
-    pub fn size(&self) -> usize { self.nodes.len() }
+    pub fn size(&self) -> usize {
+        self.nodes.len()
+    }
 
     pub fn new(size: usize) -> Self
     where

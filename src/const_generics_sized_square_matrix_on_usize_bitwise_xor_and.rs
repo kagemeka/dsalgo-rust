@@ -5,7 +5,9 @@ use std::ops::*;
 pub struct Matrix<const N: usize>([[usize; N]; N]);
 
 impl<const N: usize> Matrix<N> {
-    pub fn new(fill_value: usize) -> Self { Self([[fill_value; N]; N]) }
+    pub fn new(fill_value: usize) -> Self {
+        Self([[fill_value; N]; N])
+    }
 }
 
 impl<const N: usize> Index<usize> for Matrix<N> {

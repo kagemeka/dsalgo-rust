@@ -40,7 +40,9 @@ where
     O::S: Clone + PartialEq,
     O::F: Clone + PartialEq,
 {
-    pub fn size(&self) -> usize { self.data.len() }
+    pub fn size(&self) -> usize {
+        self.data.len()
+    }
 
     pub fn interval(&self) -> usize {
         let n = self.buckets.len();
@@ -407,7 +409,9 @@ mod tests {
                 (a.0 + b.0, a.1 + b.1)
             }
 
-            fn e(&self) -> Self::S { (0, 0) }
+            fn e(&self) -> Self::S {
+                (0, 0)
+            }
 
             fn compose(
                 &self,
@@ -417,7 +421,9 @@ mod tests {
                 f + g
             }
 
-            fn id(&self) -> Self::F { 0 }
+            fn id(&self) -> Self::F {
+                0
+            }
 
             fn map(
                 &self,

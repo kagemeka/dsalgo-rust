@@ -34,7 +34,9 @@ impl<T: Ord + Clone + std::hash::Hash> MedianQueue<T> {
         }
     }
 
-    pub fn size(&self) -> usize { self.lo.size() + self.hi.size() }
+    pub fn size(&self) -> usize {
+        self.lo.size() + self.hi.size()
+    }
 
     pub fn count(
         &self,
@@ -56,7 +58,9 @@ impl<T: Ord + Clone + std::hash::Hash> MedianQueue<T> {
         self.rebalance();
     }
 
-    pub fn low(&mut self) -> Option<&T> { self.lo.peek() }
+    pub fn low(&mut self) -> Option<&T> {
+        self.lo.peek()
+    }
 
     pub fn high(&mut self) -> Option<&T> {
         if self.balance() == 1 {

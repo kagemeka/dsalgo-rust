@@ -12,7 +12,7 @@ Data Structures and Algorithms written in Rust.
 [crates-url]: https://crates.io/crates/dsalgo
 [gh-pages-badge]: https://github.com/kagemeka/dsalgo-rust/actions/workflows/pages/pages-build-deployment/badge.svg
 [gh-pages-url]: https://kagemeka.github.io/dsalgo-rust
-[mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[mit-badge]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://github.com/kagemeka/dsalgo-rust/blob/main/LICENSE
 [actions-badge]: https://github.com/kagemeka/dsalgo-rust/actions/workflows/rust.yml/badge.svg
 [actions-url]: https://github.com/kagemeka/dsalgo-rust/actions/workflows/rust.yml

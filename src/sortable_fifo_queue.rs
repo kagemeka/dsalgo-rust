@@ -16,7 +16,9 @@ impl<T: Ord> SortableQueue<T> {
         Self { que: VecDeque::new(), hq: BinaryHeap::new() }
     }
 
-    pub fn size(&self) -> usize { self.que.len() + self.hq.len() }
+    pub fn size(&self) -> usize {
+        self.que.len() + self.hq.len()
+    }
 
     pub fn push(
         &mut self,

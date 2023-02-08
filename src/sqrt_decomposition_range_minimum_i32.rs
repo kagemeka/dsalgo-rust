@@ -13,7 +13,9 @@ impl Monoid for RangeMinimum {
         l.min(r)
     }
 
-    fn e(&self) -> Self::T { std::i32::MAX }
+    fn e(&self) -> Self::T {
+        std::i32::MAX
+    }
 }
 
 #[cfg(test)]

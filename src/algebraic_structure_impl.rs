@@ -27,7 +27,9 @@ impl Commutative for GroupApprox<(usize, usize), Min> {}
 impl Associative for GroupApprox<(usize, usize), Min> {}
 
 impl Identity for GroupApprox<(usize, usize), Min> {
-    fn e() -> Self::S { (std::usize::MAX, std::usize::MAX) }
+    fn e() -> Self::S {
+        (std::usize::MAX, std::usize::MAX)
+    }
 }
 
 /// (usize, min)
@@ -50,7 +52,9 @@ impl Commutative for GroupApprox<usize, Min> {}
 impl Associative for GroupApprox<usize, Min> {}
 
 impl Identity for GroupApprox<usize, Min> {
-    fn e() -> Self::S { std::usize::MAX }
+    fn e() -> Self::S {
+        std::usize::MAX
+    }
 }
 
 /// (usize, +)
@@ -71,7 +75,9 @@ impl Associative for GroupApprox<usize, Additive> {}
 impl Commutative for GroupApprox<usize, Additive> {}
 
 impl Identity for GroupApprox<usize, Additive> {
-    fn e() -> Self::S { 0 }
+    fn e() -> Self::S {
+        0
+    }
 }
 
 /// (i32, +)
@@ -92,11 +98,15 @@ impl Associative for GroupApprox<i32, Additive> {}
 impl Commutative for GroupApprox<i32, Additive> {}
 
 impl Identity for GroupApprox<i32, Additive> {
-    fn e() -> Self::S { 0 }
+    fn e() -> Self::S {
+        0
+    }
 }
 
 impl Inverse for GroupApprox<i32, Additive> {
-    fn inv(x: i32) -> i32 { -x }
+    fn inv(x: i32) -> i32 {
+        -x
+    }
 }
 
 /// (u64, +)
@@ -117,7 +127,9 @@ impl Commutative for GroupApprox<u64, Additive> {}
 impl Associative for GroupApprox<u64, Additive> {}
 
 impl Identity for GroupApprox<u64, Additive> {
-    fn e() -> Self::S { 0 }
+    fn e() -> Self::S {
+        0
+    }
 }
 
 /// (i64, +)
@@ -138,11 +150,15 @@ impl Commutative for GroupApprox<i64, Additive> {}
 impl Associative for GroupApprox<i64, Additive> {}
 
 impl Identity for GroupApprox<i64, Additive> {
-    fn e() -> Self::S { 0 }
+    fn e() -> Self::S {
+        0
+    }
 }
 
 impl Inverse for GroupApprox<i64, Additive> {
-    fn inv(x: i64) -> i64 { -x }
+    fn inv(x: i64) -> i64 {
+        -x
+    }
 }
 
 /// (u64, min)
@@ -165,5 +181,7 @@ impl Commutative for GroupApprox<u64, Min> {}
 impl Associative for GroupApprox<u64, Min> {}
 
 impl Identity for GroupApprox<u64, Min> {
-    fn e() -> Self::S { std::u64::MAX }
+    fn e() -> Self::S {
+        std::u64::MAX
+    }
 }

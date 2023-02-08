@@ -3,7 +3,9 @@
 pub struct Modint<const MOD: i64>(pub i64);
 
 impl<const MOD: i64> Modint<MOD> {
-    pub const fn modulus() -> i64 { MOD }
+    pub const fn modulus() -> i64 {
+        MOD
+    }
 
     pub fn normalize(mut v: i64) -> i64 {
         if v < -MOD || v >= MOD {
@@ -17,7 +19,9 @@ impl<const MOD: i64> Modint<MOD> {
         v
     }
 
-    pub fn new(v: i64) -> Self { Self(Self::normalize(v)) }
+    pub fn new(v: i64) -> Self {
+        Self(Self::normalize(v))
+    }
 }
 
 use std::ops::*;
@@ -267,7 +271,9 @@ impl<const MOD: i64> Modint<MOD> {
 }
 
 impl<const MOD: i64> From<i32> for Modint<MOD> {
-    fn from(x: i32) -> Self { Self::new(x as i64) }
+    fn from(x: i32) -> Self {
+        Self::new(x as i64)
+    }
 }
 
 #[cfg(test)]

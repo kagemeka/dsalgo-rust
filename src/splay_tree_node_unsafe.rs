@@ -13,7 +13,9 @@ use std::ptr::{
 };
 
 impl<T> Node<T> {
-    pub fn new(v: T) -> Self { Self { e: [null_mut(); 3], size: 1, v } }
+    pub fn new(v: T) -> Self {
+        Self { e: [null_mut(); 3], size: 1, v }
+    }
 
     pub(crate) fn size(root: *const Self) -> usize {
         unsafe { root.as_ref() }.map_or(0, |root| root.size)

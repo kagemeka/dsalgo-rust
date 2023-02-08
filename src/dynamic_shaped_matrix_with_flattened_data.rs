@@ -43,7 +43,9 @@ impl<T: Clone> Matrix<T> {
 }
 
 impl<T> Matrix<T> {
-    pub fn shape(&self) -> (usize, usize) { self.1 }
+    pub fn shape(&self) -> (usize, usize) {
+        self.1
+    }
 }
 
 impl<T: std::fmt::Debug> std::fmt::Display for Matrix<T> {

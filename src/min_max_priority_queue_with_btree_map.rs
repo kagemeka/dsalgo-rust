@@ -6,9 +6,13 @@ pub struct MinMaxQueue<T> {
 }
 
 impl<T: Ord> MinMaxQueue<T> {
-    pub fn new() -> Self { Self { map: BTreeMap::new(), size: 0 } }
+    pub fn new() -> Self {
+        Self { map: BTreeMap::new(), size: 0 }
+    }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
     pub fn count(
         &self,

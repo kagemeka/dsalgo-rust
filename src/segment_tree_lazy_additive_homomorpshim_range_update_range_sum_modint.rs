@@ -23,7 +23,9 @@ impl Add for S {
 }
 
 impl Identity for S {
-    fn e() -> S { S(0.into(), 0.into()) }
+    fn e() -> S {
+        S(0.into(), 0.into())
+    }
 }
 
 #[derive(Clone)]
@@ -46,7 +48,9 @@ impl Add for F {
 }
 
 impl Identity for F {
-    fn e() -> Self { F(None) }
+    fn e() -> Self {
+        F(None)
+    }
 }
 
 impl Add<F> for S {

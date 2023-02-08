@@ -369,7 +369,9 @@ pub mod max {
 
     pub fn mpm() {}
 
-    pub fn mkm() { mpm(); }
+    pub fn mkm() {
+        mpm();
+    }
 
     pub mod push_relabel {
 

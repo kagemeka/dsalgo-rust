@@ -9,7 +9,9 @@ pub struct Node<T> {
 use std::ptr::null_mut;
 
 impl<T> Node<T> {
-    pub fn new(v: T) -> Self { Self { c: [null_mut(); 2], size: 1, v } }
+    pub fn new(v: T) -> Self {
+        Self { c: [null_mut(); 2], size: 1, v }
+    }
 
     pub(crate) fn size(root: *const Self) -> usize {
         unsafe { root.as_ref() }.map_or(0, |root| root.size)

@@ -4,7 +4,9 @@ pub struct ReadWrapper<R> {
 }
 
 impl<R> ReadWrapper<R> {
-    pub fn new(reader: R) -> Self { Self { reader, tokens: vec![] } }
+    pub fn new(reader: R) -> Self {
+        Self { reader, tokens: vec![] }
+    }
 }
 
 impl<R: std::io::BufRead> ReadWrapper<R> {

@@ -8,7 +8,9 @@ use crate::{
 pub struct Prop100;
 
 impl Size for Prop100 {
-    fn size() -> usize { 100 }
+    fn size() -> usize {
+        100
+    }
 }
 
 pub type Mat100<T> = Matrix<T, Prop100>;

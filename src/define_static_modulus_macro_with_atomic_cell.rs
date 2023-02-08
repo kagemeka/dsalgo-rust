@@ -30,7 +30,9 @@ macro_rules! define_static_mod {
         impl<Id> Get for $name<Id> {
             type T = $uint;
 
-            fn get() -> Self::T { Self::cell().load($atomic_ordering_load) }
+            fn get() -> Self::T {
+                Self::cell().load($atomic_ordering_load)
+            }
         }
 
         impl<Id> Set for $name<Id> {

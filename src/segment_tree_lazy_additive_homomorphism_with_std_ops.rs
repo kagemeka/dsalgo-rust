@@ -32,11 +32,17 @@ where
         Self { data, lazy, size }
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    fn n(&self) -> usize { self.lazy.len() }
+    fn n(&self) -> usize {
+        self.lazy.len()
+    }
 
-    fn height(&self) -> usize { bit_length(self.n()) }
+    fn height(&self) -> usize {
+        bit_length(self.n())
+    }
 
     fn merge(
         &mut self,
@@ -346,7 +352,9 @@ mod tests {
         struct S(i64, usize);
 
         impl Identity for S {
-            fn e() -> Self { Self(0, 0) }
+            fn e() -> Self {
+                Self(0, 0)
+            }
         }
 
         impl Add for S {
@@ -387,7 +395,9 @@ mod tests {
         }
 
         impl Identity for F {
-            fn e() -> Self { Self(0) }
+            fn e() -> Self {
+                Self(0)
+            }
         }
 
         let n = 5;

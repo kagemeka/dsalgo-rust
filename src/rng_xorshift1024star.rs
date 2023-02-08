@@ -4,7 +4,9 @@ pub struct Xorshift1024Star {
 }
 
 impl Xorshift1024Star {
-    pub fn new(seeds: [u64; 16]) -> Self { Self { seeds, index: 0 } }
+    pub fn new(seeds: [u64; 16]) -> Self {
+        Self { seeds, index: 0 }
+    }
 
     pub fn next(&mut self) -> u64 {
         let x = self.seeds[self.index];

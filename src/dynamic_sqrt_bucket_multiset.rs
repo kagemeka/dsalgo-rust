@@ -3,9 +3,13 @@ use crate::dynamic_sqrt_bucket::SqrtBucket;
 pub struct Multiset<T>(SqrtBucket<T>);
 
 impl<T: Ord> Multiset<T> {
-    pub fn new() -> Self { Self(SqrtBucket::new()) }
+    pub fn new() -> Self {
+        Self(SqrtBucket::new())
+    }
 
-    pub fn size(&self) -> usize { self.0.size() }
+    pub fn size(&self) -> usize {
+        self.0.size()
+    }
 
     pub fn lower_bound(
         &self,

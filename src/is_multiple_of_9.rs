@@ -1,6 +1,8 @@
 use crate::digits_sum::digits_sum;
 
-pub fn is_multiple_of_9(n: u64) -> bool { digits_sum(n) % 9 == 0 }
+pub fn is_multiple_of_9(n: u64) -> bool {
+    digits_sum(n) % 9 == 0
+}
 
 #[cfg(test)]
 

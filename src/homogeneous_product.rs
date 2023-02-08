@@ -5,7 +5,9 @@ pub struct HomogeneousProduct<T> {
 }
 
 impl<T> HomogeneousProduct<T> {
-    pub fn new(chooser: Box<dyn Choose<T>>) -> Self { Self { chooser } }
+    pub fn new(chooser: Box<dyn Choose<T>>) -> Self {
+        Self { chooser }
+    }
 
     pub fn calc(
         &mut self,

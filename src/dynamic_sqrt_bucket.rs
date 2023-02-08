@@ -12,9 +12,13 @@ pub struct SqrtBucket<T> {
 }
 
 impl<T> SqrtBucket<T> {
-    pub fn new() -> Self { Self { buckets: vec![vec![]], size: 0 } }
+    pub fn new() -> Self {
+        Self { buckets: vec![vec![]], size: 0 }
+    }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
     fn max_interval(&self) -> usize {
         // isqrt(self.size) << 4;

@@ -1,6 +1,8 @@
 use crate::find_divisors_trial_division_u64::find_divisors;
 
-pub fn is_prime_naive(n: u64) -> bool { find_divisors(n).len() == 2 }
+pub fn is_prime_naive(n: u64) -> bool {
+    find_divisors(n).len() == 2
+}
 
 #[cfg(test)]
 

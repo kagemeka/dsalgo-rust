@@ -4,9 +4,13 @@ pub struct Queue<T> {
 }
 
 impl<T> Queue<T> {
-    pub fn new() -> Self { Self { st_front: vec![], st_back: vec![] } }
+    pub fn new() -> Self {
+        Self { st_front: vec![], st_back: vec![] }
+    }
 
-    pub fn size(&self) -> usize { self.st_front.len() + self.st_back.len() }
+    pub fn size(&self) -> usize {
+        self.st_front.len() + self.st_back.len()
+    }
 
     pub fn push(
         &mut self,

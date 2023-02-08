@@ -125,7 +125,9 @@ mod tests {
         impl Monoid for G {
             type T = i32;
 
-            fn e() -> Self::T { 0 }
+            fn e() -> Self::T {
+                0
+            }
 
             fn op(
                 l: Self::T,
@@ -136,7 +138,9 @@ mod tests {
         }
 
         impl AbelianGroup for G {
-            fn inv(x: Self::T) -> Self::T { -x }
+            fn inv(x: Self::T) -> Self::T {
+                -x
+            }
         }
 
         let a = vec![0, 1, 0, 0];

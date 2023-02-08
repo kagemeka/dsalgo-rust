@@ -118,7 +118,9 @@ mod tests {
         struct P;
 
         impl Size for P {
-            fn size() -> usize { 3 }
+            fn size() -> usize {
+                3
+            }
         }
 
         type Mat = Matrix<i64, P>;

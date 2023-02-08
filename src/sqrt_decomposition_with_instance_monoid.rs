@@ -22,7 +22,9 @@ impl<G: Monoid> SqrtDecomposition<G>
 where
     G::T: Clone,
 {
-    pub fn size(&self) -> usize { self.data.len() }
+    pub fn size(&self) -> usize {
+        self.data.len()
+    }
 
     pub fn interval(&self) -> usize {
         let n = self.buckets.len();
@@ -263,7 +265,9 @@ mod tests {
             x + y
         }
 
-        fn e(&self) -> i32 { 0 }
+        fn e(&self) -> i32 {
+            0
+        }
     }
 
     use super::*;

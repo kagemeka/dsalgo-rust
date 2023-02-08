@@ -6,11 +6,15 @@ use crate::union_find_traits::*;
 
 pub struct UnionFind(Vec<isize>); // root: neg-size, other: parent
 impl UnionFind {
-    pub fn new(size: usize) -> Self { Self(vec![-1; size]) }
+    pub fn new(size: usize) -> Self {
+        Self(vec![-1; size])
+    }
 }
 
 impl Size for UnionFind {
-    fn size(&self) -> usize { self.0.len() }
+    fn size(&self) -> usize {
+        self.0.len()
+    }
 }
 
 impl Root for UnionFind {

@@ -8,7 +8,9 @@ pub struct TreeDist {
 }
 
 impl TreeDist {
-    pub fn new(g: &[Vec<usize>]) -> Self { Self { lca: LCA::new(g, 0) } }
+    pub fn new(g: &[Vec<usize>]) -> Self {
+        Self { lca: LCA::new(g, 0) }
+    }
 
     pub fn get(
         &self,

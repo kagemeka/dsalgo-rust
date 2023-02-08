@@ -1,4 +1,6 @@
-pub fn pi() -> f64 { (-1f64).acos() }
+pub fn pi() -> f64 {
+    (-1f64).acos()
+}
 
 #[cfg(test)]
 

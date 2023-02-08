@@ -8,11 +8,15 @@ use crate::graph_edge_trait::{
 impl To for E {
     type V = usize;
 
-    fn to(&self) -> &usize { &self.0 }
+    fn to(&self) -> &usize {
+        &self.0
+    }
 }
 
 impl Weight for E {
     type T = u64;
 
-    fn weight(&self) -> &u64 { &self.1 }
+    fn weight(&self) -> &u64 {
+        &self.1
+    }
 }

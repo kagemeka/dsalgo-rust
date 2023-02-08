@@ -1,9 +1,13 @@
 pub struct BinaryMinHeap<T>(Vec<T>);
 
 impl<T> BinaryMinHeap<T> {
-    pub fn new() -> Self { Self(vec![]) }
+    pub fn new() -> Self {
+        Self(vec![])
+    }
 
-    pub fn size(&self) -> usize { self.0.len() }
+    pub fn size(&self) -> usize {
+        self.0.len()
+    }
 
     pub fn push(
         &mut self,
@@ -28,7 +32,9 @@ impl<T> BinaryMinHeap<T> {
         }
     }
 
-    pub fn top(&self) -> &T { &self.0[0] }
+    pub fn top(&self) -> &T {
+        &self.0[0]
+    }
 
     pub fn pop(&mut self) -> Option<T>
     where
@@ -73,7 +79,9 @@ impl<T> BinaryMinHeap<T> {
 }
 
 impl<T> Default for BinaryMinHeap<T> {
-    fn default() -> Self { Self::new() }
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 #[cfg(test)]

@@ -5,7 +5,9 @@ pub struct Segtree {
 }
 
 impl Segtree {
-    fn n(&self) -> usize { self.node.len() >> 1 }
+    fn n(&self) -> usize {
+        self.node.len() >> 1
+    }
 
     fn merge(
         &mut self,

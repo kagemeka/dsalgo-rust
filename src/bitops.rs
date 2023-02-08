@@ -70,7 +70,9 @@ pub trait Inverse {
 
 /// equivalent to (2^k - 1) ^ n for k bit integer.
 
-pub fn invert<T: std::ops::Not<Output = T>>(n: T) -> T { !n }
+pub fn invert<T: std::ops::Not<Output = T>>(n: T) -> T {
+    !n
+}
 
 pub trait Reverse {
     fn reverse(self) -> Self;

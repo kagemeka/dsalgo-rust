@@ -17,7 +17,9 @@ impl<P, T> Shape for Tensor<P, T>
 where
     P: Shape,
 {
-    fn shape() -> &'static [usize] { P::shape() }
+    fn shape() -> &'static [usize] {
+        P::shape()
+    }
 }
 
 impl<P, T> Default for Tensor<P, T>
@@ -38,7 +40,9 @@ where
     P: Size,
     T: Default,
 {
-    pub fn new() -> Self { Self::default() }
+    pub fn new() -> Self {
+        Self::default()
+    }
 }
 
 impl<P, T> From<Vec<T>> for Tensor<P, T>

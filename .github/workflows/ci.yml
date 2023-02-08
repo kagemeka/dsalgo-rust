@@ -1,4 +1,4 @@
-name: Rust
+name: CI
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Update Toolchains & custom CI
         run: |
-          ./install_deps.sh
+          ./setup.sh
           ./ci.sh
       - name: Build
         run: cargo build --verbose

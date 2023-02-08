@@ -11,7 +11,9 @@ pub struct XorShift96 {
 }
 
 impl XorShift96 {
-    pub fn new(seeds: [u32; 3]) -> Self { Self { seeds } }
+    pub fn new(seeds: [u32; 3]) -> Self {
+        Self { seeds }
+    }
 
     pub fn next(&mut self) -> u32 {
         self.seeds = xorshift96(self.seeds);
@@ -21,7 +23,9 @@ impl XorShift96 {
 }
 
 impl Default for XorShift96 {
-    fn default() -> Self { Self::new([123456789, 362436069, 521288629]) }
+    fn default() -> Self {
+        Self::new([123456789, 362436069, 521288629])
+    }
 }
 
 // TODO:

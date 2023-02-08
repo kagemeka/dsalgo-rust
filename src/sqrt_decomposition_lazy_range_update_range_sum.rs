@@ -5,7 +5,9 @@ use crate::sqrt_decomposition_lazy_with_instance_homomorphism::*;
 pub struct RangeUpdateRangeSum<T>(T);
 
 impl<T> RangeUpdateRangeSum<T> {
-    pub fn new(zero: T) -> Self { Self(zero) }
+    pub fn new(zero: T) -> Self {
+        Self(zero)
+    }
 }
 
 impl<T> Ops for RangeUpdateRangeSum<T>
@@ -24,7 +26,9 @@ where
         (a.0 + b.0, a.1 + b.1)
     }
 
-    fn e(&self) -> Self::S { (self.0.clone(), self.0.clone()) }
+    fn e(&self) -> Self::S {
+        (self.0.clone(), self.0.clone())
+    }
 
     fn compose(
         &self,
@@ -38,7 +42,9 @@ where
         }
     }
 
-    fn id(&self) -> Self::F { None }
+    fn id(&self) -> Self::F {
+        None
+    }
 
     fn map(
         &self,

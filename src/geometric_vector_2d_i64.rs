@@ -5,7 +5,9 @@ use std::ops::*;
 pub struct Vector2D(i64, i64);
 
 impl From<(i64, i64)> for Vector2D {
-    fn from(p: (i64, i64)) -> Self { Self(p.0, p.1) }
+    fn from(p: (i64, i64)) -> Self {
+        Self(p.0, p.1)
+    }
 }
 
 impl AddAssign for Vector2D {
@@ -152,9 +154,13 @@ impl Vector2D {
         *self * *rhs
     }
 
-    pub fn norm2(&self) -> i64 { self.dot(self) }
+    pub fn norm2(&self) -> i64 {
+        self.dot(self)
+    }
 
-    pub fn norm(&self) -> f64 { (self.norm2() as f64).sqrt() }
+    pub fn norm(&self) -> f64 {
+        (self.norm2() as f64).sqrt()
+    }
 }
 
 impl Vector2D {
@@ -182,15 +188,23 @@ impl Vector2D {
         }
     }
 
-    pub fn radian(&self) -> f64 { (self.1 as f64).atan2(self.0 as f64) }
+    pub fn radian(&self) -> f64 {
+        (self.1 as f64).atan2(self.0 as f64)
+    }
 }
 
 impl Vector2D {
-    pub fn is_acute(&self) -> bool { self.1 > 0 && self.0 > 0 }
+    pub fn is_acute(&self) -> bool {
+        self.1 > 0 && self.0 > 0
+    }
 
-    pub fn is_othogonal(&self) -> bool { self.1 > 0 && self.0 == 0 }
+    pub fn is_othogonal(&self) -> bool {
+        self.1 > 0 && self.0 == 0
+    }
 
-    pub fn is_obtuse(&self) -> bool { self.1 > 0 && self.0 < 0 }
+    pub fn is_obtuse(&self) -> bool {
+        self.1 > 0 && self.0 < 0
+    }
 
     pub fn acute(
         &self,
@@ -266,11 +280,17 @@ impl PartialOrd for Vector2D {
 /// rotate counter clockwise by 90k degree. (k = 1, 2, 3)
 
 impl Vector2D {
-    pub fn rot90(&self) -> Self { Self(-self.1, self.0) }
+    pub fn rot90(&self) -> Self {
+        Self(-self.1, self.0)
+    }
 
-    pub fn rot180(&self) -> Self { Self(-self.0, -self.1) }
+    pub fn rot180(&self) -> Self {
+        Self(-self.0, -self.1)
+    }
 
-    pub fn rot270(&self) -> Self { Self(self.1, -self.0) }
+    pub fn rot270(&self) -> Self {
+        Self(self.1, -self.0)
+    }
 }
 
 pub enum DirectionType {

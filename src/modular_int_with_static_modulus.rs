@@ -52,9 +52,13 @@ impl<M: Get> Modint<M>
 where
     M::T: Element,
 {
-    pub fn modulus() -> M::T { M::get() }
+    pub fn modulus() -> M::T {
+        M::get()
+    }
 
-    fn m() -> M::T { M::get() }
+    fn m() -> M::T {
+        M::get()
+    }
 
     pub fn normalize(mut v: M::T) -> M::T {
         let m = Self::m();
@@ -70,7 +74,9 @@ where
         v
     }
 
-    pub fn new(v: M::T) -> Self { Self(Self::normalize(v)) }
+    pub fn new(v: M::T) -> Self {
+        Self(Self::normalize(v))
+    }
 }
 
 impl<M: Get> Add for Modint<M>
@@ -258,14 +264,18 @@ impl<M: Get + Copy> From<i32> for Modint<M>
 where
     M::T: Element,
 {
-    fn from(v: i32) -> Self { Self::new(v.into()) }
+    fn from(v: i32) -> Self {
+        Self::new(v.into())
+    }
 }
 
 impl<M: Get + Copy> From<usize> for Modint<M>
 where
     M::T: Element,
 {
-    fn from(v: usize) -> Self { (v as i32).into() }
+    fn from(v: usize) -> Self {
+        (v as i32).into()
+    }
 }
 
 #[cfg(test)]

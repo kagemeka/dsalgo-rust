@@ -25,7 +25,9 @@ fn dft_core(
         .collect()
 }
 
-pub fn dft(a: &[Complex]) -> Vec<Complex> { dft_core(a, -1.0) }
+pub fn dft(a: &[Complex]) -> Vec<Complex> {
+    dft_core(a, -1.0)
+}
 
 pub fn idft(b: &[Complex]) -> Vec<Complex> {
     let mut a = dft_core(b, 1.0);

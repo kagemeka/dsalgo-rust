@@ -41,7 +41,9 @@ where
         Self(data)
     }
 
-    pub fn size(&self) -> usize { self.0[0].len() }
+    pub fn size(&self) -> usize {
+        self.0[0].len()
+    }
 
     pub fn get(
         &self,

@@ -10,7 +10,9 @@ impl XorVectorsRank {
         Self { rank: 0, basis: vec![0; n_bits] }
     }
 
-    pub fn get_rank(&self) -> usize { self.rank }
+    pub fn get_rank(&self) -> usize {
+        self.rank
+    }
 
     pub fn freedom_bits(&self) -> usize {
         let mut s: usize = 0;

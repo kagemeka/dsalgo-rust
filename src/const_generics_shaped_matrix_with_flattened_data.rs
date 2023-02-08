@@ -9,7 +9,9 @@ where
     [(); H * W]:,
     T: Copy,
 {
-    pub fn new(fill_value: T) -> Self { Self([fill_value; H * W]) }
+    pub fn new(fill_value: T) -> Self {
+        Self([fill_value; H * W])
+    }
 }
 
 impl<T, const H: usize, const W: usize> Default for Matrix<T, H, W>
@@ -17,7 +19,9 @@ where
     [(); H * W]:,
     T: Copy + Default,
 {
-    fn default() -> Self { Self::new(T::default()) }
+    fn default() -> Self {
+        Self::new(T::default())
+    }
 }
 
 impl<T, const H: usize, const W: usize> From<[[T; W]; H]> for Matrix<T, H, W>

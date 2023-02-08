@@ -1,4 +1,6 @@
-pub fn tau() -> f64 { std::f64::consts::PI * 2. }
+pub fn tau() -> f64 {
+    std::f64::consts::PI * 2.
+}
 
 #[cfg(test)]
 

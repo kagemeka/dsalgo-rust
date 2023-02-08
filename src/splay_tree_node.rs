@@ -30,11 +30,17 @@ impl<T> Node<T> {
         root.map_or(0, |root| root.borrow().size)
     }
 
-    fn lsize(&self) -> usize { self.l.as_ref().map_or(0, |l| l.borrow().size) }
+    fn lsize(&self) -> usize {
+        self.l.as_ref().map_or(0, |l| l.borrow().size)
+    }
 
-    fn rsize(&self) -> usize { self.r.as_ref().map_or(0, |r| r.borrow().size) }
+    fn rsize(&self) -> usize {
+        self.r.as_ref().map_or(0, |r| r.borrow().size)
+    }
 
-    fn update(&mut self) { self.size = self.lsize() + self.rsize() + 1; }
+    fn update(&mut self) {
+        self.size = self.lsize() + self.rsize() + 1;
+    }
 
     fn state(&self) -> isize {
         if let Some(p) = self.p.as_ref() {

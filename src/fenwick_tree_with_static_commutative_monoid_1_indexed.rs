@@ -15,9 +15,13 @@ impl<G: Monoid> Fenwick<G>
 where
     G::T: Clone,
 {
-    pub fn size(&self) -> usize { self.0.len() - 1 }
+    pub fn size(&self) -> usize {
+        self.0.len() - 1
+    }
 
-    pub fn new(size: usize) -> Self { Self(vec![G::e(); size + 1]) }
+    pub fn new(size: usize) -> Self {
+        Self(vec![G::e(); size + 1])
+    }
 
     pub fn operate(
         &mut self,
@@ -127,7 +131,9 @@ mod tests {
         impl Monoid for G {
             type T = i32;
 
-            fn e() -> Self::T { 0 }
+            fn e() -> Self::T {
+                0
+            }
 
             fn op(
                 l: Self::T,

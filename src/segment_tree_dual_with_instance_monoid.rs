@@ -35,11 +35,17 @@ where
         Self { g, node, size }
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    fn n(&self) -> usize { self.node.len() >> 1 }
+    fn n(&self) -> usize {
+        self.node.len() >> 1
+    }
 
-    fn height(&self) -> usize { bit_length(self.n()) }
+    fn height(&self) -> usize {
+        bit_length(self.n())
+    }
 
     fn operate_node(
         &mut self,
@@ -142,7 +148,9 @@ mod tests {
                 l + r
             }
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
         }
 
         let n = 5;

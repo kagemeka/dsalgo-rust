@@ -15,7 +15,9 @@ impl Triangle {
         (self.1 - self.0).cross(&(self.2 - self.0)) as f64 / 2.
     }
 
-    pub fn area(&self) -> f64 { self.singed_area().abs() }
+    pub fn area(&self) -> f64 {
+        self.singed_area().abs()
+    }
 }
 
 #[cfg(test)]

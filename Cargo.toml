@@ -1,20 +1,17 @@
-# https://doc.rust-lang.org/cargo/reference/manifest.html
+
 [package]
 authors = ["kagemeka <kagemeka1@gmail.com>"]
 categories = ["algorithms", "data-structures"]
 description = "A package for Datastructures and Algorithms."
 documentation = "https://docs.rs/dsalgo"
 edition = "2021"
-homepage = "https://kagemeka.github.io/dsalgo-rust"
-keywords = ["algorithms", "data-structures"]
 license-file = "LICENSE"
 name = "dsalgo"
 readme = "README.md"
 repository = "https://github.com/kagemeka/dsalgo-rust"
-rust-version = "1.68.0"
-version = "0.3.7"
-build = false
-[dependencies]
+# rust-version = "1.68.0"
+version = "0.3.8"
+# build = false
 
 
 [workspace]

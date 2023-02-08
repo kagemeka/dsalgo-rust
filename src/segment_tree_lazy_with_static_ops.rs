@@ -53,9 +53,13 @@ where
         seg
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    fn n(&self) -> usize { self.d.len() >> 1 }
+    fn n(&self) -> usize {
+        self.d.len() >> 1
+    }
 
     /// merge child values and replace with it.
 
@@ -590,7 +594,9 @@ mod tests {
         impl Associative for RARS<Data> {}
 
         impl Identity for RARS<Data> {
-            fn e() -> Self::S { Data { sum: 0, len: 0 } }
+            fn e() -> Self::S {
+                Data { sum: 0, len: 0 }
+            }
         }
 
         use crate::{

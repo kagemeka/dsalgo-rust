@@ -14,7 +14,9 @@ impl<T: Ord + std::hash::Hash + Clone> LazyBinaryHeap<T> {
         Self { que: BinaryHeap::new(), cnt: HashMap::new(), size: 0 }
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
     pub fn count(
         &self,

@@ -6,7 +6,9 @@ pub struct SqrtDecomposition {
 }
 
 impl SqrtDecomposition {
-    pub fn size(&self) -> usize { self.data.len() }
+    pub fn size(&self) -> usize {
+        self.data.len()
+    }
 
     pub fn interval(&self) -> usize {
         let n = self.buckets.len();

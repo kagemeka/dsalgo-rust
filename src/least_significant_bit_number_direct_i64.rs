@@ -1,4 +1,6 @@
-pub fn lsb_num(n: i64) -> i64 { n & -n }
+pub fn lsb_num(n: i64) -> i64 {
+    n & -n
+}
 
 mod tests {
 

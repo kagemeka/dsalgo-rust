@@ -7,9 +7,13 @@ pub struct AVLTree<K, V> {
 }
 
 impl<K: PartialOrd, V> AVLTree<K, V> {
-    pub fn new() -> Self { Self { root: None } }
+    pub fn new() -> Self {
+        Self { root: None }
+    }
 
-    pub fn size(&self) -> usize { Node::get_size(self.root.as_ref()) }
+    pub fn size(&self) -> usize {
+        Node::get_size(self.root.as_ref())
+    }
 
     pub fn insert(
         &mut self,

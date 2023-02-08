@@ -5,7 +5,9 @@ pub struct NonDAGError {
 }
 
 impl NonDAGError {
-    fn new() -> Self { Self { msg: "Given graph is not DAG." } }
+    fn new() -> Self {
+        Self { msg: "Given graph is not DAG." }
+    }
 }
 
 impl std::fmt::Display for NonDAGError {
@@ -18,7 +20,9 @@ impl std::fmt::Display for NonDAGError {
 }
 
 impl std::error::Error for NonDAGError {
-    fn description(&self) -> &str { &self.msg }
+    fn description(&self) -> &str {
+        &self.msg
+    }
 }
 
 pub fn with_dfs(g: &Vec<Vec<usize>>) -> Result<Vec<usize>, NonDAGError> {

@@ -17,9 +17,13 @@ impl<T> Matrix<T> {
         &CELL
     }
 
-    pub fn size() -> usize { Self::cell().load(SeqCst) }
+    pub fn size() -> usize {
+        Self::cell().load(SeqCst)
+    }
 
-    pub fn set_size(size: usize) { Self::cell().store(size, SeqCst); }
+    pub fn set_size(size: usize) {
+        Self::cell().store(size, SeqCst);
+    }
 }
 
 impl<T: Clone> Matrix<T> {
@@ -31,7 +35,9 @@ impl<T: Clone> Matrix<T> {
 }
 
 impl<T: Clone + Default> Default for Matrix<T> {
-    fn default() -> Self { Self::new(T::default()) }
+    fn default() -> Self {
+        Self::new(T::default())
+    }
 }
 
 impl<T> Index<usize> for Matrix<T> {
