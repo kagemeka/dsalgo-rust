@@ -3,18 +3,26 @@
 const K: usize = 6; // chunk size = 2^K
 const M: usize = (1 << K) - 1;
 
-fn bucket(index: usize) -> usize { index >> K }
+fn bucket(index: usize) -> usize {
+    index >> K
+}
 
-fn point(index: usize) -> usize { index & M }
+fn point(index: usize) -> usize {
+    index & M
+}
 
-fn value(index: usize) -> usize { 1 << point(index) }
+fn value(index: usize) -> usize {
+    1 << point(index)
+}
 
 #[derive(Clone)]
 
 pub struct BitArray(Vec<usize>);
 
 impl BitArray {
-    pub fn new(size: usize) -> Self { BitArray(vec![0; (size + M) >> K]) }
+    pub fn new(size: usize) -> Self {
+        BitArray(vec![0; (size + M) >> K])
+    }
 
     pub fn set(
         &mut self,

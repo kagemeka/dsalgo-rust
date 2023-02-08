@@ -61,7 +61,9 @@ impl Fraction {
         }
     }
 
-    pub fn floor(&self) -> i64 { self.0.div_euclid(self.1) }
+    pub fn floor(&self) -> i64 {
+        self.0.div_euclid(self.1)
+    }
 
     pub fn ceil(&self) -> i64 {
         let mut v = self.floor();
@@ -168,7 +170,9 @@ impl AddAssign for Fraction {
 impl Neg for Fraction {
     type Output = Self;
 
-    fn neg(self) -> Self::Output { Self(-self.0, self.1) }
+    fn neg(self) -> Self::Output {
+        Self(-self.0, self.1)
+    }
 }
 
 impl Sub for Fraction {

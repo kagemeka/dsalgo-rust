@@ -17,7 +17,9 @@ pub struct Segtree<G: Monoid> {
 }
 
 impl<G: Monoid> Segtree<G> {
-    fn n(&self) -> usize { self.data.len() >> 1 }
+    fn n(&self) -> usize {
+        self.data.len() >> 1
+    }
 }
 
 use std::ops::*;
@@ -37,7 +39,9 @@ impl<G: Monoid> Segtree<G>
 where
     G::T: Clone,
 {
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
     fn merge(
         &mut self,
@@ -147,7 +151,9 @@ mod tests {
         impl Monoid for G {
             type T = i64;
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
 
             fn op(
                 &self,

@@ -4,27 +4,43 @@
 pub struct Complex(pub f64, pub f64);
 
 impl From<f64> for Complex {
-    fn from(real: f64) -> Self { Self(real, 0.0) }
+    fn from(real: f64) -> Self {
+        Self(real, 0.0)
+    }
 }
 
 impl From<(f64, f64)> for Complex {
-    fn from(rect: (f64, f64)) -> Self { Self(rect.0, rect.1) }
+    fn from(rect: (f64, f64)) -> Self {
+        Self(rect.0, rect.1)
+    }
 }
 
 impl Complex {
     /// as f64 real integer
 
-    pub fn rint(&self) -> f64 { self.0.round() }
+    pub fn rint(&self) -> f64 {
+        self.0.round()
+    }
 
-    pub fn zero() -> Self { Self(0.0, 0.0) }
+    pub fn zero() -> Self {
+        Self(0.0, 0.0)
+    }
 
-    pub fn one() -> Self { Self(1.0, 0.0) }
+    pub fn one() -> Self {
+        Self(1.0, 0.0)
+    }
 
-    pub fn i() -> Self { Self(0.0, 1.0) }
+    pub fn i() -> Self {
+        Self(0.0, 1.0)
+    }
 
-    pub fn norm_square(&self) -> f64 { self.0 * self.0 + self.1 * self.1 }
+    pub fn norm_square(&self) -> f64 {
+        self.0 * self.0 + self.1 * self.1
+    }
 
-    pub fn conjugate(&self) -> Self { Self(self.0, -self.1) }
+    pub fn conjugate(&self) -> Self {
+        Self(self.0, -self.1)
+    }
 
     pub fn mul_inv(&self) -> Self {
         let ns = self.norm_square();
@@ -32,11 +48,17 @@ impl Complex {
         Self(self.0 / ns, -self.1 / ns)
     }
 
-    pub fn argument(&self) -> f64 { self.1.atan2(self.0) }
+    pub fn argument(&self) -> f64 {
+        self.1.atan2(self.0)
+    }
 
-    pub fn norm(&self) -> f64 { self.0.hypot(self.1) }
+    pub fn norm(&self) -> f64 {
+        self.0.hypot(self.1)
+    }
 
-    pub fn polar(&self) -> (f64, f64) { (self.norm(), self.argument()) }
+    pub fn polar(&self) -> (f64, f64) {
+        (self.norm(), self.argument())
+    }
 
     pub fn from_polar(
         r: f64,
@@ -62,7 +84,9 @@ impl Complex {
     /// z = |z|*exp(i*t) = exp(ln(|z|) + i*t)
     /// ln(z) = ln(|z|) + i*t
 
-    pub fn ln(&self) -> Self { Self(self.norm().ln(), self.argument()) }
+    pub fn ln(&self) -> Self {
+        Self(self.norm().ln(), self.argument())
+    }
 
     pub fn sqrt(&self) -> Complex {
         let (r, theta) = self.polar();
@@ -188,7 +212,9 @@ impl Mul for Complex {
 impl Neg for Complex {
     type Output = Self;
 
-    fn neg(self) -> Self::Output { Self(-self.0, -self.1) }
+    fn neg(self) -> Self::Output {
+        Self(-self.0, -self.1)
+    }
 }
 
 impl SubAssign for Complex {

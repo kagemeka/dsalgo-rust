@@ -11,7 +11,9 @@ use crate::rng_static_xorshift64::*;
 pub struct PrefixSetHash<T>(HashMap<T, u64>);
 
 impl<T: Clone + std::hash::Hash + Eq> PrefixSetHash<T> {
-    pub fn new() -> Self { Self(HashMap::new()) }
+    pub fn new() -> Self {
+        Self(HashMap::new())
+    }
 
     pub fn calc(
         &mut self,

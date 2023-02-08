@@ -17,7 +17,9 @@ impl Monoid for RangeUpdate {
         }
     }
 
-    fn e(&self) -> Self::T { None }
+    fn e(&self) -> Self::T {
+        None
+    }
 }
 
 #[cfg(test)]

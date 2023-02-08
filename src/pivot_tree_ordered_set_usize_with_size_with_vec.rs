@@ -4,9 +4,13 @@ pub struct PivotTreeSet {
     max_height: usize,
 }
 
-fn left(pivot: usize) -> usize { pivot - (1 << pivot.trailing_zeros() - 1) }
+fn left(pivot: usize) -> usize {
+    pivot - (1 << pivot.trailing_zeros() - 1)
+}
 
-fn right(pivot: usize) -> usize { pivot + (1 << pivot.trailing_zeros() - 1) }
+fn right(pivot: usize) -> usize {
+    pivot + (1 << pivot.trailing_zeros() - 1)
+}
 
 impl PivotTreeSet {
     pub fn new(max_height: usize) -> Self {
@@ -17,7 +21,9 @@ impl PivotTreeSet {
         Self { data: vec![None; n], size: vec![0; n], max_height }
     }
 
-    fn root_pivot(&self) -> usize { 1 << self.max_height - 1 }
+    fn root_pivot(&self) -> usize {
+        1 << self.max_height - 1
+    }
 
     fn left_size(
         &self,
@@ -41,7 +47,9 @@ impl PivotTreeSet {
         }
     }
 
-    pub fn size(&self) -> usize { self.size[self.root_pivot()] }
+    pub fn size(&self) -> usize {
+        self.size[self.root_pivot()]
+    }
 
     fn update(
         &mut self,

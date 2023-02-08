@@ -6,9 +6,13 @@ pub struct SWAGDeque {
 }
 
 impl SWAGDeque {
-    pub fn new() -> Self { Self { v: 0, que: VecDeque::new() } }
+    pub fn new() -> Self {
+        Self { v: 0, que: VecDeque::new() }
+    }
 
-    pub fn size(&self) -> usize { self.que.len() }
+    pub fn size(&self) -> usize {
+        self.que.len()
+    }
 
     pub fn push_right(
         &mut self,
@@ -28,11 +32,17 @@ impl SWAGDeque {
         self.que.push_front(x);
     }
 
-    pub fn pop_left(&mut self) { self.v -= self.que.pop_front().unwrap(); }
+    pub fn pop_left(&mut self) {
+        self.v -= self.que.pop_front().unwrap();
+    }
 
-    pub fn pop_right(&mut self) { self.v -= self.que.pop_back().unwrap(); }
+    pub fn pop_right(&mut self) {
+        self.v -= self.que.pop_back().unwrap();
+    }
 
-    pub fn fold(&self) -> i64 { self.v }
+    pub fn fold(&self) -> i64 {
+        self.v
+    }
 }
 
 #[cfg(test)]

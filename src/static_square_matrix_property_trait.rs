@@ -5,5 +5,7 @@ pub trait Size {
 }
 
 impl<P: Size> Shape for P {
-    fn shape() -> (usize, usize) { (Self::size(), Self::size()) }
+    fn shape() -> (usize, usize) {
+        (Self::size(), Self::size())
+    }
 }

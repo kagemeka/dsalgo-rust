@@ -16,7 +16,9 @@ macro_rules! impl_default_static {
         impl<M: Get<T = $uint>> ModularArithmetic for DefaultStatic<$uint, M> {
             type T = $uint;
 
-            fn modulus() -> Self::T { M::get() }
+            fn modulus() -> Self::T {
+                M::get()
+            }
 
             fn add(
                 lhs: Self::T,

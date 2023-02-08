@@ -33,7 +33,9 @@ where
         Self { g, v, que: VecDeque::new() }
     }
 
-    pub fn size(&self) -> usize { self.que.len() }
+    pub fn size(&self) -> usize {
+        self.que.len()
+    }
 
     pub fn push_right(
         &mut self,
@@ -65,7 +67,9 @@ where
         self.v = self.g.op(self.v.clone(), inv);
     }
 
-    pub fn fold(&self) -> G::T { self.v.clone() }
+    pub fn fold(&self) -> G::T {
+        self.v.clone()
+    }
 }
 
 #[cfg(test)]
@@ -90,7 +94,9 @@ mod tests {
                 l + r
             }
 
-            fn e(&self) -> i64 { 0 }
+            fn e(&self) -> i64 {
+                0
+            }
 
             fn inv(
                 &self,

@@ -153,7 +153,9 @@ mod tests {
                 lhs.max(rhs)
             }
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
         }
 
         #[derive(Clone)]
@@ -173,7 +175,9 @@ mod tests {
         }
 
         impl Edge for E {
-            fn to(&self) -> usize { self.to }
+            fn to(&self) -> usize {
+                self.to
+            }
         }
 
         let g = vec![
@@ -200,7 +204,9 @@ mod tests {
         impl Monoid for M {
             type T = (usize, usize);
 
-            fn e(&self) -> Self::T { (0, 0) }
+            fn e(&self) -> Self::T {
+                (0, 0)
+            }
 
             fn op(
                 &self,
@@ -216,7 +222,9 @@ mod tests {
         struct E(usize);
 
         impl Edge for E {
-            fn to(&self) -> usize { self.0 }
+            fn to(&self) -> usize {
+                self.0
+            }
         }
 
         let cases = vec![

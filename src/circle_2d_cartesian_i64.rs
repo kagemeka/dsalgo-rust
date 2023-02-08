@@ -23,7 +23,9 @@ impl Circle {
 
     /// radius power to the 2.
 
-    pub fn r2(&self) -> i64 { self.2.pow(2) }
+    pub fn r2(&self) -> i64 {
+        self.2.pow(2)
+    }
 
     pub fn dist2_from_center(
         &self,
@@ -43,7 +45,9 @@ impl Circle {
 }
 
 impl From<(i64, i64, i64)> for Circle {
-    fn from(c: (i64, i64, i64)) -> Self { Self(c.0, c.1, c.2) }
+    fn from(c: (i64, i64, i64)) -> Self {
+        Self(c.0, c.1, c.2)
+    }
 }
 
 #[cfg(test)]

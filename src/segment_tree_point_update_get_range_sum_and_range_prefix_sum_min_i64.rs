@@ -5,7 +5,9 @@ pub struct PrefixSumMinimum;
 impl Monoid for PrefixSumMinimum {
     type T = (i64, i64);
 
-    fn e(&self) -> Self::T { (std::i64::MAX, 0) }
+    fn e(&self) -> Self::T {
+        (std::i64::MAX, 0)
+    }
 
     fn op(
         &self,

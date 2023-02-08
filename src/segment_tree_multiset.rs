@@ -3,9 +3,13 @@ use crate::segment_tree_i64_add::Segtree;
 pub struct Multiset(Segtree);
 
 impl Multiset {
-    pub fn new(less_than: usize) -> Self { Self(Segtree::new(less_than)) }
+    pub fn new(less_than: usize) -> Self {
+        Self(Segtree::new(less_than))
+    }
 
-    pub fn size(&self) -> usize { self.0.fold(0, self.0.size) as usize }
+    pub fn size(&self) -> usize {
+        self.0.fold(0, self.0.size) as usize
+    }
 
     pub fn count(
         &self,

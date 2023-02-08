@@ -13,7 +13,9 @@ where
         Self(Fenwick::new(g, size))
     }
 
-    pub fn size(&self) -> usize { self.0.size() }
+    pub fn size(&self) -> usize {
+        self.0.size()
+    }
 
     pub fn operate_ge(
         &mut self,
@@ -60,7 +62,9 @@ mod tests {
         impl Monoid for G {
             type T = i32;
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
 
             fn op(
                 &self,

@@ -26,11 +26,17 @@ impl<Id: Copy> Modint<Id> {
         &CELL
     }
 
-    pub fn get_mod() -> i64 { Self::cell().load(SeqCst) }
+    pub fn get_mod() -> i64 {
+        Self::cell().load(SeqCst)
+    }
 
-    fn m() -> i64 { Self::get_mod() }
+    fn m() -> i64 {
+        Self::get_mod()
+    }
 
-    pub fn set_mod(value: i64) { Self::cell().store(value, SeqCst); }
+    pub fn set_mod(value: i64) {
+        Self::cell().store(value, SeqCst);
+    }
 
     pub fn normalize(mut v: i64) -> i64 {
         let m = Self::m();
@@ -46,7 +52,9 @@ impl<Id: Copy> Modint<Id> {
         v
     }
 
-    pub fn new(v: i64) -> Self { Self(Self::normalize(v), PhantomData) }
+    pub fn new(v: i64) -> Self {
+        Self(Self::normalize(v), PhantomData)
+    }
 }
 
 use std::ops::*;
@@ -296,11 +304,15 @@ impl<Id: Copy> Modint<Id> {
 }
 
 impl<Id: Copy> From<i32> for Modint<Id> {
-    fn from(x: i32) -> Self { Self::new(x as i64) }
+    fn from(x: i32) -> Self {
+        Self::new(x as i64)
+    }
 }
 
 impl<Id: Copy> From<usize> for Modint<Id> {
-    fn from(x: usize) -> Self { Self::new(x as i64) }
+    fn from(x: usize) -> Self {
+        Self::new(x as i64)
+    }
 }
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]

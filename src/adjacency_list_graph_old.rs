@@ -7,15 +7,21 @@ pub struct AdjacencyList<E> {
 }
 
 impl<E> AdjacencyList<E> {
-    pub fn size(&self) -> usize { self.edges.len() }
+    pub fn size(&self) -> usize {
+        self.edges.len()
+    }
 
-    pub fn edges(&self) -> &[Vec<E>] { &self.edges }
+    pub fn edges(&self) -> &[Vec<E>] {
+        &self.edges
+    }
 
     pub fn new(size: usize) -> Self {
         Self { edges: (0..size).map(|_| Vec::new()).collect() }
     }
 
-    pub fn add_node(&mut self) { self.edges.push(Vec::new()); }
+    pub fn add_node(&mut self) {
+        self.edges.push(Vec::new());
+    }
 }
 
 impl<E> std::ops::Index<usize> for AdjacencyList<E> {

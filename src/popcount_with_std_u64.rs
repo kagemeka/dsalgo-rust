@@ -1,6 +1,8 @@
 /// O(1)
 
-pub fn popcount(n: u64) -> u8 { n.count_ones() as u8 }
+pub fn popcount(n: u64) -> u8 {
+    n.count_ones() as u8
+}
 
 #[cfg(test)]
 

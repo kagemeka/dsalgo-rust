@@ -29,7 +29,9 @@ where
         a.min(b)
     }
 
-    fn e(&self) -> Self::S { self.0.clone() }
+    fn e(&self) -> Self::S {
+        self.0.clone()
+    }
 
     fn compose(
         &self,
@@ -39,7 +41,9 @@ where
         f + g
     }
 
-    fn id(&self) -> Self::F { self.1.clone() }
+    fn id(&self) -> Self::F {
+        self.1.clone()
+    }
 
     fn map(
         &self,

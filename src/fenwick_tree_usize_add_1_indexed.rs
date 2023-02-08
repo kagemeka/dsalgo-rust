@@ -1,9 +1,13 @@
 pub struct Fenwick(Vec<usize>);
 
 impl Fenwick {
-    pub fn new(size: usize) -> Self { Self(vec![0; size + 1]) }
+    pub fn new(size: usize) -> Self {
+        Self(vec![0; size + 1])
+    }
 
-    pub fn size(&self) -> usize { self.0.len() - 1 }
+    pub fn size(&self) -> usize {
+        self.0.len() - 1
+    }
 
     pub fn add(
         &mut self,

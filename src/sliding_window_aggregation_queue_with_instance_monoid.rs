@@ -29,7 +29,9 @@ where
         Self { m, st_r: vec![], vr, st_l: vec![vl] }
     }
 
-    pub fn size(&self) -> usize { self.st_r.len() + self.st_l.len() - 1 }
+    pub fn size(&self) -> usize {
+        self.st_r.len() + self.st_l.len() - 1
+    }
 
     pub fn push(
         &mut self,
@@ -85,7 +87,9 @@ mod tests {
                 l + r
             }
 
-            fn e(&self) -> i64 { 0 }
+            fn e(&self) -> i64 {
+                0
+            }
         }
 
         let mut swag = SWAGQueue::new(M {});

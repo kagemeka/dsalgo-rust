@@ -6,5 +6,7 @@ use crate::{
 impl<M: Modulus> Get for M {
     type T = M::T;
 
-    fn get() -> Self::T { Self::MOD }
+    fn get() -> Self::T {
+        Self::MOD
+    }
 }

@@ -6,13 +6,17 @@ use crate::dynamic_modulus_trait::*;
 pub struct DynMod<T>(T);
 
 impl<T> DynMod<T> {
-    pub fn new(value: T) -> Self { Self(value) }
+    pub fn new(value: T) -> Self {
+        Self(value)
+    }
 }
 
 impl<T: Copy> Get for DynMod<T> {
     type T = T;
 
-    fn get(&self) -> Self::T { self.0 }
+    fn get(&self) -> Self::T {
+        self.0
+    }
 }
 
 impl<T> Set for DynMod<T> {

@@ -14,11 +14,17 @@ impl Modint {
         &CELL
     }
 
-    pub fn get_mod() -> i64 { Self::cell().load(SeqCst) }
+    pub fn get_mod() -> i64 {
+        Self::cell().load(SeqCst)
+    }
 
-    fn m() -> i64 { Self::get_mod() }
+    fn m() -> i64 {
+        Self::get_mod()
+    }
 
-    pub fn set_mod(value: i64) { Self::cell().store(value, SeqCst); }
+    pub fn set_mod(value: i64) {
+        Self::cell().store(value, SeqCst);
+    }
 
     pub fn normalize(mut v: i64) -> i64 {
         let m = Self::m();
@@ -34,7 +40,9 @@ impl Modint {
         v
     }
 
-    pub fn new(v: i64) -> Self { Self(Self::normalize(v)) }
+    pub fn new(v: i64) -> Self {
+        Self(Self::normalize(v))
+    }
 }
 
 use std::ops::*;

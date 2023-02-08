@@ -52,10 +52,14 @@ where
     M::T: Copy,
 {
     // TODO: make const
-    pub fn value(&self) -> M::T { self.value }
+    pub fn value(&self) -> M::T {
+        self.value
+    }
 
     // pub fn new(value: M::T) -> Self { Self { value } }
-    pub fn modulus() -> M::T { M::modulus() }
+    pub fn modulus() -> M::T {
+        M::modulus()
+    }
 }
 
 impl<T, M> std::ops::Add for Modint<T, M>
@@ -208,14 +212,18 @@ impl<M> From<i32> for Modint<u32, M>
 where
     M: Arithmetic<T = u32>,
 {
-    fn from(value: i32) -> Self { Self::from(value as i64) }
+    fn from(value: i32) -> Self {
+        Self::from(value as i64)
+    }
 }
 
 impl<M> From<i32> for Modint<u64, M>
 where
     M: Arithmetic<T = u64>,
 {
-    fn from(value: i32) -> Self { Self::from(value as i64) }
+    fn from(value: i32) -> Self {
+        Self::from(value as i64)
+    }
 }
 
 impl<M> From<i64> for Modint<u32, M>
@@ -292,14 +300,18 @@ impl<M> From<usize> for Modint<u32, M>
 where
     M: Arithmetic<T = u32>,
 {
-    fn from(value: usize) -> Self { Self::from(value as u64) }
+    fn from(value: usize) -> Self {
+        Self::from(value as u64)
+    }
 }
 
 impl<M> From<usize> for Modint<u64, M>
 where
     M: Arithmetic<T = u64>,
 {
-    fn from(value: usize) -> Self { Self::from(value as u64) }
+    fn from(value: usize) -> Self {
+        Self::from(value as u64)
+    }
 }
 
 use crate::power_monoid_itself::PowMonoid;
@@ -353,14 +365,18 @@ impl<M> Identity<Multiplicative> for Modint<u64, M>
 where
     M: Arithmetic<T = u64>,
 {
-    fn e() -> Self { 1.into() }
+    fn e() -> Self {
+        1.into()
+    }
 }
 
 impl<M> Identity<Multiplicative> for Modint<u32, M>
 where
     M: Arithmetic<T = u32>,
 {
-    fn e() -> Self { 1.into() }
+    fn e() -> Self {
+        1.into()
+    }
 }
 
 impl<T, M> Associative<Multiplicative> for Modint<T, M> where
@@ -374,7 +390,9 @@ where
 {
     type Output = Self;
 
-    fn mul_inv(self) -> Self::Output { self.inv() }
+    fn mul_inv(self) -> Self::Output {
+        self.inv()
+    }
 }
 
 impl<M> MulInv for Modint<u32, M>
@@ -383,7 +401,9 @@ where
 {
     type Output = Self;
 
-    fn mul_inv(self) -> Self::Output { self.inv() }
+    fn mul_inv(self) -> Self::Output {
+        self.inv()
+    }
 }
 
 // TODO:

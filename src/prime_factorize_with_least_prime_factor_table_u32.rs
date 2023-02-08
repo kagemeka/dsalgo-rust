@@ -5,7 +5,9 @@ pub struct PrimeFactorize {
 }
 
 impl PrimeFactorize {
-    pub fn new(size: usize) -> Self { Self { lpf: least_prime_factor(size) } }
+    pub fn new(size: usize) -> Self {
+        Self { lpf: least_prime_factor(size) }
+    }
 
     pub fn factorize(
         &self,

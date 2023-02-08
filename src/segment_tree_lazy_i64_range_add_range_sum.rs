@@ -15,7 +15,9 @@ impl Ops for RangeAddRangeSumI64 {
         (a.0 + b.0, a.1 + b.1)
     }
 
-    fn e(&self) -> Self::S { (0, 0) }
+    fn e(&self) -> Self::S {
+        (0, 0)
+    }
 
     fn compose(
         &self,
@@ -25,7 +27,9 @@ impl Ops for RangeAddRangeSumI64 {
         f + g
     }
 
-    fn id(&self) -> Self::F { 0 }
+    fn id(&self) -> Self::F {
+        0
+    }
 
     fn map(
         &self,

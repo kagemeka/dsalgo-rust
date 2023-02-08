@@ -8,7 +8,9 @@ use crate::segment_tree_lazy_with_instance_homomorphism::*;
 pub struct RangeAffineRangeSum<T>(PhantomData<T>);
 
 impl<T> RangeAffineRangeSum<T> {
-    pub fn new() -> Self { Self(PhantomData) }
+    pub fn new() -> Self {
+        Self(PhantomData)
+    }
 }
 
 impl<T> Ops for RangeAffineRangeSum<T>
@@ -29,7 +31,9 @@ where
         (f.0.clone() * g.0, f.0 * g.1 + f.1)
     }
 
-    fn e(&self) -> Self::S { (0.into(), 0.into()) }
+    fn e(&self) -> Self::S {
+        (0.into(), 0.into())
+    }
 
     fn op(
         &self,
@@ -39,7 +43,9 @@ where
         (a.0 + b.0, a.1 + b.1)
     }
 
-    fn id(&self) -> Self::F { (1.into(), 0.into()) }
+    fn id(&self) -> Self::F {
+        (1.into(), 0.into())
+    }
 
     fn map(
         &self,

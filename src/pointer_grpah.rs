@@ -25,7 +25,9 @@ impl<T: std::fmt::Debug, U> std::fmt::Display for Vertex<T, U> {
 }
 
 impl<T, U> Vertex<T, U> {
-    pub(crate) fn new(value: T) -> Self { Self { edges: Vec::new(), value } }
+    pub(crate) fn new(value: T) -> Self {
+        Self { edges: Vec::new(), value }
+    }
 
     pub fn new_rc_refcell(value: T) -> Rc<RefCell<Self>> {
         new_rc_refcell(Self::new(value))

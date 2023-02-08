@@ -14,7 +14,9 @@ type ON<T> = Option<N<T>>;
 type ORN<'a, T> = Option<&'a N<T>>;
 
 impl<T> Node<T> {
-    pub fn new(v: T) -> N<T> { Box::new(Self { l: None, r: None, size: 1, v }) }
+    pub fn new(v: T) -> N<T> {
+        Box::new(Self { l: None, r: None, size: 1, v })
+    }
 
     pub(crate) fn size(root: ORN<T>) -> usize {
         if let Some(root) = root {
@@ -24,7 +26,9 @@ impl<T> Node<T> {
         }
     }
 
-    fn lsize(&self) -> usize { Self::size(self.l.as_ref()) }
+    fn lsize(&self) -> usize {
+        Self::size(self.l.as_ref())
+    }
 
     fn update(&mut self) {
         let lsize = Self::size(self.l.as_ref());

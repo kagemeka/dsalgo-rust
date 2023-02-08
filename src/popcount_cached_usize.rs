@@ -3,7 +3,9 @@ use std::collections::HashMap;
 pub struct Popcount(HashMap<usize, usize>);
 
 impl Popcount {
-    pub fn new() -> Self { Self(HashMap::new()) }
+    pub fn new() -> Self {
+        Self(HashMap::new())
+    }
 
     pub fn calc(
         &mut self,

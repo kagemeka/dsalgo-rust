@@ -6,9 +6,13 @@ pub struct PivotSet {
 }
 
 impl PivotSet {
-    pub fn new(max_height: usize) -> Self { Self { root: None, max_height } }
+    pub fn new(max_height: usize) -> Self {
+        Self { root: None, max_height }
+    }
 
-    pub fn size(&self) -> usize { Node::size(self.root.as_ref()) }
+    pub fn size(&self) -> usize {
+        Node::size(self.root.as_ref())
+    }
 
     pub fn lower_bound(
         &self,

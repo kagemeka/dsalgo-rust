@@ -13,7 +13,9 @@ pub struct XorShift128 {
 }
 
 impl XorShift128 {
-    pub fn new(seeds: [u32; 4]) -> Self { Self { seeds } }
+    pub fn new(seeds: [u32; 4]) -> Self {
+        Self { seeds }
+    }
 
     pub fn next(&mut self) -> u32 {
         self.seeds = xorshift128(self.seeds);

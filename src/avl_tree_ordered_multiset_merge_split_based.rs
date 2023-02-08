@@ -5,9 +5,13 @@ use crate::avl_tree_node_with_box_recurse_merge_split_based::Node;
 pub struct AVLMultiset<T>(Option<Box<Node<T>>>);
 
 impl<T: Ord> AVLMultiset<T> {
-    pub fn new() -> Self { Self(None) }
+    pub fn new() -> Self {
+        Self(None)
+    }
 
-    pub fn size(&self) -> usize { Node::size(self.0.as_ref()) }
+    pub fn size(&self) -> usize {
+        Node::size(self.0.as_ref())
+    }
 
     pub fn lower_bound(
         &self,

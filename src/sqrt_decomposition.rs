@@ -9,7 +9,9 @@ pub struct SqrtDecomposition<G: Semigroup> {
 }
 
 impl<G: Semigroup> SqrtDecomposition<G> {
-    pub fn size(&self) -> usize { self.node.len() }
+    pub fn size(&self) -> usize {
+        self.node.len()
+    }
 
     pub(crate) fn sqrt(&self) -> usize {
         let n = self.buckets.len();

@@ -7,7 +7,9 @@ pub struct Update<T>(PhantomData<T>);
 impl<T> Monoid for Update<T> {
     type T = Option<T>;
 
-    fn e() -> Self::T { None }
+    fn e() -> Self::T {
+        None
+    }
 
     fn op(
         l: Self::T,

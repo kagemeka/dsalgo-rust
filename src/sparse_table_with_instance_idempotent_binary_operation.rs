@@ -33,7 +33,9 @@ impl<T: Clone, F: Fn(T, T) -> T> SparseTable<T, F> {
         Self { node, f }
     }
 
-    pub fn size(&self) -> usize { self.node[0].len() }
+    pub fn size(&self) -> usize {
+        self.node[0].len()
+    }
 
     pub fn get(
         &self,

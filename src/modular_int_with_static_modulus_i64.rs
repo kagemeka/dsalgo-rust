@@ -23,9 +23,13 @@ impl<M> std::fmt::Display for Modint<M> {
 }
 
 impl<M: Get<T = i64>> Modint<M> {
-    pub fn modulus() -> i64 { M::get() }
+    pub fn modulus() -> i64 {
+        M::get()
+    }
 
-    fn m() -> i64 { M::get() }
+    fn m() -> i64 {
+        M::get()
+    }
 
     pub fn normalize(mut v: i64) -> i64 {
         let m = Self::m();
@@ -41,7 +45,9 @@ impl<M: Get<T = i64>> Modint<M> {
         v
     }
 
-    pub fn new(v: i64) -> Self { Self(Self::normalize(v), PhantomData) }
+    pub fn new(v: i64) -> Self {
+        Self(Self::normalize(v), PhantomData)
+    }
 }
 
 impl<M: Get<T = i64>> Add for Modint<M> {
@@ -284,11 +290,15 @@ impl<M: Get<T = i64> + Copy> Modint<M> {
 }
 
 impl<M: Get<T = i64>> From<i32> for Modint<M> {
-    fn from(x: i32) -> Self { Self::new(x as i64) }
+    fn from(x: i32) -> Self {
+        Self::new(x as i64)
+    }
 }
 
 impl<M: Get<T = i64>> From<usize> for Modint<M> {
-    fn from(x: usize) -> Self { Self::new(x as i64) }
+    fn from(x: usize) -> Self {
+        Self::new(x as i64)
+    }
 }
 
 #[cfg(test)]

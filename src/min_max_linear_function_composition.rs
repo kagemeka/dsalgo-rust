@@ -12,7 +12,9 @@ pub struct MinMaxLinear {
 }
 
 impl MinMaxLinear {
-    pub fn new() -> Self { Self { delta: 0, low: -INF, high: INF } }
+    pub fn new() -> Self {
+        Self { delta: 0, low: -INF, high: INF }
+    }
 
     pub fn add(
         &mut self,

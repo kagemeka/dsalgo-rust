@@ -6,11 +6,17 @@ pub struct Stack<T> {
 }
 
 impl<T> Stack<T> {
-    pub fn new() -> Self { Self { top: None, size: 0 } }
+    pub fn new() -> Self {
+        Self { top: None, size: 0 }
+    }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    pub fn is_empty(&self) -> bool { self.size == 0 }
+    pub fn is_empty(&self) -> bool {
+        self.size == 0
+    }
 
     pub fn top(&self) -> Option<&T> {
         if self.size == 0 {

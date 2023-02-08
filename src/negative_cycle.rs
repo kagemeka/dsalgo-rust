@@ -5,7 +5,9 @@ pub struct NegativeCycleError {
 }
 
 impl NegativeCycleError {
-    pub fn new() -> Self { Self { msg: "Negative Cycle Found." } }
+    pub fn new() -> Self {
+        Self { msg: "Negative Cycle Found." }
+    }
 }
 
 impl std::fmt::Display for NegativeCycleError {
@@ -18,5 +20,7 @@ impl std::fmt::Display for NegativeCycleError {
 }
 
 impl std::error::Error for NegativeCycleError {
-    fn description(&self) -> &str { &self.msg }
+    fn description(&self) -> &str {
+        &self.msg
+    }
 }

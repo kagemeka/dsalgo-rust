@@ -9,7 +9,9 @@ pub mod modulus {
     pub struct Mod1_000_000_007;
 
     impl StaticGet for Mod1_000_000_007 {
-        fn get() -> u32 { 1_000_000_007 }
+        fn get() -> u32 {
+            1_000_000_007
+        }
     }
 
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -17,7 +19,9 @@ pub mod modulus {
     pub struct Mod998_244_353;
 
     impl StaticGet for Mod998_244_353 {
-        fn get() -> u32 { 998_244_353 }
+        fn get() -> u32 {
+            998_244_353
+        }
     }
 
     #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -36,11 +40,15 @@ pub mod modulus {
             &CELL
         }
 
-        pub fn set(value: u32) { Self::cell().store(value, SeqCst); }
+        pub fn set(value: u32) {
+            Self::cell().store(value, SeqCst);
+        }
     }
 
     impl StaticGet for StaticMod {
-        fn get() -> u32 { Self::cell().load(SeqCst) }
+        fn get() -> u32 {
+            Self::cell().load(SeqCst)
+        }
     }
 }
 
@@ -55,7 +63,9 @@ use modulus::StaticGet;
 use crate::multiplicative_inverse::MulInv;
 
 impl<M: StaticGet> Modint<M> {
-    pub fn modulus() -> u32 { M::get() }
+    pub fn modulus() -> u32 {
+        M::get()
+    }
 
     pub fn new(mut v: u32) -> Self {
         if v >= M::get() {

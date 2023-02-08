@@ -16,9 +16,13 @@ impl Ops for RangeXorRangeInversion01 {
         f ^ g
     }
 
-    fn id(&self) -> Self::F { 0 }
+    fn id(&self) -> Self::F {
+        0
+    }
 
-    fn e(&self) -> Self::S { (0, 0, 0) }
+    fn e(&self) -> Self::S {
+        (0, 0, 0)
+    }
 
     fn map(
         &self,

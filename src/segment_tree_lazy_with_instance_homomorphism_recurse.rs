@@ -55,9 +55,13 @@ where
         Self { ops, data, lazy, size }
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    fn n(&self) -> usize { self.lazy.len() }
+    fn n(&self) -> usize {
+        self.lazy.len()
+    }
 
     fn merge(
         &mut self,
@@ -354,7 +358,9 @@ mod tests {
                 (a.0 + b.0, a.1 + b.1)
             }
 
-            fn e(&self) -> Self::S { (0, 0) }
+            fn e(&self) -> Self::S {
+                (0, 0)
+            }
 
             fn compose(
                 &self,
@@ -364,7 +370,9 @@ mod tests {
                 f + g
             }
 
-            fn id(&self) -> Self::F { 0 }
+            fn id(&self) -> Self::F {
+                0
+            }
 
             fn map(
                 &self,

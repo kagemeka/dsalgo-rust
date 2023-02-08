@@ -5,9 +5,13 @@ use crate::avl_tree_node_with_rc_refcell_merge_split_based_recurse::*;
 pub struct AVLMultiset<T>(Option<Cell<T>>);
 
 impl<T: Ord + Clone> AVLMultiset<T> {
-    pub fn new() -> Self { Self(None) }
+    pub fn new() -> Self {
+        Self(None)
+    }
 
-    pub fn size(&self) -> usize { Node::size(self.0.as_ref()) }
+    pub fn size(&self) -> usize {
+        Node::size(self.0.as_ref())
+    }
 
     pub fn lower_bound(
         &self,

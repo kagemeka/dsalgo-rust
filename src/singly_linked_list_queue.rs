@@ -17,11 +17,17 @@ pub struct Queue<T> {
 }
 
 impl<T> Queue<T> {
-    pub fn new() -> Self { Self { front: None, back: None, size: 0 } }
+    pub fn new() -> Self {
+        Self { front: None, back: None, size: 0 }
+    }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    pub fn is_empty(&self) -> bool { self.size() == 0 }
+    pub fn is_empty(&self) -> bool {
+        self.size() == 0
+    }
 
     pub fn push(
         &mut self,

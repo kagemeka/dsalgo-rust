@@ -43,7 +43,9 @@ impl<T: Ord + std::hash::Hash + Clone> MinMaxQueue<T> {
         self.size += count;
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
     pub fn count(
         &self,

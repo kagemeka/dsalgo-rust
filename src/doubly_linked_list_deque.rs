@@ -10,11 +10,17 @@ pub struct Deque<T> {
 }
 
 impl<T: Clone> Deque<T> {
-    pub fn new() -> Self { Self { left: None, right: None, size: 0 } }
+    pub fn new() -> Self {
+        Self { left: None, right: None, size: 0 }
+    }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    pub fn is_empty(&self) -> bool { self.size == 0 }
+    pub fn is_empty(&self) -> bool {
+        self.size == 0
+    }
 
     pub fn push_right(
         &mut self,

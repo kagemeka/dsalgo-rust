@@ -36,9 +36,13 @@ where
 }
 
 impl<M: Monoid> Segtree<M> {
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    pub(crate) fn n(&self) -> usize { self.node.len() >> 1 }
+    pub(crate) fn n(&self) -> usize {
+        self.node.len() >> 1
+    }
 }
 
 impl<M> Segtree<M>
@@ -193,7 +197,9 @@ where
     M: Monoid,
     M::S: Clone,
 {
-    fn from(slice: &[M::S]) -> Self { Self::from_iter(slice.iter().cloned()) }
+    fn from(slice: &[M::S]) -> Self {
+        Self::from_iter(slice.iter().cloned())
+    }
 }
 
 impl<M> Segtree<M>

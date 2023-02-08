@@ -28,7 +28,9 @@ where
         Self { g, node }
     }
 
-    pub fn size(&self) -> usize { self.node.len() - 1 }
+    pub fn size(&self) -> usize {
+        self.node.len() - 1
+    }
 
     pub fn operate(
         &mut self,
@@ -140,7 +142,9 @@ mod tests {
         impl Monoid for G {
             type T = i32;
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
 
             fn op(
                 &self,

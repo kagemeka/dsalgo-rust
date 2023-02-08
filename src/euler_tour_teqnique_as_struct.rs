@@ -83,7 +83,9 @@ impl EulerTour {
             .collect()
     }
 
-    pub fn node_first_idx(&self) -> Vec<usize> { self.edge_in_idx.clone() }
+    pub fn node_first_idx(&self) -> Vec<usize> {
+        self.edge_in_idx.clone()
+    }
 
     pub fn node_last_idx(&self) -> Vec<usize> {
         let n = self.edge_in_idx.len();

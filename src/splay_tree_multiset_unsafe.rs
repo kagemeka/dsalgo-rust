@@ -7,7 +7,9 @@ use crate::splay_tree_node_unsafe::*;
 pub struct Multiset<T>(*mut Node<T>);
 
 impl<T: Ord> Multiset<T> {
-    pub fn new() -> Self { Self(null_mut()) }
+    pub fn new() -> Self {
+        Self(null_mut())
+    }
 
     #[allow(dead_code)]
 
@@ -22,7 +24,9 @@ impl<T: Ord> Multiset<T> {
         }
     }
 
-    pub fn size(&self) -> usize { Node::size(self.0) }
+    pub fn size(&self) -> usize {
+        Node::size(self.0)
+    }
 
     pub fn lower_bound(
         &self,

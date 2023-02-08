@@ -43,7 +43,9 @@ mod tests {
         }
 
         impl<T> Node<T> {
-            fn new(data: T) -> Self { Node { data, left: None, right: None } }
+            fn new(data: T) -> Self {
+                Node { data, left: None, right: None }
+            }
         }
 
         impl<T> Size for Option<Node<T>>

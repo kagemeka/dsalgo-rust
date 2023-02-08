@@ -18,11 +18,17 @@ impl<T: Clone + Add<Output = T> + From<i32>> DualSegtree<T> {
         Self { node, size }
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
-    fn n(&self) -> usize { self.node.len() >> 1 }
+    fn n(&self) -> usize {
+        self.node.len() >> 1
+    }
 
-    fn height(&self) -> usize { bit_length(self.n()) }
+    fn height(&self) -> usize {
+        bit_length(self.n())
+    }
 
     fn operate_node(
         &mut self,

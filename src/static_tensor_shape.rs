@@ -8,7 +8,9 @@ use crate::tensor_property::Shape;
 pub struct TensorShape2_3_4;
 
 impl Shape for TensorShape2_3_4 {
-    fn shape() -> &'static [usize] { &[2, 3, 4] }
+    fn shape() -> &'static [usize] {
+        &[2, 3, 4]
+    }
 }
 
 #[cfg(test)]

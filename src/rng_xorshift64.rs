@@ -29,7 +29,9 @@ impl Xorshift64 {
 }
 
 impl Default for Xorshift64 {
-    fn default() -> Self { Xorshift64(88172645463325252) }
+    fn default() -> Self {
+        Xorshift64(88172645463325252)
+    }
 }
 
 #[cfg(test)]

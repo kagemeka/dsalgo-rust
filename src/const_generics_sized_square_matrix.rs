@@ -5,18 +5,24 @@ use std::ops::*;
 pub struct Matrix<T, const N: usize>([[T; N]; N]);
 
 impl<T: Copy, const N: usize> Matrix<T, N> {
-    pub fn new(fill_value: T) -> Self { Self([[fill_value; N]; N]) }
+    pub fn new(fill_value: T) -> Self {
+        Self([[fill_value; N]; N])
+    }
 }
 
 impl<T: Copy, const N: usize> Default for Matrix<T, N>
 where
     T: Default,
 {
-    fn default() -> Self { Self::new(T::default()) }
+    fn default() -> Self {
+        Self::new(T::default())
+    }
 }
 
 impl<T: Copy, const N: usize> From<[[T; N]; N]> for Matrix<T, N> {
-    fn from(a: [[T; N]; N]) -> Self { Self(a) }
+    fn from(a: [[T; N]; N]) -> Self {
+        Self(a)
+    }
 }
 
 impl<T, const N: usize> Index<usize> for Matrix<T, N> {

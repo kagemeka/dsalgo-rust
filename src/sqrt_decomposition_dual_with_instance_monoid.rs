@@ -22,7 +22,9 @@ impl<G: Monoid> DualSqrtDecomposition<G>
 where
     G::T: Clone + Eq,
 {
-    pub fn size(&self) -> usize { self.data.len() }
+    pub fn size(&self) -> usize {
+        self.data.len()
+    }
 
     pub fn interval(&self) -> usize {
         let n = self.buckets.len();
@@ -139,7 +141,9 @@ mod tests {
                 l + r
             }
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
         }
 
         let n = 5;

@@ -5,13 +5,17 @@ use crate::segment_tree_dual_with_instance_monoid::*;
 pub struct Update<T>(PhantomData<T>);
 
 impl<T> Update<T> {
-    pub fn new() -> Self { Self(PhantomData) }
+    pub fn new() -> Self {
+        Self(PhantomData)
+    }
 }
 
 impl<T> Monoid for Update<T> {
     type T = Option<T>;
 
-    fn e(&self) -> Self::T { None }
+    fn e(&self) -> Self::T {
+        None
+    }
 
     fn op(
         &self,

@@ -3,7 +3,9 @@ pub struct Xorshift128Plus {
 }
 
 impl Xorshift128Plus {
-    pub fn new(seeds: [u64; 2]) -> Self { Self { seeds } }
+    pub fn new(seeds: [u64; 2]) -> Self {
+        Self { seeds }
+    }
 
     pub fn next(&mut self) -> u64 {
         let [mut x, y] = self.seeds;
@@ -21,7 +23,9 @@ impl Xorshift128Plus {
 }
 
 impl Default for Xorshift128Plus {
-    fn default() -> Self { Self::new([1, 1]) }
+    fn default() -> Self {
+        Self::new([1, 1])
+    }
 }
 
 #[cfg(test)]

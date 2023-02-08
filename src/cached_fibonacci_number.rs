@@ -3,7 +3,9 @@ pub struct CachedFibonacci<T> {
 }
 
 impl<T> CachedFibonacci<T> {
-    pub fn new() -> Self { Self { fib: vec![] } }
+    pub fn new() -> Self {
+        Self { fib: vec![] }
+    }
 
     pub fn calc(
         &mut self,

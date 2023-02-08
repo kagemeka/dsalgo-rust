@@ -21,5 +21,7 @@ impl<T: Ord> Push for Q<T> {
 impl<T: Ord> Pop for Q<T> {
     type T = Option<T>;
 
-    fn pop(&mut self) -> Self::T { Self::pop(self) }
+    fn pop(&mut self) -> Self::T {
+        Self::pop(self)
+    }
 }

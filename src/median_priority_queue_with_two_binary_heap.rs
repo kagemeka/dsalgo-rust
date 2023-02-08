@@ -18,7 +18,9 @@ impl<T: Clone + Ord> MedianQueue<T> {
         Self { low_que: BinaryHeap::new(), high_que: BinaryHeap::new() }
     }
 
-    pub fn size(&self) -> usize { self.low_que.len() + self.high_que.len() }
+    pub fn size(&self) -> usize {
+        self.low_que.len() + self.high_que.len()
+    }
 
     fn low_to_high(&mut self) {
         self.high_que.push(Reverse(self.low_que.pop().unwrap()));
@@ -56,7 +58,9 @@ impl<T: Clone + Ord> MedianQueue<T> {
         self.rebalance();
     }
 
-    pub fn low(&self) -> Option<&T> { self.low_que.peek() }
+    pub fn low(&self) -> Option<&T> {
+        self.low_que.peek()
+    }
 
     pub fn high(&self) -> Option<&T> {
         if self.balance() == 1 {

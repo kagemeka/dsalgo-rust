@@ -77,7 +77,9 @@ mod tests {
         impl Monoid for G {
             type T = i32;
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
 
             fn op(
                 &self,

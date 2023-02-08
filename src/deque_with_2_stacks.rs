@@ -6,11 +6,17 @@ pub struct Deque<T> {
 }
 
 impl<T> Deque<T> {
-    pub fn new() -> Self { Self { st_l: vec![], st_r: vec![] } }
+    pub fn new() -> Self {
+        Self { st_l: vec![], st_r: vec![] }
+    }
 
-    pub fn size(&self) -> usize { self.st_l.len() + self.st_r.len() }
+    pub fn size(&self) -> usize {
+        self.st_l.len() + self.st_r.len()
+    }
 
-    fn swap_lr(&mut self) { swap(&mut self.st_l, &mut self.st_r); }
+    fn swap_lr(&mut self) {
+        swap(&mut self.st_l, &mut self.st_r);
+    }
 
     pub fn push_right(
         &mut self,

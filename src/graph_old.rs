@@ -57,7 +57,9 @@ impl<T, U> DirectedGraph<T, U> {
         Self { node_datas: vec![T::default(); size], edges: vec![vec![]; size] }
     }
 
-    pub fn size(&self) -> usize { self.node_datas.len() }
+    pub fn size(&self) -> usize {
+        self.node_datas.len()
+    }
 
     pub fn add_node(&mut self)
     where
@@ -101,7 +103,9 @@ impl<T, U> UndirectedGraph<T, U> {
         Self { node_datas: vec![T::default(); size], edges: vec![vec![]; size] }
     }
 
-    pub fn size(&self) -> usize { self.node_datas.len() }
+    pub fn size(&self) -> usize {
+        self.node_datas.len()
+    }
 
     pub fn add_node(&mut self)
     where
@@ -147,7 +151,9 @@ impl<T, U> DenseGraph<T, U> {
         }
     }
 
-    pub fn size(&self) -> usize { self.node_datas.len() }
+    pub fn size(&self) -> usize {
+        self.node_datas.len()
+    }
 
     pub fn add_node(&mut self)
     where

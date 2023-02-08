@@ -23,7 +23,9 @@ pub trait Dimension {
 }
 
 impl<P: Shape> Dimension for P {
-    fn dimension() -> usize { P::shape().len() }
+    fn dimension() -> usize {
+        P::shape().len()
+    }
 }
 
 pub trait Strides {

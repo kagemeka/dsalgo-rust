@@ -1,9 +1,13 @@
 pub struct UnionFind(Vec<isize>);
 
 impl UnionFind {
-    pub fn new(size: usize) -> Self { Self(vec![-1; size]) }
+    pub fn new(size: usize) -> Self {
+        Self(vec![-1; size])
+    }
 
-    pub fn size(&self) -> usize { self.0.len() }
+    pub fn size(&self) -> usize {
+        self.0.len()
+    }
 
     pub fn root(
         &mut self,

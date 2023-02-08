@@ -6,9 +6,13 @@ pub struct DynamicTensor<T> {
 }
 
 impl<T> DynamicTensor<T> {
-    pub fn shape(&self) -> &[usize] { &self.shape }
+    pub fn shape(&self) -> &[usize] {
+        &self.shape
+    }
 
-    pub(crate) fn dim(&self) -> usize { self.shape.len() }
+    pub(crate) fn dim(&self) -> usize {
+        self.shape.len()
+    }
 
     pub(crate) fn strides(&self) -> Vec<usize> {
         let mut strides: Vec<usize> = self.shape.clone();
@@ -36,7 +40,9 @@ impl<T> DynamicTensor<T> {
         size
     }
 
-    pub fn size(&self) -> usize { self.data.len() }
+    pub fn size(&self) -> usize {
+        self.data.len()
+    }
 }
 
 impl<T: Default> DynamicTensor<T> {

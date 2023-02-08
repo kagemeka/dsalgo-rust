@@ -4,7 +4,9 @@ pub struct PotentialUnionFind {
 }
 
 impl PotentialUnionFind {
-    pub fn size(&self) -> usize { self.a.len() }
+    pub fn size(&self) -> usize {
+        self.a.len()
+    }
 
     pub fn new(size: usize) -> Self {
         Self { a: vec![-1; size], rh: vec![0; size] }

@@ -1,9 +1,13 @@
 use crate::dynamic_shaped_matrix::Matrix;
 
 impl<T: Default + Clone> Matrix<T> {
-    pub fn rot90(&self) -> Self { self.transpose().reverse() }
+    pub fn rot90(&self) -> Self {
+        self.transpose().reverse()
+    }
 
-    pub fn rot270(&self) -> Self { self.reverse().transpose() }
+    pub fn rot270(&self) -> Self {
+        self.reverse().transpose()
+    }
 }
 
 #[cfg(test)]

@@ -17,7 +17,9 @@ impl Xorshift64Star {
 }
 
 impl Default for Xorshift64Star {
-    fn default() -> Self { Xorshift64Star(1) }
+    fn default() -> Self {
+        Xorshift64Star(1)
+    }
 }
 
 // TODO:

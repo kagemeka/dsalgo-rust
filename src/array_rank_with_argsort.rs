@@ -7,7 +7,9 @@ use crate::{
     permutation_argsort::argsort as perm_argsort,
 };
 
-pub fn array_rank<T: Ord>(a: &[T]) -> Vec<usize> { perm_argsort(&argsort(a)) }
+pub fn array_rank<T: Ord>(a: &[T]) -> Vec<usize> {
+    perm_argsort(&argsort(a))
+}
 
 #[cfg(test)]
 

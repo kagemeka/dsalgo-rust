@@ -3,9 +3,13 @@ use std::collections::VecDeque;
 pub struct BFS01Queue<T>(VecDeque<T>);
 
 impl<T: Ord> BFS01Queue<T> {
-    pub fn new() -> Self { Self(VecDeque::new()) }
+    pub fn new() -> Self {
+        Self(VecDeque::new())
+    }
 
-    pub fn size(&self) -> usize { self.0.len() }
+    pub fn size(&self) -> usize {
+        self.0.len()
+    }
 
     pub fn push(
         &mut self,
@@ -20,7 +24,9 @@ impl<T: Ord> BFS01Queue<T> {
         }
     }
 
-    pub fn pop(&mut self) -> Option<T> { self.0.pop_front() }
+    pub fn pop(&mut self) -> Option<T> {
+        self.0.pop_front()
+    }
 }
 
 #[cfg(test)]

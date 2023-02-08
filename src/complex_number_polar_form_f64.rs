@@ -9,7 +9,9 @@ use std::ops::*;
 pub struct Polar(pub f64, pub f64);
 
 impl Polar {
-    pub fn i() -> Self { Self(1.0, std::f64::consts::PI / 2.0) }
+    pub fn i() -> Self {
+        Self(1.0, std::f64::consts::PI / 2.0)
+    }
 
     pub fn rectangular(&self) -> (f64, f64) {
         (self.0 * self.1.cos(), self.0 * self.1.sin())
@@ -22,11 +24,15 @@ impl Polar {
         Self(x.hypot(y), y.atan2(x))
     }
 
-    pub fn mul_inv(&self) -> Self { Self(1.0 / self.0, -self.1) }
+    pub fn mul_inv(&self) -> Self {
+        Self(1.0 / self.0, -self.1)
+    }
 }
 
 impl From<f64> for Polar {
-    fn from(real: f64) -> Self { Self(real, 0.) }
+    fn from(real: f64) -> Self {
+        Self(real, 0.)
+    }
 }
 
 impl MulAssign<f64> for Polar {
@@ -100,7 +106,9 @@ impl Mul for Polar {
 impl Neg for Polar {
     type Output = Self;
 
-    fn neg(self) -> Self::Output { Self(self.0, self.1 + std::f64::consts::PI) }
+    fn neg(self) -> Self::Output {
+        Self(self.0, self.1 + std::f64::consts::PI)
+    }
 }
 
 impl DivAssign for Polar {

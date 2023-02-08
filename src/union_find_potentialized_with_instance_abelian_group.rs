@@ -25,7 +25,9 @@ impl<G: AbelianGroup> PotentialUnionFind<G>
 where
     G::T: Clone,
 {
-    pub fn size(&self) -> usize { self.a.len() }
+    pub fn size(&self) -> usize {
+        self.a.len()
+    }
 
     pub fn new(
         g: G,
@@ -150,7 +152,9 @@ mod tests {
         impl AbelianGroup for G {
             type T = i32;
 
-            fn e(&self) -> Self::T { 0 }
+            fn e(&self) -> Self::T {
+                0
+            }
 
             fn inv(
                 &self,

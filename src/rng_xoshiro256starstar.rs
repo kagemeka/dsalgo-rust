@@ -8,7 +8,9 @@ pub struct Xoshiro256StarStar {
 }
 
 impl Xoshiro256StarStar {
-    pub fn new(seeds: [u64; 4]) -> Self { Self { seeds } }
+    pub fn new(seeds: [u64; 4]) -> Self {
+        Self { seeds }
+    }
 
     pub fn next(&mut self) -> u64 {
         let res = rot_l(self.seeds[1] * 5, 7) * 9;
@@ -20,7 +22,9 @@ impl Xoshiro256StarStar {
 }
 
 impl Default for Xoshiro256StarStar {
-    fn default() -> Self { Self::new([1; 4]) }
+    fn default() -> Self {
+        Self::new([1; 4])
+    }
 }
 
 // TODO:

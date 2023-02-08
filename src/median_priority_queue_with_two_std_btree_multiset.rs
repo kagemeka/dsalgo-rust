@@ -6,7 +6,9 @@ pub struct MedianQueue<T> {
 }
 
 impl<T: Ord + Clone> MedianQueue<T> {
-    pub fn new() -> Self { Self { lo: Multiset::new(), hi: Multiset::new() } }
+    pub fn new() -> Self {
+        Self { lo: Multiset::new(), hi: Multiset::new() }
+    }
 
     fn balance(&self) -> isize {
         self.lo.size() as isize - self.hi.size() as isize
@@ -30,7 +32,9 @@ impl<T: Ord + Clone> MedianQueue<T> {
         }
     }
 
-    pub fn size(&self) -> usize { self.lo.size() + self.hi.size() }
+    pub fn size(&self) -> usize {
+        self.lo.size() + self.hi.size()
+    }
 
     pub fn count(
         &self,
@@ -52,7 +56,9 @@ impl<T: Ord + Clone> MedianQueue<T> {
         self.rebalance();
     }
 
-    pub fn low(&self) -> Option<&T> { self.lo.max() }
+    pub fn low(&self) -> Option<&T> {
+        self.lo.max()
+    }
 
     pub fn high(&self) -> Option<&T> {
         if self.balance() == 1 {

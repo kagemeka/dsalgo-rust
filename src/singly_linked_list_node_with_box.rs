@@ -4,7 +4,9 @@ pub struct Node<T> {
 }
 
 impl<T> Node<T> {
-    pub fn new(value: T) -> Box<Self> { Box::new(Self { next: None, value }) }
+    pub fn new(value: T) -> Box<Self> {
+        Box::new(Self { next: None, value })
+    }
 
     pub fn add(
         &mut self,
@@ -13,7 +15,9 @@ impl<T> Node<T> {
         self.next = node;
     }
 
-    pub fn split_off(&mut self) -> Option<Box<Node<T>>> { self.next.take() }
+    pub fn split_off(&mut self) -> Option<Box<Node<T>>> {
+        self.next.take()
+    }
 }
 
 #[cfg(test)]

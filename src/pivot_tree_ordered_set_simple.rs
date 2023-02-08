@@ -14,7 +14,9 @@ impl PivotSet {
         Self { root: None, max_height, size: 0 }
     }
 
-    pub fn size(&self) -> usize { self.size }
+    pub fn size(&self) -> usize {
+        self.size
+    }
 
     pub fn min_ge(
         &self,

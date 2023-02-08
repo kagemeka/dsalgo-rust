@@ -9,7 +9,9 @@ impl CumulativeSum2 {
         Self(Fenwick::new(size), Fenwick::new(size))
     }
 
-    pub fn size(&self) -> usize { self.0.size() }
+    pub fn size(&self) -> usize {
+        self.0.size()
+    }
 
     pub fn add(
         &mut self,

@@ -18,11 +18,17 @@ pub struct AvlTree<T> {
 }
 
 impl<T> AvlTree<T> {
-    pub fn new() -> Self { Self::default() }
+    pub fn new() -> Self {
+        Self::default()
+    }
 
-    pub fn is_empty(&self) -> bool { self.root.is_none() }
+    pub fn is_empty(&self) -> bool {
+        self.root.is_none()
+    }
 
-    pub fn len(&self) -> usize { len(self.root.as_deref()) }
+    pub fn len(&self) -> usize {
+        len(self.root.as_deref())
+    }
 
     pub fn push_back(
         &mut self,
@@ -62,15 +68,21 @@ impl<T> AvlTree<T> {
         Some(center.value)
     }
 
-    pub fn back(&self) -> Option<&T> { self.get(self.len().checked_sub(1)?) }
+    pub fn back(&self) -> Option<&T> {
+        self.get(self.len().checked_sub(1)?)
+    }
 
-    pub fn front(&self) -> Option<&T> { self.get(0) }
+    pub fn front(&self) -> Option<&T> {
+        self.get(0)
+    }
 
     pub fn back_mut(&mut self) -> Option<&mut T> {
         self.get_mut(self.len().checked_sub(1)?)
     }
 
-    pub fn front_mut(&mut self) -> Option<&mut T> { self.get_mut(0) }
+    pub fn front_mut(&mut self) -> Option<&mut T> {
+        self.get_mut(0)
+    }
 
     pub fn append(
         &mut self,
@@ -215,7 +227,9 @@ impl<T> AvlTree<T> {
 }
 
 impl<T> Default for AvlTree<T> {
-    fn default() -> Self { Self { root: None } }
+    fn default() -> Self {
+        Self { root: None }
+    }
 }
 
 impl<T: PartialEq> PartialEq for AvlTree<T> {
@@ -304,7 +318,9 @@ impl<'a, T> IntoIterator for &'a AvlTree<T> {
 
     type Item = &'a T;
 
-    fn into_iter(self) -> Self::IntoIter { self.iter() }
+    fn into_iter(self) -> Self::IntoIter {
+        self.iter()
+    }
 }
 
 impl<T> Index<usize> for AvlTree<T> {

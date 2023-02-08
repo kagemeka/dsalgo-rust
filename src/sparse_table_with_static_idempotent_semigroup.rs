@@ -59,7 +59,9 @@ where
         Self::from_iter(slice.iter().cloned())
     }
 
-    pub fn size(&self) -> usize { self.node[0].len() }
+    pub fn size(&self) -> usize {
+        self.node[0].len()
+    }
 
     pub fn reduce(
         &self,
@@ -158,7 +160,9 @@ where
         Self::from_iter(slice.iter().cloned())
     }
 
-    pub fn size(&self) -> usize { self.node[0].len() }
+    pub fn size(&self) -> usize {
+        self.node[0].len()
+    }
 
     /// [l, r)
 

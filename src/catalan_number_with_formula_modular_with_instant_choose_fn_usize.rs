@@ -20,5 +20,7 @@ mod tests {
 
     #[test]
 
-    fn test() { let p = 1_000_000_007; }
+    fn test() {
+        let p = 1_000_000_007;
+    }
 }

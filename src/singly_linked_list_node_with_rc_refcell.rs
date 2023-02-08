@@ -22,7 +22,9 @@ impl<T> Node<T> {
         self.next = node;
     }
 
-    pub fn split_off(&mut self) -> Option<Cell<T>> { self.next.take() }
+    pub fn split_off(&mut self) -> Option<Cell<T>> {
+        self.next.take()
+    }
 }
 
 #[cfg(test)]
