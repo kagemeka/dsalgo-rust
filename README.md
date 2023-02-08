@@ -14,8 +14,8 @@ Data Structures and Algorithms written in Rust.
 [gh-pages-url]: https://kagemeka.github.io/dsalgo-rust
 [mit-badge]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://github.com/kagemeka/dsalgo-rust/blob/main/LICENSE
-[actions-badge]: https://github.com/kagemeka/dsalgo-rust/actions/workflows/rust.yml/badge.svg
-[actions-url]: https://github.com/kagemeka/dsalgo-rust/actions/workflows/rust.yml
+[actions-badge]: https://github.com/kagemeka/dsalgo-rust/actions/workflows/ci.yml/badge.svg
+[actions-url]: https://github.com/kagemeka/dsalgo-rust/actions/workflows/ci.yml
 [pre-commit-badge]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
 [pre-commit-url]: https://github.com/pre-commit/pre-commit
 
