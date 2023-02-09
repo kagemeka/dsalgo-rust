@@ -21,38 +21,25 @@ Data Structures and Algorithms written in Rust.
 
 ## Installation
 
-upcoming.
-now please see crates.io
+```sh
+cargo install dsalgo 
+```
+
+## Example
+
+comming soon.
 
 ## Development
-
-### Prerequisites
-
-- docker installed.
-
-### create docker container and enter into it
-
-we recommend you to use VSCode and the extension `Dev Containers`.
-in that case, after the command below completed, you can select `Docker: Focus on Container Views` from command palette.
 
 ```sh
 docker compose up -d
 ```
 
-### VSCode Extensions
-
-if you use VSCode, it gonna be fine to install these extensions.
-
-- rust-analyzer
-- Even Better TOML
-
-### Setup & CI
-
-please run CI before any git commit.
-in addition to base rust docker image, you should install some dependencies to run CI script.
-but if you used docker compose, the setup have already done.
-for CI, don't worry, just do it.
+(enter the container)
 
 ```sh
+./setup.sh
 ./ci.sh
 ```
+
+please run ci.sh before commit
