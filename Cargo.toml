@@ -10,7 +10,3 @@ authors = ["kagemeka <kagemeka1@gmail.com>"]
 categories = ["algorithms", "data-structures"]
 license-file = "LICENSE"
 readme = "README.md"
-
-
-[workspace]
-members = ["cplib"]
