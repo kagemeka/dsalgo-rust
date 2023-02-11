@@ -1,7 +1,4 @@
-pub fn get(
-    s: &str,
-    i: usize,
-) -> char {
+pub fn get(s: &str, i: usize) -> char {
     s.chars().nth(i).unwrap()
 }
 

@@ -2,11 +2,7 @@
 /// pow for addition.
 /// under u64 -> it's enough to cast as u128.
 
-pub fn mul_doubling(
-    mut a: u128,
-    mut b: u128,
-    m: u128,
-) -> u128 {
+pub fn mul_doubling(mut a: u128, mut b: u128, m: u128) -> u128 {
     let mut res = 0;
 
     while b > 0 {

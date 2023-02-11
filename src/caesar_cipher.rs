@@ -2,11 +2,7 @@ use std::hash::Hash;
 
 /// caesart cipher
 
-pub fn encrypt<T: Eq + Hash + Clone>(
-    table: &[T],
-    a: &[T],
-    k: usize,
-) -> Vec<T> {
+pub fn encrypt<T: Eq + Hash + Clone>(table: &[T], a: &[T], k: usize) -> Vec<T> {
     let mut idx = std::collections::HashMap::new();
 
     for (i, x) in table.iter().enumerate() {
@@ -20,11 +16,7 @@ pub fn encrypt<T: Eq + Hash + Clone>(
     a.iter().map(|x| table[(idx[x] + k) % n].clone()).collect()
 }
 
-pub fn decrypt<T: Eq + Hash + Clone>(
-    table: &[T],
-    a: &[T],
-    k: usize,
-) -> Vec<T> {
+pub fn decrypt<T: Eq + Hash + Clone>(table: &[T], a: &[T], k: usize) -> Vec<T> {
     let mut idx = std::collections::HashMap::new();
 
     for (i, x) in table.iter().enumerate() {

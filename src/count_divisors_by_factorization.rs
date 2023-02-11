@@ -1,9 +1,6 @@
 use crate::divisors_count_from_prime_factors::*;
 
-pub fn count_divisors_by_factorization<F>(
-    factorize: &F,
-    n: u64,
-) -> u64
+pub fn count_divisors_by_factorization<F>(factorize: &F, n: u64) -> u64
 where
     F: Fn(u64) -> Vec<(u64, u8)>,
 {

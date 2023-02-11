@@ -70,22 +70,14 @@ impl<T, U> DirectedGraph<T, U> {
         self.edges.push(vec![]);
     }
 
-    pub fn add_edge(
-        &mut self,
-        from: usize,
-        to: usize,
-        data: U,
-    ) {
+    pub fn add_edge(&mut self, from: usize, to: usize, data: U) {
         assert!(from < self.size() && to < self.size());
 
         self.edges[from].push(DirectedEdge { from, to, data });
     }
 }
 
-use std::{
-    cell::RefCell,
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 #[derive(Debug)]
 
@@ -116,12 +108,7 @@ impl<T, U> UndirectedGraph<T, U> {
         self.edges.push(vec![]);
     }
 
-    pub fn add_edge(
-        &mut self,
-        left: usize,
-        right: usize,
-        data: U,
-    ) {
+    pub fn add_edge(&mut self, left: usize, right: usize, data: U) {
         assert!(left < self.size() && right < self.size());
 
         let edge = Rc::new(RefCell::new(UndirectedEdge { left, right, data }));

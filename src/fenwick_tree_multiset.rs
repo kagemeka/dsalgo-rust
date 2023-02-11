@@ -11,65 +11,40 @@ impl Multiset {
         self.0.fold_lt(self.0.size()) as usize
     }
 
-    pub fn count(
-        &self,
-        x: usize,
-    ) -> i32 {
+    pub fn count(&self, x: usize) -> i32 {
         self.0.fold_lt(x + 1) - self.0.fold_lt(x)
     }
 
     /// positive cnt: insert.
     /// negative cnt: remove. (|cnt| <= count(x))
 
-    pub fn add(
-        &mut self,
-        x: usize,
-        delta: i32,
-    ) {
+    pub fn add(&mut self, x: usize, delta: i32) {
         assert!(self.count(x) + delta >= 0);
 
         self.0.operate(x, delta);
     }
 
-    pub fn insert(
-        &mut self,
-        x: usize,
-    ) {
+    pub fn insert(&mut self, x: usize) {
         self.add(x, 1);
     }
 
-    pub fn remove(
-        &mut self,
-        x: usize,
-    ) {
+    pub fn remove(&mut self, x: usize) {
         self.add(x, -1);
     }
 
-    pub fn remove_all(
-        &mut self,
-        x: usize,
-    ) {
+    pub fn remove_all(&mut self, x: usize) {
         self.add(x, -self.count(x));
     }
 
-    pub fn lower_bound(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn lower_bound(&self, x: usize) -> usize {
         self.0.fold_lt(x) as usize
     }
 
-    pub fn upper_bound(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn upper_bound(&self, x: usize) -> usize {
         self.0.fold_lt(x + 1) as usize
     }
 
-    pub fn get(
-        &self,
-        i: usize,
-    ) -> Option<usize> {
+    pub fn get(&self, i: usize) -> Option<usize> {
         let v = self.0.max_right(|&x| x as usize <= i);
 
         if v == self.0.size() {

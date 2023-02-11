@@ -1,7 +1,4 @@
-pub fn reduce<T, F, I>(
-    f: F,
-    values: I,
-) -> Option<T>
+pub fn reduce<T, F, I>(f: F, values: I) -> Option<T>
 where
     F: Fn(T, T) -> T,
     I: Iterator<Item = T>,

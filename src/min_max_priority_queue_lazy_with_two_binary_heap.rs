@@ -1,9 +1,6 @@
 use std::{
     cmp::Reverse,
-    collections::{
-        BinaryHeap,
-        HashMap,
-    },
+    collections::{BinaryHeap, HashMap},
 };
 
 pub struct MinMaxQueue<T> {
@@ -23,11 +20,7 @@ impl<T: Ord + std::hash::Hash + Clone> MinMaxQueue<T> {
         }
     }
 
-    pub fn insert(
-        &mut self,
-        x: T,
-        count: usize,
-    ) {
+    pub fn insert(&mut self, x: T, count: usize) {
         assert!(count > 0);
 
         let c = self.cnt.entry(x.clone()).or_insert(0);
@@ -47,25 +40,15 @@ impl<T: Ord + std::hash::Hash + Clone> MinMaxQueue<T> {
         self.size
     }
 
-    pub fn count(
-        &self,
-        x: &T,
-    ) -> usize {
+    pub fn count(&self, x: &T) -> usize {
         *self.cnt.get(x).or_else(|| Some(&0)).unwrap()
     }
 
-    pub fn contains(
-        &self,
-        x: &T,
-    ) -> bool {
+    pub fn contains(&self, x: &T) -> bool {
         self.count(x) > 0
     }
 
-    pub fn remove(
-        &mut self,
-        x: &T,
-        count: usize,
-    ) {
+    pub fn remove(&mut self, x: &T, count: usize) {
         assert!(self.count(x) >= count && count > 0);
 
         *self.cnt.get_mut(&x).unwrap() -= count;

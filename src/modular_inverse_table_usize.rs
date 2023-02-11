@@ -5,10 +5,7 @@ use crate::{
 
 /// inv[0] is undefined. please don't access to
 
-pub fn inverse(
-    m: usize,
-    size: usize,
-) -> Vec<usize> {
+pub fn inverse(m: usize, size: usize) -> Vec<usize> {
     let mut inv = inverse_factorial(m, size);
 
     for (i, x) in factorial(m, size - 1).into_iter().enumerate() {

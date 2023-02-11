@@ -9,10 +9,7 @@ impl Node {
     /// capacity: 2^max_height - 1
     /// 1 <= value < 2^max_height internally,
 
-    pub fn new(
-        max_height: usize,
-        value: usize,
-    ) -> Option<Box<Self>> {
+    pub fn new(max_height: usize, value: usize) -> Option<Box<Self>> {
         assert!(max_height > 0);
 
         assert!(1 <= value && value < 1 << max_height);
@@ -25,17 +22,11 @@ impl Node {
         }))
     }
 
-    fn with_pivot(
-        pivot: usize,
-        value: usize,
-    ) -> Option<Box<Self>> {
+    fn with_pivot(pivot: usize, value: usize) -> Option<Box<Self>> {
         Some(Box::new(Self { pivot, value, left: None, right: None }))
     }
 
-    pub fn insert(
-        &mut self,
-        mut v: usize,
-    ) {
+    pub fn insert(&mut self, mut v: usize) {
         use std::mem::swap;
 
         assert!(v != self.value);
@@ -71,10 +62,7 @@ impl Node {
         }
     }
 
-    pub fn remove(
-        root: Option<Box<Self>>,
-        v: usize,
-    ) -> Option<Box<Self>> {
+    pub fn remove(root: Option<Box<Self>>, v: usize) -> Option<Box<Self>> {
         if root.is_none() {
             return None;
         }
@@ -126,10 +114,7 @@ impl Node {
         }
     }
 
-    pub fn min_ok<F>(
-        is_ok: F,
-        root: Option<&Box<Self>>,
-    ) -> Option<usize>
+    pub fn min_ok<F>(is_ok: F, root: Option<&Box<Self>>) -> Option<usize>
     where
         F: Fn(usize) -> bool,
     {
@@ -150,10 +135,7 @@ impl Node {
         }
     }
 
-    pub fn max_ok<F>(
-        is_ok: F,
-        root: Option<&Box<Self>>,
-    ) -> Option<usize>
+    pub fn max_ok<F>(is_ok: F, root: Option<&Box<Self>>) -> Option<usize>
     where
         F: Fn(usize) -> bool,
     {
@@ -177,10 +159,7 @@ impl Node {
     pub fn iter<'a>(&'a self) -> std::vec::IntoIter<&'a usize> {
         let mut inorder = vec![];
 
-        fn dfs<'b>(
-            res: &mut Vec<&'b usize>,
-            node: &'b Node,
-        ) {
+        fn dfs<'b>(res: &mut Vec<&'b usize>, node: &'b Node) {
             if let Some(left) = node.left.as_ref() {
                 dfs(res, left);
             }

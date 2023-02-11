@@ -2,10 +2,7 @@ use std::ops::*;
 
 use crate::sieve_of_eratosthenes_enumerate_primes_usize::enumerate_primes;
 
-pub fn fast_zeta_divisors<T, F>(
-    mut f: Vec<T>,
-    op: F,
-) -> Vec<T>
+pub fn fast_zeta_divisors<T, F>(mut f: Vec<T>, op: F) -> Vec<T>
 where
     T: Clone,
     F: Fn(T, T) -> T,

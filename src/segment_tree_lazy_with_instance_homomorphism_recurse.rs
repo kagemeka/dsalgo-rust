@@ -3,27 +3,15 @@ pub trait Ops {
 
     type F;
 
-    fn op(
-        &self,
-        a: Self::S,
-        b: Self::S,
-    ) -> Self::S;
+    fn op(&self, a: Self::S, b: Self::S) -> Self::S;
 
     fn e(&self) -> Self::S;
 
-    fn compose(
-        &self,
-        f: Self::F,
-        g: Self::F,
-    ) -> Self::F;
+    fn compose(&self, f: Self::F, g: Self::F) -> Self::F;
 
     fn id(&self) -> Self::F;
 
-    fn map(
-        &self,
-        f: Self::F,
-        x: Self::S,
-    ) -> Self::S;
+    fn map(&self, f: Self::F, x: Self::S) -> Self::S;
 }
 
 #[derive(Debug)]
@@ -40,10 +28,7 @@ where
     O::S: Clone,
     O::F: Clone,
 {
-    pub fn new(
-        ops: O,
-        size: usize,
-    ) -> Self {
+    pub fn new(ops: O, size: usize) -> Self {
         assert!(size > 0);
 
         let n = size.next_power_of_two();
@@ -63,20 +48,13 @@ where
         self.lazy.len()
     }
 
-    fn merge(
-        &mut self,
-        i: usize,
-    ) {
+    fn merge(&mut self, i: usize) {
         self.data[i] = self
             .ops
             .op(self.data[i << 1].clone(), self.data[i << 1 | 1].clone());
     }
 
-    fn apply_node(
-        &mut self,
-        i: usize,
-        f: O::F,
-    ) {
+    fn apply_node(&mut self, i: usize, f: O::F) {
         self.data[i] = self.ops.map(f.clone(), self.data[i].clone());
 
         if i < self.n() {
@@ -84,10 +62,7 @@ where
         }
     }
 
-    fn propagate(
-        &mut self,
-        i: usize,
-    ) {
+    fn propagate(&mut self, i: usize) {
         let f = self.lazy[i].clone();
 
         self.apply_node(i << 1, f.clone());
@@ -97,24 +72,13 @@ where
         self.lazy[i] = self.ops.id();
     }
 
-    pub fn set(
-        &mut self,
-        i: usize,
-        x: O::S,
-    ) {
+    pub fn set(&mut self, i: usize, x: O::S) {
         assert!(i < self.size());
 
         self._set(i, 0, self.n(), 1, x);
     }
 
-    fn _set(
-        &mut self,
-        i: usize,
-        cl: usize,
-        cr: usize,
-        ci: usize,
-        x: O::S,
-    ) {
+    fn _set(&mut self, i: usize, cl: usize, cr: usize, ci: usize, x: O::S) {
         assert!(cl <= i && i < cr);
 
         if cr - cl == 1 {
@@ -136,12 +100,7 @@ where
         self.merge(ci);
     }
 
-    pub fn apply(
-        &mut self,
-        l: usize,
-        r: usize,
-        f: O::F,
-    ) {
+    pub fn apply(&mut self, l: usize, r: usize, f: O::F) {
         assert!(l <= r && r <= self.size);
 
         self._apply(l, r, 0, self.n(), 1, f);
@@ -177,18 +136,11 @@ where
         self.merge(i);
     }
 
-    pub fn get(
-        &mut self,
-        i: usize,
-    ) -> O::S {
+    pub fn get(&mut self, i: usize) -> O::S {
         self.fold(i, i + 1)
     }
 
-    pub fn fold(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> O::S {
+    pub fn fold(&mut self, l: usize, r: usize) -> O::S {
         assert!(l <= r && r <= self.size);
 
         self._fold(l, r, 0, self.n(), 1)
@@ -221,11 +173,7 @@ where
         self.ops.op(vl, vr)
     }
 
-    pub fn max_right<G>(
-        &mut self,
-        is_ok: G,
-        l: usize,
-    ) -> usize
+    pub fn max_right<G>(&mut self, is_ok: G, l: usize) -> usize
     where
         G: Fn(&O::S) -> bool,
     {
@@ -279,11 +227,7 @@ where
         self._max_right(is_ok, l, c, cr, v, i << 1 | 1)
     }
 
-    pub fn min_left<G>(
-        &mut self,
-        is_ok: G,
-        r: usize,
-    ) -> usize
+    pub fn min_left<G>(&mut self, is_ok: G, r: usize) -> usize
     where
         G: Fn(&O::S) -> bool,
     {
@@ -350,11 +294,7 @@ mod tests {
 
             type S = (i64, usize);
 
-            fn op(
-                &self,
-                a: Self::S,
-                b: Self::S,
-            ) -> Self::S {
+            fn op(&self, a: Self::S, b: Self::S) -> Self::S {
                 (a.0 + b.0, a.1 + b.1)
             }
 
@@ -362,11 +302,7 @@ mod tests {
                 (0, 0)
             }
 
-            fn compose(
-                &self,
-                f: Self::F,
-                g: Self::F,
-            ) -> Self::F {
+            fn compose(&self, f: Self::F, g: Self::F) -> Self::F {
                 f + g
             }
 
@@ -374,11 +310,7 @@ mod tests {
                 0
             }
 
-            fn map(
-                &self,
-                f: Self::F,
-                x: Self::S,
-            ) -> Self::S {
+            fn map(&self, f: Self::F, x: Self::S) -> Self::S {
                 (x.0 + x.1 as i64 * f, x.1)
             }
         }

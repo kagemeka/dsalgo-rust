@@ -5,11 +5,7 @@ use crate::chinese_remainder_theorem_extended_euclidean_gcd_prod_i64_direct::*;
 /// y = 0 (mod m)
 /// y = b (mod a)
 
-pub fn mod_linear_equation(
-    m: i64,
-    a: i64,
-    b: i64,
-) -> Option<i64> {
+pub fn mod_linear_equation(m: i64, a: i64, b: i64) -> Option<i64> {
     assert!(m > 0 && a > 0);
 
     let (m, mut y) = crt(&[(m, 0), (a, b)])?;

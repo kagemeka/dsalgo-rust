@@ -4,10 +4,7 @@ pub struct Xorwow {
 }
 
 impl Xorwow {
-    pub fn new(
-        seeds: [u32; 5],
-        counter: u32,
-    ) -> Self {
+    pub fn new(seeds: [u32; 5], counter: u32) -> Self {
         Self { seeds, counter }
     }
 

@@ -1,15 +1,6 @@
-use crate::{
-    power_monoid::pow_monoid,
-    power_semigroup::pow_semigroup,
-};
+use crate::{power_monoid::pow_monoid, power_semigroup::pow_semigroup};
 
-pub fn pow_group<F, E, Inv, X>(
-    f: F,
-    e: &E,
-    inv: &Inv,
-    x: X,
-    exp: i64,
-) -> X
+pub fn pow_group<F, E, Inv, X>(f: F, e: &E, inv: &Inv, x: X, exp: i64) -> X
 where
     F: Fn(X, X) -> X,
     E: Fn() -> X,

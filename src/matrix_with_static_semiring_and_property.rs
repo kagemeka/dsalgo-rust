@@ -1,22 +1,13 @@
-use std::{
-    marker::PhantomData,
-    ops::*,
-};
+use std::{marker::PhantomData, ops::*};
 
 pub trait Semiring {
     type T;
 
-    fn add(
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn add(l: Self::T, r: Self::T) -> Self::T;
 
     fn zero() -> Self::T;
 
-    fn mul(
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn mul(l: Self::T, r: Self::T) -> Self::T;
 
     fn one() -> Self::T;
 }
@@ -50,19 +41,13 @@ where
 impl<R: Semiring, P> Index<usize> for Matrix<R, P> {
     type Output = [R::T];
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         &self.0[i]
     }
 }
 
 impl<R: Semiring, P> IndexMut<usize> for Matrix<R, P> {
-    fn index_mut(
-        &mut self,
-        i: usize,
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, i: usize) -> &mut Self::Output {
         &mut self.0[i]
     }
 }
@@ -104,10 +89,7 @@ where
 {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(mut self, rhs: Self) -> Self::Output {
         let (h, w) = P::shape();
 
         for i in 0..h {
@@ -126,10 +108,7 @@ where
     R: Clone,
     R::T: AddAssign + Clone,
 {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = self.clone() + rhs;
     }
 }
@@ -163,10 +142,7 @@ where
 {
     type Output = Self;
 
-    fn mul(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(self, rhs: Self) -> Self::Output {
         let n = P::size();
 
         let mut a: Self = 0.into();
@@ -189,10 +165,7 @@ where
     R: Clone,
     R::T: Mul<Output = R::T> + AddAssign + Clone,
 {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = self.clone() * rhs;
     }
 }
@@ -223,17 +196,11 @@ mod tests {
         impl Semiring for R {
             type T = i64;
 
-            fn add(
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn add(l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
 
-            fn mul(
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn mul(l: Self::T, r: Self::T) -> Self::T {
                 l * r
             }
 

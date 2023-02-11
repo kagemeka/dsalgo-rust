@@ -13,11 +13,7 @@ impl<T: Ord + Clone> Ops for RangeUpdateRangeMinimum<T> {
 
     type S = T;
 
-    fn op(
-        &self,
-        a: Self::S,
-        b: Self::S,
-    ) -> Self::S {
+    fn op(&self, a: Self::S, b: Self::S) -> Self::S {
         a.min(b)
     }
 
@@ -25,11 +21,7 @@ impl<T: Ord + Clone> Ops for RangeUpdateRangeMinimum<T> {
         self.0.clone()
     }
 
-    fn compose(
-        &self,
-        f: Self::F,
-        g: Self::F,
-    ) -> Self::F {
+    fn compose(&self, f: Self::F, g: Self::F) -> Self::F {
         if f.is_some() {
             f
         } else {
@@ -41,11 +33,7 @@ impl<T: Ord + Clone> Ops for RangeUpdateRangeMinimum<T> {
         None
     }
 
-    fn map(
-        &self,
-        f: Self::F,
-        x: Self::S,
-    ) -> Self::S {
+    fn map(&self, f: Self::F, x: Self::S) -> Self::S {
         if let Some(f) = f {
             f
         } else {

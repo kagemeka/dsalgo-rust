@@ -53,10 +53,7 @@ impl SCC {
         self.g = g;
     }
 
-    fn calc_topological_rev_ord(
-        &mut self,
-        u: usize,
-    ) {
+    fn calc_topological_rev_ord(&mut self, u: usize) {
         let n = self.g.len();
 
         self.state[u] = n;
@@ -70,11 +67,7 @@ impl SCC {
         self.post_order.push(u);
     }
 
-    fn labeling(
-        &mut self,
-        label: usize,
-        u: usize,
-    ) {
+    fn labeling(&mut self, label: usize, u: usize) {
         self.state[u] = label;
 
         for v in self.g[u].clone().into_iter() {

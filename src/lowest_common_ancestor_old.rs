@@ -45,11 +45,7 @@ pub mod tree {
             Self { a, d }
         }
 
-        pub fn get(
-            &self,
-            mut u: usize,
-            mut v: usize,
-        ) -> usize {
+        pub fn get(&self, mut u: usize, mut v: usize) -> usize {
             if self.d[u] > self.d[v] {
                 std::mem::swap(&mut u, &mut v);
             }
@@ -82,16 +78,12 @@ pub mod tree {
 
     use crate::{
         tree_edges_to_graph::tree_edges_to_graph,
-        union_find_low_memory_with_trait::*,
-        union_find_traits::*,
+        union_find_low_memory_with_trait::*, union_find_traits::*,
     };
 
     /// tarjan's offline algorithm
 
-    pub fn tarjan(
-        e: &[(usize, usize)],
-        qs: &[(usize, usize)],
-    ) -> Vec<usize> {
+    pub fn tarjan(e: &[(usize, usize)], qs: &[(usize, usize)]) -> Vec<usize> {
         fn dfs(
             g: &Vec<Vec<usize>>,
             q: &Vec<Vec<(usize, usize)>>,
@@ -156,10 +148,7 @@ pub mod tree {
     }
 
     impl LCAHLD {
-        pub fn new(
-            tree_edges: &[(usize, usize)],
-            root: usize,
-        ) -> Self {
+        pub fn new(tree_edges: &[(usize, usize)], root: usize) -> Self {
             Self {
                 p: tree_parents(tree_edges, root),
                 d: tree_depths(tree_edges, root),
@@ -167,11 +156,7 @@ pub mod tree {
             }
         }
 
-        pub fn get(
-            &self,
-            mut u: usize,
-            mut v: usize,
-        ) -> usize {
+        pub fn get(&self, mut u: usize, mut v: usize) -> usize {
             use std::mem::swap;
 
             while self.r[u] != self.r[v] {
@@ -191,10 +176,7 @@ pub mod tree {
     }
 
     use crate::{
-        ett::{
-            first_positions,
-            tour_nodes,
-        },
+        ett::{first_positions, tour_nodes},
         query::RangeMinimumQuery,
     };
 
@@ -206,10 +188,7 @@ pub mod tree {
     }
 
     impl<Q> EulerTourRMQ<Q> {
-        pub fn new(
-            tree_edges: &[(usize, usize)],
-            root: usize,
-        ) -> Self
+        pub fn new(tree_edges: &[(usize, usize)], root: usize) -> Self
         where
             Q: std::iter::FromIterator<(usize, usize)>,
         {
@@ -228,11 +207,7 @@ pub mod tree {
             Self { first_pos, rmq }
         }
 
-        pub fn get(
-            &mut self,
-            u: usize,
-            v: usize,
-        ) -> usize
+        pub fn get(&mut self, u: usize, v: usize) -> usize
         where
             Q: RangeMinimumQuery<T = (usize, usize)>,
         {
@@ -249,8 +224,7 @@ pub mod tree {
     }
 
     use crate::{
-        algebraic_structure_impl::*,
-        group_theory_id::Min,
+        algebraic_structure_impl::*, group_theory_id::Min,
         segment_tree_with_static_monoid::Segtree,
     };
 

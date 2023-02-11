@@ -1,6 +1,5 @@
 use crate::{
-    algebraic_structure::*,
-    binary_function::*,
+    algebraic_structure::*, binary_function::*,
     bit_length_with_count_leading_zeros_u64::bit_length,
 };
 
@@ -63,20 +62,13 @@ where
 
     /// merge child values and replace with it.
 
-    fn update(
-        &mut self,
-        i: usize,
-    ) {
+    fn update(&mut self, i: usize) {
         self.d[i] = Sg::op(self.d[i << 1].clone(), self.d[i << 1 | 1].clone());
     }
 
     /// apply operator f to node i.
 
-    fn apply_node(
-        &mut self,
-        i: usize,
-        f: Fg::S,
-    ) {
+    fn apply_node(&mut self, i: usize, f: Fg::S) {
         self.d[i] = M::f(f.clone(), self.d[i].clone());
 
         if i < self.lz.len() {
@@ -86,10 +78,7 @@ where
 
     /// convey lazy operator to childs
 
-    fn propagate(
-        &mut self,
-        i: usize,
-    ) {
+    fn propagate(&mut self, i: usize) {
         let f = self.lz[i].clone();
 
         self.apply_node(i << 1, f.clone());
@@ -100,20 +89,14 @@ where
     }
 
     // from root
-    fn propagate_above(
-        &mut self,
-        i: usize,
-    ) {
+    fn propagate_above(&mut self, i: usize) {
         for j in (1..self.h).rev() {
             self.propagate(i >> j);
         }
     }
 
     // from leaf
-    fn update_above(
-        &mut self,
-        mut i: usize,
-    ) {
+    fn update_above(&mut self, mut i: usize) {
         while i > 1 {
             i >>= 1;
 
@@ -121,12 +104,7 @@ where
         }
     }
 
-    pub fn apply(
-        &mut self,
-        mut l: usize,
-        mut r: usize,
-        f: Fg::S,
-    ) {
+    pub fn apply(&mut self, mut l: usize, mut r: usize, f: Fg::S) {
         assert!(l <= r && r <= self.size);
 
         let n = self.n();
@@ -166,10 +144,7 @@ where
         self.update_above(r0);
     }
 
-    pub fn get(
-        &mut self,
-        mut i: usize,
-    ) -> Sg::S {
+    pub fn get(&mut self, mut i: usize) -> Sg::S {
         assert!(i < self.size);
 
         i += self.n();
@@ -179,11 +154,8 @@ where
         self.d[i].clone()
     }
 
-    pub fn apply_point<F>(
-        &mut self,
-        i: usize,
-        f: F,
-    ) where
+    pub fn apply_point<F>(&mut self, i: usize, f: F)
+    where
         F: Fn(Sg::S) -> Sg::S,
     {
         let n = self.n();
@@ -193,19 +165,11 @@ where
         self.update_above(i + n);
     }
 
-    pub fn set(
-        &mut self,
-        i: usize,
-        v: Sg::S,
-    ) {
+    pub fn set(&mut self, i: usize, v: Sg::S) {
         self.apply_point(i, |_| v.clone());
     }
 
-    pub fn reduce(
-        &mut self,
-        mut l: usize,
-        mut r: usize,
-    ) -> Sg::S {
+    pub fn reduce(&mut self, mut l: usize, mut r: usize) -> Sg::S {
         assert!(l <= r && r <= self.size);
 
         let n = self.n();
@@ -245,11 +209,7 @@ where
 
     /// prod[l, r) = true
 
-    pub fn max_right<G>(
-        &mut self,
-        is_ok: &G,
-        l: usize,
-    ) -> usize
+    pub fn max_right<G>(&mut self, is_ok: &G, l: usize) -> usize
     where
         G: Fn(&Sg::S) -> bool,
     {
@@ -309,11 +269,7 @@ where
 
     /// prod[l, r) = true
 
-    pub fn min_left<G>(
-        &mut self,
-        is_ok: &G,
-        r: usize,
-    ) -> usize
+    pub fn min_left<G>(&mut self, is_ok: &G, r: usize) -> usize
     where
         G: Fn(&Sg::S) -> bool,
     {
@@ -372,12 +328,7 @@ where
         i - n
     }
 
-    pub fn apply_recurse(
-        &mut self,
-        l: usize,
-        r: usize,
-        f: Fg::S,
-    ) {
+    pub fn apply_recurse(&mut self, l: usize, r: usize, f: Fg::S) {
         assert!(l <= r && r <= self.size);
 
         self._apply_recurse(l, r, 0, self.n(), 1, f);
@@ -413,11 +364,7 @@ where
         self.update(i);
     }
 
-    pub fn reduce_recurse(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> Sg::S {
+    pub fn reduce_recurse(&mut self, l: usize, r: usize) -> Sg::S {
         assert!(l <= r && r <= self.size);
 
         self._reduce_recurse(l, r, 0, self.n(), 1)
@@ -449,11 +396,7 @@ where
         )
     }
 
-    pub fn max_right_recurse<G>(
-        &mut self,
-        is_ok: &G,
-        l: usize,
-    ) -> usize
+    pub fn max_right_recurse<G>(&mut self, is_ok: &G, l: usize) -> usize
     where
         G: Fn(&Sg::S) -> bool,
     {
@@ -507,11 +450,7 @@ where
         self._max_right_recurse(is_ok, l, c, cr, v, i << 1 | 1)
     }
 
-    pub fn min_left_recurse<G>(
-        &mut self,
-        is_ok: &G,
-        r: usize,
-    ) -> usize
+    pub fn min_left_recurse<G>(&mut self, is_ok: &G, r: usize) -> usize
     where
         G: Fn(&Sg::S) -> bool,
     {
@@ -583,10 +522,7 @@ mod tests {
         impl BinaryOp for RARS<Data> {
             type S = Data;
 
-            fn op(
-                a: Self::S,
-                b: Self::S,
-            ) -> Self::S {
+            fn op(a: Self::S, b: Self::S) -> Self::S {
                 Data { sum: a.sum + b.sum, len: a.len + b.len }
             }
         }
@@ -600,8 +536,7 @@ mod tests {
         }
 
         use crate::{
-            algebraic_structure_impl::GroupApprox,
-            group_theory_id::Additive,
+            algebraic_structure_impl::GroupApprox, group_theory_id::Additive,
         };
 
         struct Map;
@@ -613,10 +548,7 @@ mod tests {
 
             type R = Data;
 
-            fn f(
-                op: Self::L,
-                x: Self::R,
-            ) -> Self::Cod {
+            fn f(op: Self::L, x: Self::R) -> Self::Cod {
                 Data { sum: x.sum + op * x.len as i32, len: x.len }
             }
         }

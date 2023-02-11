@@ -1,5 +1,5 @@
 pub fn read_token<R, T>(
-    reader: &mut R
+    reader: &mut R,
 ) -> Result<T, <T as std::str::FromStr>::Err>
 where
     R: std::io::Read,

@@ -5,11 +5,7 @@ pub struct RangeMinimum;
 impl Monoid for RangeMinimum {
     type T = i32;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T {
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T {
         l.min(r)
     }
 

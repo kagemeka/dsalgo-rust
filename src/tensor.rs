@@ -1,8 +1,4 @@
-use crate::tensor_property::{
-    Shape,
-    Size,
-    Strides,
-};
+use crate::tensor_property::{Shape, Size, Strides};
 
 // TODO: define macro for initialization.
 // accept scalar, 1d vec, 2d vec, ... n-d vec.
@@ -60,10 +56,7 @@ impl<P, T> Tensor<P, T>
 where
     P: Strides,
 {
-    fn flatten_index(
-        &self,
-        index: &[usize],
-    ) -> usize {
+    fn flatten_index(&self, index: &[usize]) -> usize {
         let mut idx = 0;
 
         let strides = P::strides();
@@ -84,10 +77,7 @@ where
 {
     type Output = T;
 
-    fn index(
-        &self,
-        index: &[usize],
-    ) -> &Self::Output {
+    fn index(&self, index: &[usize]) -> &Self::Output {
         let idx = self.flatten_index(index);
 
         &self.data[idx]
@@ -98,10 +88,7 @@ impl<P, T> std::ops::IndexMut<&[usize]> for Tensor<P, T>
 where
     P: Strides,
 {
-    fn index_mut(
-        &mut self,
-        index: &[usize],
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, index: &[usize]) -> &mut Self::Output {
         let idx = self.flatten_index(index);
 
         &mut self.data[idx]

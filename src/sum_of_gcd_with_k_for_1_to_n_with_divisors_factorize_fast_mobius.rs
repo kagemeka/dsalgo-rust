@@ -5,10 +5,7 @@ use crate::{
 
 /// sum(gcd(i, k)) for i = 1..=n
 
-pub fn sum_of_gcd(
-    n: u64,
-    k: u64,
-) -> u64 {
+pub fn sum_of_gcd(n: u64, k: u64) -> u64 {
     let divs = find_divisors(k);
 
     let mut cnt = std::collections::HashMap::new();

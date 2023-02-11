@@ -1,7 +1,4 @@
-pub fn count_toposort(
-    adj_bits: &[usize],
-    modulus: usize,
-) -> usize {
+pub fn count_toposort(adj_bits: &[usize], modulus: usize) -> usize {
     let g = adj_bits;
 
     let n = g.len();

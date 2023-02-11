@@ -1,8 +1,5 @@
-pub fn graph_bfs<F>(
-    g: &[Vec<usize>],
-    mut f: F,
-    src: usize,
-) where
+pub fn graph_bfs<F>(g: &[Vec<usize>], mut f: F, src: usize)
+where
     F: FnMut(usize, usize) -> bool,
 {
     let mut que = std::collections::VecDeque::new();

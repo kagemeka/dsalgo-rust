@@ -1,17 +1,9 @@
-pub fn homogeneous_products(
-    n: usize,
-    k: usize,
-) -> Vec<Vec<usize>> {
+pub fn homogeneous_products(n: usize, k: usize) -> Vec<Vec<usize>> {
     assert!(n > 0);
 
     let mut res = vec![];
 
-    fn dfs(
-        n: usize,
-        k: usize,
-        res: &mut Vec<Vec<usize>>,
-        a: &mut Vec<usize>,
-    ) {
+    fn dfs(n: usize, k: usize, res: &mut Vec<Vec<usize>>, a: &mut Vec<usize>) {
         let m = a.len();
 
         if m == k {

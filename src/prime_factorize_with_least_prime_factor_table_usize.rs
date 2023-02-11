@@ -7,10 +7,7 @@ impl PrimeFactorize {
         Self(least_prime_factor(size))
     }
 
-    pub fn factorize(
-        &self,
-        mut n: usize,
-    ) -> Vec<(usize, usize)> {
+    pub fn factorize(&self, mut n: usize) -> Vec<(usize, usize)> {
         assert!(n < self.0.len());
 
         let mut factors = vec![];

@@ -3,10 +3,7 @@
 //! pop median
 //! find median,
 
-use std::{
-    cmp::Reverse,
-    collections::BinaryHeap,
-};
+use std::{cmp::Reverse, collections::BinaryHeap};
 
 pub struct MedianQueue<T> {
     low_que: BinaryHeap<T>,
@@ -45,10 +42,7 @@ impl<T: Clone + Ord> MedianQueue<T> {
         debug_assert!(self.balance() == 0 || self.balance() == 1);
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push(&mut self, x: T) {
         if self.balance() == 1 {
             self.low_que.push(x);
         } else {

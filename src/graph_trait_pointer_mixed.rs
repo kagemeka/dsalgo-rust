@@ -1,9 +1,6 @@
 #![allow(dead_code)]
 
-use std::{
-    cell::RefCell,
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 pub(crate) struct EdgeData;
 
@@ -12,10 +9,7 @@ pub(crate) struct NodeData;
 pub(crate) trait Edge<T = Option<EdgeData>, U = Option<NodeData>> {}
 
 impl<T, U> std::fmt::Debug for dyn Edge<T, U> {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "Edge")
     }
 }
@@ -26,10 +20,7 @@ pub(crate) struct Node<T, U> {
 }
 
 impl<T: std::fmt::Debug, U> std::fmt::Debug for Node<T, U> {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "Node {{ data: {:?}, edegs: {:?}}}", self.data, self.edges)
     }
 }
@@ -135,12 +126,8 @@ impl<T, U> MixedGraph<T, U> {
         self.nodes.push(Rc::new(RefCell::new(Node::default())));
     }
 
-    pub fn add_directed_edge(
-        &mut self,
-        from: usize,
-        to: usize,
-        data: U,
-    ) where
+    pub fn add_directed_edge(&mut self, from: usize, to: usize, data: U)
+    where
         T: 'static,
         U: 'static,
     {
@@ -155,12 +142,8 @@ impl<T, U> MixedGraph<T, U> {
         )));
     }
 
-    pub fn add_undirected_edge(
-        &mut self,
-        left: usize,
-        right: usize,
-        data: U,
-    ) where
+    pub fn add_undirected_edge(&mut self, left: usize, right: usize, data: U)
+    where
         T: 'static,
         U: 'static,
     {
@@ -185,10 +168,7 @@ mod tests {
     #[test]
 
     fn test() {
-        use std::{
-            cell::RefCell,
-            rc::Rc,
-        };
+        use std::{cell::RefCell, rc::Rc};
 
         #[derive(Debug, Default, Clone)]
 

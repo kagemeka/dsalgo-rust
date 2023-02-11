@@ -18,17 +18,11 @@ impl<T> Deque<T> {
         swap(&mut self.st_l, &mut self.st_r);
     }
 
-    pub fn push_right(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push_right(&mut self, x: T) {
         self.st_r.push(x);
     }
 
-    pub fn push_left(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push_left(&mut self, x: T) {
         self.st_l.push(x);
     }
 

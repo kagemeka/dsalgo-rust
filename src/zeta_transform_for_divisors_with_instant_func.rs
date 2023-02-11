@@ -1,9 +1,6 @@
 use std::ops::*;
 
-pub fn fast_zeta_divisors<T, F>(
-    mut f: Vec<T>,
-    op: F,
-) -> Vec<T>
+pub fn fast_zeta_divisors<T, F>(mut f: Vec<T>, op: F) -> Vec<T>
 where
     T: Clone,
     F: Fn(T, T) -> T,

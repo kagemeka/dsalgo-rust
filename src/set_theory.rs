@@ -2,10 +2,7 @@
 // pub struct OperationId;
 // impl OperationIdentifier for OperationId {}
 pub trait Mapping<S, F> {
-    fn map(
-        operator: &F,
-        element: &S,
-    ) -> S;
+    fn map(operator: &F, element: &S) -> S;
 }
 
 #[cfg(test)]

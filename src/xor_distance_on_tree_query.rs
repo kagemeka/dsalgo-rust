@@ -7,11 +7,7 @@ impl XorTreeDist {
         Self(tree_dfs_xor_dist(&g))
     }
 
-    pub fn calc(
-        &self,
-        u: usize,
-        v: usize,
-    ) -> usize {
+    pub fn calc(&self, u: usize, v: usize) -> usize {
         self.0[u] ^ self.0[v]
     }
 }

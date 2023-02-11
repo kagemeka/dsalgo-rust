@@ -14,10 +14,7 @@ pub struct PrimeGenerator {
 impl PrimeGenerator {
     /// lo <= hi < 10^14
 
-    pub fn new(
-        lo: usize,
-        hi: usize,
-    ) -> Self {
+    pub fn new(lo: usize, hi: usize) -> Self {
         let chunk_size = isqrt(hi) << 3;
 
         Self {

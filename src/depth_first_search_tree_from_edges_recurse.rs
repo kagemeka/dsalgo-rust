@@ -1,10 +1,6 @@
 use crate::adjacency_list_graph_with_edge_id_from_edges::*;
 
-pub fn dfs_tree(
-    n: usize,
-    edges: &[(usize, usize)],
-    root: usize,
-) -> Vec<bool> {
+pub fn dfs_tree(n: usize, edges: &[(usize, usize)], root: usize) -> Vec<bool> {
     let m = edges.len();
 
     let mut used = vec![false; m];

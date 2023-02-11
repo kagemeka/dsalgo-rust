@@ -1,7 +1,4 @@
-use crate::{
-    binary_function::*,
-    group_theory_id::*,
-};
+use crate::{binary_function::*, group_theory_id::*};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 
@@ -12,10 +9,7 @@ pub struct GroupApprox<S, I>(std::marker::PhantomData<(S, I)>);
 impl BinaryOp for GroupApprox<(usize, usize), Min> {
     type S = (usize, usize);
 
-    fn op(
-        lhs: Self::S,
-        rhs: Self::S,
-    ) -> Self::S {
+    fn op(lhs: Self::S, rhs: Self::S) -> Self::S {
         lhs.min(rhs)
     }
 }
@@ -37,10 +31,7 @@ impl Identity for GroupApprox<(usize, usize), Min> {
 impl BinaryOp for GroupApprox<usize, Min> {
     type S = usize;
 
-    fn op(
-        lhs: usize,
-        rhs: usize,
-    ) -> usize {
+    fn op(lhs: usize, rhs: usize) -> usize {
         lhs.min(rhs)
     }
 }
@@ -62,10 +53,7 @@ impl Identity for GroupApprox<usize, Min> {
 impl BinaryOp for GroupApprox<usize, Additive> {
     type S = usize;
 
-    fn op(
-        lhs: usize,
-        rhs: usize,
-    ) -> usize {
+    fn op(lhs: usize, rhs: usize) -> usize {
         lhs + rhs
     }
 }
@@ -85,10 +73,7 @@ impl Identity for GroupApprox<usize, Additive> {
 impl BinaryOp for GroupApprox<i32, Additive> {
     type S = i32;
 
-    fn op(
-        lhs: i32,
-        rhs: i32,
-    ) -> i32 {
+    fn op(lhs: i32, rhs: i32) -> i32 {
         lhs + rhs
     }
 }
@@ -114,10 +99,7 @@ impl Inverse for GroupApprox<i32, Additive> {
 impl BinaryOp for GroupApprox<u64, Additive> {
     type S = u64;
 
-    fn op(
-        lhs: Self::S,
-        rhs: Self::S,
-    ) -> Self::S {
+    fn op(lhs: Self::S, rhs: Self::S) -> Self::S {
         lhs + rhs
     }
 }
@@ -137,10 +119,7 @@ impl Identity for GroupApprox<u64, Additive> {
 impl BinaryOp for GroupApprox<i64, Additive> {
     type S = i64;
 
-    fn op(
-        lhs: Self::S,
-        rhs: Self::S,
-    ) -> Self::S {
+    fn op(lhs: Self::S, rhs: Self::S) -> Self::S {
         lhs + rhs
     }
 }
@@ -166,10 +145,7 @@ impl Inverse for GroupApprox<i64, Additive> {
 impl BinaryOp for GroupApprox<u64, Min> {
     type S = u64;
 
-    fn op(
-        lhs: Self::S,
-        rhs: Self::S,
-    ) -> Self::S {
+    fn op(lhs: Self::S, rhs: Self::S) -> Self::S {
         lhs.min(rhs)
     }
 }

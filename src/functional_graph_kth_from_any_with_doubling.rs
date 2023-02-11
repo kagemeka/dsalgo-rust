@@ -7,18 +7,11 @@ pub struct FunctionalGraphKthFrom(Vec<Vec<usize>>);
 impl FunctionalGraphKthFrom {
     /// k <= 2^max_exp
 
-    pub fn new(
-        f: &[usize],
-        max_exp: usize,
-    ) -> Self {
+    pub fn new(f: &[usize], max_exp: usize) -> Self {
         Self(doubling_table(f, max_exp))
     }
 
-    pub fn get(
-        &self,
-        src: usize,
-        k: usize,
-    ) -> usize {
+    pub fn get(&self, src: usize, k: usize) -> usize {
         let mut i = src;
 
         for (j, f) in self.0.iter().enumerate() {

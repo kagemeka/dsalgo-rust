@@ -1,10 +1,6 @@
 use std::ops::*;
 
-pub fn power_of_k<T>(
-    modulus: T,
-    k: T,
-    size: usize,
-) -> Vec<T>
+pub fn power_of_k<T>(modulus: T, k: T, size: usize) -> Vec<T>
 where
     T: Copy + Mul<Output = T> + From<u32> + Rem<Output = T>,
 {

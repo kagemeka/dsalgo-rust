@@ -7,10 +7,7 @@ macro_rules! impl_add_assign_from_add {
             T: Clone,
             Self: Clone + Add<T, Output = Self>,
         {
-            fn add_assign(
-                &mut self,
-                rhs: T,
-            ) {
+            fn add_assign(&mut self, rhs: T) {
                 *self = self.clone() + rhs.clone();
             }
         }
@@ -33,10 +30,7 @@ mod tests {
         impl Add for A {
             type Output = Self;
 
-            fn add(
-                self,
-                rhs: Self,
-            ) -> Self::Output {
+            fn add(self, rhs: Self) -> Self::Output {
                 Self(self.0 + rhs.0)
             }
         }

@@ -1,7 +1,4 @@
-pub fn xor_basis_original(
-    a: &[usize],
-    n_bits: usize,
-) -> Vec<usize> {
+pub fn xor_basis_original(a: &[usize], n_bits: usize) -> Vec<usize> {
     let mut basis = vec![0; n_bits];
 
     let mut res = Vec::with_capacity(n_bits);

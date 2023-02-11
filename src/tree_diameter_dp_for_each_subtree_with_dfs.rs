@@ -3,11 +3,7 @@ pub fn tree_diameter(g: &[Vec<usize>]) -> usize {
 
     let mut max_depth = vec![n; n];
 
-    fn dfs(
-        g: &[Vec<usize>],
-        d: &mut [usize],
-        u: usize,
-    ) -> usize {
+    fn dfs(g: &[Vec<usize>], d: &mut [usize], u: usize) -> usize {
         d[u] = 0;
 
         let mut dists = vec![0, 0];

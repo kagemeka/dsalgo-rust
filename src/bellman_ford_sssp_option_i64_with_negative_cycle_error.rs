@@ -1,9 +1,5 @@
 use crate::{
-    graph::edge::{
-        From,
-        To,
-        Value,
-    },
+    graph::edge::{From, To, Value},
     negative_cycle::NegativeCycleError,
 };
 

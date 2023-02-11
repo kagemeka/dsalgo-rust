@@ -6,10 +6,7 @@ use std::f64::consts::*;
 
 use crate::complex_number_f64::*;
 
-fn fft_core(
-    mut a: Vec<Complex>,
-    zeta_sign: f64,
-) -> Vec<Complex> {
+fn fft_core(mut a: Vec<Complex>, zeta_sign: f64) -> Vec<Complex> {
     let n = a.len();
 
     assert_eq!(n.count_ones(), 1);
@@ -37,19 +34,13 @@ fn fft_core(
     a
 }
 
-pub fn fft(
-    mut a: Vec<Complex>,
-    bit_len: usize,
-) -> Vec<Complex> {
+pub fn fft(mut a: Vec<Complex>, bit_len: usize) -> Vec<Complex> {
     a.resize(1 << bit_len, Complex::zero());
 
     fft_core(a, -1.0)
 }
 
-pub fn ifft(
-    mut a: Vec<Complex>,
-    bit_len: usize,
-) -> Vec<Complex> {
+pub fn ifft(mut a: Vec<Complex>, bit_len: usize) -> Vec<Complex> {
     a.resize(1 << bit_len, Complex::zero());
 
     a = fft_core(a, 1.0);

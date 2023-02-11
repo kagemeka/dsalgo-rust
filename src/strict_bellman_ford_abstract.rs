@@ -2,11 +2,8 @@
 /// similar to bellman ford.
 /// but epochs must be specified by user.
 
-pub fn bellman_ford_strict<F>(
-    edges: &[(usize, usize)],
-    mut f: F,
-    epochs: usize,
-) where
+pub fn bellman_ford_strict<F>(edges: &[(usize, usize)], mut f: F, epochs: usize)
+where
     F: FnMut(usize, usize),
 {
     for _ in 0..epochs {

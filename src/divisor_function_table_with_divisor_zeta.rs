@@ -1,9 +1,6 @@
 /// O(N\log{N}\log{k})
 
-pub fn divisor_func(
-    k: usize,
-    size: usize,
-) -> Vec<usize> {
+pub fn divisor_func(k: usize, size: usize) -> Vec<usize> {
     let k = k as u32;
 
     let mut f: Vec<_> =

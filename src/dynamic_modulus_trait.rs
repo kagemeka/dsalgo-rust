@@ -7,8 +7,5 @@ pub trait Get {
 pub trait Set {
     type T;
 
-    fn set(
-        &mut self,
-        value: Self::T,
-    );
+    fn set(&mut self, value: Self::T);
 }

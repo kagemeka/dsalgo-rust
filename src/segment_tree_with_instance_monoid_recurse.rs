@@ -1,11 +1,7 @@
 pub trait Monoid {
     type T;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T;
 
     fn e(&self) -> Self::T;
 }
@@ -27,10 +23,7 @@ use std::ops::*;
 impl<G: Monoid> Index<usize> for Segtree<G> {
     type Output = G::T;
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         &self.data[i + self.n()]
     }
 }
@@ -43,18 +36,12 @@ where
         self.size
     }
 
-    fn merge(
-        &mut self,
-        i: usize,
-    ) {
+    fn merge(&mut self, i: usize) {
         self.data[i] =
             self.g.op(self.data[i << 1].clone(), self.data[i << 1 | 1].clone());
     }
 
-    pub fn new(
-        g: G,
-        size: usize,
-    ) -> Self {
+    pub fn new(g: G, size: usize) -> Self {
         assert!(size > 0);
 
         let n = size.next_power_of_two();
@@ -64,24 +51,13 @@ where
         Self { g, size, data }
     }
 
-    pub fn set(
-        &mut self,
-        i: usize,
-        x: G::T,
-    ) {
+    pub fn set(&mut self, i: usize, x: G::T) {
         assert!(i < self.size());
 
         self._set(i, 0, self.n(), 1, x);
     }
 
-    fn _set(
-        &mut self,
-        i: usize,
-        cl: usize,
-        cr: usize,
-        ci: usize,
-        x: G::T,
-    ) {
+    fn _set(&mut self, i: usize, cl: usize, cr: usize, ci: usize, x: G::T) {
         assert!(cl <= i && i < cr);
 
         if cr - cl == 1 {
@@ -101,11 +77,7 @@ where
         self.merge(ci);
     }
 
-    pub fn fold(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> G::T {
+    pub fn fold(&mut self, l: usize, r: usize) -> G::T {
         assert!(l <= r && r <= self.size);
 
         self._fold(l, r, 0, self.n(), 1)
@@ -155,11 +127,7 @@ mod tests {
                 0
             }
 
-            fn op(
-                &self,
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(&self, l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
         }

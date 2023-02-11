@@ -1,9 +1,6 @@
 /// for k >= 10, faster than binary search.
 
-pub fn int_kth_root_linear(
-    n: u64,
-    k: u8,
-) -> u64 {
+pub fn int_kth_root_linear(n: u64, k: u8) -> u64 {
     assert!(k > 0);
 
     if k == 1 || n <= 1 {
@@ -31,10 +28,7 @@ mod tests {
 
     fn test() {
         use super::*;
-        use crate::test_int_kth_root::{
-            test_int_kth_root,
-            CASES_LINEAR,
-        };
+        use crate::test_int_kth_root::{test_int_kth_root, CASES_LINEAR};
 
         test_int_kth_root(&int_kth_root_linear, CASES_LINEAR);
     }

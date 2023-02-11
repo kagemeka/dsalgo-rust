@@ -1,13 +1,9 @@
 use crate::{
-    modular_cumprod_usize::*,
-    modular_factorial_table_usize::*,
+    modular_cumprod_usize::*, modular_factorial_table_usize::*,
     modular_power_for_prime_usize_recurse::*,
 };
 
-pub fn inverse_factorial(
-    p: usize,
-    size: usize,
-) -> Vec<usize> {
+pub fn inverse_factorial(p: usize, size: usize) -> Vec<usize> {
     assert!(size <= p);
 
     let mut a: Vec<_> = (1..size + 1).rev().collect();

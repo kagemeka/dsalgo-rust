@@ -1,9 +1,6 @@
 /// return (parents, depths)
 
-pub fn bfs(
-    g: &[Vec<usize>],
-    root: usize,
-) -> (Vec<usize>, Vec<usize>) {
+pub fn bfs(g: &[Vec<usize>], root: usize) -> (Vec<usize>, Vec<usize>) {
     let n = g.len();
 
     let mut p = vec![n; n];

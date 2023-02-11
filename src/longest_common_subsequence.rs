@@ -4,10 +4,7 @@
 /// compute dp table.
 #[allow(dead_code)]
 
-pub(crate) fn dp<T: PartialEq>(
-    a: &[T],
-    b: &[T],
-) -> Vec<Vec<usize>> {
+pub(crate) fn dp<T: PartialEq>(a: &[T], b: &[T]) -> Vec<Vec<usize>> {
     let n = a.len();
 
     let m = b.len();
@@ -32,19 +29,13 @@ pub(crate) fn dp<T: PartialEq>(
 
 /// lcs length.
 
-pub fn len<T: PartialEq>(
-    a: &[T],
-    b: &[T],
-) -> usize {
+pub fn len<T: PartialEq>(a: &[T], b: &[T]) -> usize {
     dp(a, b)[a.len()][b.len()]
 }
 
 /// compute lcs length with O(N) space.
 
-pub fn len_lowmem<T: PartialEq>(
-    a: &[T],
-    b: &[T],
-) -> usize {
+pub fn len_lowmem<T: PartialEq>(a: &[T], b: &[T]) -> usize {
     let m = b.len();
 
     let mut l = vec![0; m + 1];
@@ -102,10 +93,7 @@ pub(crate) fn restore(dp: &[Vec<usize>]) -> Vec<(usize, usize)> {
     idx
 }
 
-pub fn struct_one<T: PartialEq + Clone>(
-    a: &[T],
-    b: &[T],
-) -> Vec<T> {
+pub fn struct_one<T: PartialEq + Clone>(a: &[T], b: &[T]) -> Vec<T> {
     restore(&dp(a, b)).into_iter().map(|(i, _)| a[i].clone()).collect()
 }
 

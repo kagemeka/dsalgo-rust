@@ -3,12 +3,7 @@ pub fn tree_dfs_xor_dist(g: &[Vec<(usize, usize)>]) -> Vec<usize> {
 
     let mut dist = vec![0; n];
 
-    fn dfs(
-        g: &[Vec<(usize, usize)>],
-        dist: &mut [usize],
-        u: usize,
-        p: usize,
-    ) {
+    fn dfs(g: &[Vec<(usize, usize)>], dist: &mut [usize], u: usize, p: usize) {
         for &(v, w) in g[u].iter() {
             if v == p {
                 continue;

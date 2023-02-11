@@ -104,7 +104,7 @@ impl<T> Node<T> {
     }
 
     pub(crate) fn pop_last(
-        mut root: Box<Self>
+        mut root: Box<Self>,
     ) -> (Box<Self>, Option<Box<Self>>) {
         if root.right.is_none() {
             let new_root = root.left.take();
@@ -189,17 +189,11 @@ impl<T> Node<T> {
         Self::merge(left, right)
     }
 
-    pub fn remove(
-        root: Option<Box<Self>>,
-        i: usize,
-    ) -> Option<Box<Self>> {
+    pub fn remove(root: Option<Box<Self>>, i: usize) -> Option<Box<Self>> {
         Self::remove_range(root, i, i + 1)
     }
 
-    pub fn kth_node(
-        root: &Box<Self>,
-        k: usize,
-    ) -> &Box<Self> {
+    pub fn kth_node(root: &Box<Self>, k: usize) -> &Box<Self> {
         assert!(k < root.size);
 
         let lsize = Self::size(root.left.as_ref());
@@ -213,10 +207,7 @@ impl<T> Node<T> {
         }
     }
 
-    pub fn binary_search<F>(
-        f: F,
-        root: Option<&Box<Self>>,
-    ) -> usize
+    pub fn binary_search<F>(f: F, root: Option<&Box<Self>>) -> usize
     where
         F: Fn(&T) -> bool,
     {
@@ -238,10 +229,7 @@ impl<T> Node<T> {
     pub fn iter<'a>(&'a self) -> std::vec::IntoIter<&'a T> {
         let mut inorder = vec![];
 
-        fn dfs<'b, T>(
-            res: &mut Vec<&'b T>,
-            node: &'b Node<T>,
-        ) {
+        fn dfs<'b, T>(res: &mut Vec<&'b T>, node: &'b Node<T>) {
             if let Some(left) = node.left.as_ref() {
                 dfs(res, left);
             }
@@ -267,10 +255,7 @@ impl<T> IntoIterator for Node<T> {
     fn into_iter(self) -> Self::IntoIter {
         let mut inorder = vec![];
 
-        fn dfs<T>(
-            res: &mut Vec<T>,
-            mut node: Node<T>,
-        ) {
+        fn dfs<T>(res: &mut Vec<T>, mut node: Node<T>) {
             if let Some(left) = node.left.take() {
                 dfs(res, *left);
             }

@@ -1,7 +1,4 @@
-pub fn lcs_len<T: Eq>(
-    a: &[T],
-    b: &[T],
-) -> usize {
+pub fn lcs_len<T: Eq>(a: &[T], b: &[T]) -> usize {
     let n = a.len();
 
     let m = b.len();

@@ -1,9 +1,6 @@
 use crate::binary_search_on_slice_bisection_of_ng_ok::binary_search;
 
-pub fn upper_bound<T: PartialOrd>(
-    monotonic_sequence: &[T],
-    x: &T,
-) -> usize {
+pub fn upper_bound<T: PartialOrd>(monotonic_sequence: &[T], x: &T) -> usize {
     binary_search(&|y: &T| y > x, monotonic_sequence)
 }
 

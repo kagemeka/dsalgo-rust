@@ -14,38 +14,23 @@ impl PivotSet {
         Node::size(self.root.as_ref())
     }
 
-    pub fn lower_bound(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn lower_bound(&self, x: usize) -> usize {
         Node::binary_search(|v| v >= x + 1, self.root.as_ref())
     }
 
-    pub fn upper_bound(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn upper_bound(&self, x: usize) -> usize {
         Node::binary_search(|v| v > x + 1, self.root.as_ref())
     }
 
-    pub fn count(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn count(&self, x: usize) -> usize {
         self.upper_bound(x) - self.lower_bound(x)
     }
 
-    pub fn contains(
-        &self,
-        x: usize,
-    ) -> bool {
+    pub fn contains(&self, x: usize) -> bool {
         self.count(x) > 0
     }
 
-    pub fn insert(
-        &mut self,
-        mut x: usize,
-    ) {
+    pub fn insert(&mut self, mut x: usize) {
         assert!(x < (1 << self.max_height) - 1);
 
         if self.contains(x) {
@@ -61,10 +46,7 @@ impl PivotSet {
         }
     }
 
-    pub fn remove(
-        &mut self,
-        x: usize,
-    ) {
+    pub fn remove(&mut self, x: usize) {
         if !self.contains(x) {
             return;
         }
@@ -78,10 +60,7 @@ impl PivotSet {
         self.root.as_ref().unwrap().iter()
     }
 
-    pub fn get(
-        &self,
-        i: usize,
-    ) -> usize {
+    pub fn get(&self, i: usize) -> usize {
         self.root.as_ref().unwrap().kth_node(i).value - 1
     }
 }

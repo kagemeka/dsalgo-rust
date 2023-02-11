@@ -1,5 +1,5 @@
 pub fn lcm_of_factorization(
-    factors: &[Vec<(u64, usize)>]
+    factors: &[Vec<(u64, usize)>],
 ) -> Vec<(u64, usize)> {
     use std::collections::BTreeMap;
 

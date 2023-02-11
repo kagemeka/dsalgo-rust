@@ -1,11 +1,6 @@
 use crate::extended_euclidean_gcd_i64_recurse::extgcd;
 
-pub fn crt(
-    m0: i64,
-    mut r0: i64,
-    m1: i64,
-    mut r1: i64,
-) -> Option<(i64, i64)> {
+pub fn crt(m0: i64, mut r0: i64, m1: i64, mut r1: i64) -> Option<(i64, i64)> {
     assert!(m0 > 0 && m1 > 0);
 
     r0 %= m0;

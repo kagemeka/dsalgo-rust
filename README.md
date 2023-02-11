@@ -22,7 +22,7 @@ Data Structures and Algorithms written in Rust.
 ## Installation
 
 ```sh
-cargo install dsalgo 
+cargo install dsalgo
 ```
 
 ## Example

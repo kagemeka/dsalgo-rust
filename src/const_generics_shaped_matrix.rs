@@ -30,19 +30,13 @@ impl<T: Copy, const H: usize, const W: usize> From<[[T; W]; H]>
 impl<T, const H: usize, const W: usize> Index<usize> for Matrix<T, H, W> {
     type Output = [T; W];
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         &self.0[i]
     }
 }
 
 impl<T, const H: usize, const W: usize> IndexMut<usize> for Matrix<T, H, W> {
-    fn index_mut(
-        &mut self,
-        i: usize,
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, i: usize) -> &mut Self::Output {
         &mut self.0[i]
     }
 }
@@ -51,10 +45,7 @@ impl<T, const H: usize, const W: usize> std::fmt::Display for Matrix<T, H, W>
 where
     T: std::fmt::Debug + Copy,
 {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let format_str = self
             .0
             .iter()

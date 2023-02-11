@@ -50,29 +50,19 @@ where
     M: Monoid,
     M::S: Clone,
 {
-    pub fn new<F>(
-        size: usize,
-        default: F,
-    ) -> Self
+    pub fn new<F>(size: usize, default: F) -> Self
     where
         F: Fn() -> M::S,
     {
         Self::from_iter((0..size).map(|_| default()))
     }
 
-    fn update(
-        &mut self,
-        i: usize,
-    ) {
+    fn update(&mut self, i: usize) {
         self.node[i] =
             M::op(self.node[i << 1].clone(), self.node[i << 1 | 1].clone());
     }
 
-    pub fn set(
-        &mut self,
-        mut i: usize,
-        x: M::S,
-    ) {
+    pub fn set(&mut self, mut i: usize, x: M::S) {
         assert!(i < self.size);
 
         i += self.n();
@@ -95,11 +85,7 @@ where
     /// however, strictly, it's enough to be only semigrouop.)
     /// so this method should be called `reduce`.
 
-    pub fn reduce(
-        &self,
-        mut l: usize,
-        mut r: usize,
-    ) -> M::S {
+    pub fn reduce(&self, mut l: usize, mut r: usize) -> M::S {
         assert!(l < r && r <= self.size);
 
         let n = self.n();
@@ -139,11 +125,7 @@ where
     M: Monoid,
     M::S: Clone,
 {
-    pub fn reduce_recurse(
-        &self,
-        l: usize,
-        r: usize,
-    ) -> M::S {
+    pub fn reduce_recurse(&self, l: usize, r: usize) -> M::S {
         assert!(l <= r && r <= self.size);
 
         self._reduce_recurse(l, r, 0, self.n(), 1)
@@ -182,10 +164,7 @@ where
 {
     type Output = M::S;
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         assert!(i < self.size());
 
         &self.node[i + self.n()]
@@ -207,11 +186,7 @@ where
     M: Monoid,
     M::S: Clone,
 {
-    pub fn max_right<F>(
-        &self,
-        is_ok: &F,
-        l: usize,
-    ) -> usize
+    pub fn max_right<F>(&self, is_ok: &F, l: usize) -> usize
     where
         F: Fn(&M::S) -> bool,
     {
@@ -265,11 +240,7 @@ where
         i - n
     }
 
-    pub fn min_left<F>(
-        &self,
-        is_ok: &F,
-        r: usize,
-    ) -> usize
+    pub fn min_left<F>(&self, is_ok: &F, r: usize) -> usize
     where
         F: Fn(&M::S) -> bool,
     {
@@ -327,11 +298,7 @@ where
     M: Monoid,
     M::S: Clone,
 {
-    pub fn max_right_recurse<F>(
-        &self,
-        is_ok: &F,
-        l: usize,
-    ) -> usize
+    pub fn max_right_recurse<F>(&self, is_ok: &F, l: usize) -> usize
     where
         F: Fn(&M::S) -> bool,
     {
@@ -387,11 +354,7 @@ where
         self._max_right_recurse(is_ok, l, c, cur_r, v, i << 1 | 1)
     }
 
-    pub fn min_left_recurse<F>(
-        &self,
-        is_ok: &F,
-        r: usize,
-    ) -> usize
+    pub fn min_left_recurse<F>(&self, is_ok: &F, r: usize) -> usize
     where
         F: Fn(&M::S) -> bool,
     {
@@ -440,10 +403,7 @@ where
     }
 }
 
-use crate::{
-    algebraic_structure_impl::*,
-    query::RangeGetQuery,
-};
+use crate::{algebraic_structure_impl::*, query::RangeGetQuery};
 
 impl<S, I> RangeGetQuery<I> for Segtree<GroupApprox<S, I>>
 where
@@ -452,11 +412,7 @@ where
 {
     type T = S;
 
-    fn get_range(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> Self::T {
+    fn get_range(&mut self, l: usize, r: usize) -> Self::T {
         self.reduce(l, r)
     }
 }

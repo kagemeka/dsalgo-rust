@@ -1,7 +1,4 @@
-pub fn euler_tour_nodes(
-    g: &[Vec<usize>],
-    root: usize,
-) -> Vec<usize> {
+pub fn euler_tour_nodes(g: &[Vec<usize>], root: usize) -> Vec<usize> {
     let n = g.len();
 
     let size = 2 * n - 1;

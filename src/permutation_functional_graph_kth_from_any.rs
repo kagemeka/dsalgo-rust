@@ -43,11 +43,7 @@ impl KthFrom {
         Self { cycles, cycle_id, idx_in_cycle }
     }
 
-    pub fn get(
-        &self,
-        i: usize,
-        k: usize,
-    ) -> usize {
+    pub fn get(&self, i: usize, k: usize) -> usize {
         let cycle = &self.cycles[self.cycle_id[i]];
 
         cycle[(k + self.idx_in_cycle[i]) % cycle.len()]

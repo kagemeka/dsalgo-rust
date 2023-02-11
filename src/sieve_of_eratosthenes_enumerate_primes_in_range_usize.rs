@@ -9,10 +9,7 @@ use crate::{
 
 /// lo <= hi <= 10^14, hi - lo < 10^7
 
-pub fn range_primes(
-    mut lo: usize,
-    mut hi: usize,
-) -> Vec<usize> {
+pub fn range_primes(mut lo: usize, mut hi: usize) -> Vec<usize> {
     lo = lo.max(2);
 
     hi = hi.max(2);

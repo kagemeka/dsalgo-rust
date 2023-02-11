@@ -12,10 +12,7 @@ pub struct PrimeGenerator {
 impl PrimeGenerator {
     /// [lo, hi)
 
-    pub fn new(
-        mut lo: u64,
-        mut hi: u64,
-    ) -> Self {
+    pub fn new(mut lo: u64, mut hi: u64) -> Self {
         if lo < 2 {
             lo = 2;
         }

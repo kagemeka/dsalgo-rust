@@ -1,6 +1,6 @@
 pub fn sa_is(mut a: Vec<usize>) -> Vec<usize> {
     fn preprocess(
-        a: &[usize]
+        a: &[usize],
     ) -> (Vec<bool>, Vec<bool>, Vec<usize>, Vec<usize>, Vec<usize>) {
         let n = a.len();
 

@@ -1,9 +1,6 @@
 use crate::lcm_convolution_ring_with_std_divisors_fast_zeta_mobius::*;
 
-pub fn number_of_lcm_pairs(
-    lo: usize,
-    hi: usize,
-) -> Vec<usize> {
+pub fn number_of_lcm_pairs(lo: usize, hi: usize) -> Vec<usize> {
     assert!(lo >= 1 && lo <= hi);
 
     let f: Vec<_> = (0..hi).map(|g| if g < lo { 0 } else { 1 }).collect();

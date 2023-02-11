@@ -1,10 +1,6 @@
 use crate::knapsack_01_dual_table_with_inf::knapsack_dual;
 
-pub fn knapsack(
-    inf: usize,
-    vw: &[(usize, usize)],
-    max_weight: usize,
-) -> usize {
+pub fn knapsack(inf: usize, vw: &[(usize, usize)], max_weight: usize) -> usize {
     knapsack_dual(inf, vw)
         .into_iter()
         .enumerate()

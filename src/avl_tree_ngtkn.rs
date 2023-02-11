@@ -3,10 +3,7 @@ use std::{
     cmp::Ordering,
     fmt::Debug,
     hash::Hash,
-    iter::{
-        successors,
-        FromIterator,
-    },
+    iter::{successors, FromIterator},
     mem::swap,
     ops::Index,
 };
@@ -30,17 +27,11 @@ impl<T> AvlTree<T> {
         len(self.root.as_deref())
     }
 
-    pub fn push_back(
-        &mut self,
-        value: T,
-    ) {
+    pub fn push_back(&mut self, value: T) {
         self.append(&mut Self { root: Some(new(value)) })
     }
 
-    pub fn push_front(
-        &mut self,
-        value: T,
-    ) {
+    pub fn push_front(&mut self, value: T) {
         let mut swp = Self { root: Some(new(value)) };
 
         swp.append(self);
@@ -84,17 +75,11 @@ impl<T> AvlTree<T> {
         self.get_mut(0)
     }
 
-    pub fn append(
-        &mut self,
-        other: &mut Self,
-    ) {
+    pub fn append(&mut self, other: &mut Self) {
         self.root = merge(self.root.take(), other.root.take());
     }
 
-    pub fn split_off(
-        &mut self,
-        index: usize,
-    ) -> Self {
+    pub fn split_off(&mut self, index: usize) -> Self {
         assert!(index <= self.len());
 
         let (left, right) = split(self.root.take(), index);
@@ -104,11 +89,7 @@ impl<T> AvlTree<T> {
         Self { root: right }
     }
 
-    pub fn insert(
-        &mut self,
-        index: usize,
-        value: T,
-    ) {
+    pub fn insert(&mut self, index: usize, value: T) {
         assert!(index <= self.len());
 
         let other = self.split_off(index);
@@ -117,10 +98,7 @@ impl<T> AvlTree<T> {
             Some(merge_with_root(self.root.take(), new(value), other.root));
     }
 
-    pub fn remove(
-        &mut self,
-        index: usize,
-    ) -> Option<T> {
+    pub fn remove(&mut self, index: usize) -> Option<T> {
         if index < self.len() {
             let (left, center, right) =
                 split_delete(self.root.take().unwrap(), index);
@@ -133,10 +111,7 @@ impl<T> AvlTree<T> {
         }
     }
 
-    pub fn get(
-        &self,
-        index: usize,
-    ) -> Option<&T> {
+    pub fn get(&self, index: usize) -> Option<&T> {
         // let a = self.root.as_deref();
         if index < self.len() {
             Some(&get(self.root.as_ref().unwrap(), index).value)
@@ -145,10 +120,7 @@ impl<T> AvlTree<T> {
         }
     }
 
-    pub fn get_mut(
-        &mut self,
-        index: usize,
-    ) -> Option<&mut T> {
+    pub fn get_mut(&mut self, index: usize) -> Option<&mut T> {
         if index < self.len() {
             Some(&mut get_mut(self.root.as_mut().unwrap(), index).value)
         } else {
@@ -171,10 +143,7 @@ impl<T> AvlTree<T> {
         self.binary_search_by(|x| f(x).cmp(b))
     }
 
-    pub fn binary_search<Q: Ord>(
-        &self,
-        value: &Q,
-    ) -> Result<usize, usize>
+    pub fn binary_search<Q: Ord>(&self, value: &Q) -> Result<usize, usize>
     where
         T: Borrow<Q>,
     {
@@ -188,10 +157,7 @@ impl<T> AvlTree<T> {
         partition_point(self.root.as_deref(), |node| is_right(&node.value))
     }
 
-    pub fn lower_bound<Q: Ord>(
-        &self,
-        value: &Q,
-    ) -> usize
+    pub fn lower_bound<Q: Ord>(&self, value: &Q) -> usize
     where
         T: Borrow<Q>,
     {
@@ -200,10 +166,7 @@ impl<T> AvlTree<T> {
         })
     }
 
-    pub fn upper_bound<Q: Ord>(
-        &self,
-        value: &Q,
-    ) -> usize
+    pub fn upper_bound<Q: Ord>(&self, value: &Q) -> usize
     where
         T: Borrow<Q>,
     {
@@ -233,10 +196,7 @@ impl<T> Default for AvlTree<T> {
 }
 
 impl<T: PartialEq> PartialEq for AvlTree<T> {
-    fn eq(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn eq(&self, other: &Self) -> bool {
         self.iter().eq(other)
     }
 }
@@ -245,10 +205,7 @@ impl<T: PartialEq, A> PartialEq<[A]> for AvlTree<T>
 where
     T: PartialEq<A>,
 {
-    fn eq(
-        &self,
-        other: &[A],
-    ) -> bool {
+    fn eq(&self, other: &[A]) -> bool {
         self.iter().eq(other)
     }
 }
@@ -256,37 +213,25 @@ where
 impl<T: Eq> Eq for AvlTree<T> {}
 
 impl<T: PartialOrd> PartialOrd for AvlTree<T> {
-    fn partial_cmp(
-        &self,
-        other: &Self,
-    ) -> Option<Ordering> {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         self.iter().partial_cmp(other)
     }
 }
 
 impl<T: Ord> Ord for AvlTree<T> {
-    fn cmp(
-        &self,
-        other: &Self,
-    ) -> Ordering {
+    fn cmp(&self, other: &Self) -> Ordering {
         self.iter().cmp(other)
     }
 }
 
 impl<T: Debug> Debug for AvlTree<T> {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_list().entries(self).finish()
     }
 }
 
 impl<T: Hash> Hash for AvlTree<T> {
-    fn hash<H: std::hash::Hasher>(
-        &self,
-        state: &mut H,
-    ) {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
         self.iter().for_each(|elm| elm.hash(state));
     }
 }
@@ -326,10 +271,7 @@ impl<'a, T> IntoIterator for &'a AvlTree<T> {
 impl<T> Index<usize> for AvlTree<T> {
     type Output = T;
 
-    fn index(
-        &self,
-        index: usize,
-    ) -> &Self::Output {
+    fn index(&self, index: usize) -> &Self::Output {
         self.get(index).unwrap()
     }
 }
@@ -337,7 +279,7 @@ impl<T> Index<usize> for AvlTree<T> {
 impl<T> FromIterator<T> for AvlTree<T> {
     fn from_iter<I: IntoIterator<Item = T>>(iter: I) -> Self {
         fn from_slice_of_nodes<T>(
-            nodes: &mut [Option<Box<Node<T>>>]
+            nodes: &mut [Option<Box<Node<T>>>],
         ) -> Option<Box<Node<T>>> {
             if nodes.is_empty() {
                 None
@@ -657,10 +599,7 @@ fn partition_point<T>(
     }
 }
 
-fn get<T>(
-    node: &Node<T>,
-    index: usize,
-) -> &Node<T> {
+fn get<T>(node: &Node<T>, index: usize) -> &Node<T> {
     let lsize = len(node.left.as_deref());
 
     match lsize.cmp(&index) {
@@ -670,10 +609,7 @@ fn get<T>(
     }
 }
 
-fn get_mut<T>(
-    node: &mut Node<T>,
-    index: usize,
-) -> &mut Node<T> {
+fn get_mut<T>(node: &mut Node<T>, index: usize) -> &mut Node<T> {
     let lsize = len(node.left.as_deref());
 
     match lsize.cmp(&index) {

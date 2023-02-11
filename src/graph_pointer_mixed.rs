@@ -1,9 +1,6 @@
 #![allow(dead_code)]
 
-use std::{
-    cell::RefCell,
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 pub(crate) struct EdgeData;
 
@@ -25,10 +22,7 @@ pub(crate) enum Edge<T = Option<EdgeData>, U = Option<NodeData>> {
 /// avoid cyclic reference
 
 impl<T: std::fmt::Debug, U> std::fmt::Debug for Edge<T, U> {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Edge::Directed { from: _, to: _, data } => {
                 write!(f, "Edge::Directed {{ data: {:?} }}", data)
@@ -82,12 +76,8 @@ impl<T, U> MixedGraph<T, U> {
         self.nodes.push(Rc::new(RefCell::new(Node::default())));
     }
 
-    pub fn add_directed_edge(
-        &mut self,
-        from: usize,
-        to: usize,
-        data: U,
-    ) where
+    pub fn add_directed_edge(&mut self, from: usize, to: usize, data: U)
+    where
         T: 'static,
         U: 'static,
     {
@@ -102,12 +92,8 @@ impl<T, U> MixedGraph<T, U> {
         )));
     }
 
-    pub fn add_undirected_edge(
-        &mut self,
-        lhs: usize,
-        rhs: usize,
-        data: U,
-    ) where
+    pub fn add_undirected_edge(&mut self, lhs: usize, rhs: usize, data: U)
+    where
         T: 'static,
         U: 'static,
     {
@@ -132,10 +118,7 @@ mod tests {
     #[test]
 
     fn test() {
-        use std::{
-            cell::RefCell,
-            rc::Rc,
-        };
+        use std::{cell::RefCell, rc::Rc};
 
         let node_lhs = Rc::new(RefCell::new(super::Node::default()));
 

@@ -1,10 +1,7 @@
 pub trait BinaryOp {
     type T;
 
-    fn f(
-        _: Self::T,
-        _: Self::T,
-    ) -> Self::T;
+    fn f(_: Self::T, _: Self::T) -> Self::T;
 }
 
 pub struct SparseTable<F: BinaryOp>(Vec<Vec<F::T>>);
@@ -45,11 +42,7 @@ where
         self.0[0].len()
     }
 
-    pub fn get(
-        &self,
-        l: usize,
-        r: usize,
-    ) -> F::T {
+    pub fn get(&self, l: usize, r: usize) -> F::T {
         assert!(l < r && r <= self.size());
 
         if r - l == 1 {
@@ -76,10 +69,7 @@ mod tests {
         impl BinaryOp for F {
             type T = usize;
 
-            fn f(
-                x: usize,
-                y: usize,
-            ) -> usize {
+            fn f(x: usize, y: usize) -> usize {
                 x.min(y)
             }
         }

@@ -3,10 +3,7 @@ use std::f64::consts::*;
 
 use crate::complex_number_f64::Complex;
 
-fn dft_core(
-    a: &[Complex],
-    zeta_sign: f64,
-) -> Vec<Complex> {
+fn dft_core(a: &[Complex], zeta_sign: f64) -> Vec<Complex> {
     let n = a.len();
 
     (0..n)

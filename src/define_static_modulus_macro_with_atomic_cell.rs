@@ -55,10 +55,7 @@ macro_rules! define_static_mod {
     };
 }
 
-use std::sync::atomic::{
-    AtomicU32,
-    AtomicU64,
-};
+use std::sync::atomic::{AtomicU32, AtomicU64};
 
 define_static_mod!(ModU32, u32, AtomicU32);
 

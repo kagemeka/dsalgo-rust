@@ -2,10 +2,7 @@
 //! but each rank is unique.
 //! if same value, sort by original index.
 
-use crate::{
-    argsort::argsort,
-    permutation_argsort::argsort as perm_argsort,
-};
+use crate::{argsort::argsort, permutation_argsort::argsort as perm_argsort};
 
 pub fn array_rank<T: Ord>(a: &[T]) -> Vec<usize> {
     perm_argsort(&argsort(a))

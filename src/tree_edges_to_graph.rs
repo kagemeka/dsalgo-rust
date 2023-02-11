@@ -1,5 +1,5 @@
 pub fn tree_edges_with_data_to_graph<T>(
-    tree_edges: &[(usize, usize, T)]
+    tree_edges: &[(usize, usize, T)],
 ) -> Vec<Vec<(usize, T)>>
 where
     T: Clone,

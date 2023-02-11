@@ -2,10 +2,7 @@ use crate::power_multiplicative_semigroup_with_std_ops::power;
 
 /// n is length of array.
 
-pub fn sum_of_gcd(
-    k: usize,
-    n: u64,
-) -> usize {
+pub fn sum_of_gcd(k: usize, n: u64) -> usize {
     let mut d = vec![0; k + 1];
 
     let mut s = 0;

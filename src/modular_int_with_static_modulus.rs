@@ -85,10 +85,7 @@ where
 {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(mut self, rhs: Self) -> Self::Output {
         self.0 += rhs.0;
 
         if self.0 >= Self::m() {
@@ -120,10 +117,7 @@ where
 {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(mut self, rhs: Self) -> Self::Output {
         self.0 *= rhs.0;
 
         if self.0 >= Self::m() {
@@ -158,10 +152,7 @@ where
 {
     type Output = Self;
 
-    fn sub(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn sub(self, rhs: Self) -> Self::Output {
         self + -rhs
     }
 }
@@ -172,10 +163,7 @@ where
 {
     type Output = Self;
 
-    fn div(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn div(self, rhs: Self) -> Self::Output {
         self * rhs.mul_inv()
     }
 }
@@ -185,10 +173,7 @@ where
     Self: Add<T, Output = Self>,
     M::T: Element,
 {
-    fn add_assign(
-        &mut self,
-        rhs: T,
-    ) {
+    fn add_assign(&mut self, rhs: T) {
         *self = *self + rhs;
     }
 }
@@ -198,10 +183,7 @@ where
     Self: Sub<T, Output = Self>,
     M::T: Element,
 {
-    fn sub_assign(
-        &mut self,
-        rhs: T,
-    ) {
+    fn sub_assign(&mut self, rhs: T) {
         *self = *self - rhs;
     }
 }
@@ -211,10 +193,7 @@ where
     Self: Mul<T, Output = Self>,
     M::T: Element,
 {
-    fn mul_assign(
-        &mut self,
-        rhs: T,
-    ) {
+    fn mul_assign(&mut self, rhs: T) {
         *self = *self * rhs;
     }
 }
@@ -224,10 +203,7 @@ where
     Self: Div<T, Output = Self>,
     M::T: Element,
 {
-    fn div_assign(
-        &mut self,
-        rhs: T,
-    ) {
+    fn div_assign(&mut self, rhs: T) {
         *self = *self / rhs;
     }
 }
@@ -236,10 +212,7 @@ impl<M: Get + Copy> Modint<M>
 where
     M::T: Element,
 {
-    pub fn pow(
-        self,
-        n: i64,
-    ) -> Self {
+    pub fn pow(self, n: i64) -> Self {
         if n < 0 {
             return self.mul_inv().pow(-n);
         }

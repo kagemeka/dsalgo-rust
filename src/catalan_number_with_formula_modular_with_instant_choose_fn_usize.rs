@@ -1,9 +1,4 @@
-pub fn catalan_number<F, G>(
-    p: usize,
-    choose: F,
-    inv: G,
-    n: usize,
-) -> usize
+pub fn catalan_number<F, G>(p: usize, choose: F, inv: G, n: usize) -> usize
 where
     F: Fn(usize, usize, usize) -> usize,
     G: Fn(usize, usize) -> usize,

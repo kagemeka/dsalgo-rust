@@ -18,11 +18,7 @@ impl RangeFactorize {
 
     /// lo <= hi <= limit, hi - lo < 10^7
 
-    pub fn factorize(
-        &self,
-        lo: usize,
-        hi: usize,
-    ) -> Vec<Vec<(usize, usize)>> {
+    pub fn factorize(&self, lo: usize, hi: usize) -> Vec<Vec<(usize, usize)>> {
         let mut v: Vec<_> = (lo..hi).collect();
 
         let n = hi - lo;

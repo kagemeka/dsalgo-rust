@@ -1,11 +1,4 @@
-use crate::graph::edge::{
-    From,
-    Reversed,
-    To,
-    ToDirected,
-    Value,
-    Weight,
-};
+use crate::graph::edge::{From, Reversed, To, ToDirected, Value, Weight};
 
 impl<T> ToDirected for (usize, usize, T) {
     type E = Self;

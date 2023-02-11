@@ -5,10 +5,7 @@ use crate::{
     pop::Pop,
     size::Size,
     split::Split,
-    tree_node::{
-        Parent,
-        ParentMut,
-    },
+    tree_node::{Parent, ParentMut},
 };
 
 #[cfg(test)]
@@ -62,10 +59,7 @@ mod tests {
 
         impl<T: Size> Split<usize> for Option<Node<T>> {
             // pseudo
-            fn split(
-                mut self,
-                index: usize,
-            ) -> (Self, Self) {
+            fn split(mut self, index: usize) -> (Self, Self) {
                 assert!(index <= self.size());
 
                 (None, None)
@@ -74,10 +68,7 @@ mod tests {
 
         impl<T> Join for Option<Node<T>> {
             // pseudo
-            fn join(
-                self,
-                rhs: Self,
-            ) -> Self {
+            fn join(self, rhs: Self) -> Self {
                 None
             }
         }
@@ -88,10 +79,7 @@ mod tests {
         {
             type Data = T;
 
-            fn pop(
-                &mut self,
-                index: usize,
-            ) -> Self::Data {
+            fn pop(&mut self, index: usize) -> Self::Data {
                 assert!(self.root.is_some());
 
                 let size = self.root.size();
@@ -114,11 +102,7 @@ mod tests {
         {
             type Data = T;
 
-            fn insert(
-                &mut self,
-                index: usize,
-                data: Self::Data,
-            ) {
+            fn insert(&mut self, index: usize, data: Self::Data) {
                 let size = self.root.size();
             }
         }

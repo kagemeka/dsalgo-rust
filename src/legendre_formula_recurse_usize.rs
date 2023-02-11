@@ -1,9 +1,6 @@
 /// number of a prime factor in factorial.
 
-pub fn legendre(
-    n: usize,
-    p: usize,
-) -> usize {
+pub fn legendre(n: usize, p: usize) -> usize {
     if n == 0 {
         0
     } else {

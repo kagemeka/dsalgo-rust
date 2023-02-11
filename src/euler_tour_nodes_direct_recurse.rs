@@ -1,17 +1,9 @@
-pub fn euler_tour_nodes(
-    g: &[Vec<usize>],
-    root: usize,
-) -> Vec<usize> {
+pub fn euler_tour_nodes(g: &[Vec<usize>], root: usize) -> Vec<usize> {
     let n = g.len();
 
     let mut tour = Vec::with_capacity(2 * n - 1);
 
-    fn dfs(
-        g: &[Vec<usize>],
-        tour: &mut Vec<usize>,
-        u: usize,
-        p: usize,
-    ) {
+    fn dfs(g: &[Vec<usize>], tour: &mut Vec<usize>, u: usize, p: usize) {
         tour.push(u);
 
         for &v in g[u].iter() {

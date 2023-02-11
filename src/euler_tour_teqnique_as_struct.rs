@@ -7,10 +7,7 @@ pub struct EulerTour {
 }
 
 impl EulerTour {
-    pub fn new(
-        g: &[Vec<usize>],
-        root: usize,
-    ) -> Self {
+    pub fn new(g: &[Vec<usize>], root: usize) -> Self {
         let n = g.len();
 
         let mut tour = Vec::with_capacity(n << 1);

@@ -1,13 +1,8 @@
 use crate::{
-    modular_inverse_euclidean_i64_no_error::modinv,
-    power_monoid::pow_monoid,
+    modular_inverse_euclidean_i64_no_error::modinv, power_monoid::pow_monoid,
 };
 
-pub fn pow(
-    m: i32,
-    mut base: i64,
-    mut exp: i64,
-) -> i32 {
+pub fn pow(m: i32, mut base: i64, mut exp: i64) -> i32 {
     let modulus = m as i64;
 
     if exp < 0 {

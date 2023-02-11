@@ -26,10 +26,7 @@ impl<T: Clone> Deque<T> {
         self.size() == 0
     }
 
-    pub fn push_right(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push_right(&mut self, x: T) {
         assert!(!self.is_full());
 
         debug_assert!(self.data[self.right].is_none());
@@ -45,10 +42,7 @@ impl<T: Clone> Deque<T> {
         }
     }
 
-    pub fn push_left(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push_left(&mut self, x: T) {
         assert!(!self.is_full());
 
         if self.left == 0 {

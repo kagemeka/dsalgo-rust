@@ -1,7 +1,4 @@
-pub fn dfs_tree(
-    g: &[Vec<usize>],
-    root: usize,
-) -> Vec<(usize, usize)> {
+pub fn dfs_tree(g: &[Vec<usize>], root: usize) -> Vec<(usize, usize)> {
     let n = g.len();
 
     let mut visited = vec![false; n];

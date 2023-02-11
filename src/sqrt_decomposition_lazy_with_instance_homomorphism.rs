@@ -5,27 +5,15 @@ pub trait Ops {
 
     type F;
 
-    fn op(
-        &self,
-        a: Self::S,
-        b: Self::S,
-    ) -> Self::S;
+    fn op(&self, a: Self::S, b: Self::S) -> Self::S;
 
     fn e(&self) -> Self::S;
 
-    fn compose(
-        &self,
-        f: Self::F,
-        g: Self::F,
-    ) -> Self::F;
+    fn compose(&self, f: Self::F, g: Self::F) -> Self::F;
 
     fn id(&self) -> Self::F;
 
-    fn map(
-        &self,
-        f: Self::F,
-        x: Self::S,
-    ) -> Self::S;
+    fn map(&self, f: Self::F, x: Self::S) -> Self::S;
 }
 
 pub struct LazySqrtDecomposition<O: Ops> {
@@ -50,10 +38,7 @@ where
         (self.size() + n - 1) / n
     }
 
-    pub fn new(
-        ops: O,
-        size: usize,
-    ) -> Self {
+    pub fn new(ops: O, size: usize) -> Self {
         let data = vec![ops.e(); size];
 
         let m = isqrt(size);
@@ -65,10 +50,7 @@ where
         Self { ops, data, buckets, lazy }
     }
 
-    fn merge(
-        &mut self,
-        j: usize,
-    ) {
+    fn merge(&mut self, j: usize) {
         let m = self.interval();
 
         let n = self.size();
@@ -79,10 +61,7 @@ where
             .fold(self.ops.e(), |x, y| self.ops.op(x, y))
     }
 
-    fn propagate(
-        &mut self,
-        j: usize,
-    ) {
+    fn propagate(&mut self, j: usize) {
         let m = self.interval();
 
         let n = self.size();
@@ -100,11 +79,7 @@ where
         self.lazy[j] = self.ops.id();
     }
 
-    fn pull_range(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) {
+    fn pull_range(&mut self, l: usize, r: usize) {
         let m = self.interval();
 
         if l % m != 0 {
@@ -116,11 +91,7 @@ where
         }
     }
 
-    fn merge_range(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) {
+    fn merge_range(&mut self, l: usize, r: usize) {
         let m = self.interval();
 
         if l % m != 0 {
@@ -132,20 +103,13 @@ where
         }
     }
 
-    pub fn get(
-        &mut self,
-        i: usize,
-    ) -> &O::S {
+    pub fn get(&mut self, i: usize) -> &O::S {
         self.propagate(i / self.interval());
 
         &self.data[i]
     }
 
-    pub fn set(
-        &mut self,
-        i: usize,
-        x: O::S,
-    ) {
+    pub fn set(&mut self, i: usize, x: O::S) {
         let j = i / self.interval();
 
         self.propagate(j);
@@ -155,11 +119,7 @@ where
         self.merge(j);
     }
 
-    pub fn fold(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> O::S {
+    pub fn fold(&mut self, l: usize, r: usize) -> O::S {
         assert!(l <= r && r <= self.size());
 
         let m = self.interval();
@@ -195,12 +155,7 @@ where
         v
     }
 
-    pub fn apply(
-        &mut self,
-        l: usize,
-        r: usize,
-        f: O::F,
-    ) {
+    pub fn apply(&mut self, l: usize, r: usize, f: O::F) {
         assert!(l <= r && r <= self.size());
 
         let m = self.interval();
@@ -240,11 +195,7 @@ where
         self.merge_range(l, r);
     }
 
-    pub fn max_right<F>(
-        &mut self,
-        is_ok: F,
-        l: usize,
-    ) -> usize
+    pub fn max_right<F>(&mut self, is_ok: F, l: usize) -> usize
     where
         F: Fn(&O::S) -> bool,
     {
@@ -303,11 +254,7 @@ where
         i
     }
 
-    pub fn min_left<F>(
-        &mut self,
-        is_ok: F,
-        r: usize,
-    ) -> usize
+    pub fn min_left<F>(&mut self, is_ok: F, r: usize) -> usize
     where
         F: Fn(&O::S) -> bool,
     {
@@ -401,11 +348,7 @@ mod tests {
 
             type S = (i64, usize);
 
-            fn op(
-                &self,
-                a: Self::S,
-                b: Self::S,
-            ) -> Self::S {
+            fn op(&self, a: Self::S, b: Self::S) -> Self::S {
                 (a.0 + b.0, a.1 + b.1)
             }
 
@@ -413,11 +356,7 @@ mod tests {
                 (0, 0)
             }
 
-            fn compose(
-                &self,
-                f: Self::F,
-                g: Self::F,
-            ) -> Self::F {
+            fn compose(&self, f: Self::F, g: Self::F) -> Self::F {
                 f + g
             }
 
@@ -425,11 +364,7 @@ mod tests {
                 0
             }
 
-            fn map(
-                &self,
-                f: Self::F,
-                x: Self::S,
-            ) -> Self::S {
+            fn map(&self, f: Self::F, x: Self::S) -> Self::S {
                 (x.0 + x.1 as i64 * f, x.1)
             }
         }

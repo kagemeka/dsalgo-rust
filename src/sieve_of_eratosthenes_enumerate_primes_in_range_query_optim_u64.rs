@@ -29,11 +29,7 @@ impl EnumerateRangePrimes {
     /// time: O((hi - lo)\log{\log{less_than}})
     /// space: O(hi - lo)
 
-    pub fn enumerate(
-        &self,
-        mut lo: u64,
-        hi: u64,
-    ) -> Vec<u64> {
+    pub fn enumerate(&self, mut lo: u64, hi: u64) -> Vec<u64> {
         assert!(lo <= hi && hi <= self.less_than);
 
         if hi <= 2 {

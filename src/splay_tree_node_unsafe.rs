@@ -7,10 +7,7 @@ pub struct Node<T> {
     pub(crate) v: T,
 }
 
-use std::ptr::{
-    eq,
-    null_mut,
-};
+use std::ptr::{eq, null_mut};
 
 impl<T> Node<T> {
     pub fn new(v: T) -> Self {
@@ -95,10 +92,7 @@ impl<T> Node<T> {
         }
     }
 
-    pub fn get(
-        &mut self,
-        mut i: usize,
-    ) -> &mut Self {
+    pub fn get(&mut self, mut i: usize) -> &mut Self {
         let mut node = self;
 
         loop {
@@ -120,10 +114,7 @@ impl<T> Node<T> {
         }
     }
 
-    pub fn merge(
-        l: *mut Self,
-        r: *mut Self,
-    ) -> *mut Self {
+    pub fn merge(l: *mut Self, r: *mut Self) -> *mut Self {
         if r.is_null() {
             return l;
         }
@@ -141,10 +132,7 @@ impl<T> Node<T> {
         r
     }
 
-    pub fn split(
-        root: *mut Self,
-        i: usize,
-    ) -> (*mut Self, *mut Self) {
+    pub fn split(root: *mut Self, i: usize) -> (*mut Self, *mut Self) {
         let size = Self::size(root);
 
         assert!(i <= size);
@@ -168,20 +156,13 @@ impl<T> Node<T> {
         (l, root)
     }
 
-    pub fn insert(
-        root: *mut Self,
-        i: usize,
-        node: *mut Self,
-    ) -> *mut Self {
+    pub fn insert(root: *mut Self, i: usize, node: *mut Self) -> *mut Self {
         let (l, r) = Self::split(root, i);
 
         Self::merge(Self::merge(l, node), r)
     }
 
-    pub fn pop(
-        &mut self,
-        i: usize,
-    ) -> (&mut Self, *mut Self) {
+    pub fn pop(&mut self, i: usize) -> (&mut Self, *mut Self) {
         let root = self.get(i);
 
         let l = root.e[0];
@@ -205,10 +186,7 @@ impl<T> Node<T> {
         (root, Self::merge(l, r))
     }
 
-    pub fn binary_search<F>(
-        f: F,
-        mut root: *mut Self,
-    ) -> usize
+    pub fn binary_search<F>(f: F, mut root: *mut Self) -> usize
     where
         F: Fn(&T) -> bool,
     {

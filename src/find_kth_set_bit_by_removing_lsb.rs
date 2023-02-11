@@ -1,10 +1,7 @@
 /// k is 0-indexed
 /// O(K)
 
-pub fn kth_set_bit(
-    mut n: u64,
-    k: usize,
-) -> usize {
+pub fn kth_set_bit(mut n: u64, k: usize) -> usize {
     assert!(n.count_ones() as usize > k);
 
     for _ in 0..k {

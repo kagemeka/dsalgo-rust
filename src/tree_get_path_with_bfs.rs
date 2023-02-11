@@ -1,13 +1,8 @@
 use crate::{
-    tree_bfs_parent::*,
-    tree_restore_path_from_parents::restore_tree_path,
+    tree_bfs_parent::*, tree_restore_path_from_parents::restore_tree_path,
 };
 
-pub fn tree_path(
-    g: &[Vec<usize>],
-    u: usize,
-    v: usize,
-) -> Vec<usize> {
+pub fn tree_path(g: &[Vec<usize>], u: usize, v: usize) -> Vec<usize> {
     let p = tree_bfs_parent(&g, u);
 
     restore_tree_path(&p, v)

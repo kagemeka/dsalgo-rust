@@ -1,7 +1,4 @@
-use std::{
-    marker::PhantomData,
-    ops::*,
-};
+use std::{marker::PhantomData, ops::*};
 
 use crate::segment_tree_lazy_with_instance_homomorphism::*;
 
@@ -23,11 +20,7 @@ where
     type S = (T, T);
 
     // (sum, len)
-    fn compose(
-        &self,
-        f: Self::F,
-        g: Self::F,
-    ) -> Self::F {
+    fn compose(&self, f: Self::F, g: Self::F) -> Self::F {
         (f.0.clone() * g.0, f.0 * g.1 + f.1)
     }
 
@@ -35,11 +28,7 @@ where
         (0.into(), 0.into())
     }
 
-    fn op(
-        &self,
-        a: Self::S,
-        b: Self::S,
-    ) -> Self::S {
+    fn op(&self, a: Self::S, b: Self::S) -> Self::S {
         (a.0 + b.0, a.1 + b.1)
     }
 
@@ -47,11 +36,7 @@ where
         (1.into(), 0.into())
     }
 
-    fn map(
-        &self,
-        f: Self::F,
-        x: Self::S,
-    ) -> Self::S {
+    fn map(&self, f: Self::F, x: Self::S) -> Self::S {
         (f.0 * x.0 + f.1 * x.1.clone(), x.1)
     }
 }

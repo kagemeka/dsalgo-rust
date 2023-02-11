@@ -1,8 +1,7 @@
 use std::ops::*;
 
 use crate::{
-    matrix_with_static_property::Matrix,
-    static_matrix_property_trait::Shape,
+    matrix_with_static_property::Matrix, static_matrix_property_trait::Shape,
     static_square_matrix_property_trait::Size,
 };
 
@@ -13,10 +12,7 @@ where
 {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(mut self, rhs: Self) -> Self::Output {
         let (h, w) = P::shape();
 
         for i in 0..h {
@@ -34,10 +30,7 @@ where
     P: Shape + Clone,
     T: AddAssign + Clone,
 {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = self.clone() + rhs;
     }
 }
@@ -71,10 +64,7 @@ where
 {
     type Output = Self;
 
-    fn mul(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(self, rhs: Self) -> Self::Output {
         let n = P::size();
 
         let mut a: Self = 0.into();
@@ -96,10 +86,7 @@ where
     P: Size + Clone,
     T: Mul<Output = T> + AddAssign + Clone + From<i32>,
 {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = self.clone() * rhs;
     }
 }

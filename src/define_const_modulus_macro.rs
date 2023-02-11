@@ -1,7 +1,4 @@
-use crate::{
-    const_modulus_trait::Modulus,
-    static_modulus_trait::Get,
-};
+use crate::{const_modulus_trait::Modulus, static_modulus_trait::Get};
 
 macro_rules! define_const_mod_old {
     ($name:ident, $uint:ty, $value:expr) => {

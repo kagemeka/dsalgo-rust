@@ -1,9 +1,6 @@
 //! bfs from multiple nodes in the same bfs. O(N + M)
 
-pub fn bfs_reachable(
-    g: &[Vec<usize>],
-    sources: &[usize],
-) -> Vec<bool> {
+pub fn bfs_reachable(g: &[Vec<usize>], sources: &[usize]) -> Vec<bool> {
     let n = g.len();
 
     let mut reachable = vec![false; n];

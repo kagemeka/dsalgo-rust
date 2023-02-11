@@ -1,7 +1,4 @@
-pub fn knapsack_dual(
-    inf: usize,
-    vw: &[(usize, usize)],
-) -> Vec<usize> {
+pub fn knapsack_dual(inf: usize, vw: &[(usize, usize)]) -> Vec<usize> {
     let size = vw.iter().map(|x| x.0).sum::<usize>() + 1;
 
     let mut dp = vec![inf; size];

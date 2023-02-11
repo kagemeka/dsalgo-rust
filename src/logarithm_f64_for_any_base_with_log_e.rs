@@ -1,7 +1,4 @@
-pub fn log(
-    base: f64,
-    x: f64,
-) -> f64 {
+pub fn log(base: f64, x: f64) -> f64 {
     const E: f64 = std::f64::consts::E;
 
     x.log(E) / base.log(E)

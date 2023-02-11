@@ -9,11 +9,7 @@ impl<T> HomogeneousProduct<T> {
         Self { chooser }
     }
 
-    pub fn calc(
-        &mut self,
-        n: u64,
-        k: u64,
-    ) -> T
+    pub fn calc(&mut self, n: u64, k: u64) -> T
     where
         T: From<u64>,
     {

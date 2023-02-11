@@ -1,18 +1,11 @@
-use crate::priority_queue::{
-    MinimumQueue,
-    Pop,
-    Push,
-};
+use crate::priority_queue::{MinimumQueue, Pop, Push};
 
 impl<T: std::cmp::Ord> Push
     for std::collections::BinaryHeap<std::cmp::Reverse<T>>
 {
     type T = T;
 
-    fn push(
-        &mut self,
-        x: Self::T,
-    ) {
+    fn push(&mut self, x: Self::T) {
         Self::push(self, std::cmp::Reverse(x));
     }
 }

@@ -11,10 +11,7 @@ impl From<(i64, i64)> for Vector2D {
 }
 
 impl AddAssign for Vector2D {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         self.0 += rhs.0;
 
         self.1 += rhs.1;
@@ -24,10 +21,7 @@ impl AddAssign for Vector2D {
 impl Add for Vector2D {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(mut self, rhs: Self) -> Self::Output {
         self += rhs;
 
         self
@@ -47,10 +41,7 @@ impl Neg for Vector2D {
 }
 
 impl SubAssign for Vector2D {
-    fn sub_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self += -rhs;
     }
 }
@@ -58,10 +49,7 @@ impl SubAssign for Vector2D {
 impl Sub for Vector2D {
     type Output = Self;
 
-    fn sub(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn sub(mut self, rhs: Self) -> Self::Output {
         self -= rhs;
 
         self
@@ -71,19 +59,13 @@ impl Sub for Vector2D {
 impl Mul for Vector2D {
     type Output = i64;
 
-    fn mul(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(self, rhs: Self) -> Self::Output {
         self.0 * rhs.0 + self.1 * rhs.1
     }
 }
 
 impl MulAssign<i64> for Vector2D {
-    fn mul_assign(
-        &mut self,
-        x: i64,
-    ) {
+    fn mul_assign(&mut self, x: i64) {
         self.0 *= x;
 
         self.1 *= x;
@@ -93,10 +75,7 @@ impl MulAssign<i64> for Vector2D {
 impl Mul<i64> for Vector2D {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        x: i64,
-    ) -> Self::Output {
+    fn mul(mut self, x: i64) -> Self::Output {
         self *= x;
 
         self
@@ -104,10 +83,7 @@ impl Mul<i64> for Vector2D {
 }
 
 impl DivAssign<i64> for Vector2D {
-    fn div_assign(
-        &mut self,
-        x: i64,
-    ) {
+    fn div_assign(&mut self, x: i64) {
         assert!(self.0 % x == 0 && self.1 % x == 0);
 
         self.0 /= x;
@@ -119,10 +95,7 @@ impl DivAssign<i64> for Vector2D {
 impl Div<i64> for Vector2D {
     type Output = Self;
 
-    fn div(
-        mut self,
-        rhs: i64,
-    ) -> Self::Output {
+    fn div(mut self, rhs: i64) -> Self::Output {
         self /= rhs;
 
         self
@@ -130,27 +103,17 @@ impl Div<i64> for Vector2D {
 }
 
 impl Vector2D {
-    pub fn cross(
-        &self,
-        rhs: &Self,
-    ) -> i64 {
+    pub fn cross(&self, rhs: &Self) -> i64 {
         self.0 * rhs.1 - self.1 * rhs.0
     }
 
     /// self as origin.
 
-    pub fn cross2(
-        &self,
-        a: &Self,
-        b: &Self,
-    ) -> i64 {
+    pub fn cross2(&self, a: &Self, b: &Self) -> i64 {
         (*a - *self).cross(&(*b - *self))
     }
 
-    pub fn dot(
-        &self,
-        rhs: &Self,
-    ) -> i64 {
+    pub fn dot(&self, rhs: &Self) -> i64 {
         *self * *rhs
     }
 
@@ -173,10 +136,7 @@ impl Vector2D {
     /// self < rhs ?
     /// [-\pi, \pi)
 
-    pub fn angle_lt(
-        &self,
-        rhs: &Self,
-    ) -> bool {
+    pub fn angle_lt(&self, rhs: &Self) -> bool {
         let f = self.has_positive_angle();
 
         let g = rhs.has_positive_angle();
@@ -206,24 +166,15 @@ impl Vector2D {
         self.1 > 0 && self.0 < 0
     }
 
-    pub fn acute(
-        &self,
-        other: &Self,
-    ) -> bool {
+    pub fn acute(&self, other: &Self) -> bool {
         self.cross(other) > 0 && self.dot(other) > 0
     }
 
-    pub fn othogonal(
-        &self,
-        other: &Self,
-    ) -> bool {
+    pub fn othogonal(&self, other: &Self) -> bool {
         self.cross(other) > 0 && self.dot(other) == 0
     }
 
-    pub fn obtuse(
-        &self,
-        other: &Self,
-    ) -> bool {
+    pub fn obtuse(&self, other: &Self) -> bool {
         self.cross(other) > 0 && self.dot(other) < 0
     }
 }
@@ -231,38 +182,23 @@ impl Vector2D {
 /// compare by angle
 
 impl PartialOrd for Vector2D {
-    fn lt(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn lt(&self, other: &Self) -> bool {
         self.angle_lt(other)
     }
 
-    fn le(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn le(&self, other: &Self) -> bool {
         self == other && self < other
     }
 
-    fn ge(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn ge(&self, other: &Self) -> bool {
         !(self < other)
     }
 
-    fn gt(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn gt(&self, other: &Self) -> bool {
         !(self <= other)
     }
 
-    fn partial_cmp(
-        &self,
-        other: &Self,
-    ) -> Option<std::cmp::Ordering> {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
         use std::cmp::Ordering::*;
 
         let res = if self == other {
@@ -303,10 +239,7 @@ pub enum DirectionType {
 impl Vector2D {
     /// approximated direction from self
 
-    pub fn direction_type_of(
-        &self,
-        x: &Self,
-    ) -> DirectionType {
+    pub fn direction_type_of(&self, x: &Self) -> DirectionType {
         assert!(x != self);
 
         use DirectionType::*;
@@ -326,10 +259,7 @@ impl Vector2D {
         }
     }
 
-    pub fn direction_type_from(
-        &self,
-        base: &Self,
-    ) -> DirectionType {
+    pub fn direction_type_from(&self, base: &Self) -> DirectionType {
         base.direction_type_of(self)
     }
 }

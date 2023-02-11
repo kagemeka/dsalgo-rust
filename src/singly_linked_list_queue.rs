@@ -1,9 +1,6 @@
 use std::{
     cell::RefCell,
-    rc::{
-        Rc,
-        Weak,
-    },
+    rc::{Rc, Weak},
 };
 
 use crate::singly_linked_list_node_with_rc_refcell::*;
@@ -29,10 +26,7 @@ impl<T> Queue<T> {
         self.size() == 0
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push(&mut self, x: T) {
         let x = Node::new(x);
 
         if self.size == 0 {

@@ -1,5 +1,5 @@
 pub fn adjacency_list_to_edges<T>(
-    adjacency_list: Vec<Vec<(usize, T)>>
+    adjacency_list: Vec<Vec<(usize, T)>>,
 ) -> Vec<(usize, usize, T)> {
     adjacency_list
         .into_iter()

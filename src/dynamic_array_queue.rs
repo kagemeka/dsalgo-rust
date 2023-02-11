@@ -35,10 +35,7 @@ impl<T: Clone> Queue<T> {
         Some(v)
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push(&mut self, x: T) {
         assert!(!self.is_full());
 
         self.nodes.push(x);

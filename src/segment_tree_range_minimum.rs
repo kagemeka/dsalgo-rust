@@ -15,11 +15,7 @@ impl<T: Ord + Clone> Monoid for RangeMinimum<T> {
         self.0.clone()
     }
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T {
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T {
         l.min(r)
     }
 }

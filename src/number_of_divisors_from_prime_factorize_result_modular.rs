@@ -1,7 +1,4 @@
-pub fn number_of_divisors(
-    modulus: usize,
-    factors: &[(usize, usize)],
-) -> usize {
+pub fn number_of_divisors(modulus: usize, factors: &[(usize, usize)]) -> usize {
     let mut c = 1;
 
     for (_, e) in factors.iter() {

@@ -3,11 +3,7 @@
 
 /// counter-clockwise.
 
-pub fn rotate(
-    x: f64,
-    y: f64,
-    radian_theta: f64,
-) -> (f64, f64) {
+pub fn rotate(x: f64, y: f64, radian_theta: f64) -> (f64, f64) {
     let c = radian_theta.cos();
 
     let s = radian_theta.sin();

@@ -1,7 +1,4 @@
-pub fn add(
-    a: &[Vec<i64>],
-    b: &[Vec<i64>],
-) -> Vec<Vec<i64>> {
+pub fn add(a: &[Vec<i64>], b: &[Vec<i64>]) -> Vec<Vec<i64>> {
     a.iter()
         .zip(b.iter())
         .map(|(a, b)| a.iter().zip(b.iter()).map(|(a, b)| a + b).collect())

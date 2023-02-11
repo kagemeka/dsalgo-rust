@@ -1,16 +1,12 @@
 use crate::{
-    modular_cumprod_i64::*,
-    modular_factorial_table_i64::*,
+    modular_cumprod_i64::*, modular_factorial_table_i64::*,
     modular_power_with_neg_exp_i32::*,
 };
 
 /// modular m must be coprime with n < m;
 /// so lpf(m) >= size
 
-pub fn inverse_factorial(
-    m: i64,
-    size: usize,
-) -> Vec<i64> {
+pub fn inverse_factorial(m: i64, size: usize) -> Vec<i64> {
     assert!(size <= m as usize);
 
     let mut a: Vec<_> = (1..size as i64 + 1).rev().collect();

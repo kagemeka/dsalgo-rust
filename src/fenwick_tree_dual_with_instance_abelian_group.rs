@@ -25,12 +25,7 @@ impl<G: AbelianGroup> DualFenwick<G>
 where
     G::T: Clone,
 {
-    pub fn operate(
-        &mut self,
-        l: usize,
-        r: usize,
-        x: G::T,
-    ) {
+    pub fn operate(&mut self, l: usize, r: usize, x: G::T) {
         assert!(l < r && r <= self.size());
 
         if r < self.size() {
@@ -40,11 +35,7 @@ where
         self.operate_ge(l, x);
     }
 
-    pub fn binary_search_from<F>(
-        &self,
-        is_ok: F,
-        l: usize,
-    ) -> usize
+    pub fn binary_search_from<F>(&self, is_ok: F, l: usize) -> usize
     where
         F: Fn(&G::T) -> bool,
     {
@@ -81,20 +72,13 @@ mod tests {
                 0
             }
 
-            fn op(
-                &self,
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(&self, l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
         }
 
         impl AbelianGroup for G {
-            fn inv(
-                &self,
-                x: Self::T,
-            ) -> Self::T {
+            fn inv(&self, x: Self::T) -> Self::T {
                 -x
             }
         }

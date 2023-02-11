@@ -7,11 +7,7 @@ impl Ops for RangeAddRangeSumI64 {
 
     type S = (i64, i64);
 
-    fn op(
-        &self,
-        a: Self::S,
-        b: Self::S,
-    ) -> Self::S {
+    fn op(&self, a: Self::S, b: Self::S) -> Self::S {
         (a.0 + b.0, a.1 + b.1)
     }
 
@@ -19,11 +15,7 @@ impl Ops for RangeAddRangeSumI64 {
         (0, 0)
     }
 
-    fn compose(
-        &self,
-        f: Self::F,
-        g: Self::F,
-    ) -> Self::F {
+    fn compose(&self, f: Self::F, g: Self::F) -> Self::F {
         f + g
     }
 
@@ -31,11 +23,7 @@ impl Ops for RangeAddRangeSumI64 {
         0
     }
 
-    fn map(
-        &self,
-        f: Self::F,
-        x: Self::S,
-    ) -> Self::S {
+    fn map(&self, f: Self::F, x: Self::S) -> Self::S {
         (x.0 + f * x.1, x.1)
     }
 }

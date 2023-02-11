@@ -7,10 +7,7 @@ pub struct Value<T>(Option<T>);
 impl<T> Add for Value<T> {
     type Output = Self;
 
-    fn add(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(self, rhs: Self) -> Self::Output {
         if rhs.0.is_none() {
             self
         } else {

@@ -2,10 +2,7 @@
 
 use std::iter::FromIterator;
 
-use crate::{
-    algebraic_structure::*,
-    binary_function::*,
-};
+use crate::{algebraic_structure::*, binary_function::*};
 
 pub struct SparseTable<G: Semigroup> {
     node: Vec<Vec<G::S>>,
@@ -63,11 +60,7 @@ where
         self.node[0].len()
     }
 
-    pub fn reduce(
-        &self,
-        l: usize,
-        r: usize,
-    ) -> G::S {
+    pub fn reduce(&self, l: usize, r: usize) -> G::S {
         assert!(l < r && r <= self.size());
 
         if r - l == 1 {
@@ -80,10 +73,7 @@ where
     }
 }
 
-use crate::{
-    algebraic_structure_impl::*,
-    query::RangeGetQuery,
-};
+use crate::{algebraic_structure_impl::*, query::RangeGetQuery};
 
 impl<S, I> RangeGetQuery<I> for SparseTable<GroupApprox<S, I>>
 where
@@ -92,11 +82,7 @@ where
 {
     type T = S;
 
-    fn get_range(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> Self::T {
+    fn get_range(&mut self, l: usize, r: usize) -> Self::T {
         self.reduce(l, r)
     }
 }
@@ -166,11 +152,7 @@ where
 
     /// [l, r)
 
-    pub fn reduce(
-        &self,
-        l: usize,
-        mut r: usize,
-    ) -> G::S {
+    pub fn reduce(&self, l: usize, mut r: usize) -> G::S {
         assert!(l < r && r <= self.size());
 
         r -= 1; // internally, consider [l, r]
@@ -206,11 +188,7 @@ where
 {
     type T = S;
 
-    fn get_range(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> Self::T {
+    fn get_range(&mut self, l: usize, r: usize) -> Self::T {
         self.reduce(l, r)
     }
 }

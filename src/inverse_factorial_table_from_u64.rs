@@ -1,9 +1,6 @@
 use std::ops::*;
 
-use crate::{
-    accumulate_iterator::accumulate,
-    factorial::factorial,
-};
+use crate::{accumulate_iterator::accumulate, factorial::factorial};
 
 pub fn inverse_factorial_table<T>(size: usize) -> Vec<T>
 where

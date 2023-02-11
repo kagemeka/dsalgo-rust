@@ -6,10 +6,7 @@ impl<G: Monoid> DualFenwick<G>
 where
     G::T: Clone,
 {
-    pub fn new(
-        g: G,
-        size: usize,
-    ) -> Self {
+    pub fn new(g: G, size: usize) -> Self {
         Self(Fenwick::new(g, size))
     }
 
@@ -17,28 +14,18 @@ where
         self.0.size()
     }
 
-    pub fn operate_ge(
-        &mut self,
-        i: usize,
-        x: G::T,
-    ) {
+    pub fn operate_ge(&mut self, i: usize, x: G::T) {
         self.0.operate(i, x)
     }
 
-    pub fn get(
-        &self,
-        i: usize,
-    ) -> G::T {
+    pub fn get(&self, i: usize) -> G::T {
         self.0.fold_lt(i + 1)
     }
 
     /// \forall{j=0..=i - 1} not is_ok(a_j),
     /// \forall{j=i..n} is_ok(a_i).
 
-    pub fn binary_search<F>(
-        &self,
-        is_ok: F,
-    ) -> usize
+    pub fn binary_search<F>(&self, is_ok: F) -> usize
     where
         F: Fn(&G::T) -> bool,
     {
@@ -66,11 +53,7 @@ mod tests {
                 0
             }
 
-            fn op(
-                &self,
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(&self, l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
         }

@@ -10,17 +10,11 @@ impl<T: Ord> LazyBinaryHeap<T> {
         Self { que: BinaryHeap::new(), remove_que: BinaryHeap::new() }
     }
 
-    pub fn insert(
-        &mut self,
-        x: T,
-    ) {
+    pub fn insert(&mut self, x: T) {
         self.que.push(x);
     }
 
-    pub fn remove(
-        &mut self,
-        x: T,
-    ) {
+    pub fn remove(&mut self, x: T) {
         self.remove_que.push(x);
     }
 

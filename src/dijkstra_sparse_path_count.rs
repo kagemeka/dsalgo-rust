@@ -1,12 +1,6 @@
 use crate::{
-    graph_edge_trait::{
-        To,
-        Weight,
-    },
-    priority_queue_trait::{
-        Pop,
-        Push,
-    },
+    graph_edge_trait::{To, Weight},
+    priority_queue_trait::{Pop, Push},
 };
 
 // TODO: generalize count type.

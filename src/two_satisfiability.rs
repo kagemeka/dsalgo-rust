@@ -17,13 +17,7 @@ impl TwoSat {
 
     /// add a clause (i-th node is f) or (j-th node is g)
 
-    pub fn add_clause(
-        &mut self,
-        i: usize,
-        f: bool,
-        j: usize,
-        g: bool,
-    ) {
+    pub fn add_clause(&mut self, i: usize, f: bool, j: usize, g: bool) {
         let f = f as usize;
 
         let g = g as usize;

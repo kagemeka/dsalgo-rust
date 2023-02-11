@@ -2,10 +2,7 @@ use crate::sieve_of_eratosthenes_enumerate_primes_usize::enumerate_primes;
 
 /// O(N\log{\log{N}}\log{k})
 
-pub fn divisor_func(
-    k: usize,
-    size: usize,
-) -> Vec<usize> {
+pub fn divisor_func(k: usize, size: usize) -> Vec<usize> {
     let k = k as u32;
 
     let mut f: Vec<_> =

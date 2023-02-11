@@ -8,10 +8,7 @@ where
 {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(mut self, rhs: Self) -> Self::Output {
         for i in 0..N {
             for j in 0..N {
                 self[i][j] += rhs[i][j].clone();
@@ -26,10 +23,7 @@ impl<T, const N: usize> AddAssign for Matrix<T, N>
 where
     T: Clone + AddAssign,
 {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = self.clone() + rhs;
     }
 }
@@ -40,10 +34,7 @@ where
 {
     type Output = Self;
 
-    fn mul(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(self, rhs: Self) -> Self::Output {
         let mut a: Self = 0.into();
 
         for i in 0..N {
@@ -62,10 +53,7 @@ impl<T, const N: usize> MulAssign for Matrix<T, N>
 where
     T: Copy + AddAssign + From<i32> + Mul<Output = T>,
 {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }

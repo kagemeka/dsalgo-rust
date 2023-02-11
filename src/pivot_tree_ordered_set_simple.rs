@@ -18,28 +18,19 @@ impl PivotSet {
         self.size
     }
 
-    pub fn min_ge(
-        &self,
-        x: usize,
-    ) -> Option<usize> {
+    pub fn min_ge(&self, x: usize) -> Option<usize> {
         let v = Node::min_ok(|v| v >= x + 1, self.root.as_ref())?;
 
         Some(v - 1)
     }
 
-    pub fn max_le(
-        &self,
-        x: usize,
-    ) -> Option<usize> {
+    pub fn max_le(&self, x: usize) -> Option<usize> {
         let v = Node::max_ok(|v| v <= x + 1, self.root.as_ref())?;
 
         Some(v - 1)
     }
 
-    pub fn contains(
-        &self,
-        x: usize,
-    ) -> bool {
+    pub fn contains(&self, x: usize) -> bool {
         if let Some(v) = self.min_ge(x) {
             v == x
         } else {
@@ -47,10 +38,7 @@ impl PivotSet {
         }
     }
 
-    pub fn insert(
-        &mut self,
-        mut x: usize,
-    ) {
+    pub fn insert(&mut self, mut x: usize) {
         assert!(x < (1 << self.max_height) - 1);
 
         if self.contains(x) {
@@ -68,10 +56,7 @@ impl PivotSet {
         self.size += 1;
     }
 
-    pub fn remove(
-        &mut self,
-        x: usize,
-    ) {
+    pub fn remove(&mut self, x: usize) {
         if !self.contains(x + 1) {
             return;
         }

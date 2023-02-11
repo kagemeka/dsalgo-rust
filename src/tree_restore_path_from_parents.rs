@@ -1,9 +1,6 @@
 /// it should be satisfied that parent[root] = root
 
-pub fn restore_tree_path(
-    parent: &[usize],
-    mut v: usize,
-) -> Vec<usize> {
+pub fn restore_tree_path(parent: &[usize], mut v: usize) -> Vec<usize> {
     let mut path = Vec::new();
 
     loop {

@@ -29,10 +29,7 @@ where
     }
 }
 
-pub fn accumulate<T, F, I>(
-    f: F,
-    mut iter: I,
-) -> Iter<T, F, I>
+pub fn accumulate<T, F, I>(f: F, mut iter: I) -> Iter<T, F, I>
 where
     T: Clone,
     F: Fn(T, T) -> T,

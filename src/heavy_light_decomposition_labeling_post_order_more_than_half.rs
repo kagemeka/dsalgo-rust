@@ -1,9 +1,6 @@
 /// labeling in postorder
 
-pub fn hld(
-    g: &[Vec<usize>],
-    root: usize,
-) -> Vec<usize> {
+pub fn hld(g: &[Vec<usize>], root: usize) -> Vec<usize> {
     fn dfs(
         g: &[Vec<usize>],
         size: &mut [usize],

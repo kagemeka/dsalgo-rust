@@ -1,9 +1,6 @@
 use crate::extended_euclidean_modular_gcd_inverse_i64_with_extgcd::mod_gcd_inv;
 
-pub fn modinv(
-    modulus: i64,
-    x: i64,
-) -> i64 {
+pub fn modinv(modulus: i64, x: i64) -> i64 {
     let (g, inv) = mod_gcd_inv(modulus, x);
 
     assert!(g == 1);

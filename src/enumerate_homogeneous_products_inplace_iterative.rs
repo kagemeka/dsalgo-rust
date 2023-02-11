@@ -1,7 +1,4 @@
-pub fn homogeneous_products(
-    n: usize,
-    k: usize,
-) -> Vec<Vec<usize>> {
+pub fn homogeneous_products(n: usize, k: usize) -> Vec<Vec<usize>> {
     assert!(n > 0);
 
     let mut res = vec![];

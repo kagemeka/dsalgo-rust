@@ -5,10 +5,7 @@ use crate::{
     sieve_of_eratosthenes_euler_totient_function_table_direct_usize::phi_table,
 };
 
-pub fn sum_of_gcd<T>(
-    k: usize,
-    n: usize,
-) -> T
+pub fn sum_of_gcd<T>(k: usize, n: usize) -> T
 where
     T: Clone + MulAssign + From<usize> + Mul<Output = T> + AddAssign,
 {

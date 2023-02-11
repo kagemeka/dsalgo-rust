@@ -30,18 +30,11 @@ impl<T: Clone + Add<Output = T> + From<i32>> DualSegtree<T> {
         bit_length(self.n())
     }
 
-    fn operate_node(
-        &mut self,
-        i: usize,
-        x: T,
-    ) {
+    fn operate_node(&mut self, i: usize, x: T) {
         self.node[i] = self.node[i].clone() + x;
     }
 
-    fn propagate(
-        &mut self,
-        i: usize,
-    ) {
+    fn propagate(&mut self, i: usize) {
         self.operate_node(i << 1, self.node[i].clone());
 
         self.operate_node(i << 1 | 1, self.node[i].clone());
@@ -49,19 +42,13 @@ impl<T: Clone + Add<Output = T> + From<i32>> DualSegtree<T> {
         self.node[i] = 0.into();
     }
 
-    fn pull(
-        &mut self,
-        i: usize,
-    ) {
+    fn pull(&mut self, i: usize) {
         for j in (1..self.height()).rev() {
             self.propagate(i >> j);
         }
     }
 
-    pub fn get(
-        &mut self,
-        mut i: usize,
-    ) -> &mut T {
+    pub fn get(&mut self, mut i: usize) -> &mut T {
         assert!(i < self.size());
 
         i += self.n();
@@ -71,12 +58,7 @@ impl<T: Clone + Add<Output = T> + From<i32>> DualSegtree<T> {
         &mut self.node[i]
     }
 
-    pub fn operate(
-        &mut self,
-        mut l: usize,
-        mut r: usize,
-        x: T,
-    ) {
+    pub fn operate(&mut self, mut l: usize, mut r: usize, x: T) {
         assert!(l <= r && r <= self.size());
 
         let n = self.n();

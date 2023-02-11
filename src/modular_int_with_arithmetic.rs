@@ -18,10 +18,7 @@ where
     M: Arithmetic<T = T>,
     M::T: std::fmt::Display,
 {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.value)
     }
 }
@@ -69,10 +66,7 @@ where
 {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(mut self, rhs: Self) -> Self::Output {
         self.value = M::add(self.value, rhs.value);
 
         self
@@ -84,10 +78,7 @@ where
     M: Arithmetic<T = T> + Copy,
     T: Copy,
 {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
@@ -99,10 +90,7 @@ where
 {
     type Output = Self;
 
-    fn sub(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn sub(mut self, rhs: Self) -> Self::Output {
         self.value = M::sub(self.value, rhs.value);
 
         self
@@ -114,10 +102,7 @@ where
     M: Arithmetic<T = T> + Copy,
     T: Copy,
 {
-    fn sub_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
@@ -143,10 +128,7 @@ where
 {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(mut self, rhs: Self) -> Self::Output {
         self.value = M::mul(self.value, rhs.value);
 
         self
@@ -158,10 +140,7 @@ where
     M: Arithmetic<T = T> + Copy,
     T: Copy,
 {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
@@ -173,10 +152,7 @@ where
 {
     type Output = Self;
 
-    fn div(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn div(mut self, rhs: Self) -> Self::Output {
         self.value = M::div(self.value, rhs.value);
 
         self
@@ -188,10 +164,7 @@ where
     M: Arithmetic<T = T> + Copy,
     T: Copy,
 {
-    fn div_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
@@ -321,10 +294,7 @@ where
     M: Arithmetic<T = u64>,
     Self: Clone,
 {
-    pub fn pow(
-        self,
-        exponent: u64,
-    ) -> Self {
+    pub fn pow(self, exponent: u64) -> Self {
         self.pow_monoid(exponent)
     }
 }
@@ -334,29 +304,19 @@ where
     M: Arithmetic<T = u32>,
     Self: Clone,
 {
-    pub fn pow(
-        self,
-        exponent: u64,
-    ) -> Self {
+    pub fn pow(self, exponent: u64) -> Self {
         self.pow_monoid(exponent)
     }
 }
 
-use crate::{
-    binary_function::itself::*,
-    group_theory_id::*,
-    ops::MulInv,
-};
+use crate::{binary_function::itself::*, group_theory_id::*, ops::MulInv};
 
 impl<T, M> BinaryOp<Multiplicative> for Modint<T, M>
 where
     M: Arithmetic<T = T>,
     T: Copy,
 {
-    fn op(
-        lhs: Self,
-        rhs: Self,
-    ) -> Self {
+    fn op(lhs: Self, rhs: Self) -> Self {
         lhs * rhs
     }
 }

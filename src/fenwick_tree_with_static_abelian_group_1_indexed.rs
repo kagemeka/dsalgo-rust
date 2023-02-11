@@ -8,21 +8,13 @@ impl<G: AbelianGroup> Fenwick<G>
 where
     G::T: Clone,
 {
-    pub fn fold(
-        &self,
-        l: usize,
-        r: usize,
-    ) -> G::T {
+    pub fn fold(&self, l: usize, r: usize) -> G::T {
         assert!(l <= r);
 
         G::op(G::inv(self.fold_lt(l)), self.fold_lt(r))
     }
 
-    pub fn max_right_from<F>(
-        &self,
-        is_ok: F,
-        l: usize,
-    ) -> usize
+    pub fn max_right_from<F>(&self, is_ok: F, l: usize) -> usize
     where
         F: Fn(&G::T) -> bool,
     {
@@ -59,11 +51,7 @@ where
         }
     }
 
-    pub fn min_left_from<F>(
-        &self,
-        is_ok: F,
-        r: usize,
-    ) -> usize
+    pub fn min_left_from<F>(&self, is_ok: F, r: usize) -> usize
     where
         F: Fn(&G::T) -> bool,
     {
@@ -129,10 +117,7 @@ mod tests {
                 0
             }
 
-            fn op(
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
         }

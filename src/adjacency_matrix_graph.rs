@@ -39,19 +39,13 @@ impl<T> AdjacencyMatrix<T> {
 impl<T> std::ops::Index<(usize, usize)> for AdjacencyMatrix<T> {
     type Output = T;
 
-    fn index(
-        &self,
-        (u, v): (usize, usize),
-    ) -> &Self::Output {
+    fn index(&self, (u, v): (usize, usize)) -> &Self::Output {
         &self.data[u][v]
     }
 }
 
 impl<T> std::ops::IndexMut<(usize, usize)> for AdjacencyMatrix<T> {
-    fn index_mut(
-        &mut self,
-        (u, v): (usize, usize),
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, (u, v): (usize, usize)) -> &mut Self::Output {
         &mut self.data[u][v]
     }
 }

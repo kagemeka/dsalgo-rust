@@ -9,10 +9,8 @@ impl<T> BinaryMinHeap<T> {
         self.0.len()
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) where
+    pub fn push(&mut self, x: T)
+    where
         T: PartialOrd,
     {
         let mut i = self.size();

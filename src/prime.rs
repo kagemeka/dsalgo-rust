@@ -62,7 +62,7 @@ pub fn find_prime_numbers(n: usize) -> Vec<usize> {
 }
 
 pub fn prime_factorize(
-    mut n: usize
+    mut n: usize,
 ) -> std::collections::BTreeMap<usize, usize> {
     let mut cnt = std::collections::BTreeMap::new();
 
@@ -177,11 +177,7 @@ mod tests {
     fn test_prime_factorize_lpf() {
         let lpf = PrimeFactorizeLPF::new(1 << 10);
 
-        use std::{
-            array::IntoIter,
-            collections::BTreeMap,
-            iter::FromIterator,
-        };
+        use std::{array::IntoIter, collections::BTreeMap, iter::FromIterator};
 
         assert_eq!(
             lpf.factorize(105),
@@ -192,11 +188,7 @@ mod tests {
     #[test]
 
     fn test_prime_factorize() {
-        use std::{
-            array::IntoIter,
-            collections::BTreeMap,
-            iter::FromIterator,
-        };
+        use std::{array::IntoIter, collections::BTreeMap, iter::FromIterator};
 
         assert_eq!(
             prime_factorize(105),

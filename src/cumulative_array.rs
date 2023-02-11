@@ -28,18 +28,11 @@ where
         self.s.len() - 1
     }
 
-    pub fn reduce_lt(
-        &self,
-        i: usize,
-    ) -> G::S {
+    pub fn reduce_lt(&self, i: usize) -> G::S {
         self.s[i].clone()
     }
 
-    pub fn reduce(
-        &self,
-        l: usize,
-        r: usize,
-    ) -> G::S
+    pub fn reduce(&self, l: usize, r: usize) -> G::S
     where
         G: Group,
     {

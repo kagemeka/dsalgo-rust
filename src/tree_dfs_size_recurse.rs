@@ -1,17 +1,9 @@
-pub fn tree_dfs_size(
-    g: &[Vec<usize>],
-    root: usize,
-) -> Vec<usize> {
+pub fn tree_dfs_size(g: &[Vec<usize>], root: usize) -> Vec<usize> {
     let n = g.len();
 
     let mut size = vec![1; n];
 
-    fn dfs(
-        g: &[Vec<usize>],
-        size: &mut [usize],
-        u: usize,
-        p: usize,
-    ) {
+    fn dfs(g: &[Vec<usize>], size: &mut [usize], u: usize, p: usize) {
         for &v in g[u].iter() {
             if v == p {
                 continue;

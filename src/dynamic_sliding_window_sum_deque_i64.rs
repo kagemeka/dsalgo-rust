@@ -14,19 +14,13 @@ impl SWAGDeque {
         self.que.len()
     }
 
-    pub fn push_right(
-        &mut self,
-        x: i64,
-    ) {
+    pub fn push_right(&mut self, x: i64) {
         self.v += x;
 
         self.que.push_back(x);
     }
 
-    pub fn push_left(
-        &mut self,
-        x: i64,
-    ) {
+    pub fn push_left(&mut self, x: i64) {
         self.v += x;
 
         self.que.push_front(x);

@@ -1,7 +1,5 @@
-pub fn iter_over_multiples<F>(
-    n: usize,
-    mut f: F,
-) where
+pub fn iter_over_multiples<F>(n: usize, mut f: F)
+where
     F: FnMut(usize, usize),
 {
     let mut is_prime = vec![true; n >> 1];

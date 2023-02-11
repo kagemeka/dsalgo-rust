@@ -1,9 +1,6 @@
 use crate::divisors_sum_from_prime_factors::divisors_sum_from_prime_factors;
 
-pub fn divisors_sum_by_factorization<F>(
-    factorize: &F,
-    n: u64,
-) -> u64
+pub fn divisors_sum_by_factorization<F>(factorize: &F, n: u64) -> u64
 where
     F: Fn(u64) -> Vec<(u64, u8)>,
 {

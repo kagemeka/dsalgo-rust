@@ -1,6 +1,5 @@
 use crate::{
-    algebraic_structure::*,
-    integer_square_root_with_binary_search_u64::isqrt,
+    algebraic_structure::*, integer_square_root_with_binary_search_u64::isqrt,
 };
 
 pub struct SqrtDecomposition<G: Semigroup> {
@@ -63,10 +62,7 @@ where
     G: Semigroup,
     G::S: Clone,
 {
-    pub(crate) fn update(
-        &mut self,
-        bucket: usize,
-    ) {
+    pub(crate) fn update(&mut self, bucket: usize) {
         let j = bucket;
 
         let n = self.sqrt();
@@ -92,11 +88,8 @@ where
         self.buckets[j] = v;
     }
 
-    pub fn apply<F>(
-        &mut self,
-        i: usize,
-        f: F,
-    ) where
+    pub fn apply<F>(&mut self, i: usize, f: F)
+    where
         F: FnOnce(G::S) -> G::S,
     {
         self.node[i] = f(self.node[i].clone());
@@ -107,21 +100,13 @@ where
     // TODO: move out from core implementation.
     // because set can be defined as application of 'replacement'
     // (the core is apply method)
-    pub fn set(
-        &mut self,
-        i: usize,
-        x: G::S,
-    ) {
+    pub fn set(&mut self, i: usize, x: G::S) {
         self.node[i] = x;
 
         self.update(i / self.sqrt());
     }
 
-    pub fn reduce(
-        &self,
-        l: usize,
-        r: usize,
-    ) -> G::S {
+    pub fn reduce(&self, l: usize, r: usize) -> G::S {
         assert!(l < r && r <= self.size());
 
         // just for early panic. it's not necessary to be checked here.
@@ -196,11 +181,7 @@ where
     /// faster with constant time optimization.
     /// more strictly, 2-times faster for random range queries mathematically.
 
-    pub fn fast_reduce(
-        &self,
-        mut l: usize,
-        r: usize,
-    ) -> G::S {
+    pub fn fast_reduce(&self, mut l: usize, r: usize) -> G::S {
         assert!(l < r && r <= self.size());
 
         let n = self.sqrt();
@@ -237,10 +218,7 @@ where
     }
 }
 
-use crate::{
-    algebraic_structure_impl::*,
-    query::RangeGetQuery,
-};
+use crate::{algebraic_structure_impl::*, query::RangeGetQuery};
 
 impl<S, I> RangeGetQuery<I> for SqrtDecomposition<GroupApprox<S, I>>
 where
@@ -249,11 +227,7 @@ where
 {
     type T = S;
 
-    fn get_range(
-        &mut self,
-        l: usize,
-        r: usize,
-    ) -> Self::T {
+    fn get_range(&mut self, l: usize, r: usize) -> Self::T {
         self.fast_reduce(l, r)
     }
 }

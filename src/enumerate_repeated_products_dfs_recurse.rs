@@ -1,19 +1,11 @@
-pub fn repeated_products(
-    n: usize,
-    k: usize,
-) -> Vec<Vec<usize>> {
+pub fn repeated_products(n: usize, k: usize) -> Vec<Vec<usize>> {
     if n == 0 {
         assert!(k == 0);
     }
 
     let mut res = vec![];
 
-    fn dfs(
-        n: usize,
-        k: usize,
-        res: &mut Vec<Vec<usize>>,
-        a: &mut Vec<usize>,
-    ) {
+    fn dfs(n: usize, k: usize, res: &mut Vec<Vec<usize>>, a: &mut Vec<usize>) {
         if a.len() == k {
             res.push(a.to_vec());
 

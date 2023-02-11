@@ -5,10 +5,7 @@ use crate::{
 
 /// lo <= hi < 10^14, hi - lo < 10^7
 
-pub fn factorize(
-    lo: usize,
-    hi: usize,
-) -> Vec<usize> {
+pub fn factorize(lo: usize, hi: usize) -> Vec<usize> {
     let mut v: Vec<_> = (lo..hi).collect();
 
     let mut factors = Vec::with_capacity((hi - lo) << 2);

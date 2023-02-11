@@ -5,8 +5,5 @@
 pub trait GCD {
     type T;
 
-    fn gcd(
-        _: Self::T,
-        _: Self::T,
-    ) -> Self::T;
+    fn gcd(_: Self::T, _: Self::T) -> Self::T;
 }

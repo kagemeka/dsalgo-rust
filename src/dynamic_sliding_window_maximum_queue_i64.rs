@@ -13,10 +13,7 @@ impl SWAGQueue {
         self.st_r.len() + self.st_l.len() - 1
     }
 
-    pub fn push(
-        &mut self,
-        x: i64,
-    ) {
+    pub fn push(&mut self, x: i64) {
         self.vr = self.vr.max(x);
 
         self.st_r.push(x);

@@ -1,9 +1,6 @@
 use crate::modular_cumprod_i64::*;
 
-pub fn factorial(
-    m: i64,
-    size: usize,
-) -> Vec<i64> {
+pub fn factorial(m: i64, size: usize) -> Vec<i64> {
     let mut a: Vec<_> = (0..size as i64).collect();
 
     a[0] = 1;

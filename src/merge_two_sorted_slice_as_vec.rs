@@ -1,7 +1,4 @@
-pub fn merge_sorted<T: Ord + Clone>(
-    a: &[T],
-    b: &[T],
-) -> Vec<T> {
+pub fn merge_sorted<T: Ord + Clone>(a: &[T], b: &[T]) -> Vec<T> {
     let n = a.len();
 
     let m = b.len();

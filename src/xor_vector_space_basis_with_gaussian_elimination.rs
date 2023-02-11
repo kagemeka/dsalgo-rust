@@ -1,7 +1,4 @@
-pub fn xor_basis(
-    a: &[usize],
-    n_bits: usize,
-) -> Vec<usize> {
+pub fn xor_basis(a: &[usize], n_bits: usize) -> Vec<usize> {
     let mut basis = vec![0; n_bits];
 
     for &x in a.iter() {

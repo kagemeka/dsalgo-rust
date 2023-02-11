@@ -17,11 +17,7 @@ impl<T> Monoid for Update<T> {
         None
     }
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T {
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T {
         if r.is_none() {
             l
         } else {

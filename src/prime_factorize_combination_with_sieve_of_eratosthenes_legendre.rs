@@ -6,10 +6,7 @@ use crate::{
 
 /// n < 10^14, min(k, n - k) < 10^7
 
-pub fn factorize_combination(
-    n: usize,
-    mut k: usize,
-) -> Vec<(usize, usize)> {
+pub fn factorize_combination(n: usize, mut k: usize) -> Vec<(usize, usize)> {
     let mut factors = vec![];
 
     if k > n {

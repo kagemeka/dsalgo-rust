@@ -1,9 +1,4 @@
-pub fn triangle_area(
-    x0: i64,
-    y0: i64,
-    x1: i64,
-    y1: i64,
-) -> f64 {
+pub fn triangle_area(x0: i64, y0: i64, x1: i64, y1: i64) -> f64 {
     (x0 * y1 - x1 * y0) as f64 / 2.0
 }
 

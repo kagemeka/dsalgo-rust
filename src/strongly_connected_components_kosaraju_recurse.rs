@@ -20,12 +20,7 @@ pub fn scc(g: &[Vec<usize>]) -> Vec<usize> {
         post_order.push(u);
     }
 
-    fn labeling(
-        g: &[Vec<usize>],
-        labels: &mut [usize],
-        l: usize,
-        u: usize,
-    ) {
+    fn labeling(g: &[Vec<usize>], labels: &mut [usize], l: usize, u: usize) {
         labels[u] = l;
 
         for &v in g[u].iter() {

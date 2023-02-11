@@ -1,12 +1,8 @@
 use crate::{
-    complex_number_f64::Complex,
-    fast_fourier_transform_cooley_tukey_recurse::*,
+    complex_number_f64::Complex, fast_fourier_transform_cooley_tukey_recurse::*,
 };
 
-pub fn fft_convolve(
-    a: Vec<Complex>,
-    b: Vec<Complex>,
-) -> Vec<Complex> {
+pub fn fft_convolve(a: Vec<Complex>, b: Vec<Complex>) -> Vec<Complex> {
     let k = a.len() + b.len() - 1;
 
     let bit_len = k.next_power_of_two().trailing_zeros() as usize;
@@ -20,10 +16,7 @@ pub fn fft_convolve(
     ifft(c, bit_len).into_iter().take(k).collect()
 }
 
-pub fn from_i64(
-    a: &[i64],
-    b: &[i64],
-) -> Vec<i64> {
+pub fn from_i64(a: &[i64], b: &[i64]) -> Vec<i64> {
     let a: Vec<_> = a.iter().map(|x| Complex(*x as f64, 0.0)).collect();
 
     let b: Vec<_> = b.iter().map(|x| Complex(*x as f64, 0.0)).collect();

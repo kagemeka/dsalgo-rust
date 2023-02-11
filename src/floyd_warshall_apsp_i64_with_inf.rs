@@ -1,10 +1,7 @@
 /// unlike, u64, negative edge is possible.
 /// inf + negative = inf.
 
-pub fn floyd_warshall(
-    inf: i64,
-    mut g: Vec<Vec<i64>>,
-) -> Vec<Vec<i64>> {
+pub fn floyd_warshall(inf: i64, mut g: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
     let n = g.len();
 
     for k in 0..n {

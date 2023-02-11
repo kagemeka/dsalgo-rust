@@ -1,7 +1,4 @@
-pub fn divmod(
-    a: i64,
-    b: i64,
-) -> (i64, i64) {
+pub fn divmod(a: i64, b: i64) -> (i64, i64) {
     assert!(b != 0);
 
     let (mut q, mut r) = (a / b, a % b);

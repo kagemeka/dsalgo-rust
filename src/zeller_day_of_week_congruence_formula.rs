@@ -3,11 +3,7 @@
 /// 1582-10-5 <= date <= 1582-10-14 -> undefined
 /// 1582-10-15 <= date -> gregorian calendar
 
-pub fn day_of_week(
-    mut y: usize,
-    mut m: usize,
-    d: usize,
-) -> usize {
+pub fn day_of_week(mut y: usize, mut m: usize, d: usize) -> usize {
     const JULIAN_LAST: (usize, usize, usize) = (1582, 10, 4);
 
     const GREGORIAN_START: (usize, usize, usize) = (1582, 10, 15);

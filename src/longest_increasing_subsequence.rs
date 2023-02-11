@@ -26,13 +26,13 @@ pub(self) fn find_longest_subsequence<T: Copy, F: Fn(&T, &T) -> bool>(
 }
 
 pub fn longest_increasing_subsequence<T: PartialOrd + Clone + Copy>(
-    slice: &[T]
+    slice: &[T],
 ) -> Vec<T> {
     find_longest_subsequence(slice, |x, value| x >= value)
 }
 
 pub fn longest_non_decreasing_subsequence<T: PartialOrd + Clone + Copy>(
-    slice: &[T]
+    slice: &[T],
 ) -> Vec<T> {
     find_longest_subsequence(slice, |x, value| x > value)
 }

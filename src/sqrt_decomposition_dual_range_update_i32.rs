@@ -5,11 +5,7 @@ pub struct RangeUpdate;
 impl Monoid for RangeUpdate {
     type T = Option<i32>;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T {
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T {
         if r.is_none() {
             l
         } else {

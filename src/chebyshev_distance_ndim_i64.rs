@@ -1,7 +1,4 @@
-pub fn chebychev_dist(
-    p0: &[i64],
-    p1: &[i64],
-) -> i64 {
+pub fn chebychev_dist(p0: &[i64], p1: &[i64]) -> i64 {
     let n = p0.len();
 
     assert_eq!(p1.len(), n);

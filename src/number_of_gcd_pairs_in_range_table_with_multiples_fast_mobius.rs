@@ -4,10 +4,7 @@ use crate::fast_mobius_transform_for_multiples_additive_with_std::*;
 /// \zeta{f(g)} := \sum_{g|x}\sum_{lo <= a, b < hi, gcd(a, b) = x}{1} (easy)
 /// f(g) = mobius_transform(\zeta{f(g)})
 
-pub fn number_of_gcd_pairs(
-    mut lo: usize,
-    mut hi: usize,
-) -> Vec<usize> {
+pub fn number_of_gcd_pairs(mut lo: usize, mut hi: usize) -> Vec<usize> {
     assert!(lo >= 1 && lo <= hi);
 
     lo -= 1;

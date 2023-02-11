@@ -1,12 +1,6 @@
-use crate::{
-    complex_number_f64::Complex,
-    discrete_fourier_transform_f64::*,
-};
+use crate::{complex_number_f64::Complex, discrete_fourier_transform_f64::*};
 
-pub fn dft_convolve(
-    mut a: Vec<Complex>,
-    mut b: Vec<Complex>,
-) -> Vec<Complex> {
+pub fn dft_convolve(mut a: Vec<Complex>, mut b: Vec<Complex>) -> Vec<Complex> {
     let k = a.len() + b.len() - 1;
 
     a.resize(k, Complex::zero());
@@ -22,10 +16,7 @@ pub fn dft_convolve(
     idft(&c)
 }
 
-pub fn from_i64(
-    a: &[i64],
-    b: &[i64],
-) -> Vec<i64> {
+pub fn from_i64(a: &[i64], b: &[i64]) -> Vec<i64> {
     let a: Vec<_> = a.iter().map(|x| Complex(*x as f64, 0.0)).collect();
 
     let b: Vec<_> = b.iter().map(|x| Complex(*x as f64, 0.0)).collect();

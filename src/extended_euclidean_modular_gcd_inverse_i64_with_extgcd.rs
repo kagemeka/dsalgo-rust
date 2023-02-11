@@ -1,9 +1,6 @@
 use crate::extended_euclidean_gcd_i64::extgcd;
 
-pub fn mod_gcd_inv(
-    modulus: i64,
-    n: i64,
-) -> (i64, i64) {
+pub fn mod_gcd_inv(modulus: i64, n: i64) -> (i64, i64) {
     let (g, mut x, _) = extgcd(n, modulus);
 
     let u = modulus / g;

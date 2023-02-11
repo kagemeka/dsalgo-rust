@@ -1,8 +1,4 @@
-pub fn pow(
-    p: usize,
-    x: usize,
-    exp: isize,
-) -> usize {
+pub fn pow(p: usize, x: usize, exp: isize) -> usize {
     if exp == 0 {
         return 1;
     }

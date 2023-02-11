@@ -1,7 +1,4 @@
-pub fn round_up(
-    n: u64,
-    k: u64,
-) -> u64 {
+pub fn round_up(n: u64, k: u64) -> u64 {
     (n + k - 1) / k * k
 }
 

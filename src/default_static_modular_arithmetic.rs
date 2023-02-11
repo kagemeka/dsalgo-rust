@@ -20,10 +20,7 @@ macro_rules! impl_default_static {
                 M::get()
             }
 
-            fn add(
-                lhs: Self::T,
-                rhs: Self::T,
-            ) -> Self::T {
+            fn add(lhs: Self::T, rhs: Self::T) -> Self::T {
                 assert!(lhs < M::get() && rhs < M::get());
 
                 let mut x = lhs;
@@ -47,10 +44,7 @@ macro_rules! impl_default_static {
                 }
             }
 
-            fn mul(
-                lhs: Self::T,
-                rhs: Self::T,
-            ) -> Self::T {
+            fn mul(lhs: Self::T, rhs: Self::T) -> Self::T {
                 let mut x = lhs as $mul_cast_uint;
 
                 x *= rhs as $mul_cast_uint;
@@ -81,10 +75,7 @@ impl_default_static!(u64, u128);
 // #[allow(dead_code)]
 // pub type Modular998_244_353 =
 //     DefaultStatic<u32, ConstMod32<998_244_353>>;
-use crate::define_const_modulus_macro::{
-    Mod1_000_000_007,
-    Mod998_244_353,
-};
+use crate::define_const_modulus_macro::{Mod1_000_000_007, Mod998_244_353};
 
 #[allow(dead_code)]
 

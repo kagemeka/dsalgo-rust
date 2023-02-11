@@ -14,11 +14,8 @@ impl<T> Fenwick<T> {
         Self((0..size + 1).map(|_| 0.into()).collect())
     }
 
-    pub fn operate(
-        &mut self,
-        mut i: usize,
-        x: T,
-    ) where
+    pub fn operate(&mut self, mut i: usize, x: T)
+    where
         T: BitXorAssign + Clone,
     {
         i += 1;
@@ -30,10 +27,7 @@ impl<T> Fenwick<T> {
         }
     }
 
-    pub fn get(
-        &self,
-        mut i: usize,
-    ) -> T
+    pub fn get(&self, mut i: usize) -> T
     where
         T: From<i32> + BitXorAssign + Clone,
     {
@@ -48,10 +42,7 @@ impl<T> Fenwick<T> {
         v
     }
 
-    pub fn max_right<F: Fn(&T) -> bool>(
-        &self,
-        f: F,
-    ) -> usize
+    pub fn max_right<F: Fn(&T) -> bool>(&self, f: F) -> usize
     where
         T: From<i32> + BitXor<Output = T> + Clone,
     {

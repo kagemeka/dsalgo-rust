@@ -14,28 +14,17 @@ impl<T: Ord> MinMaxQueue<T> {
         self.size
     }
 
-    pub fn count(
-        &self,
-        x: &T,
-    ) -> usize {
+    pub fn count(&self, x: &T) -> usize {
         *self.map.get(x).or_else(|| Some(&0)).unwrap()
     }
 
-    pub fn insert(
-        &mut self,
-        x: T,
-        count: usize,
-    ) {
+    pub fn insert(&mut self, x: T, count: usize) {
         *self.map.entry(x).or_insert(0) += count;
 
         self.size += count;
     }
 
-    pub fn remove(
-        &mut self,
-        x: &T,
-        count: usize,
-    ) {
+    pub fn remove(&mut self, x: &T, count: usize) {
         let c = self.map.get_mut(x).unwrap();
 
         *c -= count;

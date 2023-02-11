@@ -1,7 +1,4 @@
-pub fn subset_sum_max(
-    less_than: usize,
-    a: &[usize],
-) -> usize {
+pub fn subset_sum_max(less_than: usize, a: &[usize]) -> usize {
     let merge = |a: &[usize], x: usize| -> Vec<usize> {
         let mut i = 0;
 

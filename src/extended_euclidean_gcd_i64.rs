@@ -1,7 +1,4 @@
-pub fn extgcd(
-    mut a: i64,
-    mut b: i64,
-) -> (i64, i64, i64) {
+pub fn extgcd(mut a: i64, mut b: i64) -> (i64, i64, i64) {
     use std::mem::swap;
 
     let (mut x00, mut x01, mut x10, mut x11) = (1, 0, 0, 1);

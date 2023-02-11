@@ -1,12 +1,8 @@
-use std::{
-    ops::*,
-    str::FromStr,
-};
+use std::{ops::*, str::FromStr};
 
 use crate::{
     greatest_common_divisor_euclidean_recurse_i64::gcd,
-    least_common_multiple_with_gcd_i64::lcm,
-    multiplicative_inverse::MulInv,
+    least_common_multiple_with_gcd_i64::lcm, multiplicative_inverse::MulInv,
 };
 
 /// (numerator, denominator)
@@ -17,10 +13,7 @@ pub struct Fraction(pub i64, pub i64);
 impl Fraction {
     /// lower != 0, but accept infinity ?
 
-    pub fn new(
-        upper: i64,
-        lower: i64,
-    ) -> Self {
+    pub fn new(upper: i64, lower: i64) -> Self {
         // assert!(lower != 0);
         assert!(upper != 0 || lower != 0);
 
@@ -101,38 +94,23 @@ impl FromStr for Fraction {
 }
 
 impl PartialOrd for Fraction {
-    fn ge(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn ge(&self, other: &Self) -> bool {
         !(self < other)
     }
 
-    fn gt(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn gt(&self, other: &Self) -> bool {
         !(self <= other)
     }
 
-    fn le(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn le(&self, other: &Self) -> bool {
         self < other || self == other
     }
 
-    fn lt(
-        &self,
-        other: &Self,
-    ) -> bool {
+    fn lt(&self, other: &Self) -> bool {
         (*self - *other).0 < 0
     }
 
-    fn partial_cmp(
-        &self,
-        other: &Self,
-    ) -> Option<std::cmp::Ordering> {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
         use std::cmp::Ordering::*;
 
         Some(if self < other {
@@ -148,10 +126,7 @@ impl PartialOrd for Fraction {
 impl Add for Fraction {
     type Output = Self;
 
-    fn add(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(self, rhs: Self) -> Self::Output {
         let l = lcm(self.1, rhs.1);
 
         Self(l / self.1 * self.0 + l / rhs.1 * rhs.0, l)
@@ -159,10 +134,7 @@ impl Add for Fraction {
 }
 
 impl AddAssign for Fraction {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
@@ -178,19 +150,13 @@ impl Neg for Fraction {
 impl Sub for Fraction {
     type Output = Self;
 
-    fn sub(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn sub(self, rhs: Self) -> Self::Output {
         self + -rhs
     }
 }
 
 impl SubAssign for Fraction {
-    fn sub_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
@@ -198,10 +164,7 @@ impl SubAssign for Fraction {
 impl Mul for Fraction {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        mut rhs: Self,
-    ) -> Self::Output {
+    fn mul(mut self, mut rhs: Self) -> Self::Output {
         let mut g = gcd(self.0, rhs.1);
 
         self.0 /= g;
@@ -223,10 +186,7 @@ impl Mul for Fraction {
 }
 
 impl MulAssign for Fraction {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
@@ -248,19 +208,13 @@ impl MulInv for Fraction {
 impl Div for Fraction {
     type Output = Self;
 
-    fn div(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn div(self, rhs: Self) -> Self::Output {
         self * rhs.mul_inv()
     }
 }
 
 impl DivAssign for Fraction {
-    fn div_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
