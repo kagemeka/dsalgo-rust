@@ -1,7 +1,17 @@
 #![allow(dead_code)]
 
 mod _cp;
+mod a_star;
+mod aa_tree;
+mod ab_tree;
 mod abs_diff;
+mod accounting_method;
+mod ackermann;
+mod activation;
+mod adaptive_heap_sort;
+mod addition_theorem;
+mod addressable_heap;
+mod af_heap;
 mod disjoint_set_union;
 mod dsu;
 mod dsu_by_rank;
@@ -12,6 +22,10 @@ pub mod dsu_optim;
 mod dsu_path_compression;
 mod dsu_same;
 mod dsu_trait;
+mod line;
+mod line2d;
+mod line3d;
+mod line_container;
 mod partially_persistent_dsu;
 mod persistent_dsu;
 mod point;
@@ -22,4 +36,6 @@ mod potentialized_dsu;
 mod rollback_dsu;
 mod size_trait;
 mod union_find;
+mod vec_dedup;
+pub mod vec_unique;
 mod weighted_dsu;
