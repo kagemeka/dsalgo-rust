@@ -1,7 +1,4 @@
-pub fn extgcd(
-    a: i64,
-    b: i64,
-) -> (i64, i64, i64) {
+pub fn extgcd(a: i64, b: i64) -> (i64, i64, i64) {
     if b == 0 {
         return if a < 0 { (-a, -1, 0) } else { (a, 1, 0) };
     }

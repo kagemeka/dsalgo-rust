@@ -1,7 +1,4 @@
-pub fn binary_gcd(
-    mut a: u64,
-    mut b: u64,
-) -> u64 {
+pub fn binary_gcd(mut a: u64, mut b: u64) -> u64 {
     if a == 0 || b == 0 {
         return a + b;
     }

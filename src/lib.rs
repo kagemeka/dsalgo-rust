@@ -7,6 +7,7 @@
 #![feature(is_sorted)]
 
 // #![allow(dead_code)]
+mod _cp;
 pub mod abs_diff;
 pub mod accumulate_iterator;
 pub mod accumulate_vec;

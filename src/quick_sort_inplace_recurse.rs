@@ -1,11 +1,7 @@
 pub fn quick_sort<T: Ord>(a: &mut [T]) {
     /// [lo, hi)
 
-    fn partition<T: Ord>(
-        a: &mut [T],
-        lo: usize,
-        hi: usize,
-    ) -> usize {
+    fn partition<T: Ord>(a: &mut [T], lo: usize, hi: usize) -> usize {
         debug_assert!(lo < hi);
 
         let mut i = lo;
@@ -23,11 +19,7 @@ pub fn quick_sort<T: Ord>(a: &mut [T]) {
         i
     }
 
-    fn sort<T: Ord>(
-        a: &mut [T],
-        lo: usize,
-        hi: usize,
-    ) {
+    fn sort<T: Ord>(a: &mut [T], lo: usize, hi: usize) {
         if hi - lo <= 1 {
             return;
         }

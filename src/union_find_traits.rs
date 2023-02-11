@@ -1,8 +1,5 @@
 pub trait Root {
-    fn root(
-        &mut self,
-        u: usize,
-    ) -> usize;
+    fn root(&mut self, u: usize) -> usize;
 }
 
 #[allow(private_in_public)]
@@ -12,36 +9,21 @@ pub trait Size {
 }
 
 pub trait Unite {
-    fn unite(
-        &mut self,
-        u: usize,
-        v: usize,
-    );
+    fn unite(&mut self, u: usize, v: usize);
 }
 
 /// size of the component containing the node
 
 pub trait SizeOf {
-    fn size_of(
-        &mut self,
-        u: usize,
-    ) -> usize;
+    fn size_of(&mut self, u: usize) -> usize;
 }
 
 pub trait Same {
-    fn same(
-        &mut self,
-        u: usize,
-        v: usize,
-    ) -> bool;
+    fn same(&mut self, u: usize, v: usize) -> bool;
 }
 
 impl<U: Root> Same for U {
-    fn same(
-        &mut self,
-        u: usize,
-        v: usize,
-    ) -> bool {
+    fn same(&mut self, u: usize, v: usize) -> bool {
         self.root(u) == self.root(v)
     }
 }

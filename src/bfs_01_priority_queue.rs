@@ -11,10 +11,7 @@ impl<T: Ord> BFS01Queue<T> {
         self.0.len()
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push(&mut self, x: T) {
         if self.size() == 0 || &x <= self.0.front().unwrap() {
             self.0.push_front(x);
         } else if &x >= self.0.back().unwrap() {

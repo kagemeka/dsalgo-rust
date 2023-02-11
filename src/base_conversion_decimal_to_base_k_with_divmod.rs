@@ -1,9 +1,6 @@
 use crate::divmod::divmod;
 
-pub fn decimal_to_base_k(
-    k: i64,
-    mut n: i64,
-) -> Vec<i64> {
+pub fn decimal_to_base_k(k: i64, mut n: i64) -> Vec<i64> {
     assert!(k.abs() >= 2);
 
     let mut nums = vec![];

@@ -18,11 +18,7 @@ impl EnumerateRangePrimes {
 
     /// lo <= hi <= limit, hi - lo < 10^7
 
-    pub fn enumerate(
-        &self,
-        mut lo: usize,
-        mut hi: usize,
-    ) -> Vec<usize> {
+    pub fn enumerate(&self, mut lo: usize, mut hi: usize) -> Vec<usize> {
         lo = lo.max(2);
 
         hi = hi.max(2);

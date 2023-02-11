@@ -1,7 +1,4 @@
-pub fn safe_int_pow(
-    x: u64,
-    exponent: u8,
-) -> Result<u64, &'static str> {
+pub fn safe_int_pow(x: u64, exponent: u8) -> Result<u64, &'static str> {
     if exponent == 0 {
         return Ok(1);
     }

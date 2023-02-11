@@ -2,12 +2,7 @@ pub fn bfs() {}
 
 pub fn dfs() {}
 
-use crate::graph::edge::{
-    From,
-    Reversed,
-    To,
-    ToDirected,
-};
+use crate::graph::edge::{From, Reversed, To, ToDirected};
 
 /// return edge ids.
 

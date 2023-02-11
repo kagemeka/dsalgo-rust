@@ -1,11 +1,7 @@
 pub trait Monoid {
     type T;
 
-    fn op(
-        &self,
-        _: Self::T,
-        _: Self::T,
-    ) -> Self::T;
+    fn op(&self, _: Self::T, _: Self::T) -> Self::T;
 
     fn e(&self) -> Self::T;
 }
@@ -33,10 +29,7 @@ where
         self.st_r.len() + self.st_l.len() - 1
     }
 
-    pub fn push(
-        &mut self,
-        x: M::T,
-    ) {
+    pub fn push(&mut self, x: M::T) {
         self.vr = self.m.op(self.vr.clone(), x.clone());
 
         self.st_r.push(x);
@@ -79,11 +72,7 @@ mod tests {
         impl Monoid for M {
             type T = i64;
 
-            fn op(
-                &self,
-                l: i64,
-                r: i64,
-            ) -> i64 {
+            fn op(&self, l: i64, r: i64) -> i64 {
                 l + r
             }
 

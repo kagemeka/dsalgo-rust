@@ -1,9 +1,6 @@
 use crate::modular_cumprod_usize::*;
 
-pub fn factorial(
-    m: usize,
-    size: usize,
-) -> Vec<usize> {
+pub fn factorial(m: usize, size: usize) -> Vec<usize> {
     let mut a: Vec<_> = (0..size).collect();
 
     a[0] = 1;

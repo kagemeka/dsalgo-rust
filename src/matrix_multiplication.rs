@@ -1,9 +1,6 @@
 use std::ops::*;
 
-pub fn mul<T>(
-    a: &[Vec<T>],
-    b: &[Vec<T>],
-) -> Vec<Vec<T>>
+pub fn mul<T>(a: &[Vec<T>], b: &[Vec<T>]) -> Vec<Vec<T>>
 where
     T: Ord + AddAssign + Mul<Output = T> + Clone + From<i32>,
 {

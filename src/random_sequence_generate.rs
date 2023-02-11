@@ -1,9 +1,6 @@
 use crate::rng_static_xorshift64::static_xorshift64;
 
-pub fn random_sequence<T: Clone>(
-    pool: &[T],
-    size: usize,
-) -> Vec<T> {
+pub fn random_sequence<T: Clone>(pool: &[T], size: usize) -> Vec<T> {
     let n = pool.len();
 
     (0..size).map(|_| pool[static_xorshift64() as usize % n].clone()).collect()

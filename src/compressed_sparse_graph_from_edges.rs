@@ -1,5 +1,5 @@
 pub fn csgraph_from_edges(
-    mut edges: Vec<(usize, usize)>
+    mut edges: Vec<(usize, usize)>,
 ) -> Vec<(usize, usize)> {
     edges.sort_unstable();
 

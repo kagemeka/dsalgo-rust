@@ -8,11 +8,7 @@ use crate::{
 /// y = 0 (mod m)
 /// y = b (mod a)
 
-pub fn mod_linear_equation(
-    mut m: i64,
-    mut a: i64,
-    mut b: i64,
-) -> Option<i64> {
+pub fn mod_linear_equation(mut m: i64, mut a: i64, mut b: i64) -> Option<i64> {
     assert!(m > 0 && a > 0);
 
     let g = gcd(m, a);

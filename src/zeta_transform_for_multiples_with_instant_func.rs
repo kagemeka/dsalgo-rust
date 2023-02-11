@@ -1,9 +1,6 @@
 use std::ops::*;
 
-pub fn zeta_multiples<T, F>(
-    op: F,
-    mut f: Vec<T>,
-) -> Vec<T>
+pub fn zeta_multiples<T, F>(op: F, mut f: Vec<T>) -> Vec<T>
 where
     T: Clone,
     F: Fn(T, T) -> T,

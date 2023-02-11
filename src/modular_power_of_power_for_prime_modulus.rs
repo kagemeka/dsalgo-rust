@@ -4,12 +4,7 @@ use crate::modular_power_recurse_i64::pow;
 /// fermat's little theorem
 /// (x mod p)^(y^z mod (p - 1)) mod p
 
-pub fn pow_of_pow(
-    p: i64,
-    x: i64,
-    y: i64,
-    z: i64,
-) -> i64 {
+pub fn pow_of_pow(p: i64, x: i64, y: i64, z: i64) -> i64 {
     if y == 0 {
         1
     } else if x % p == 0 {

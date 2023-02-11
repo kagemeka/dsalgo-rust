@@ -60,17 +60,11 @@ impl Complex {
         (self.norm(), self.argument())
     }
 
-    pub fn from_polar(
-        r: f64,
-        theta: f64,
-    ) -> Self {
+    pub fn from_polar(r: f64, theta: f64) -> Self {
         Self::rectangular(r, theta)
     }
 
-    pub fn rectangular(
-        r: f64,
-        theta: f64,
-    ) -> Self {
+    pub fn rectangular(r: f64, theta: f64) -> Self {
         Self(r * theta.cos(), r * theta.sin())
     }
 
@@ -118,10 +112,7 @@ impl Complex {
 use std::ops::*;
 
 impl MulAssign<f64> for Complex {
-    fn mul_assign(
-        &mut self,
-        x: f64,
-    ) {
+    fn mul_assign(&mut self, x: f64) {
         self.0 *= x;
 
         self.1 *= x;
@@ -131,10 +122,7 @@ impl MulAssign<f64> for Complex {
 impl Mul<f64> for Complex {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        x: f64,
-    ) -> Self::Output {
+    fn mul(mut self, x: f64) -> Self::Output {
         self *= x;
 
         self
@@ -142,10 +130,7 @@ impl Mul<f64> for Complex {
 }
 
 impl DivAssign<f64> for Complex {
-    fn div_assign(
-        &mut self,
-        x: f64,
-    ) {
+    fn div_assign(&mut self, x: f64) {
         self.0 /= x;
 
         self.1 /= x;
@@ -155,10 +140,7 @@ impl DivAssign<f64> for Complex {
 impl Div<f64> for Complex {
     type Output = Self;
 
-    fn div(
-        mut self,
-        x: f64,
-    ) -> Self::Output {
+    fn div(mut self, x: f64) -> Self::Output {
         self /= x;
 
         self
@@ -166,10 +148,7 @@ impl Div<f64> for Complex {
 }
 
 impl AddAssign for Complex {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         self.0 += rhs.0;
 
         self.1 += rhs.1;
@@ -179,10 +158,7 @@ impl AddAssign for Complex {
 impl Add for Complex {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn add(mut self, rhs: Self) -> Self::Output {
         self += rhs;
 
         self
@@ -190,10 +166,7 @@ impl Add for Complex {
 }
 
 impl MulAssign for Complex {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
@@ -201,10 +174,7 @@ impl MulAssign for Complex {
 impl Mul for Complex {
     type Output = Self;
 
-    fn mul(
-        self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(self, rhs: Self) -> Self::Output {
         Self(self.0 * rhs.0 - self.1 * rhs.1, self.0 * rhs.1 + self.1 * rhs.0)
     }
 }
@@ -218,10 +188,7 @@ impl Neg for Complex {
 }
 
 impl SubAssign for Complex {
-    fn sub_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self += -rhs;
     }
 }
@@ -229,10 +196,7 @@ impl SubAssign for Complex {
 impl Sub for Complex {
     type Output = Self;
 
-    fn sub(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn sub(mut self, rhs: Self) -> Self::Output {
         self -= rhs;
 
         self
@@ -240,10 +204,7 @@ impl Sub for Complex {
 }
 
 impl DivAssign for Complex {
-    fn div_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn div_assign(&mut self, rhs: Self) {
         *self *= rhs.mul_inv();
     }
 }
@@ -251,10 +212,7 @@ impl DivAssign for Complex {
 impl Div for Complex {
     type Output = Self;
 
-    fn div(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn div(mut self, rhs: Self) -> Self::Output {
         self /= rhs;
 
         self

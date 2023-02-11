@@ -1,7 +1,5 @@
-pub fn iter_over_multiples<F>(
-    n: usize,
-    mut f: F,
-) where
+pub fn iter_over_multiples<F>(n: usize, mut f: F)
+where
     F: FnMut(usize, usize),
 {
     for i in 1..n {

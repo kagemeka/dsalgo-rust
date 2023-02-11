@@ -1,8 +1,5 @@
-pub fn bfs<F, H>(
-    g: &[Vec<usize>],
-    mut f: F,
-    mut h: H,
-) where
+pub fn bfs<F, H>(g: &[Vec<usize>], mut f: F, mut h: H)
+where
     F: FnMut(usize, usize),
     H: FnMut(usize),
 {

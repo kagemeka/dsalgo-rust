@@ -15,27 +15,18 @@ impl<T> Segtree<T> {
 impl<T> Index<usize> for Segtree<T> {
     type Output = T;
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         &self.node[i + self.n()]
     }
 }
 
 impl<T: Add<Output = T> + Clone> Segtree<T> {
-    fn merge(
-        &mut self,
-        i: usize,
-    ) {
+    fn merge(&mut self, i: usize) {
         self.node[i] =
             self.node[i << 1].clone() + self.node[i << 1 | 1].clone();
     }
 
-    pub fn new(
-        zero: T,
-        size: usize,
-    ) -> Self {
+    pub fn new(zero: T, size: usize) -> Self {
         assert!(size > 0);
 
         let node = vec![zero.clone(); size.next_power_of_two() << 1];
@@ -43,11 +34,7 @@ impl<T: Add<Output = T> + Clone> Segtree<T> {
         Self { zero, size, node }
     }
 
-    pub fn set(
-        &mut self,
-        mut i: usize,
-        x: T,
-    ) {
+    pub fn set(&mut self, mut i: usize, x: T) {
         assert!(i < self.size);
 
         i += self.n();
@@ -61,11 +48,7 @@ impl<T: Add<Output = T> + Clone> Segtree<T> {
         }
     }
 
-    pub fn fold(
-        &self,
-        mut l: usize,
-        mut r: usize,
-    ) -> T {
+    pub fn fold(&self, mut l: usize, mut r: usize) -> T {
         assert!(l <= r && r <= self.size);
 
         let mut vl = self.zero.clone();

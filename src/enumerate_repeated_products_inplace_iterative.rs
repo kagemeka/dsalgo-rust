@@ -1,7 +1,4 @@
-pub fn repeated_products(
-    n: usize,
-    k: usize,
-) -> Vec<Vec<usize>> {
+pub fn repeated_products(n: usize, k: usize) -> Vec<Vec<usize>> {
     if n == 0 {
         assert!(k == 0);
     }

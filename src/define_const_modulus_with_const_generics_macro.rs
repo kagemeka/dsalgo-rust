@@ -1,7 +1,4 @@
-use crate::{
-    const_modulus_trait::Modulus,
-    static_modulus_trait::*,
-};
+use crate::{const_modulus_trait::Modulus, static_modulus_trait::*};
 
 // depends on impl_static_modulus_get_for_const_modulus
 macro_rules! define_const_mod {

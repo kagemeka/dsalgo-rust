@@ -1,13 +1,7 @@
 use crate::{
     dijkstra_arborescence::dijkstra_arborescense,
     dijkstra_sparse_queue::DijkstraSparseQueue,
-    graph::edge::{
-        From,
-        Reversed,
-        To,
-        ToDirected,
-        Weight,
-    },
+    graph::edge::{From, Reversed, To, ToDirected, Weight},
     graphops::edges_to_directed,
 };
 

@@ -2,10 +2,7 @@ use std::ops::*;
 
 use crate::power_multiplicative_semigroup_with_std_ops::power;
 
-pub fn sum_of_gcd<T>(
-    k: usize,
-    n: usize,
-) -> T
+pub fn sum_of_gcd<T>(k: usize, n: usize) -> T
 where
     T: Clone
         + MulAssign

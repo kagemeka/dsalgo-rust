@@ -1,7 +1,4 @@
-pub fn kmp_findall<T: PartialEq>(
-    a: &[T],
-    pattern: &[T],
-) -> Vec<usize> {
+pub fn kmp_findall<T: PartialEq>(a: &[T], pattern: &[T]) -> Vec<usize> {
     use crate::knuth_morris_pratt_failure_function_table_0_indexed::*;
 
     let b = pattern;

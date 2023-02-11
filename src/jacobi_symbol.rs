@@ -1,10 +1,7 @@
 /// compute jacobi symbol (a/modulus)
 /// https://en.wikipedia.org/wiki/Jacobi_symbol
 
-pub fn jacobi_symbol(
-    modulus: u64,
-    mut a: u64,
-) -> i8 {
+pub fn jacobi_symbol(modulus: u64, mut a: u64) -> i8 {
     let mut n = modulus;
 
     assert!(a < n && n & 1 == 1);

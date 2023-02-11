@@ -8,11 +8,7 @@ impl Ops for RangeXorRangeInversion01 {
     type S = (i64, i64, i64);
 
     // cnt_0, cnt_1, inversion
-    fn compose(
-        &self,
-        f: Self::F,
-        g: Self::F,
-    ) -> Self::F {
+    fn compose(&self, f: Self::F, g: Self::F) -> Self::F {
         f ^ g
     }
 
@@ -24,11 +20,7 @@ impl Ops for RangeXorRangeInversion01 {
         (0, 0, 0)
     }
 
-    fn map(
-        &self,
-        f: Self::F,
-        x: Self::S,
-    ) -> Self::S {
+    fn map(&self, f: Self::F, x: Self::S) -> Self::S {
         if f == 0 {
             x
         } else {
@@ -36,11 +28,7 @@ impl Ops for RangeXorRangeInversion01 {
         }
     }
 
-    fn op(
-        &self,
-        a: Self::S,
-        b: Self::S,
-    ) -> Self::S {
+    fn op(&self, a: Self::S, b: Self::S) -> Self::S {
         (a.0 + b.0, a.1 + b.1, a.2 + b.2 + a.1 * b.0)
     }
 }

@@ -5,29 +5,19 @@ pub struct Matrix<T>(pub Vec<Vec<T>>);
 impl<T> std::ops::Index<usize> for Matrix<T> {
     type Output = [T];
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         &self.0[i]
     }
 }
 
 impl<T> std::ops::IndexMut<usize> for Matrix<T> {
-    fn index_mut(
-        &mut self,
-        i: usize,
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, i: usize) -> &mut Self::Output {
         &mut self.0[i]
     }
 }
 
 impl<T: Clone> Matrix<T> {
-    pub fn new(
-        height: usize,
-        width: usize,
-        fill_value: T,
-    ) -> Matrix<T> {
+    pub fn new(height: usize, width: usize, fill_value: T) -> Matrix<T> {
         Matrix(vec![vec![fill_value; width]; height])
     }
 
@@ -41,10 +31,7 @@ impl<T: Clone> Matrix<T> {
 }
 
 impl<T: std::fmt::Debug> std::fmt::Display for Matrix<T> {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let format_str = self
             .0
             .iter()

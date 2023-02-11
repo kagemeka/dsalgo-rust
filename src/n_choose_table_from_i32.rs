@@ -2,10 +2,7 @@ use std::ops::*;
 
 use crate::inverse_factorial_table_from_i32::inverse_factorial;
 
-pub fn n_choose<T>(
-    n: usize,
-    size: usize,
-) -> Vec<T>
+pub fn n_choose<T>(n: usize, size: usize) -> Vec<T>
 where
     T: Mul<Output = T> + Div<Output = T> + From<i32> + Clone,
 {

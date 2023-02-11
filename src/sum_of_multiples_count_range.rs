@@ -2,11 +2,7 @@ use crate::integer_square_root_with_binary_search_u64::isqrt;
 
 /// [lo, hi]
 
-pub fn sum_of_multiples_count_range(
-    limit: u64,
-    lo: u64,
-    mut hi: u64,
-) -> u64 {
+pub fn sum_of_multiples_count_range(limit: u64, lo: u64, mut hi: u64) -> u64 {
     // similar to sum of multiples sum.
     assert!(lo > 0);
 

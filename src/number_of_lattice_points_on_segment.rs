@@ -1,11 +1,6 @@
 use crate::greatest_common_divisor_euclidean_recurse_i64::gcd;
 
-pub fn segment_lattice_points(
-    x0: i64,
-    y0: i64,
-    x1: i64,
-    y1: i64,
-) -> i64 {
+pub fn segment_lattice_points(x0: i64, y0: i64, x1: i64, y1: i64) -> i64 {
     gcd(x1 - x0, y1 - y0) + 1
 }
 

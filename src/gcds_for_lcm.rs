@@ -2,10 +2,7 @@ use crate::find_divisors_trial_division_u64::find_divisors;
 
 /// \lcm(a_0, ...a_{n-1}) = `lcm`
 
-pub fn gcds_for_lcm(
-    n: usize,
-    lcm: u64,
-) -> Vec<u64> {
+pub fn gcds_for_lcm(n: usize, lcm: u64) -> Vec<u64> {
     match n {
         0 => {
             assert!(lcm == 1);

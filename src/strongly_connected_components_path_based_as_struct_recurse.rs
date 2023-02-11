@@ -39,10 +39,7 @@ impl<'a> SCC<'a> {
         }
     }
 
-    fn labeling(
-        &mut self,
-        u: usize,
-    ) {
+    fn labeling(&mut self, u: usize) {
         self.order[u] = self.ord;
 
         self.ord += 1;

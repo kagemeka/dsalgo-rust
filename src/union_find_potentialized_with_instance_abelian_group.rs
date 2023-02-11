@@ -1,18 +1,11 @@
 pub trait AbelianGroup {
     type T;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T;
 
     fn e(&self) -> Self::T;
 
-    fn inv(
-        &self,
-        x: Self::T,
-    ) -> Self::T;
+    fn inv(&self, x: Self::T) -> Self::T;
 }
 
 pub struct PotentialUnionFind<G: AbelianGroup> {
@@ -29,19 +22,13 @@ where
         self.a.len()
     }
 
-    pub fn new(
-        g: G,
-        size: usize,
-    ) -> Self {
+    pub fn new(g: G, size: usize) -> Self {
         let rh = vec![g.e(); size];
 
         Self { g, a: vec![-1; size], rh }
     }
 
-    pub fn root(
-        &mut self,
-        u: usize,
-    ) -> usize {
+    pub fn root(&mut self, u: usize) -> usize {
         if self.a[u] < 0 {
             return u;
         }
@@ -56,39 +43,25 @@ where
     }
 
     // potential from the root node.
-    fn h(
-        &mut self,
-        u: usize,
-    ) -> G::T {
+    fn h(&mut self, u: usize) -> G::T {
         self.root(u);
 
         self.rh[u].clone()
     }
 
-    pub fn size_of(
-        &mut self,
-        u: usize,
-    ) -> usize {
+    pub fn size_of(&mut self, u: usize) -> usize {
         let u = self.root(u);
 
         -self.a[u] as usize
     }
 
-    pub fn same(
-        &mut self,
-        u: usize,
-        v: usize,
-    ) -> bool {
+    pub fn same(&mut self, u: usize, v: usize) -> bool {
         self.root(u) == self.root(v)
     }
 
     /// relative potential from u to v
 
-    pub fn diff(
-        &mut self,
-        u: usize,
-        v: usize,
-    ) -> Result<G::T, &'static str> {
+    pub fn diff(&mut self, u: usize, v: usize) -> Result<G::T, &'static str> {
         if !self.same(u, v) {
             Err("belongs to different components")
         } else {
@@ -156,18 +129,11 @@ mod tests {
                 0
             }
 
-            fn inv(
-                &self,
-                x: Self::T,
-            ) -> Self::T {
+            fn inv(&self, x: Self::T) -> Self::T {
                 -x
             }
 
-            fn op(
-                &self,
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(&self, l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
         }

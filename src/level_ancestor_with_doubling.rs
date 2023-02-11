@@ -1,8 +1,7 @@
 //! level ancestor on tree with doubing (or binary lifting)
 
 use crate::{
-    functional_graph_doubling_table::doubling_table,
-    tree_bfs_parent_depth::bfs,
+    functional_graph_doubling_table::doubling_table, tree_bfs_parent_depth::bfs,
 };
 
 pub struct LevelAncestor {
@@ -11,10 +10,7 @@ pub struct LevelAncestor {
 }
 
 impl LevelAncestor {
-    pub fn new(
-        g: &[Vec<usize>],
-        root: usize,
-    ) -> Self {
+    pub fn new(g: &[Vec<usize>], root: usize) -> Self {
         let (parent, depth) = bfs(g, root);
 
         let k = depth.iter().max().unwrap().next_power_of_two().trailing_zeros()
@@ -25,11 +21,7 @@ impl LevelAncestor {
         Self { ancestor, depth }
     }
 
-    pub fn get(
-        &self,
-        mut u: usize,
-        mut k: usize,
-    ) -> usize {
+    pub fn get(&self, mut u: usize, mut k: usize) -> usize {
         assert!(k <= self.depth[u]);
 
         for (i, a) in self.ancestor.iter().enumerate() {

@@ -1,7 +1,4 @@
-pub fn binary_search<T, F>(
-    is_ok: F,
-    monotonic_sequence: &[T],
-) -> usize
+pub fn binary_search<T, F>(is_ok: F, monotonic_sequence: &[T]) -> usize
 where
     F: Fn(&T) -> bool,
 {

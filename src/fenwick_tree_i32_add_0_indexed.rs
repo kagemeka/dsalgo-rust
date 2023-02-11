@@ -9,11 +9,7 @@ impl Fenwick {
         self.0.len()
     }
 
-    pub fn add(
-        &mut self,
-        mut i: usize,
-        x: i32,
-    ) {
+    pub fn add(&mut self, mut i: usize, x: i32) {
         let n = self.size();
 
         assert!(i < n);
@@ -25,10 +21,7 @@ impl Fenwick {
         }
     }
 
-    pub fn sum_le(
-        &self,
-        mut i: usize,
-    ) -> i32 {
+    pub fn sum_le(&self, mut i: usize) -> i32 {
         assert!(i < self.size());
 
         let mut v = 0;

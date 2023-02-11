@@ -228,11 +228,7 @@ pub mod max {
 
     /// O(V^2E)
 
-    pub fn dinic(
-        g: &Vec<Vec<(usize, u64)>>,
-        src: usize,
-        sink: usize,
-    ) -> u64 {
+    pub fn dinic(g: &Vec<Vec<(usize, u64)>>, src: usize, sink: usize) -> u64 {
         let n = g.len();
 
         let mut rf = vec![vec![0; n]; n];

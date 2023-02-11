@@ -5,10 +5,7 @@ use crate::segment_tree_lazy_with_instance_homomorphism::*;
 pub struct RangeAddRangeMinimum<T>(T, T);
 
 impl<T> RangeAddRangeMinimum<T> {
-    pub fn new(
-        inf: T,
-        zero: T,
-    ) -> Self {
+    pub fn new(inf: T, zero: T) -> Self {
         Self(inf, zero)
     }
 }
@@ -21,11 +18,7 @@ where
 
     type S = T;
 
-    fn op(
-        &self,
-        a: Self::S,
-        b: Self::S,
-    ) -> Self::S {
+    fn op(&self, a: Self::S, b: Self::S) -> Self::S {
         a.min(b)
     }
 
@@ -33,11 +26,7 @@ where
         self.0.clone()
     }
 
-    fn compose(
-        &self,
-        f: Self::F,
-        g: Self::F,
-    ) -> Self::F {
+    fn compose(&self, f: Self::F, g: Self::F) -> Self::F {
         f + g
     }
 
@@ -45,11 +34,7 @@ where
         self.1.clone()
     }
 
-    fn map(
-        &self,
-        f: Self::F,
-        x: Self::S,
-    ) -> Self::S {
+    fn map(&self, f: Self::F, x: Self::S) -> Self::S {
         if x == self.e() {
             x
         } else {

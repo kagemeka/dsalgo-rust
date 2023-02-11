@@ -1,9 +1,6 @@
 type E = (usize, u64);
 
-use crate::graph_edge_trait::{
-    To,
-    Weight,
-};
+use crate::graph_edge_trait::{To, Weight};
 
 impl To for E {
     type V = usize;

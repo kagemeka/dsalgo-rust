@@ -11,7 +11,7 @@ impl<R> ReadWrapper<R> {
 
 impl<R: std::io::BufRead> ReadWrapper<R> {
     pub fn read<T: std::str::FromStr>(
-        &mut self
+        &mut self,
     ) -> Result<T, <T as std::str::FromStr>::Err> {
         while self.tokens.is_empty() {
             let mut buf = String::new();

@@ -23,10 +23,7 @@ impl BarrettReduction {
     }
 
     // TODO: any faster algorithm than karatsuba to avoid overflow?
-    pub fn reduce(
-        &self,
-        mut x: u128,
-    ) -> u64 {
+    pub fn reduce(&self, mut x: u128) -> u64 {
         assert!(x < self.n.pow(2));
 
         let q = karatsuba_mul_quotient_pow_2_power_of_2(self.k >> 1, x, self.m);
@@ -57,10 +54,7 @@ impl BarrettReduction32 {
         Self { n, m }
     }
 
-    pub fn reduce(
-        &self,
-        x: u64,
-    ) -> u32 {
+    pub fn reduce(&self, x: u64) -> u32 {
         let mut x = x as u128;
 
         assert!(x < self.n.pow(2));
@@ -100,10 +94,7 @@ impl BarrettReduction64 {
         Self { n, m0, m1 }
     }
 
-    pub fn reduce(
-        &self,
-        mut x: u128,
-    ) -> u64 {
+    pub fn reduce(&self, mut x: u128) -> u64 {
         assert!(x < self.n.pow(2));
 
         let (x1, x0) = (x >> 63, x & Self::MASK);

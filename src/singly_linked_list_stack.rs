@@ -26,10 +26,7 @@ impl<T> Stack<T> {
         }
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push(&mut self, x: T) {
         let mut x = Node::new(x);
 
         x.next = self.top.take();

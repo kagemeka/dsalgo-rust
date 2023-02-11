@@ -1,7 +1,4 @@
-pub fn base_k_to_decimal(
-    k: i64,
-    nums: &[i64],
-) -> i64 {
+pub fn base_k_to_decimal(k: i64, nums: &[i64]) -> i64 {
     assert!(k.abs() >= 2);
 
     let mut p = 1;

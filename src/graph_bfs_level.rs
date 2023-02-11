@@ -1,7 +1,4 @@
-pub fn bfs_level(
-    g: &[Vec<usize>],
-    src: usize,
-) -> Vec<usize> {
+pub fn bfs_level(g: &[Vec<usize>], src: usize) -> Vec<usize> {
     let n = g.len();
 
     let mut lv = vec![n; n];

@@ -5,12 +5,7 @@ pub fn connected_components(g: &[Vec<usize>]) -> Vec<usize> {
 
     let mut id = 0;
 
-    fn dfs(
-        g: &[Vec<usize>],
-        ids: &mut Vec<usize>,
-        id: usize,
-        u: usize,
-    ) {
+    fn dfs(g: &[Vec<usize>], ids: &mut Vec<usize>, id: usize, u: usize) {
         ids[u] = id;
 
         for &v in g[u].iter() {

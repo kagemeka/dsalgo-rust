@@ -36,17 +36,11 @@ impl<T: Ord + Clone> MedianQueue<T> {
         self.lo.size() + self.hi.size()
     }
 
-    pub fn count(
-        &self,
-        x: &T,
-    ) -> usize {
+    pub fn count(&self, x: &T) -> usize {
         self.lo.count(x) + self.hi.count(x)
     }
 
-    pub fn insert(
-        &mut self,
-        x: T,
-    ) {
+    pub fn insert(&mut self, x: T) {
         if self.balance() == 1 {
             self.lo.insert(x, 1);
         } else {
@@ -68,10 +62,7 @@ impl<T: Ord + Clone> MedianQueue<T> {
         }
     }
 
-    pub fn remove(
-        &mut self,
-        x: &T,
-    ) {
+    pub fn remove(&mut self, x: &T) {
         assert!(self.count(x) > 0);
 
         if self.lo.count(x) > 0 {

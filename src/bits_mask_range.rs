@@ -1,7 +1,4 @@
-pub fn bit_mask(
-    l: usize,
-    r: usize,
-) -> usize {
+pub fn bit_mask(l: usize, r: usize) -> usize {
     (1 << (r - l)) - 1 << l
 }
 

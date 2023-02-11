@@ -11,10 +11,7 @@ impl DisconnectedError {
 }
 
 impl std::fmt::Display for DisconnectedError {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         write!(f, "{}", self.msg)
     }
 }

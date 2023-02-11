@@ -1,7 +1,4 @@
-pub fn divrem_euclid(
-    a: i64,
-    b: i64,
-) -> (i64, i64) {
+pub fn divrem_euclid(a: i64, b: i64) -> (i64, i64) {
     (a.div_euclid(b), a.rem_euclid(b))
 }
 

@@ -3,7 +3,7 @@ use std::ops::*;
 use crate::sieve_of_eratosthenes_enumerate_primes_usize::enumerate_primes;
 
 pub fn fast_zeta_multiples<T: Clone + Add<Output = T>>(
-    mut f: Vec<T>
+    mut f: Vec<T>,
 ) -> Vec<T> {
     let n = f.len();
 

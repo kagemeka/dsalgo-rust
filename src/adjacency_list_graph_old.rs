@@ -27,19 +27,13 @@ impl<E> AdjacencyList<E> {
 impl<E> std::ops::Index<usize> for AdjacencyList<E> {
     type Output = Vec<E>;
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         &self.edges[i]
     }
 }
 
 impl<T> std::ops::IndexMut<usize> for AdjacencyList<T> {
-    fn index_mut(
-        &mut self,
-        i: usize,
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, i: usize) -> &mut Self::Output {
         &mut self.edges[i]
     }
 }

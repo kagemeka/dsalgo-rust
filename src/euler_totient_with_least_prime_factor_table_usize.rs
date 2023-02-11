@@ -7,10 +7,7 @@ impl EulerTotient {
         Self(least_prime_factor(less_than))
     }
 
-    pub fn phi(
-        &self,
-        mut n: usize,
-    ) -> usize {
+    pub fn phi(&self, mut n: usize) -> usize {
         let mut phi = n;
 
         while n > 1 {

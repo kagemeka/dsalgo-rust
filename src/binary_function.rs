@@ -7,10 +7,7 @@ pub trait BinaryFunc {
 
     type Cod;
 
-    fn f(
-        _: Self::L,
-        _: Self::R,
-    ) -> Self::Cod;
+    fn f(_: Self::L, _: Self::R) -> Self::Cod;
 }
 
 /// external binary operation
@@ -24,17 +21,10 @@ impl<T: BinaryFunc> ExtBinaryOp for T {}
 pub trait BinaryOp {
     type S;
 
-    fn op(
-        _: Self::S,
-        _: Self::S,
-    ) -> Self::S;
+    fn op(_: Self::S, _: Self::S) -> Self::S;
 }
 
-fn is_left_identity<S, F>(
-    f: &F,
-    e: S,
-    x: S,
-) -> bool
+fn is_left_identity<S, F>(f: &F, e: S, x: S) -> bool
 where
     F: Fn(S, S) -> S,
     S: Clone + PartialEq,
@@ -42,11 +32,7 @@ where
     f(e, x.clone()) == x
 }
 
-fn is_right_identity<S, F>(
-    f: &F,
-    e: S,
-    x: S,
-) -> bool
+fn is_right_identity<S, F>(f: &F, e: S, x: S) -> bool
 where
     F: Fn(S, S) -> S,
     S: Clone + PartialEq,
@@ -54,11 +40,7 @@ where
     f(x.clone(), e) == x
 }
 
-fn is_identity<S, F>(
-    f: &F,
-    e: S,
-    x: S,
-) -> bool
+fn is_identity<S, F>(f: &F, e: S, x: S) -> bool
 where
     F: Fn(S, S) -> S,
     S: Clone + PartialEq,
@@ -79,12 +61,7 @@ pub trait Identity: BinaryOp {
     }
 }
 
-fn is_invertible<F, G, X>(
-    op: &F,
-    inv: &G,
-    e: X,
-    x: X,
-) -> bool
+fn is_invertible<F, G, X>(op: &F, inv: &G, e: X, x: X) -> bool
 where
     F: Fn(X, X) -> X,
     G: Fn(X) -> X,
@@ -107,11 +84,7 @@ pub trait Inverse: Identity {
     }
 }
 
-fn is_commutative<F, X, Y>(
-    f: &F,
-    a: X,
-    b: X,
-) -> bool
+fn is_commutative<F, X, Y>(f: &F, a: X, b: X) -> bool
 where
     F: Fn(X, X) -> Y,
     X: Clone,
@@ -123,22 +96,15 @@ where
 /// commutative property
 
 pub trait Commutative: BinaryOp {
-    fn assert(
-        a: Self::S,
-        b: Self::S,
-    ) where
+    fn assert(a: Self::S, b: Self::S)
+    where
         Self::S: Clone + PartialEq,
     {
         assert!(is_commutative(&Self::op, a, b));
     }
 }
 
-fn is_associative<F, X>(
-    f: &F,
-    a: X,
-    b: X,
-    c: X,
-) -> bool
+fn is_associative<F, X>(f: &F, a: X, b: X, c: X) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -149,21 +115,15 @@ where
 /// associative property
 
 pub trait Associative: BinaryOp {
-    fn assert(
-        x: Self::S,
-        y: Self::S,
-        z: Self::S,
-    ) where
+    fn assert(x: Self::S, y: Self::S, z: Self::S)
+    where
         Self::S: Clone + PartialEq,
     {
         assert!(is_associative(&Self::op, x, y, z));
     }
 }
 
-fn is_idempotent<F, X>(
-    f: &F,
-    x: X,
-) -> bool
+fn is_idempotent<F, X>(f: &F, x: X) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -187,11 +147,7 @@ pub trait LatinSquare: BinaryOp {}
 impl<T: Inverse> LatinSquare for T {}
 
 // TODO: assertion latin square
-fn is_left_absorbing<F, X>(
-    f: &F,
-    z: X,
-    x: X,
-) -> bool
+fn is_left_absorbing<F, X>(f: &F, z: X, x: X) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -199,11 +155,7 @@ where
     f(z.clone(), x) == z
 }
 
-fn is_right_absorbing<F, X>(
-    f: &F,
-    z: X,
-    x: X,
-) -> bool
+fn is_right_absorbing<F, X>(f: &F, z: X, x: X) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -211,11 +163,7 @@ where
     f(x, z.clone()) == z
 }
 
-fn is_absorbing<F, X>(
-    f: &F,
-    z: X,
-    x: X,
-) -> bool
+fn is_absorbing<F, X>(f: &F, z: X, x: X) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -239,24 +187,14 @@ pub trait Absorbing: BinaryOp {
 pub trait Add {
     type S;
 
-    fn add(
-        _: Self::S,
-        _: Self::S,
-    ) -> Self::S;
+    fn add(_: Self::S, _: Self::S) -> Self::S;
 }
 
 pub trait Mul: Add {
-    fn mul(
-        _: Self::S,
-        _: Self::S,
-    ) -> Self::S;
+    fn mul(_: Self::S, _: Self::S) -> Self::S;
 }
 
-fn iz_zero<F, X>(
-    mul: &F,
-    z: X,
-    x: X,
-) -> bool
+fn iz_zero<F, X>(mul: &F, z: X, x: X) -> bool
 where
     F: Fn(X, X) -> X,
     X: Clone + PartialEq,
@@ -319,13 +257,7 @@ where
         == add(mul(y, x.clone()), mul(z, x))
 }
 
-fn is_distributive<Add, Mul, X>(
-    add: &Add,
-    mul: &Mul,
-    x: X,
-    y: X,
-    z: X,
-) -> bool
+fn is_distributive<Add, Mul, X>(add: &Add, mul: &Mul, x: X, y: X, z: X) -> bool
 where
     Add: Fn(X, X) -> X,
     Mul: Fn(X, X) -> X,
@@ -336,11 +268,8 @@ where
 }
 
 pub trait Distributive: Mul {
-    fn assert(
-        x: Self::S,
-        y: Self::S,
-        z: Self::S,
-    ) where
+    fn assert(x: Self::S, y: Self::S, z: Self::S)
+    where
         Self::S: Clone + PartialEq,
     {
         assert!(is_distributive(&Self::mul, &Self::add, x, y, z));
@@ -352,11 +281,7 @@ pub mod dynamic {
     pub trait BinaryOp {
         type S;
 
-        fn op(
-            &self,
-            _: Self::S,
-            _: Self::S,
-        ) -> Self::S;
+        fn op(&self, _: Self::S, _: Self::S) -> Self::S;
     }
 }
 
@@ -367,10 +292,7 @@ pub mod itself {
     impl<T> Id for T {}
 
     pub trait BinaryOp<I: Id> {
-        fn op(
-            _: Self,
-            _: Self,
-        ) -> Self;
+        fn op(_: Self, _: Self) -> Self;
     }
 
     pub trait Commutative<I: Id> {}

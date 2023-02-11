@@ -15,17 +15,11 @@ impl<T: Clone + Number> Complex<T> {
         self.0.clone() * self.0.clone() + self.1.clone() * self.1.clone()
     }
 
-    pub fn scale(
-        &self,
-        t: T,
-    ) -> Self {
+    pub fn scale(&self, t: T) -> Self {
         Self(self.0.clone() * t.clone(), self.1.clone() * t)
     }
 
-    pub fn unscale(
-        &self,
-        t: T,
-    ) -> Self {
+    pub fn unscale(&self, t: T) -> Self {
         Self(self.0.clone() / t.clone(), self.1.clone() / t)
     }
 }

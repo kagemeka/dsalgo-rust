@@ -11,22 +11,14 @@ pub trait ParentMut: Sized {
 //     fn get(&self, index: Idx) -> Self::Output;
 // }
 pub trait Insert {
-    fn insert(
-        self,
-        index: usize,
-        node: Self,
-    ) -> Self;
+    fn insert(self, index: usize, node: Self) -> Self;
 }
 
 impl<T> Insert for T
 where
     T: crate::join::Join + crate::split::Split<usize>,
 {
-    fn insert(
-        self,
-        index: usize,
-        node: Self,
-    ) -> Self {
+    fn insert(self, index: usize, node: Self) -> Self {
         let (lhs, rhs) = self.split(index);
 
         lhs.join(node).join(rhs)
@@ -34,20 +26,14 @@ where
 }
 
 pub trait Pop: Sized {
-    fn pop(
-        self,
-        index: usize,
-    ) -> (Self, Self);
+    fn pop(self, index: usize) -> (Self, Self);
 }
 
 impl<T> Pop for T
 where
     T: crate::join::Join + crate::split::Split<usize>,
 {
-    fn pop(
-        self,
-        index: usize,
-    ) -> (Self, Self) {
+    fn pop(self, index: usize) -> (Self, Self) {
         let (lhs, rhs) = self.split(index);
 
         let (popped, rhs) = rhs.split(1);
@@ -62,8 +48,5 @@ where
 {
     type Output;
 
-    fn get(
-        &'a self,
-        index: usize,
-    ) -> Self::Output;
+    fn get(&'a self, index: usize) -> Self::Output;
 }

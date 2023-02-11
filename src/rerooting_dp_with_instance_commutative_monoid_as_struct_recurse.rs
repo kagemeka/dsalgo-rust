@@ -1,11 +1,7 @@
 pub trait Monoid {
     type T;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T;
 
     fn e(&self) -> Self::T;
 }
@@ -28,11 +24,7 @@ where
     M::T: Clone + std::fmt::Debug,
     E: Clone + Edge,
 {
-    fn new(
-        g: &'a [Vec<E>],
-        m: M,
-        f: F,
-    ) -> Self {
+    fn new(g: &'a [Vec<E>], m: M, f: F) -> Self {
         let n = g.len();
 
         let dp_from_childs = vec![m.e(); n];
@@ -44,11 +36,7 @@ where
         Self { g, m, f, rev_edge, dp_from_childs, dp }
     }
 
-    pub fn calc(
-        g: &'a [Vec<E>],
-        m: M,
-        f: F,
-    ) -> Vec<M::T> {
+    pub fn calc(g: &'a [Vec<E>], m: M, f: F) -> Vec<M::T> {
         let mut wrapper = Self::new(g, m, f);
 
         wrapper.tree_dp(0, 0);
@@ -58,11 +46,7 @@ where
         wrapper.dp
     }
 
-    fn tree_dp(
-        &mut self,
-        u: usize,
-        parent: usize,
-    ) {
+    fn tree_dp(&mut self, u: usize, parent: usize) {
         for e in self.g[u].iter() {
             let v = e.to();
 
@@ -81,12 +65,7 @@ where
         }
     }
 
-    fn reroot(
-        &mut self,
-        u: usize,
-        parent: usize,
-        x: M::T,
-    ) {
+    fn reroot(&mut self, u: usize, parent: usize, x: M::T) {
         self.dp[u] = self.m.op(x.clone(), self.dp_from_childs[u].clone());
 
         let n = self.g[u].len();
@@ -145,11 +124,7 @@ mod tests {
         impl Monoid for M {
             type T = u64;
 
-            fn op(
-                &self,
-                lhs: Self::T,
-                rhs: Self::T,
-            ) -> Self::T {
+            fn op(&self, lhs: Self::T, rhs: Self::T) -> Self::T {
                 lhs.max(rhs)
             }
 
@@ -166,10 +141,7 @@ mod tests {
         }
 
         impl E {
-            pub fn new(
-                to: usize,
-                weight: u64,
-            ) -> Self {
+            pub fn new(to: usize, weight: u64) -> Self {
                 Self { to, weight }
             }
         }
@@ -208,11 +180,7 @@ mod tests {
                 (0, 0)
             }
 
-            fn op(
-                &self,
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(&self, l: Self::T, r: Self::T) -> Self::T {
                 (l.0 + r.0, l.1 + r.1)
             }
         }

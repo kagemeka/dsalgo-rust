@@ -5,10 +5,7 @@ use crate::modular_inverse_euclidean_i64_no_error::modinv;
 /// v_i = t_0 + t_1m_0 + t_2m_0m_1 + ... + t_i\prod_{j<i}{m_j}
 /// t_i = (r_i - v_{i-1})(\prod_{j<i}{m_j})^{-1} ( mod  m_i) (v_{-1} = 0)
 
-pub fn garner_with_mod(
-    modulus: i64,
-    mr: &[(i64, i64)],
-) -> i64 {
+pub fn garner_with_mod(modulus: i64, mr: &[(i64, i64)]) -> i64 {
     let n = mr.len();
 
     let mut mr = mr.to_vec();

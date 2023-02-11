@@ -1,11 +1,6 @@
 /// intersection of [l0, r0), [l1, r1)
 
-pub fn intersection(
-    l0: i64,
-    r0: i64,
-    l1: i64,
-    r1: i64,
-) -> i64 {
+pub fn intersection(l0: i64, r0: i64, l1: i64, r1: i64) -> i64 {
     0.max(r0.min(r1) - l0.max(l1))
 }
 

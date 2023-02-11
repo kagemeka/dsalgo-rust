@@ -1,10 +1,7 @@
 pub trait Monoid {
     type T;
 
-    fn op(
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn op(l: Self::T, r: Self::T) -> Self::T;
 
     fn e() -> Self::T;
 }
@@ -23,11 +20,7 @@ where
         Self(vec![G::e(); size + 1])
     }
 
-    pub fn operate(
-        &mut self,
-        mut i: usize,
-        x: G::T,
-    ) {
+    pub fn operate(&mut self, mut i: usize, x: G::T) {
         let n = self.size();
 
         assert!(i < n);
@@ -41,10 +34,7 @@ where
         }
     }
 
-    pub fn fold_lt(
-        &self,
-        mut i: usize,
-    ) -> G::T {
+    pub fn fold_lt(&self, mut i: usize) -> G::T {
         assert!(i <= self.size());
 
         let mut v = G::e();
@@ -58,10 +48,7 @@ where
         v
     }
 
-    pub fn max_right<F: Fn(&G::T) -> bool>(
-        &self,
-        is_ok: F,
-    ) -> usize {
+    pub fn max_right<F: Fn(&G::T) -> bool>(&self, is_ok: F) -> usize {
         let n = self.size();
 
         let mut v = G::e();
@@ -135,10 +122,7 @@ mod tests {
                 0
             }
 
-            fn op(
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
         }

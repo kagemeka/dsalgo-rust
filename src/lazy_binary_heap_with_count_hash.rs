@@ -1,7 +1,4 @@
-use std::collections::{
-    BinaryHeap,
-    HashMap,
-};
+use std::collections::{BinaryHeap, HashMap};
 
 pub struct LazyBinaryHeap<T> {
     que: BinaryHeap<T>,
@@ -18,17 +15,11 @@ impl<T: Ord + std::hash::Hash + Clone> LazyBinaryHeap<T> {
         self.size
     }
 
-    pub fn count(
-        &self,
-        x: &T,
-    ) -> isize {
+    pub fn count(&self, x: &T) -> isize {
         *self.cnt.get(&x).or_else(|| Some(&0)).unwrap()
     }
 
-    pub fn contains(
-        &self,
-        x: &T,
-    ) -> bool {
+    pub fn contains(&self, x: &T) -> bool {
         self.count(x) > 0
     }
 
@@ -36,11 +27,7 @@ impl<T: Ord + std::hash::Hash + Clone> LazyBinaryHeap<T> {
     /// size are not changed as it as negative.
     /// if cnt = -5, heap size would't be changed until inserting at least 6.
 
-    pub fn add(
-        &mut self,
-        x: T,
-        delta: isize,
-    ) {
+    pub fn add(&mut self, x: T, delta: isize) {
         let c = self.cnt.entry(x.clone()).or_insert(0);
 
         let nc = *c + delta;
@@ -58,17 +45,11 @@ impl<T: Ord + std::hash::Hash + Clone> LazyBinaryHeap<T> {
         *c = nc;
     }
 
-    pub fn insert(
-        &mut self,
-        x: T,
-    ) {
+    pub fn insert(&mut self, x: T) {
         self.add(x, 1);
     }
 
-    pub fn remove(
-        &mut self,
-        x: T,
-    ) {
+    pub fn remove(&mut self, x: T) {
         self.add(x, -1);
     }
 

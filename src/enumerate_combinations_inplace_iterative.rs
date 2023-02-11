@@ -1,7 +1,4 @@
-pub fn combinations(
-    n: usize,
-    k: usize,
-) -> Vec<Vec<usize>> {
+pub fn combinations(n: usize, k: usize) -> Vec<Vec<usize>> {
     assert!(k <= n);
 
     let mut res = vec![];

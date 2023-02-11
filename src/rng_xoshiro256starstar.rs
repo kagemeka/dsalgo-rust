@@ -1,7 +1,4 @@
-use crate::{
-    bitops::rot_l,
-    rng_xoshiro256_core::xorshiro256_core,
-};
+use crate::{bitops::rot_l, rng_xoshiro256_core::xorshiro256_core};
 
 pub struct Xoshiro256StarStar {
     seeds: [u64; 4],

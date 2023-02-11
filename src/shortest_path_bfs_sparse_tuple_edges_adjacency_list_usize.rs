@@ -1,9 +1,6 @@
 /// O(E + V)
 
-pub fn bfs(
-    g: &[Vec<usize>],
-    src: usize,
-) -> Vec<usize> {
+pub fn bfs(g: &[Vec<usize>], src: usize) -> Vec<usize> {
     let n: usize = g.len();
 
     let inf = std::usize::MAX;

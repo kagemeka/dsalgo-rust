@@ -1,7 +1,4 @@
-pub fn catalan_numbers(
-    m: usize,
-    size: usize,
-) -> Vec<usize> {
+pub fn catalan_numbers(m: usize, size: usize) -> Vec<usize> {
     let mut c = vec![0; size];
 
     c[0] = 1;

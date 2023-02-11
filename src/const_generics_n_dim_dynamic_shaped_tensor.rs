@@ -61,10 +61,7 @@ impl<T: Default, const D: usize> NdimDynamicTensor<T, D> {
 }
 
 impl<T, const D: usize> NdimDynamicTensor<T, D> {
-    fn flatten_index(
-        &self,
-        index: [usize; D],
-    ) -> usize {
+    fn flatten_index(&self, index: [usize; D]) -> usize {
         let mut idx = 0;
 
         let strides = self.strides();
@@ -82,10 +79,7 @@ impl<T, const D: usize> std::ops::Index<[usize; D]>
 {
     type Output = T;
 
-    fn index(
-        &self,
-        index: [usize; D],
-    ) -> &Self::Output {
+    fn index(&self, index: [usize; D]) -> &Self::Output {
         &self.data[self.flatten_index(index)]
     }
 }
@@ -93,10 +87,7 @@ impl<T, const D: usize> std::ops::Index<[usize; D]>
 impl<T, const D: usize> std::ops::IndexMut<[usize; D]>
     for NdimDynamicTensor<T, D>
 {
-    fn index_mut(
-        &mut self,
-        index: [usize; D],
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, index: [usize; D]) -> &mut Self::Output {
         let idx = self.flatten_index(index);
 
         &mut self.data[idx]
@@ -110,10 +101,7 @@ where
 {
     type Output = Self;
 
-    fn mul(
-        self,
-        rhs: Self,
-    ) -> Self {
+    fn mul(self, rhs: Self) -> Self {
         assert_eq!(self.shape[1], rhs.shape[0]);
 
         let h = self.shape[0];

@@ -3,7 +3,7 @@ use std::ops::*;
 use crate::sieve_of_eratosthenes_enumerate_primes_usize::enumerate_primes;
 
 pub fn fast_mobius_divisors<T: Clone + Sub<Output = T>>(
-    mut f: Vec<T>
+    mut f: Vec<T>,
 ) -> Vec<T> {
     let n = f.len();
 

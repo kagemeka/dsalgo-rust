@@ -1,6 +1,5 @@
 use crate::{
-    abs_diff::abs_diff,
-    bit_length_with_count_leading_zeros_u64::bit_length,
+    abs_diff::abs_diff, bit_length_with_count_leading_zeros_u64::bit_length,
     greatest_common_divisor_euclidean::gcd,
     montgomery_modular_multiplication_64::MontgomeryMultiplication64,
 };

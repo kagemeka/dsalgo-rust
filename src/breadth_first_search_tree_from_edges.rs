@@ -5,11 +5,7 @@
 
 use crate::adjacency_list_graph_with_edge_id_from_edges::*;
 
-pub fn bfs_tree(
-    n: usize,
-    edges: &[(usize, usize)],
-    root: usize,
-) -> Vec<bool> {
+pub fn bfs_tree(n: usize, edges: &[(usize, usize)], root: usize) -> Vec<bool> {
     let g = graph_from_edges(n, edges, false);
 
     let m = edges.len();

@@ -1,17 +1,9 @@
-pub fn euler_tour_edges(
-    g: &[Vec<usize>],
-    root: usize,
-) -> Vec<isize> {
+pub fn euler_tour_edges(g: &[Vec<usize>], root: usize) -> Vec<isize> {
     let n = g.len();
 
     let mut tour = Vec::with_capacity(n << 1);
 
-    fn dfs(
-        g: &[Vec<usize>],
-        tour: &mut Vec<isize>,
-        u: usize,
-        p: usize,
-    ) {
+    fn dfs(g: &[Vec<usize>], tour: &mut Vec<isize>, u: usize, p: usize) {
         tour.push(u as isize);
 
         for &v in g[u].iter() {

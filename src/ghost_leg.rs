@@ -1,7 +1,4 @@
-pub fn solve_ghost_leg(
-    n: usize,
-    edges: &[usize],
-) -> Vec<usize> {
+pub fn solve_ghost_leg(n: usize, edges: &[usize]) -> Vec<usize> {
     let mut res = (0..n).collect::<Vec<_>>();
 
     for &i in edges.iter().rev() {

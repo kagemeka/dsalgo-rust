@@ -68,10 +68,7 @@ impl<T> Node<T> {
         c
     }
 
-    fn state(
-        &self,
-        k: usize,
-    ) -> isize {
+    fn state(&self, k: usize) -> isize {
         let lsize = self.lsize();
 
         if k < lsize {
@@ -84,10 +81,7 @@ impl<T> Node<T> {
     }
 
     // bring k-th node to the root
-    pub fn splay(
-        mut root: N<T>,
-        mut k: usize,
-    ) -> N<T> {
+    pub fn splay(mut root: N<T>, mut k: usize) -> N<T> {
         assert!(k < root.size);
 
         let s = root.state(k);
@@ -149,10 +143,7 @@ impl<T> Node<T> {
         }
     }
 
-    pub fn merge(
-        l: ON<T>,
-        r: ON<T>,
-    ) -> ON<T> {
+    pub fn merge(l: ON<T>, r: ON<T>) -> ON<T> {
         if r.is_none() {
             return l;
         }
@@ -168,10 +159,7 @@ impl<T> Node<T> {
         Some(r)
     }
 
-    pub fn split(
-        root: ON<T>,
-        i: usize,
-    ) -> (ON<T>, ON<T>) {
+    pub fn split(root: ON<T>, i: usize) -> (ON<T>, ON<T>) {
         let size = Self::size(root.as_ref());
 
         assert!(i <= size);
@@ -191,11 +179,7 @@ impl<T> Node<T> {
         (l, Some(root))
     }
 
-    pub fn insert(
-        root: ON<T>,
-        i: usize,
-        node: ON<T>,
-    ) -> ON<T> {
+    pub fn insert(root: ON<T>, i: usize, node: ON<T>) -> ON<T> {
         assert!(i <= Self::size(root.as_ref()));
 
         let (l, r) = Self::split(root, i);
@@ -203,10 +187,7 @@ impl<T> Node<T> {
         Self::merge(Self::merge(l, node), r)
     }
 
-    pub fn pop(
-        mut root: N<T>,
-        i: usize,
-    ) -> (N<T>, ON<T>) {
+    pub fn pop(mut root: N<T>, i: usize) -> (N<T>, ON<T>) {
         root = Self::splay(root, i);
 
         let c = Self::merge(root.l.take(), root.r.take());
@@ -214,10 +195,7 @@ impl<T> Node<T> {
         (root, c)
     }
 
-    pub fn binary_search<F>(
-        f: F,
-        root: ORN<T>,
-    ) -> usize
+    pub fn binary_search<F>(f: F, root: ORN<T>) -> usize
     where
         F: Fn(&T) -> bool,
     {

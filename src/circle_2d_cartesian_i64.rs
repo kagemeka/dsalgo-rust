@@ -5,17 +5,11 @@ use crate::dist_2d_to_the_power_of_2::dist2;
 pub struct Circle(i64, i64, i64);
 
 impl Circle {
-    pub fn dist2(
-        &self,
-        rhs: &Self,
-    ) -> i64 {
+    pub fn dist2(&self, rhs: &Self) -> i64 {
         (self.0 - rhs.0).pow(2) + (self.1 - rhs.1).pow(2)
     }
 
-    pub fn intersect(
-        &self,
-        rhs: &Self,
-    ) -> bool {
+    pub fn intersect(&self, rhs: &Self) -> bool {
         let d = self.dist2(rhs);
 
         (self.2 - rhs.2).pow(2) <= d && d <= (self.2 + rhs.2).pow(2)
@@ -27,19 +21,11 @@ impl Circle {
         self.2.pow(2)
     }
 
-    pub fn dist2_from_center(
-        &self,
-        x: i64,
-        y: i64,
-    ) -> i64 {
+    pub fn dist2_from_center(&self, x: i64, y: i64) -> i64 {
         dist2(self.0, self.1, x, y)
     }
 
-    pub fn on_circumference(
-        &self,
-        x: i64,
-        y: i64,
-    ) -> bool {
+    pub fn on_circumference(&self, x: i64, y: i64) -> bool {
         self.dist2_from_center(x, y) == self.r2()
     }
 }

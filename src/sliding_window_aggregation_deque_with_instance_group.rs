@@ -3,18 +3,11 @@ use std::collections::VecDeque;
 pub trait Group {
     type T;
 
-    fn op(
-        &self,
-        _: Self::T,
-        _: Self::T,
-    ) -> Self::T;
+    fn op(&self, _: Self::T, _: Self::T) -> Self::T;
 
     fn e(&self) -> Self::T;
 
-    fn inv(
-        &self,
-        _: Self::T,
-    ) -> Self::T;
+    fn inv(&self, _: Self::T) -> Self::T;
 }
 
 pub struct SWAGDeque<G: Group> {
@@ -37,19 +30,13 @@ where
         self.que.len()
     }
 
-    pub fn push_right(
-        &mut self,
-        x: G::T,
-    ) {
+    pub fn push_right(&mut self, x: G::T) {
         self.v = self.g.op(self.v.clone(), x.clone());
 
         self.que.push_back(x);
     }
 
-    pub fn push_left(
-        &mut self,
-        x: G::T,
-    ) {
+    pub fn push_left(&mut self, x: G::T) {
         self.v = self.g.op(x.clone(), self.v.clone());
 
         self.que.push_front(x);
@@ -86,11 +73,7 @@ mod tests {
         impl Group for G {
             type T = i64;
 
-            fn op(
-                &self,
-                l: i64,
-                r: i64,
-            ) -> i64 {
+            fn op(&self, l: i64, r: i64) -> i64 {
                 l + r
             }
 
@@ -98,10 +81,7 @@ mod tests {
                 0
             }
 
-            fn inv(
-                &self,
-                x: i64,
-            ) -> i64 {
+            fn inv(&self, x: i64) -> i64 {
                 -x
             }
         }

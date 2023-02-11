@@ -9,10 +9,7 @@ impl<T> Stack<T> {
         Self(vec![])
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push(&mut self, x: T) {
         self.0.push(x)
     }
 

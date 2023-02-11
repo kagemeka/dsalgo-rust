@@ -1,8 +1,4 @@
-pub fn ad_day(
-    mut y: usize,
-    mut m: usize,
-    d: usize,
-) -> usize {
+pub fn ad_day(mut y: usize, mut m: usize, d: usize) -> usize {
     if m < 3 {
         m += 12;
 

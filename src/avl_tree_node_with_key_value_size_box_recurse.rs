@@ -10,10 +10,7 @@ pub(crate) struct Node<K, V> {
 }
 
 impl<K: PartialOrd, V> Node<K, V> {
-    pub fn new(
-        key: K,
-        value: V,
-    ) -> Box<Self> {
+    pub fn new(key: K, value: V) -> Box<Self> {
         Box::new(Self {
             key,
             value,
@@ -126,7 +123,7 @@ impl<K: PartialOrd, V> Node<K, V> {
     /// return (popped, new_root)
 
     pub(crate) fn pop_max_node(
-        mut root: Box<Self>
+        mut root: Box<Self>,
     ) -> (Box<Self>, Option<Box<Self>>) {
         if root.right.is_none() {
             let new_root = root.left.take();
@@ -144,10 +141,7 @@ impl<K: PartialOrd, V> Node<K, V> {
         (max_node, Some(Self::balance_tree(root)))
     }
 
-    pub fn insert(
-        root: Option<Box<Self>>,
-        node: Box<Self>,
-    ) -> Box<Self> {
+    pub fn insert(root: Option<Box<Self>>, node: Box<Self>) -> Box<Self> {
         if let Some(mut root) = root {
             if node.key <= root.key {
                 root.left = Some(Self::insert(root.left.take(), node));
@@ -161,10 +155,7 @@ impl<K: PartialOrd, V> Node<K, V> {
         }
     }
 
-    pub fn remove(
-        root: Option<Box<Self>>,
-        key: &K,
-    ) -> Option<Box<Self>> {
+    pub fn remove(root: Option<Box<Self>>, key: &K) -> Option<Box<Self>> {
         if root.is_none() {
             return None;
         }
@@ -216,10 +207,7 @@ impl<K: PartialOrd, V> Node<K, V> {
         }
     }
 
-    pub fn lower_bound(
-        root: Option<&Box<Self>>,
-        key: &K,
-    ) -> usize {
+    pub fn lower_bound(root: Option<&Box<Self>>, key: &K) -> usize {
         if root.is_none() {
             return 0;
         }
@@ -235,10 +223,7 @@ impl<K: PartialOrd, V> Node<K, V> {
         }
     }
 
-    pub fn upper_bound(
-        root: Option<&Box<Self>>,
-        key: &K,
-    ) -> usize {
+    pub fn upper_bound(root: Option<&Box<Self>>, key: &K) -> usize {
         if root.is_none() {
             return 0;
         }

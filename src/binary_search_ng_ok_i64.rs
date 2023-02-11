@@ -1,10 +1,6 @@
 //! for sequence, see crate::binary_search_on_sequence.
 
-pub fn binary_search<F>(
-    is_ok: F,
-    mut ng: i64,
-    mut ok: i64,
-) -> i64
+pub fn binary_search<F>(is_ok: F, mut ng: i64, mut ok: i64) -> i64
 where
     F: Fn(i64) -> bool,
 {

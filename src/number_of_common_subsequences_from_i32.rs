@@ -1,9 +1,6 @@
 use std::ops::*;
 
-pub fn number_of_common_subsequences<N, T: Eq>(
-    a: &[T],
-    b: &[T],
-) -> N
+pub fn number_of_common_subsequences<N, T: Eq>(a: &[T], b: &[T]) -> N
 where
     N: From<i32> + Clone + Sub<Output = N> + Add<Output = N>,
 {

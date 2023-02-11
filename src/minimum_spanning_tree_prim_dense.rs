@@ -5,7 +5,7 @@ use crate::is_undirected_dense_graph::is_undirected_dense_graph;
 /// O(V^2)
 
 pub fn mst_prim_dense(
-    undirected_dense_graph: &[Vec<Option<i64>>]
+    undirected_dense_graph: &[Vec<Option<i64>>],
 ) -> Vec<(usize, usize)> {
     let g = undirected_dense_graph;
 

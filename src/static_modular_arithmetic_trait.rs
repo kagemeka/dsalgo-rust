@@ -6,31 +6,19 @@ pub trait ModularArithmetic {
 
     fn modulus() -> Self::T;
 
-    fn add(
-        lhs: Self::T,
-        rhs: Self::T,
-    ) -> Self::T;
+    fn add(lhs: Self::T, rhs: Self::T) -> Self::T;
 
     fn neg(x: Self::T) -> Self::T;
 
-    fn sub(
-        lhs: Self::T,
-        rhs: Self::T,
-    ) -> Self::T {
+    fn sub(lhs: Self::T, rhs: Self::T) -> Self::T {
         Self::add(lhs, Self::neg(rhs))
     }
 
-    fn mul(
-        lhs: Self::T,
-        rhs: Self::T,
-    ) -> Self::T;
+    fn mul(lhs: Self::T, rhs: Self::T) -> Self::T;
 
     fn inv(x: Self::T) -> Self::T;
 
-    fn div(
-        lhs: Self::T,
-        rhs: Self::T,
-    ) -> Self::T {
+    fn div(lhs: Self::T, rhs: Self::T) -> Self::T {
         Self::mul(lhs, Self::inv(rhs))
     }
 }

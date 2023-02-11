@@ -1,9 +1,6 @@
 use crate::greatest_common_divisor_euclidean::gcd;
 
-pub fn lcm(
-    a: usize,
-    b: usize,
-) -> usize {
+pub fn lcm(a: usize, b: usize) -> usize {
     if a == 0 && b == 0 {
         0
     } else {

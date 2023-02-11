@@ -1,7 +1,7 @@
 use crate::negative_cycle::NegativeCycleError;
 
 pub fn floyd_warshall(
-    weight_matrix: Vec<Vec<Option<i64>>>
+    weight_matrix: Vec<Vec<Option<i64>>>,
 ) -> Result<Vec<Vec<Option<i64>>>, NegativeCycleError> {
     let mut g = weight_matrix;
 

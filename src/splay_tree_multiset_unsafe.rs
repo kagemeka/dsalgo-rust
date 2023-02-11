@@ -28,47 +28,29 @@ impl<T: Ord> Multiset<T> {
         Node::size(self.0)
     }
 
-    pub fn lower_bound(
-        &self,
-        v: &T,
-    ) -> usize {
+    pub fn lower_bound(&self, v: &T) -> usize {
         Node::binary_search(|x| x >= v, self.0)
     }
 
-    pub fn upper_bound(
-        &self,
-        v: &T,
-    ) -> usize {
+    pub fn upper_bound(&self, v: &T) -> usize {
         Node::binary_search(|x| x > v, self.0)
     }
 
-    pub fn count(
-        &self,
-        v: &T,
-    ) -> usize {
+    pub fn count(&self, v: &T) -> usize {
         self.upper_bound(v) - self.lower_bound(v)
     }
 
-    pub fn contains(
-        &self,
-        v: &T,
-    ) -> bool {
+    pub fn contains(&self, v: &T) -> bool {
         self.count(v) > 0
     }
 
-    pub fn insert(
-        &mut self,
-        v: T,
-    ) {
+    pub fn insert(&mut self, v: T) {
         let i = self.lower_bound(&v);
 
         self.0 = Node::insert(self.0, i, Box::leak(Box::new(Node::new(v))));
     }
 
-    pub fn remove(
-        &mut self,
-        v: &T,
-    ) {
+    pub fn remove(&mut self, v: &T) {
         if !self.contains(v) {
             return;
         }
@@ -78,10 +60,7 @@ impl<T: Ord> Multiset<T> {
         self.0 = unsafe { self.0.as_mut().unwrap() }.pop(i).1;
     }
 
-    pub fn get(
-        &mut self,
-        i: usize,
-    ) -> T
+    pub fn get(&mut self, i: usize) -> T
     where
         T: Clone,
     {

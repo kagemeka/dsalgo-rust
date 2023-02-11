@@ -1,9 +1,6 @@
 use crate::{
     dijkstra_sparse_queue::DijkstraSparseQueue,
-    graph::edge::{
-        To,
-        Weight,
-    },
+    graph::edge::{To, Weight},
 };
 
 // TODO: generalized dijkstra -> rename as extended dijkstra

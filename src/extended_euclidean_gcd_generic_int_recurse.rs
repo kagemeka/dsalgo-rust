@@ -1,9 +1,6 @@
 use std::ops::*;
 
-pub fn extgcd<T>(
-    a: T,
-    b: T,
-) -> (T, T, T)
+pub fn extgcd<T>(a: T, b: T) -> (T, T, T)
 where
     T: Copy
         + Sub<Output = T>

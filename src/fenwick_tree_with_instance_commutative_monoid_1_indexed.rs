@@ -1,11 +1,7 @@
 pub trait Monoid {
     type T;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T;
 
     fn e(&self) -> Self::T;
 }
@@ -19,10 +15,7 @@ impl<G: Monoid> Fenwick<G>
 where
     G::T: Clone,
 {
-    pub fn new(
-        g: G,
-        size: usize,
-    ) -> Self {
+    pub fn new(g: G, size: usize) -> Self {
         let node = vec![g.e(); size + 1];
 
         Self { g, node }
@@ -32,11 +25,7 @@ where
         self.node.len() - 1
     }
 
-    pub fn operate(
-        &mut self,
-        mut i: usize,
-        x: G::T,
-    ) {
+    pub fn operate(&mut self, mut i: usize, x: G::T) {
         let n = self.size();
 
         assert!(i < n);
@@ -50,10 +39,7 @@ where
         }
     }
 
-    pub fn fold_lt(
-        &self,
-        mut i: usize,
-    ) -> G::T {
+    pub fn fold_lt(&self, mut i: usize) -> G::T {
         assert!(i <= self.size());
 
         let mut v = self.g.e();
@@ -67,10 +53,7 @@ where
         v
     }
 
-    pub fn max_right<F: Fn(&G::T) -> bool>(
-        &self,
-        is_ok: F,
-    ) -> usize {
+    pub fn max_right<F: Fn(&G::T) -> bool>(&self, is_ok: F) -> usize {
         let n = self.size();
 
         let mut v = self.g.e();
@@ -146,11 +129,7 @@ mod tests {
                 0
             }
 
-            fn op(
-                &self,
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(&self, l: Self::T, r: Self::T) -> Self::T {
                 l + r
             }
         }

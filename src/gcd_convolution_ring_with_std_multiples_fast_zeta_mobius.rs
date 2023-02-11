@@ -5,10 +5,7 @@ use crate::{
     fast_zeta_transform_for_multiples_additive_with_std::*,
 };
 
-pub fn gcd_convolve<T>(
-    mut f: Vec<T>,
-    mut g: Vec<T>,
-) -> Vec<T>
+pub fn gcd_convolve<T>(mut f: Vec<T>, mut g: Vec<T>) -> Vec<T>
 where
     T: Clone + Add<Output = T> + Mul<Output = T> + Sub<Output = T>,
 {

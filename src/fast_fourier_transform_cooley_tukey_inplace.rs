@@ -51,17 +51,11 @@ fn fft_core(
     a
 }
 
-pub fn fft(
-    a: Vec<Complex>,
-    bit_len: usize,
-) -> Vec<Complex> {
+pub fn fft(a: Vec<Complex>, bit_len: usize) -> Vec<Complex> {
     fft_core(a, bit_len, -1.0)
 }
 
-pub fn ifft(
-    mut a: Vec<Complex>,
-    bit_len: usize,
-) -> Vec<Complex> {
+pub fn ifft(mut a: Vec<Complex>, bit_len: usize) -> Vec<Complex> {
     a = fft_core(a, bit_len, 1.0);
 
     let n = a.len() as f64;

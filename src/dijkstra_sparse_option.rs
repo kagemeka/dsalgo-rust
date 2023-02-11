@@ -2,17 +2,11 @@
 /// if there are negative edges,
 /// the correctness of the answer is not guaranteed.
 
-pub fn dijkstra<T>(
-    adj_list: &[Vec<(usize, T)>],
-    s: usize,
-) -> Vec<Option<T>>
+pub fn dijkstra<T>(adj_list: &[Vec<(usize, T)>], s: usize) -> Vec<Option<T>>
 where
     T: Copy + Ord + std::ops::Add<Output = T> + Default,
 {
-    use std::{
-        cmp::Reverse,
-        collections::BinaryHeap,
-    };
+    use std::{cmp::Reverse, collections::BinaryHeap};
 
     let g = adj_list;
 

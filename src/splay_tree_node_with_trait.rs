@@ -1,14 +1,8 @@
-use std::{
-    cell::RefCell,
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 use crate::{
     binary_tree_node,
-    binary_tree_node::{
-        Rotation,
-        Update,
-    },
+    binary_tree_node::{Rotation, Update},
     join::Join,
     size,
     size::Size,
@@ -192,10 +186,7 @@ where
     Node<T>: Update,
 {
     // pub fn get(
-    pub fn get(
-        node: &Rc<RefCell<Self>>,
-        index: usize,
-    ) -> Rc<RefCell<Self>> {
+    pub fn get(node: &Rc<RefCell<Self>>, index: usize) -> Rc<RefCell<Self>> {
         assert!(index < node.borrow().size());
 
         let left_size = node.borrow().left.size();
@@ -225,10 +216,7 @@ where
     T: size::Size,
     Node<T>: Update,
 {
-    fn join(
-        self,
-        rhs: Self,
-    ) -> Self {
+    fn join(self, rhs: Self) -> Self {
         if self.is_none() {
             return rhs;
         }
@@ -254,10 +242,7 @@ where
     T: size::Size,
     Node<T>: Update,
 {
-    fn split(
-        self,
-        index: usize,
-    ) -> (Self, Self) {
+    fn split(self, index: usize) -> (Self, Self) {
         let size = self.size();
 
         assert!(index <= size);
@@ -303,10 +288,7 @@ impl Default for DefaultData<usize, usize> {
 }
 
 impl<K, V> DefaultData<K, V> {
-    pub fn new(
-        key: K,
-        value: V,
-    ) -> Self {
+    pub fn new(key: K, value: V) -> Self {
         DefaultData { size: 1, key, value }
     }
 }
@@ -331,10 +313,7 @@ mod tests {
 
     fn test() {
         use super::*;
-        use crate::tree_node::{
-            Insert,
-            Pop,
-        };
+        use crate::tree_node::{Insert, Pop};
 
         type Data = DefaultData<usize, usize>;
 

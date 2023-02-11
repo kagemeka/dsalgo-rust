@@ -13,20 +13,13 @@ impl CumulativeSum2 {
         self.0.size()
     }
 
-    pub fn add(
-        &mut self,
-        i: usize,
-        x: i64,
-    ) {
+    pub fn add(&mut self, i: usize, x: i64) {
         self.0.add_ge(i, (1 - i as i64) * x);
 
         self.1.add_ge(i, x);
     }
 
-    pub fn get(
-        &self,
-        i: usize,
-    ) -> i64 {
+    pub fn get(&self, i: usize) -> i64 {
         self.0.get(i) + self.1.get(i) * i as i64
     }
 }

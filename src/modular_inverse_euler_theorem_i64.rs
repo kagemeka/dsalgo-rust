@@ -4,10 +4,7 @@ use crate::{
     modular_power_recurse_i64::pow,
 };
 
-pub fn modinv(
-    modulus: i64,
-    x: i64,
-) -> i64 {
+pub fn modinv(modulus: i64, x: i64) -> i64 {
     assert_eq!(gcd(modulus, x), 1);
 
     pow(modulus, x, phi(modulus) - 1)

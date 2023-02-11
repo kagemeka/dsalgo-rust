@@ -1,9 +1,6 @@
 use std::ops::*;
 
-pub fn power<T, N>(
-    mut x: T,
-    mut n: N,
-) -> T
+pub fn power<T, N>(mut x: T, mut n: N) -> T
 where
     T: Clone + MulAssign + From<i32>,
     N: From<i32>

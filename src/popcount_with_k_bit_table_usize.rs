@@ -7,10 +7,7 @@ impl Popcount {
         Self(table(1 << k).into_iter().map(|c| c as usize).collect())
     }
 
-    pub fn calc(
-        &self,
-        mut n: usize,
-    ) -> usize {
+    pub fn calc(&self, mut n: usize) -> usize {
         let k = self.0.len().trailing_zeros();
 
         let mask = (1 << k) - 1;

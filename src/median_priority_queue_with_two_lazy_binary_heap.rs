@@ -38,17 +38,11 @@ impl<T: Ord + Clone + std::hash::Hash> MedianQueue<T> {
         self.lo.size() + self.hi.size()
     }
 
-    pub fn count(
-        &self,
-        x: &T,
-    ) -> usize {
+    pub fn count(&self, x: &T) -> usize {
         self.lo.count(x) as usize + self.hi.count(&Reverse(x.clone())) as usize
     }
 
-    pub fn insert(
-        &mut self,
-        x: T,
-    ) {
+    pub fn insert(&mut self, x: T) {
         if self.balance() == 1 {
             self.lo.insert(x);
         } else {
@@ -74,10 +68,7 @@ impl<T: Ord + Clone + std::hash::Hash> MedianQueue<T> {
         }
     }
 
-    pub fn remove(
-        &mut self,
-        x: &T,
-    ) {
+    pub fn remove(&mut self, x: &T) {
         assert!(self.count(x) > 0);
 
         if self.lo.count(x) > 0 {

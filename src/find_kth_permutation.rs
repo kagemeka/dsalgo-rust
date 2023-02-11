@@ -1,9 +1,6 @@
 use crate::find_kth_set_bit_by_removing_lsb::kth_set_bit;
 
-pub fn kth_permutation(
-    n: usize,
-    mut k: usize,
-) -> Vec<usize> {
+pub fn kth_permutation(n: usize, mut k: usize) -> Vec<usize> {
     let mut s = (1 << n) - 1;
 
     let mut p = vec![0; n];

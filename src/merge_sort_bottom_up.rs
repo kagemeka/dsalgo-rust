@@ -1,8 +1,5 @@
 pub fn merge_sort<T: Ord + Clone>(mut a: Vec<T>) -> Vec<T> {
-    fn merge<T: Ord + Clone>(
-        a: &mut [T],
-        m: usize,
-    ) {
+    fn merge<T: Ord + Clone>(a: &mut [T], m: usize) {
         let n = a.len();
 
         if n <= m || a[m - 1] <= a[m] {

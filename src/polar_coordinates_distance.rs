@@ -1,9 +1,4 @@
-pub fn polar_dist(
-    r0: f64,
-    theta_0: f64,
-    r1: f64,
-    theta_1: f64,
-) -> f64 {
+pub fn polar_dist(r0: f64, theta_0: f64, r1: f64, theta_1: f64) -> f64 {
     (r0 * r0 + r1 * r1 - 2. * r0 * r1 * (theta_1 - theta_0).cos()).sqrt()
 }
 

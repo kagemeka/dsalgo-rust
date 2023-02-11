@@ -1,9 +1,6 @@
 /// (preorder, cycle_start_index)
 
-pub fn functional_graph_prop(
-    f: &[usize],
-    src: usize,
-) -> (Vec<usize>, usize) {
+pub fn functional_graph_prop(f: &[usize], src: usize) -> (Vec<usize>, usize) {
     let n = f.len();
 
     let mut idx = vec![n; n];

@@ -9,11 +9,7 @@ impl Monoid for PrefixSumMinimum {
         (std::i64::MAX, 0)
     }
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T {
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T {
         (if r.0 == std::i64::MAX { l.0 } else { l.0.min(l.1 + r.0) }, l.1 + r.1)
     }
 }

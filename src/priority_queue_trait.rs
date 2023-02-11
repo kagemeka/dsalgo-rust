@@ -1,10 +1,7 @@
 pub trait Push {
     type T;
 
-    fn push(
-        &mut self,
-        x: Self::T,
-    );
+    fn push(&mut self, x: Self::T);
 }
 
 pub trait Pop {

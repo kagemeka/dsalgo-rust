@@ -12,10 +12,7 @@ impl<T> Queue<T> {
         self.st_front.len() + self.st_back.len()
     }
 
-    pub fn push(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push(&mut self, x: T) {
         self.st_back.push(x);
     }
 

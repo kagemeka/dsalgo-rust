@@ -9,10 +9,7 @@ impl<T: Ord> ArrayCompression<T> {
         Self(a)
     }
 
-    pub fn encode(
-        &self,
-        v: &T,
-    ) -> usize {
+    pub fn encode(&self, v: &T) -> usize {
         self.0.binary_search(v).unwrap()
     }
 
@@ -31,10 +28,7 @@ use std::ops::*;
 impl<T: Ord> Index<usize> for ArrayCompression<T> {
     type Output = T;
 
-    fn index(
-        &self,
-        i: usize,
-    ) -> &Self::Output {
+    fn index(&self, i: usize) -> &Self::Output {
         &self.0[i]
     }
 }

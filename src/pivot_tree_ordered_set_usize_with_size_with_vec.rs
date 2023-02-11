@@ -25,10 +25,7 @@ impl PivotTreeSet {
         1 << self.max_height - 1
     }
 
-    fn left_size(
-        &self,
-        p: usize,
-    ) -> usize {
+    fn left_size(&self, p: usize) -> usize {
         if p & 1 == 1 {
             0
         } else {
@@ -36,10 +33,7 @@ impl PivotTreeSet {
         }
     }
 
-    fn right_size(
-        &self,
-        p: usize,
-    ) -> usize {
+    fn right_size(&self, p: usize) -> usize {
         if p & 1 == 1 {
             0
         } else {
@@ -51,10 +45,7 @@ impl PivotTreeSet {
         self.size[self.root_pivot()]
     }
 
-    fn update(
-        &mut self,
-        p: usize,
-    ) {
+    fn update(&mut self, p: usize) {
         if self.data[p].is_none() {
             self.size[p] = 0;
 
@@ -64,11 +55,7 @@ impl PivotTreeSet {
         self.size[p] = self.left_size(p) + self.right_size(p) + 1;
     }
 
-    pub fn _insert(
-        &mut self,
-        p: usize,
-        mut v: usize,
-    ) {
+    pub fn _insert(&mut self, p: usize, mut v: usize) {
         use std::mem::swap;
 
         let value = self.data[p];
@@ -114,11 +101,7 @@ impl PivotTreeSet {
         self.update(p);
     }
 
-    fn _remove(
-        &mut self,
-        p: usize,
-        i: usize,
-    ) {
+    fn _remove(&mut self, p: usize, i: usize) {
         assert!(i < self.size[p]);
 
         let lsize = self.left_size(p);
@@ -148,11 +131,7 @@ impl PivotTreeSet {
         self.update(p);
     }
 
-    fn kth_value(
-        &self,
-        p: usize,
-        k: usize,
-    ) -> usize {
+    fn kth_value(&self, p: usize, k: usize) -> usize {
         assert!(k < self.size[p]);
 
         let lsize = self.left_size(p);
@@ -166,11 +145,7 @@ impl PivotTreeSet {
         }
     }
 
-    fn binary_search<F>(
-        &self,
-        f: F,
-        p: usize,
-    ) -> usize
+    fn binary_search<F>(&self, f: F, p: usize) -> usize
     where
         F: Fn(usize) -> bool,
     {
@@ -195,45 +170,27 @@ impl PivotTreeSet {
         }
     }
 
-    pub fn get(
-        &self,
-        i: usize,
-    ) -> usize {
+    pub fn get(&self, i: usize) -> usize {
         self.kth_value(self.root_pivot(), i) - 1
     }
 
-    pub fn lower_bound(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn lower_bound(&self, x: usize) -> usize {
         self.binary_search(|v| v >= x + 1, self.root_pivot())
     }
 
-    pub fn upper_bound(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn upper_bound(&self, x: usize) -> usize {
         self.binary_search(|v| v > x + 1, self.root_pivot())
     }
 
-    pub fn count(
-        &self,
-        x: usize,
-    ) -> usize {
+    pub fn count(&self, x: usize) -> usize {
         self.upper_bound(x) - self.lower_bound(x)
     }
 
-    pub fn contains(
-        &self,
-        x: usize,
-    ) -> bool {
+    pub fn contains(&self, x: usize) -> bool {
         self.count(x) > 0
     }
 
-    pub fn insert(
-        &mut self,
-        mut x: usize,
-    ) {
+    pub fn insert(&mut self, mut x: usize) {
         assert!(x < (1 << self.max_height) - 1);
 
         if self.contains(x) {
@@ -245,10 +202,7 @@ impl PivotTreeSet {
         self._insert(self.root_pivot(), x);
     }
 
-    pub fn remove(
-        &mut self,
-        x: usize,
-    ) {
+    pub fn remove(&mut self, x: usize) {
         if !self.contains(x) {
             return;
         }

@@ -4,10 +4,7 @@ pub struct SparseTable<T, F> {
 }
 
 impl<T: Clone, F: Fn(T, T) -> T> SparseTable<T, F> {
-    pub fn new(
-        f: F,
-        a: &[T],
-    ) -> Self {
+    pub fn new(f: F, a: &[T]) -> Self {
         let n = a.len();
 
         assert!(n > 0);
@@ -37,11 +34,7 @@ impl<T: Clone, F: Fn(T, T) -> T> SparseTable<T, F> {
         self.node[0].len()
     }
 
-    pub fn get(
-        &self,
-        l: usize,
-        r: usize,
-    ) -> T {
+    pub fn get(&self, l: usize, r: usize) -> T {
         assert!(l < r && r <= self.size());
 
         if r - l == 1 {

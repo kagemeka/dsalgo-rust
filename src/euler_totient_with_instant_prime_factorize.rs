@@ -1,9 +1,6 @@
 /// number of 1 <= k <= n, gcd(k, n) = 1.
 
-pub fn euler_totient<F>(
-    factorize: &F,
-    mut n: u64,
-) -> u64
+pub fn euler_totient<F>(factorize: &F, mut n: u64) -> u64
 where
     F: Fn(u64) -> Vec<(u64, u8)>,
 {

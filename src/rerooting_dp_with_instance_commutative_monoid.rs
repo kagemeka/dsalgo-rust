@@ -1,11 +1,7 @@
 pub trait Monoid {
     type T;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T;
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T;
 
     fn e(&self) -> Self::T;
 }
@@ -14,11 +10,7 @@ pub trait Edge {
     fn to(&self) -> usize;
 }
 
-pub fn rerooting_dp<M, E, F>(
-    g: &[Vec<E>],
-    m: M,
-    f: F,
-) -> Vec<M::T>
+pub fn rerooting_dp<M, E, F>(g: &[Vec<E>], m: M, f: F) -> Vec<M::T>
 where
     M: Monoid,
     M::T: Clone,
@@ -133,11 +125,7 @@ mod tests {
         impl Monoid for M {
             type T = u64;
 
-            fn op(
-                &self,
-                lhs: Self::T,
-                rhs: Self::T,
-            ) -> Self::T {
+            fn op(&self, lhs: Self::T, rhs: Self::T) -> Self::T {
                 lhs.max(rhs)
             }
 
@@ -154,10 +142,7 @@ mod tests {
         }
 
         impl E {
-            pub fn new(
-                to: usize,
-                weight: u64,
-            ) -> Self {
+            pub fn new(to: usize, weight: u64) -> Self {
                 Self { to, weight }
             }
         }
@@ -196,11 +181,7 @@ mod tests {
                 (0, 0)
             }
 
-            fn op(
-                &self,
-                l: Self::T,
-                r: Self::T,
-            ) -> Self::T {
+            fn op(&self, l: Self::T, r: Self::T) -> Self::T {
                 (l.0 + r.0, l.1 + r.1)
             }
         }

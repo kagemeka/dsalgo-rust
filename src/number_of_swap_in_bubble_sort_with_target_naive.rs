@@ -1,7 +1,4 @@
-pub fn count_swap<T: Eq>(
-    mut a: Vec<T>,
-    target: &[T],
-) -> usize {
+pub fn count_swap<T: Eq>(mut a: Vec<T>, target: &[T]) -> usize {
     let mut cnt = 0;
 
     let n = a.len();

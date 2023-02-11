@@ -1,8 +1,4 @@
-pub fn path_count(
-    g: &[Vec<usize>],
-    src: usize,
-    modulus: usize,
-) -> Vec<usize> {
+pub fn path_count(g: &[Vec<usize>], src: usize, modulus: usize) -> Vec<usize> {
     let n = g.len();
 
     let mut f = vec![0; n];

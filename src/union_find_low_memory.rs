@@ -9,10 +9,7 @@ impl UnionFind {
         self.0.len()
     }
 
-    pub fn root(
-        &mut self,
-        u: usize,
-    ) -> usize {
+    pub fn root(&mut self, u: usize) -> usize {
         if self.0[u] < 0 {
             return u;
         }
@@ -24,11 +21,7 @@ impl UnionFind {
         return r;
     }
 
-    pub fn unite(
-        &mut self,
-        mut u: usize,
-        mut v: usize,
-    ) {
+    pub fn unite(&mut self, mut u: usize, mut v: usize) {
         u = self.root(u);
 
         v = self.root(v);
@@ -47,20 +40,13 @@ impl UnionFind {
         self.0[v] = u as isize;
     }
 
-    pub fn size_of(
-        &mut self,
-        mut u: usize,
-    ) -> usize {
+    pub fn size_of(&mut self, mut u: usize) -> usize {
         u = self.root(u);
 
         -self.0[u] as usize
     }
 
-    pub fn same(
-        &mut self,
-        u: usize,
-        v: usize,
-    ) -> bool {
+    pub fn same(&mut self, u: usize, v: usize) -> bool {
         self.root(u) == self.root(v)
     }
 

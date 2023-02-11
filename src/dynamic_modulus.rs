@@ -22,10 +22,7 @@ impl<T: Copy> Get for DynMod<T> {
 impl<T> Set for DynMod<T> {
     type T = T;
 
-    fn set(
-        &mut self,
-        value: Self::T,
-    ) {
+    fn set(&mut self, value: Self::T) {
         self.0 = value
     }
 }

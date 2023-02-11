@@ -57,10 +57,7 @@ impl<T: Default> DynamicTensor<T> {
 }
 
 impl<T> DynamicTensor<T> {
-    fn flatten_index(
-        &self,
-        index: &[usize],
-    ) -> usize {
+    fn flatten_index(&self, index: &[usize]) -> usize {
         let mut idx = 0;
 
         let strides = self.strides();
@@ -78,19 +75,13 @@ impl<T> DynamicTensor<T> {
 impl<T> std::ops::Index<&[usize]> for DynamicTensor<T> {
     type Output = T;
 
-    fn index(
-        &self,
-        index: &[usize],
-    ) -> &Self::Output {
+    fn index(&self, index: &[usize]) -> &Self::Output {
         &self.data[self.flatten_index(index)]
     }
 }
 
 impl<T> std::ops::IndexMut<&[usize]> for DynamicTensor<T> {
-    fn index_mut(
-        &mut self,
-        index: &[usize],
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, index: &[usize]) -> &mut Self::Output {
         let idx = self.flatten_index(index);
 
         &mut self.data[idx]

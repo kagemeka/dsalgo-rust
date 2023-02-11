@@ -11,10 +11,7 @@ impl NonDAGError {
 }
 
 impl std::fmt::Display for NonDAGError {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         write!(f, "{}", self.msg)
     }
 }

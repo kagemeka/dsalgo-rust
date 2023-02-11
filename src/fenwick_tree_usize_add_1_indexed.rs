@@ -9,11 +9,7 @@ impl Fenwick {
         self.0.len() - 1
     }
 
-    pub fn add(
-        &mut self,
-        mut i: usize,
-        x: usize,
-    ) {
+    pub fn add(&mut self, mut i: usize, x: usize) {
         i += 1;
 
         while i <= self.size() {
@@ -23,10 +19,7 @@ impl Fenwick {
         }
     }
 
-    pub fn get(
-        &self,
-        mut i: usize,
-    ) -> usize {
+    pub fn get(&self, mut i: usize) -> usize {
         let mut v = 0;
 
         while i > 0 {

@@ -24,31 +24,19 @@ impl BitArray {
         BitArray(vec![0; (size + M) >> K])
     }
 
-    pub fn set(
-        &mut self,
-        i: usize,
-    ) {
+    pub fn set(&mut self, i: usize) {
         self.0[bucket(i)] |= value(i);
     }
 
-    pub fn reset(
-        &mut self,
-        i: usize,
-    ) {
+    pub fn reset(&mut self, i: usize) {
         self.0[bucket(i)] &= !value(i);
     }
 
-    pub fn flip(
-        &mut self,
-        i: usize,
-    ) {
+    pub fn flip(&mut self, i: usize) {
         self.0[bucket(i)] ^= value(i);
     }
 
-    pub fn is_set(
-        &self,
-        i: usize,
-    ) -> bool {
+    pub fn is_set(&self, i: usize) -> bool {
         self.0[bucket(i)] >> point(i) & 1 == 1
     }
 }
@@ -69,27 +57,18 @@ impl From<&[bool]> for BitArray {
 
 use std::ops::*;
 
-fn min_len(
-    lhs: &BitArray,
-    rhs: &BitArray,
-) -> usize {
+fn min_len(lhs: &BitArray, rhs: &BitArray) -> usize {
     lhs.0.len().min(rhs.0.len())
 }
 
-fn max_len(
-    lhs: &BitArray,
-    rhs: &BitArray,
-) -> usize {
+fn max_len(lhs: &BitArray, rhs: &BitArray) -> usize {
     lhs.0.len().max(rhs.0.len())
 }
 
 impl BitAnd for BitArray {
     type Output = Self;
 
-    fn bitand(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn bitand(mut self, rhs: Self) -> Self::Output {
         for i in 0..min_len(&self, &rhs) {
             self.0[i] &= rhs.0[i];
         }

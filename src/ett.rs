@@ -11,10 +11,7 @@ pub type E = [(usize, usize)];
 
 /// from edges, root
 
-pub fn tour_edges(
-    e: &E,
-    r: usize,
-) -> Vec<isize> {
+pub fn tour_edges(e: &E, r: usize) -> Vec<isize> {
     let g = tree_edges_to_graph(e);
 
     let n = g.len();
@@ -50,10 +47,7 @@ pub fn tour_edges(
 
 // TODO: recurse
 // pub fn tour_edges_recurse(e: &E, r: usize) -> Vec<isize> {}
-pub fn tour_nodes(
-    e: &E,
-    r: usize,
-) -> Vec<usize> {
+pub fn tour_nodes(e: &E, r: usize) -> Vec<usize> {
     let p = tree_parents(e, r);
 
     tour_edges(e, r)

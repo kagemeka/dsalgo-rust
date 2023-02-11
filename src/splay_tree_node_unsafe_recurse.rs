@@ -17,10 +17,7 @@ impl<T> Node<T> {
         unsafe { root.as_ref() }.map_or(0, |root| root.size)
     }
 
-    fn c_size(
-        &self,
-        i: usize,
-    ) -> usize {
+    fn c_size(&self, i: usize) -> usize {
         Self::size(self.c[i])
     }
 
@@ -32,10 +29,7 @@ impl<T> Node<T> {
         }
     }
 
-    fn rotate_up(
-        &mut self,
-        i: usize,
-    ) -> &mut Self {
+    fn rotate_up(&mut self, i: usize) -> &mut Self {
         debug_assert!(i < 2);
 
         let mut c = unsafe { self.c[i].as_mut().unwrap() };
@@ -51,10 +45,7 @@ impl<T> Node<T> {
         c
     }
 
-    fn state(
-        &self,
-        k: usize,
-    ) -> usize {
+    fn state(&self, k: usize) -> usize {
         let lsize = self.c_size(0);
 
         if k < lsize {
@@ -66,10 +57,7 @@ impl<T> Node<T> {
         }
     }
 
-    pub fn splay(
-        &mut self,
-        mut k: usize,
-    ) -> &mut Self {
+    pub fn splay(&mut self, mut k: usize) -> &mut Self {
         let mut node = self;
 
         assert!(k < node.size);
@@ -105,10 +93,7 @@ impl<T> Node<T> {
         node.rotate_up(s)
     }
 
-    pub fn merge(
-        l: *mut Self,
-        r: *mut Self,
-    ) -> *mut Self {
+    pub fn merge(l: *mut Self, r: *mut Self) -> *mut Self {
         if r.is_null() {
             return l;
         }
@@ -122,10 +107,7 @@ impl<T> Node<T> {
         r
     }
 
-    pub fn split(
-        root: *mut Self,
-        i: usize,
-    ) -> (*mut Self, *mut Self) {
+    pub fn split(root: *mut Self, i: usize) -> (*mut Self, *mut Self) {
         let size = Self::size(root);
 
         assert!(i <= size);
@@ -145,11 +127,7 @@ impl<T> Node<T> {
         (l, root)
     }
 
-    pub fn insert(
-        root: *mut Self,
-        i: usize,
-        node: *mut Self,
-    ) -> *mut Self {
+    pub fn insert(root: *mut Self, i: usize, node: *mut Self) -> *mut Self {
         assert!(i <= Self::size(root));
 
         let (l, r) = Self::split(root, i);
@@ -157,10 +135,7 @@ impl<T> Node<T> {
         Self::merge(Self::merge(l, node), r)
     }
 
-    pub fn pop(
-        &mut self,
-        i: usize,
-    ) -> (&mut Self, *mut Self) {
+    pub fn pop(&mut self, i: usize) -> (&mut Self, *mut Self) {
         let mut node = self;
 
         node = Self::splay(node, i);
@@ -174,10 +149,7 @@ impl<T> Node<T> {
         (node, c)
     }
 
-    pub fn binary_search<F>(
-        f: F,
-        root: *const Self,
-    ) -> usize
+    pub fn binary_search<F>(f: F, root: *const Self) -> usize
     where
         F: Fn(&T) -> bool,
     {

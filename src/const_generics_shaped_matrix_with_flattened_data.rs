@@ -43,10 +43,7 @@ where
 {
     type Output = T;
 
-    fn index(
-        &self,
-        index: (usize, usize),
-    ) -> &Self::Output {
+    fn index(&self, index: (usize, usize)) -> &Self::Output {
         &self.0[index.0 * W + index.1]
     }
 }
@@ -56,10 +53,7 @@ impl<T, const H: usize, const W: usize> IndexMut<(usize, usize)>
 where
     [(); H * W]:,
 {
-    fn index_mut(
-        &mut self,
-        index: (usize, usize),
-    ) -> &mut Self::Output {
+    fn index_mut(&mut self, index: (usize, usize)) -> &mut Self::Output {
         &mut self.0[index.0 * W + index.1]
     }
 }
@@ -84,10 +78,7 @@ where
     [(); H * W]:,
     T: std::fmt::Debug + Copy,
 {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let format_str = self
             .to_2d_array()
             .iter()

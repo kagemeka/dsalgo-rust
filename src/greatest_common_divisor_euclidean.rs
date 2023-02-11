@@ -1,9 +1,6 @@
 use std::ops::*;
 
-pub fn gcd<T>(
-    mut a: T,
-    mut b: T,
-) -> T
+pub fn gcd<T>(mut a: T, mut b: T) -> T
 where
     T: Default + PartialEq + Copy + RemAssign,
 {
@@ -38,12 +35,8 @@ mod tests {
         (&[0, 10], 10),
     ];
 
-    fn test_wrapper<F>(
-        gcd: &F,
-        a: i32,
-        b: i32,
-        expected: i32,
-    ) where
+    fn test_wrapper<F>(gcd: &F, a: i32, b: i32, expected: i32)
+    where
         F: Fn(i32, i32) -> i32,
     {
         let mut g = gcd(a, b);

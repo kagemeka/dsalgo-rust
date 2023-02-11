@@ -1,7 +1,4 @@
-use crate::doubly_linked_list_node::{
-    Cell,
-    Node,
-};
+use crate::doubly_linked_list_node::{Cell, Node};
 
 pub struct Deque<T> {
     left: Option<Cell<T>>,
@@ -22,10 +19,7 @@ impl<T: Clone> Deque<T> {
         self.size == 0
     }
 
-    pub fn push_right(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push_right(&mut self, x: T) {
         let x = Node::new(x);
 
         let right = Node::add_right(self.right.take(), x);
@@ -39,10 +33,7 @@ impl<T: Clone> Deque<T> {
         self.size += 1;
     }
 
-    pub fn push_left(
-        &mut self,
-        x: T,
-    ) {
+    pub fn push_left(&mut self, x: T) {
         let x = Node::new(x);
 
         let left = Node::add_left(self.left.take(), x);

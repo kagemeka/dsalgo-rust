@@ -1,7 +1,4 @@
-pub fn levenstein_dist<T: PartialEq>(
-    a: &[T],
-    b: &[T],
-) -> usize {
+pub fn levenstein_dist<T: PartialEq>(a: &[T], b: &[T]) -> usize {
     let n: usize = a.len();
 
     let m: usize = b.len();

@@ -17,10 +17,7 @@ impl Polar {
         (self.0 * self.1.cos(), self.0 * self.1.sin())
     }
 
-    pub fn from_rect(
-        x: f64,
-        y: f64,
-    ) -> Self {
+    pub fn from_rect(x: f64, y: f64) -> Self {
         Self(x.hypot(y), y.atan2(x))
     }
 
@@ -36,10 +33,7 @@ impl From<f64> for Polar {
 }
 
 impl MulAssign<f64> for Polar {
-    fn mul_assign(
-        &mut self,
-        x: f64,
-    ) {
+    fn mul_assign(&mut self, x: f64) {
         self.0 *= x;
     }
 }
@@ -47,10 +41,7 @@ impl MulAssign<f64> for Polar {
 impl Mul<f64> for Polar {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        x: f64,
-    ) -> Self::Output {
+    fn mul(mut self, x: f64) -> Self::Output {
         self *= x;
 
         self
@@ -58,10 +49,7 @@ impl Mul<f64> for Polar {
 }
 
 impl DivAssign<f64> for Polar {
-    fn div_assign(
-        &mut self,
-        x: f64,
-    ) {
+    fn div_assign(&mut self, x: f64) {
         self.0 /= x;
     }
 }
@@ -69,10 +57,7 @@ impl DivAssign<f64> for Polar {
 impl Div<f64> for Polar {
     type Output = Self;
 
-    fn div(
-        mut self,
-        x: f64,
-    ) -> Self::Output {
+    fn div(mut self, x: f64) -> Self::Output {
         self /= x;
 
         self
@@ -80,10 +65,7 @@ impl Div<f64> for Polar {
 }
 
 impl MulAssign for Polar {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         self.0 *= rhs.0;
 
         self.1 += rhs.1;
@@ -93,10 +75,7 @@ impl MulAssign for Polar {
 impl Mul for Polar {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn mul(mut self, rhs: Self) -> Self::Output {
         self *= rhs;
 
         self
@@ -112,10 +91,7 @@ impl Neg for Polar {
 }
 
 impl DivAssign for Polar {
-    fn div_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn div_assign(&mut self, rhs: Self) {
         *self *= rhs.mul_inv();
     }
 }
@@ -123,10 +99,7 @@ impl DivAssign for Polar {
 impl Div for Polar {
     type Output = Self;
 
-    fn div(
-        mut self,
-        rhs: Self,
-    ) -> Self::Output {
+    fn div(mut self, rhs: Self) -> Self::Output {
         self /= rhs;
 
         self

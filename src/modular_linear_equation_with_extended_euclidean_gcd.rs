@@ -2,11 +2,7 @@ use crate::extended_euclidean_modular_gcd_inverse_i64_with_extgcd::*;
 
 /// find a solution for ax = b (mod m)
 
-pub fn mod_linear_equation(
-    mut m: i64,
-    a: i64,
-    mut b: i64,
-) -> Option<i64> {
+pub fn mod_linear_equation(mut m: i64, a: i64, mut b: i64) -> Option<i64> {
     let (g, mut x) = mod_gcd_inv(m, a);
 
     if b % g != 0 {

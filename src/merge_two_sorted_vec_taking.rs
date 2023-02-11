@@ -1,7 +1,4 @@
-pub fn merge_sorted<T: Ord>(
-    a: Vec<T>,
-    b: Vec<T>,
-) -> Vec<T> {
+pub fn merge_sorted<T: Ord>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
     let mut res = Vec::with_capacity(a.len() + b.len());
 
     let mut a = a.into_iter();

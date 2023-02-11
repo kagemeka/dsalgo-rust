@@ -28,10 +28,7 @@ pub mod modulus {
 
     pub struct StaticMod;
 
-    use std::sync::atomic::{
-        AtomicU32,
-        Ordering::SeqCst,
-    };
+    use std::sync::atomic::{AtomicU32, Ordering::SeqCst};
 
     impl StaticMod {
         fn cell() -> &'static AtomicU32 {
@@ -79,10 +76,7 @@ impl<M: StaticGet> Modint<M> {
 impl<M: StaticGet> Add for Modint<M> {
     type Output = Self;
 
-    fn add(
-        mut self,
-        rhs: Self,
-    ) -> Self {
+    fn add(mut self, rhs: Self) -> Self {
         self.0 += rhs.0;
 
         if self.0 >= M::get() {
@@ -108,10 +102,7 @@ impl<M: StaticGet> Neg for Modint<M> {
 impl<M: StaticGet> Mul for Modint<M> {
     type Output = Self;
 
-    fn mul(
-        mut self,
-        rhs: Self,
-    ) -> Self {
+    fn mul(mut self, rhs: Self) -> Self {
         let mut v = self.0 as u64;
 
         v *= rhs.0 as u64;
@@ -165,10 +156,7 @@ impl<M: StaticGet> MulInv for Modint<M> {
 impl<M: StaticGet> Sub for Modint<M> {
     type Output = Self;
 
-    fn sub(
-        self,
-        rhs: Self,
-    ) -> Self {
+    fn sub(self, rhs: Self) -> Self {
         self + -rhs
     }
 }
@@ -176,10 +164,7 @@ impl<M: StaticGet> Sub for Modint<M> {
 impl<M: StaticGet> Div for Modint<M> {
     type Output = Self;
 
-    fn div(
-        self,
-        rhs: Self,
-    ) -> Self {
+    fn div(self, rhs: Self) -> Self {
         self * rhs.mul_inv()
     }
 }
@@ -188,10 +173,7 @@ impl<M: StaticGet> AddAssign for Modint<M>
 where
     Self: Copy,
 {
-    fn add_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
@@ -200,10 +182,7 @@ impl<M: StaticGet> SubAssign for Modint<M>
 where
     Self: Copy,
 {
-    fn sub_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self += -rhs;
     }
 }
@@ -212,10 +191,7 @@ impl<M: StaticGet> MulAssign for Modint<M>
 where
     Self: Copy,
 {
-    fn mul_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
@@ -224,10 +200,7 @@ impl<M: StaticGet> DivAssign for Modint<M>
 where
     Self: Copy,
 {
-    fn div_assign(
-        &mut self,
-        rhs: Self,
-    ) {
+    fn div_assign(&mut self, rhs: Self) {
         *self *= *self * rhs.mul_inv();
     }
 }

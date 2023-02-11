@@ -5,11 +5,7 @@ pub struct RangeSum;
 impl Monoid for RangeSum {
     type T = i64;
 
-    fn op(
-        &self,
-        l: Self::T,
-        r: Self::T,
-    ) -> Self::T {
+    fn op(&self, l: Self::T, r: Self::T) -> Self::T {
         l + r
     }
 

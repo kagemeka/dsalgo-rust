@@ -1,9 +1,6 @@
 use crate::next_combination_bits::next_combination;
 
-pub fn combinations(
-    n: usize,
-    k: usize,
-) -> Vec<usize> {
+pub fn combinations(n: usize, k: usize) -> Vec<usize> {
     assert!(k <= n);
 
     if k == 0 {

@@ -25,11 +25,7 @@ where
         Self { fact, inv_fact }
     }
 
-    pub fn p(
-        &self,
-        n: usize,
-        k: usize,
-    ) -> T {
+    pub fn p(&self, n: usize, k: usize) -> T {
         if n < k {
             0.into()
         } else {
@@ -37,19 +33,11 @@ where
         }
     }
 
-    pub fn c(
-        &self,
-        n: usize,
-        k: usize,
-    ) -> T {
+    pub fn c(&self, n: usize, k: usize) -> T {
         self.p(n, k) * self.inv_fact[k].clone()
     }
 
-    pub fn h(
-        &self,
-        n: usize,
-        k: usize,
-    ) -> T {
+    pub fn h(&self, n: usize, k: usize) -> T {
         if n == 0 {
             0.into()
         } else {
@@ -57,28 +45,17 @@ where
         }
     }
 
-    pub fn inv(
-        &self,
-        n: usize,
-    ) -> T {
+    pub fn inv(&self, n: usize) -> T {
         self.fact[n - 1].clone() * self.inv_fact[n].clone()
     }
 
-    pub fn inv_p(
-        &self,
-        n: usize,
-        k: usize,
-    ) -> T {
+    pub fn inv_p(&self, n: usize, k: usize) -> T {
         assert!(k <= n);
 
         self.inv_fact[n].clone() * self.fact[n - k].clone()
     }
 
-    pub fn inv_c(
-        &self,
-        n: usize,
-        k: usize,
-    ) -> T {
+    pub fn inv_c(&self, n: usize, k: usize) -> T {
         self.inv_p(n, k) * self.fact[k].clone()
     }
 }

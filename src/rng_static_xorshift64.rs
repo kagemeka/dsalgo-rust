@@ -1,10 +1,7 @@
 use crate::rng_xorshift64::xorshift64;
 
 pub fn static_xorshift64() -> u64 {
-    use std::sync::atomic::{
-        AtomicU64,
-        Ordering::SeqCst,
-    };
+    use std::sync::atomic::{AtomicU64, Ordering::SeqCst};
 
     const DEFAULT_SEED: u64 = 88172645463325252;
 

@@ -1,7 +1,4 @@
-pub fn sliding_window_maximum<T: Ord + Clone>(
-    a: &[T],
-    k: usize,
-) -> Vec<T> {
+pub fn sliding_window_maximum<T: Ord + Clone>(a: &[T], k: usize) -> Vec<T> {
     let n = a.len();
 
     assert!(k <= n);

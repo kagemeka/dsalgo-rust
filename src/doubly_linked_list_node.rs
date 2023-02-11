@@ -1,7 +1,4 @@
-use std::{
-    cell::RefCell,
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 pub type Cell<T> = Rc<RefCell<Node<T>>>;
 
@@ -16,10 +13,7 @@ impl<T> Node<T> {
         Rc::new(RefCell::new(Self { left: None, right: None, value }))
     }
 
-    pub fn add_right(
-        node: Option<Cell<T>>,
-        new: Cell<T>,
-    ) -> Cell<T> {
+    pub fn add_right(node: Option<Cell<T>>, new: Cell<T>) -> Cell<T> {
         if let Some(node) = node {
             node.borrow_mut().right = Some(new.clone());
 
@@ -29,10 +23,7 @@ impl<T> Node<T> {
         new
     }
 
-    pub fn add_left(
-        node: Option<Cell<T>>,
-        new: Cell<T>,
-    ) -> Cell<T> {
+    pub fn add_left(node: Option<Cell<T>>, new: Cell<T>) -> Cell<T> {
         if let Some(node) = node {
             node.borrow_mut().left = Some(new.clone());
 

@@ -93,24 +93,15 @@ pub fn shr_until_odd(n: u64) -> u64 {
 /// rotate left
 /// can be called safely only in release mode.
 
-pub fn rot_l(
-    x: u64,
-    k: u8,
-) -> u64 {
+pub fn rot_l(x: u64, k: u8) -> u64 {
     (x << k) | (x >> (64 - k))
 }
 
-pub fn reset(
-    n: u64,
-    i: usize,
-) -> u64 {
+pub fn reset(n: u64, i: usize) -> u64 {
     n & !(1 << i)
 }
 
-pub fn flip(
-    n: u64,
-    i: usize,
-) -> u64 {
+pub fn flip(n: u64, i: usize) -> u64 {
     n ^ (1 << i)
 }
 

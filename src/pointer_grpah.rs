@@ -1,9 +1,6 @@
 use std::{
     cell::RefCell,
-    rc::{
-        Rc,
-        Weak,
-    },
+    rc::{Rc, Weak},
 };
 
 use crate::new_rc_refcell::new_rc_refcell;
@@ -16,10 +13,7 @@ pub struct Vertex<T, U> {
 }
 
 impl<T: std::fmt::Debug, U> std::fmt::Display for Vertex<T, U> {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         write!(f, "Vertex {{ value: {:#?}, edges: [...] }}", self.value)
     }
 }
@@ -51,10 +45,7 @@ pub struct Edge<T, U> {
 }
 
 impl<T: std::fmt::Debug, U> std::fmt::Display for Edge<T, U> {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter,
-    ) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         write!(f, "Edge {{ from: ., to: ., value: {:#?} }}", self.value)
     }
 }

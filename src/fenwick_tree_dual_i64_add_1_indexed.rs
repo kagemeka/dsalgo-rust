@@ -13,11 +13,7 @@ impl Fenwick {
 
     /// add x to a_j (j >= i)
 
-    pub fn add_ge(
-        &mut self,
-        mut i: usize,
-        x: i64,
-    ) {
+    pub fn add_ge(&mut self, mut i: usize, x: i64) {
         assert!(i < self.size());
 
         i += 1;
@@ -31,10 +27,7 @@ impl Fenwick {
 
     /// get a_i
 
-    pub fn get(
-        &self,
-        mut i: usize,
-    ) -> i64 {
+    pub fn get(&self, mut i: usize) -> i64 {
         assert!(i < self.size());
 
         i += 1;

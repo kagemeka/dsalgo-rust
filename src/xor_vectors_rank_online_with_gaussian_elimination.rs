@@ -28,10 +28,7 @@ impl XorVectorsRank {
         s
     }
 
-    fn eliminate(
-        &self,
-        mut x: usize,
-    ) -> usize {
+    fn eliminate(&self, mut x: usize) -> usize {
         for (i, b) in self.basis.iter().enumerate() {
             if x >> i & 1 == 1 {
                 x ^= b;
@@ -41,10 +38,7 @@ impl XorVectorsRank {
         x
     }
 
-    fn normalize_basis(
-        &mut self,
-        i: usize,
-    ) {
+    fn normalize_basis(&mut self, i: usize) {
         let x = self.basis[i];
 
         for (j, b) in self.basis.iter_mut().enumerate() {
@@ -54,10 +48,7 @@ impl XorVectorsRank {
         }
     }
 
-    pub fn push(
-        &mut self,
-        mut x: usize,
-    ) {
+    pub fn push(&mut self, mut x: usize) {
         x = self.eliminate(x);
 
         for (i, b) in self.basis.iter_mut().enumerate() {
@@ -77,10 +68,7 @@ impl XorVectorsRank {
         }
     }
 
-    pub fn is_independent(
-        &self,
-        x: usize,
-    ) -> bool {
+    pub fn is_independent(&self, x: usize) -> bool {
         self.eliminate(x) != 0
     }
 }

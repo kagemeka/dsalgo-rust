@@ -55,10 +55,7 @@ impl MontgomeryMultiplication {
 
     /// return tr^{-1} mod n
 
-    fn reduce(
-        &self,
-        mut t: u128,
-    ) -> u64 {
+    fn reduce(&self, mut t: u128) -> u64 {
         assert!(t < self.nr);
 
         t = (t + ((t & self.mask) * self.n_dash & self.mask) * self.n)
@@ -77,20 +74,13 @@ impl MontgomeryMultiplication {
     /// (xr^2)r^{-1} \equiv xr
     #[allow(dead_code)]
 
-    fn form(
-        &self,
-        x: u64,
-    ) -> u128 {
+    fn form(&self, x: u64) -> u128 {
         self.reduce(x as u128 * self.r2) as u128
     }
 
     /// return (a * b) mod n
 
-    pub fn mul(
-        &self,
-        x: u64,
-        y: u64,
-    ) -> u64 {
+    pub fn mul(&self, x: u64, y: u64) -> u64 {
         self.reduce(self.reduce(x as u128 * y as u128) as u128 * self.r2) as u64
         // ((xyr^{-1})r^2)r^{-1} \equiv xy
         // equivalent to: reduce(form(x) * form(y))

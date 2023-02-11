@@ -8,10 +8,7 @@ impl<T> Node<T> {
         Box::new(Self { next: None, value })
     }
 
-    pub fn add(
-        &mut self,
-        node: Option<Box<Node<T>>>,
-    ) {
+    pub fn add(&mut self, node: Option<Box<Node<T>>>) {
         self.next = node;
     }
 

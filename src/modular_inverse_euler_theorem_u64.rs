@@ -4,14 +4,10 @@
 // related: carmichael_function.rs
 use crate::{
     euler_totient_with_trial_division_u64::phi,
-    greatest_common_divisor_euclidean_u64::gcd,
-    modular_power_u64::pow,
+    greatest_common_divisor_euclidean_u64::gcd, modular_power_u64::pow,
 };
 
-pub fn modinv(
-    modulus: u64,
-    x: u64,
-) -> u64 {
+pub fn modinv(modulus: u64, x: u64) -> u64 {
     assert_eq!(gcd(modulus, x), 1);
 
     pow(modulus, x as u128, phi(modulus) - 1)

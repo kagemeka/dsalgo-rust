@@ -1,7 +1,4 @@
-use std::{
-    cell::RefCell,
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 pub type Cell<T> = Rc<RefCell<Node<T>>>;
 
@@ -15,10 +12,7 @@ impl<T> Node<T> {
         Rc::new(RefCell::new(Self { next: None, value }))
     }
 
-    pub fn add(
-        &mut self,
-        node: Option<Cell<T>>,
-    ) {
+    pub fn add(&mut self, node: Option<Cell<T>>) {
         self.next = node;
     }
 

@@ -1,7 +1,4 @@
-use std::{
-    cell::RefCell,
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 pub type Cell<T> = Rc<RefCell<Node<T>>>;
 
@@ -211,17 +208,11 @@ impl<T> Node<T> {
         Self::merge(left, right)
     }
 
-    pub fn remove(
-        root: Option<Cell<T>>,
-        i: usize,
-    ) -> Option<Cell<T>> {
+    pub fn remove(root: Option<Cell<T>>, i: usize) -> Option<Cell<T>> {
         Self::remove_range(root, i, i + 1)
     }
 
-    pub fn kth_node(
-        root: Cell<T>,
-        k: usize,
-    ) -> (Cell<T>, Cell<T>) {
+    pub fn kth_node(root: Cell<T>, k: usize) -> (Cell<T>, Cell<T>) {
         assert!(k < root.borrow().size);
 
         let lsize = Self::size(root.borrow().left.as_ref());
@@ -251,10 +242,7 @@ impl<T> Node<T> {
         (ret, Self::rebalance(root))
     }
 
-    pub fn binary_search<F>(
-        f: F,
-        root: Option<&Cell<T>>,
-    ) -> usize
+    pub fn binary_search<F>(f: F, root: Option<&Cell<T>>) -> usize
     where
         F: Fn(&T) -> bool,
     {

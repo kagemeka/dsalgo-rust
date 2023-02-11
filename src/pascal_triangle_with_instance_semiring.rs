@@ -1,11 +1,6 @@
 use std::ops::*;
 
-pub fn pascal_triangle<F, T>(
-    f: F,
-    zero: T,
-    one: T,
-    size: usize,
-) -> Vec<Vec<T>>
+pub fn pascal_triangle<F, T>(f: F, zero: T, one: T, size: usize) -> Vec<Vec<T>>
 where
     T: Add<Output = T> + Clone,
     F: Fn(T, T) -> T,

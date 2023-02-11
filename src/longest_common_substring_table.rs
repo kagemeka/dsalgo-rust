@@ -1,7 +1,4 @@
-pub fn longest_common_substring<T: Eq>(
-    a: &[T],
-    b: &[T],
-) -> Vec<Vec<usize>> {
+pub fn longest_common_substring<T: Eq>(a: &[T], b: &[T]) -> Vec<Vec<usize>> {
     let n = a.len();
 
     let m = b.len();

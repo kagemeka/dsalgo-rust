@@ -25,8 +25,7 @@ mod tests {
     fn test() {
         use super::*;
         use crate::{
-            primality::test::mr::*,
-            prime_factorize_trial_division::*,
+            primality::test::mr::*, prime_factorize_trial_division::*,
         };
 
         for i in 1..10000 {

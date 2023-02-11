@@ -1,17 +1,9 @@
-pub fn combinations(
-    n: usize,
-    k: usize,
-) -> Vec<Vec<usize>> {
+pub fn combinations(n: usize, k: usize) -> Vec<Vec<usize>> {
     assert!(k <= n);
 
     let mut res = vec![];
 
-    fn dfs(
-        n: usize,
-        k: usize,
-        res: &mut Vec<Vec<usize>>,
-        a: &mut Vec<usize>,
-    ) {
+    fn dfs(n: usize, k: usize, res: &mut Vec<Vec<usize>>, a: &mut Vec<usize>) {
         let m = a.len();
 
         if m == k {

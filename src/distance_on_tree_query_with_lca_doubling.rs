@@ -12,11 +12,7 @@ impl TreeDist {
         Self { lca: LCA::new(g, 0) }
     }
 
-    pub fn get(
-        &self,
-        u: usize,
-        v: usize,
-    ) -> usize {
+    pub fn get(&self, u: usize, v: usize) -> usize {
         let d = &self.lca.depth;
 
         let lca = self.lca.get(u, v);

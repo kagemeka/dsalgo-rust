@@ -5,10 +5,7 @@ impl UnionFind {
         Self(vec![-1; size])
     }
 
-    pub fn root(
-        &mut self,
-        u: usize,
-    ) -> usize {
+    pub fn root(&mut self, u: usize) -> usize {
         if self.0[u] < 0 {
             return u;
         }
@@ -20,11 +17,7 @@ impl UnionFind {
         return r;
     }
 
-    pub fn unite(
-        &mut self,
-        mut u: usize,
-        mut v: usize,
-    ) {
+    pub fn unite(&mut self, mut u: usize, mut v: usize) {
         u = self.root(u);
 
         v = self.root(v);
