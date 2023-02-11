@@ -1,6 +1,7 @@
 /// if >= v1.60.0, a.abs_diff(b) is available.
 /// https://doc.rust-lang.org/std/primitive.u64.html#method.abs_diff
-pub fn abs_diff(a: u64, b: u64) -> u64 {
+use std::ops::Sub;
+pub fn abs_diff<T: Sub<Output = T> + Ord>(a: T, b: T) -> T {
     if a >= b {
         a - b
     } else {
@@ -8,8 +9,7 @@ pub fn abs_diff(a: u64, b: u64) -> u64 {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test() {}
+#[test]
+fn test() {
+    assert_eq!(abs_diff(1u64, 2u64), 1);
 }

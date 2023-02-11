@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 mod _cp;
+mod abs_diff;
 mod disjoint_set_union;
 mod dsu;
 mod dsu_by_rank;
