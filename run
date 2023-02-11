@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cargo fmt
+cargo clippy
+# time cargo run
+time cargo run --release
+# without --release if overflow possible
