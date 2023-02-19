@@ -1,12 +1,10 @@
 pub struct Dsu {
     data: Vec<isize>,
 }
-
 impl Dsu {
     pub fn new(size: usize) -> Self {
         Self { data: vec![-1; size] }
     }
-
     pub fn root(&mut self, u: usize) -> usize {
         if self.data[u] < 0 {
             return u;
@@ -15,7 +13,6 @@ impl Dsu {
         self.data[u] = r as isize;
         r
     }
-
     pub fn unite(&mut self, mut u: usize, mut v: usize) {
         u = self.root(u);
         v = self.root(v);
@@ -28,20 +25,16 @@ impl Dsu {
         self.data[u] += self.data[v];
         self.data[v] = u as isize;
     }
-
     pub fn size(&self) -> usize {
         self.data.len()
     }
-
     pub fn size_of(&mut self, u: usize) -> usize {
         let r = self.root(u);
         -self.data[r] as usize
     }
-
     pub fn same(&mut self, u: usize, v: usize) -> bool {
         self.root(u) == self.root(v)
     }
-
     pub fn labels(&mut self) -> Vec<usize> {
         let n = self.size();
         let mut labels = vec![n; n];
@@ -56,7 +49,6 @@ impl Dsu {
         }
         labels
     }
-
     pub fn groups(&mut self) -> Vec<Vec<usize>> {
         let labels = self.labels();
         let k = *labels.iter().max().unwrap() + 1;
@@ -67,11 +59,9 @@ impl Dsu {
         g
     }
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;
-
     #[test]
     fn test() {
         let mut uf = Dsu::new(10);
@@ -79,7 +69,6 @@ mod tests {
         uf.unite(3, 9);
         assert_eq!(uf.size_of(3), 2);
     }
-
     #[test]
     fn test_practice2_b() {
         let cases = vec![(
@@ -100,7 +89,8 @@ mod tests {
                 if t == 0 {
                     uf.unite(u, v);
                 } else {
-                    assert_eq!(if uf.same(u, v) { 1 } else { 0 }, ans);
+                    assert_eq!(uf.same(u, v) as i32, ans);
+                    // assert_eq!(if uf.same(u, v) { 1 } else { 0 }, ans);
                 }
             }
         }

@@ -1,5 +1,4 @@
 use crate::dsu::Dsu;
-
 impl Dsu {
     pub fn root_compressing(&mut self, u: usize) -> usize {
         let mut r = self.root[u];

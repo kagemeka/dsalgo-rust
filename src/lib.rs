@@ -1,5 +1,13 @@
 #![allow(dead_code)]
-
+#![deny(warnings)]
+#![warn(clippy::nursery)]
+#![warn(clippy::pedantic)]
+#![allow(clippy::cast_lossless)]
+#![allow(clippy::must_use_candidate)]
+#![allow(clippy::doc_markdown)]
+#![allow(clippy::missing_panics_doc)]
+#![allow(clippy::cast_sign_loss)]
+#![allow(clippy::cast_possible_wrap)]
 mod _cp;
 mod a_star;
 mod aa_tree;
