@@ -2,10 +2,7 @@
 
 rustup update
 cargo update
-# cargo package --list --allow-dirty
-cargo fmt -v --all
-cargo clippy
+cargo fmt
+cargo clippy --tests --all-features
 pre-commit run --all-files
-cargo test -q
-# cargo test -q --release
-# cargo publish --dry-run --allow-dirty
+cargo test #--release

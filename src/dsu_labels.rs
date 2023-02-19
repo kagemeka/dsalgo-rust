@@ -1,6 +1,5 @@
 use crate::dsu_trait::FindRoot;
 use crate::size_trait::Size;
-
 pub fn labels<T: FindRoot + Size>(uf: &mut T) -> Vec<usize> {
     let n = uf.size();
     let mut labels = vec![n; n];

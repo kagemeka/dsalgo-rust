@@ -8,7 +8,6 @@ pub fn abs_diff<T: Sub<Output = T> + Ord>(a: T, b: T) -> T {
         b - a
     }
 }
-
 #[test]
 fn test() {
     assert_eq!(abs_diff(1u64, 2u64), 1);
