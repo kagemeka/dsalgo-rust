@@ -5,4 +5,4 @@ cargo update
 cargo fmt
 cargo clippy --tests --all-features
 pre-commit run --all-files
-cargo test #--release
+cargo test -q #--release
