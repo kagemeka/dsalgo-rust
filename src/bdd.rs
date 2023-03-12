@@ -1,1 +1,1 @@
-// https://en.wikipedia.org/wiki/Binary_decision_diagram
+pub use crate::binary_decision_diagram::*;

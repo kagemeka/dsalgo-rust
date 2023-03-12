@@ -1,10 +1,10 @@
 pub struct Dsu {
     root: Vec<usize>,
-    rank: Vec<usize>,
+    size: Vec<usize>,
 }
 impl Dsu {
     pub fn new(n: usize) -> Self {
-        Self { root: (0..n).collect(), rank: vec![0; n] }
+        Self { root: (0..n).collect(), size: vec![1; n] }
     }
     pub fn find_root(&self, u: usize) -> usize {
         let r = self.root[u];
@@ -20,12 +20,10 @@ impl Dsu {
         if u == v {
             return;
         }
-        if self.rank[u] < self.rank[v] {
+        if self.size[u] < self.size[v] {
             std::mem::swap(&mut u, &mut v);
         }
-        if self.rank[u] == self.rank[v] {
-            self.rank[u] += 1;
-        }
+        self.size[u] += self.size[v];
         self.root[v] = u;
     }
 }
