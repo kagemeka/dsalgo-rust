@@ -1,1 +1,1 @@
-pub use crate::bdd::*;
+// https://en.wikipedia.org/wiki/Binary_decision_diagram
