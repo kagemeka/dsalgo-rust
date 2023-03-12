@@ -8,6 +8,8 @@
 #![allow(clippy::missing_panics_doc)]
 #![allow(clippy::cast_sign_loss)]
 #![allow(clippy::cast_possible_wrap)]
+#![allow(clippy::needless_range_loop)]
+#![allow(clippy::range_plus_one)]
 pub mod _cp;
 pub mod a_star;
 pub mod aa_tree;
@@ -22,6 +24,7 @@ pub mod addressable_heap;
 pub mod af_heap;
 pub mod aho_corasick;
 pub mod algorithm;
+pub mod apostolico_giancarlo;
 pub mod approximate_string_match;
 pub mod automata_theory;
 pub mod backpropagation;
@@ -33,6 +36,7 @@ pub mod bdd;
 pub mod bead_sort;
 pub mod berlekamp_massey;
 pub mod bf;
+pub mod bigram;
 pub mod binary_decision_diagram;
 pub mod bitap;
 pub mod bm;
@@ -85,6 +89,10 @@ pub mod fw;
 pub mod gravity_sort;
 pub mod kmp;
 pub mod knuth_morris_pratt;
+pub mod levenshtein_automaton;
+pub mod levenshtein_dist;
+pub mod levenshtein_dist_lowmem;
+pub mod levenshtein_dist_lowmem_inplace;
 pub mod lfsr;
 pub mod line;
 pub mod line2d;
@@ -93,6 +101,7 @@ pub mod line_container;
 pub mod linear_feedback_shift_register;
 pub mod matching_pursuit;
 pub mod mp;
+pub mod n_gram;
 pub mod partially_persistent_dsu;
 pub mod persistent_dsu;
 pub mod phonetic_algorithm;
@@ -106,18 +115,22 @@ pub mod power;
 pub mod prelude;
 pub mod proof_of_work;
 pub mod rabin_karp;
+pub mod raita_algorithm;
 pub mod retain;
 pub mod rk;
 pub mod rollback_dsu;
 pub mod shift_and;
 pub mod shift_or;
 pub mod size_trait;
+pub mod spaced_speed;
 pub mod sparse_approximation;
 pub mod sparse_representation;
 pub mod string_algorithm;
 pub mod string_matching;
 pub mod string_searching;
 pub mod suffix_automaton;
+pub mod trigram;
+pub mod trigram_search;
 pub mod truncated_division;
 pub mod two_way_string_match;
 pub mod uf;
