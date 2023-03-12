@@ -20,6 +20,7 @@ pub mod adaptive_heap_sort;
 pub mod addition_theorem;
 pub mod addressable_heap;
 pub mod af_heap;
+pub mod aho_corasick;
 pub mod algorithm;
 pub mod approximate_string_match;
 pub mod backpropagation;
