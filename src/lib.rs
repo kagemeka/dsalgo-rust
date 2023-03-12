@@ -1,15 +1,17 @@
 #![allow(dead_code)]
 #![deny(warnings)]
-#![warn(clippy::nursery)]
-#![warn(clippy::pedantic)]
-#![allow(clippy::cast_lossless)]
-#![allow(clippy::must_use_candidate)]
-#![allow(clippy::doc_markdown)]
-#![allow(clippy::missing_panics_doc)]
-#![allow(clippy::cast_sign_loss)]
-#![allow(clippy::cast_possible_wrap)]
 #![allow(clippy::needless_range_loop)]
-#![allow(clippy::range_plus_one)]
+#![warn(clippy::nursery)]
+// #![warn(clippy::pedantic)]
+// #![allow(clippy::cast_lossless)]
+// #![allow(clippy::must_use_candidate)]
+// #![allow(clippy::doc_markdown)]
+// #![allow(clippy::missing_panics_doc)]
+// #![allow(clippy::cast_sign_loss)]
+// #![allow(clippy::cast_possible_wrap)]
+// #![allow(clippy::range_plus_one)]
+// #![allow(clippy::needless_pass_by_value)]
+// #![allow(clippy::wildcard_imports)]
 pub mod _cp;
 pub mod a_star;
 pub mod aa_tree;
@@ -129,9 +131,15 @@ pub mod string_algorithm;
 pub mod string_matching;
 pub mod string_searching;
 pub mod suffix_automaton;
+pub mod traveling_salesman_problem;
 pub mod trigram;
 pub mod trigram_search;
 pub mod truncated_division;
+pub mod tsp;
+pub mod tsp_give_and_take_mem_access_optim_with_inf;
+pub mod tsp_giving_with_inf;
+pub mod tsp_giving_with_option;
+pub mod tsp_taking_with_inf;
 pub mod two_way_string_match;
 pub mod uf;
 pub mod union_find;
