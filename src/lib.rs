@@ -114,6 +114,7 @@ pub mod line3d;
 pub mod line_container;
 pub mod linear_feedback_shift_register;
 pub mod matching_pursuit;
+pub mod md5;
 pub mod monoid_category_theory;
 pub mod monoid_object;
 pub mod monoidal_category;
