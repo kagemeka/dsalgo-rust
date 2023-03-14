@@ -144,6 +144,7 @@ pub mod semisimple_lie_algebra;
 pub mod shift_and;
 pub mod shift_or;
 pub mod simple_lie_algebra;
+pub mod siphash;
 pub mod size_trait;
 pub mod spaced_speed;
 pub mod sparse_approximation;
