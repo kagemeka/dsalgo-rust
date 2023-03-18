@@ -61,6 +61,7 @@ pub mod circle_hough_transform;
 pub mod clamp;
 pub mod clob;
 pub mod commentz_walter;
+pub mod cons;
 pub mod convex_hull;
 pub mod convex_hull_trick;
 pub mod dafsa;
